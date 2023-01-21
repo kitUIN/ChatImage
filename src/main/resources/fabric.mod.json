@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "chatimage",
+  "version": "${version}",
+  "name": "ChatImage",
+  "description": "",
+  "authors": ["kitUIN<kulujun@gmial.com>"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/ChatImage/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "github.kituin.chatimage.client.ChatImageClient"
+    ],
+    "main": [
+      "github.kituin.chatimage.ChatImage"
+    ]
+  },
+  "mixins": [
+    "ChatImage.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.13",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
