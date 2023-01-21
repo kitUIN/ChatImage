@@ -10,7 +10,7 @@
     "sources": "https://github.com/kitUIN/ChatImage"
   },
   "license": "MIT",
-  "icon": "assets/ChatImage/icon.png",
+  "icon": "logo.png",
   "environment": "*",
   "entrypoints": {
     "client": [

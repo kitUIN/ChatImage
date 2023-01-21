@@ -40,7 +40,13 @@ public class ChatImageView {
             {
                 datas.mkdirs();
             }
-            Path path = FileSystems.getDefault().getPath(url.replace("http://","").replace("https://",""));
+            Path path = null;
+            try{
+                 path = FileSystems.getDefault().getPath(url.replace("http://","").replace("https://",""));
+            }catch ( java.nio.file.InvalidPathException ep)
+            {
+                throw new IOException();
+            }
             File temp = new File("ChatImages/" + path.getFileName().toString());
             if(temp.exists()) {
 
@@ -66,6 +72,10 @@ public class ChatImageView {
             System.out.println(url2);
             File file = new  File(url2);
             inputStream = new FileInputStream(file);
+        }
+        else
+        {
+            throw new IOException();
         }
 
         NativeImage nativeImage = NativeImage.read(inputStream);
