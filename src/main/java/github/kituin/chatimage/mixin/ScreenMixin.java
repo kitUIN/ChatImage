@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.tools.ChatImageCode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.DrawableHelper;
@@ -13,13 +14,19 @@ import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.HoverEvent;
+import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.joml.Vector2ic;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.*;
 import static github.kituin.chatimage.tools.ChatImageTool.SHOW_IMAGE;
@@ -27,6 +34,12 @@ import static github.kituin.chatimage.tools.ChatImageTool.SHOW_IMAGE;
 @Environment(EnvType.CLIENT)
 @Mixin(Screen.class)
 public abstract  class ScreenMixin extends AbstractParentElement implements Drawable {
+
+    @Shadow public abstract void renderOrderedTooltip(MatrixStack matrices, List<? extends OrderedText> lines, int x, int y);
+
+    @Shadow public int width;
+
+    @Shadow @Nullable protected MinecraftClient client;
 
     @Inject(at = @At("RETURN") ,
             method = "renderTextHoverEffect" )
@@ -66,9 +79,12 @@ public abstract  class ScreenMixin extends AbstractParentElement implements Draw
                 RenderSystem.setShaderTexture(0, view.getIdentifier());
                 drawTexture(matrices, l+PADDING_LEFT,m+PADDING_TOP,0,0,viewWidth, viewHeight,viewWidth,viewHeight);
 
-
+                matrices.pop();
             }
-            matrices.pop();
+            else
+            {
+                this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(Text.translatable("message.chatimage.loading"), Math.max(this.width / 2, 200)), x, y);
+            }
         }
 
     }
