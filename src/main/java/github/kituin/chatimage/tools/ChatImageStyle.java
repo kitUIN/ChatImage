@@ -76,6 +76,17 @@ public class ChatImageStyle {
     }
     /**
      * 获取悬浮图片样式的Text消息
+     * @param code {@link ChatImageCode}
+     * @return {@link MutableText}
+     */
+    public static MutableText messageFromCode(ChatImageCode code)
+    {
+        MutableText text = (MutableText) Text.of(code.getName());
+        Style style = ChatImageStyle.getStyleFromCode(code);
+        return text.fillStyle(style);
+    }
+    /**
+     * 获取悬浮图片样式的Text消息
      * @param message 消息
      * @param url 图片地址 {@link ChatImageUrl}
      * @return {@link MutableText}

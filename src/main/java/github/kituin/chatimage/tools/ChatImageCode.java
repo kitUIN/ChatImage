@@ -5,6 +5,7 @@ import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.io.*;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
 import static github.kituin.chatimage.client.ChatImageClient.LOGGER;
 import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
 
+import static github.kituin.chatimage.tools.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
 import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
 
 
@@ -24,7 +26,7 @@ import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
  * @author kitUIN
  */
 public class ChatImageCode {
-    private final Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
+    public static Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
     private ChatImageUrl url;
     private boolean nsfw;
     private MinecraftClient minecraft = MinecraftClient.getInstance();
@@ -33,13 +35,45 @@ public class ChatImageCode {
     private int height;
     private int originalWidth;
     private int originalHeight;
+    private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME  + "]";
+
     ChatImageCode() { }
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
         this.url = ChatImageUrl.of(url);
     }
+    public ChatImageCode(String url,String name) throws InvalidChatImageUrlException {
+        this.url = ChatImageUrl.of(url);
+        this.name = "["+name+"]";
+    }
     public ChatImageCode(ChatImageUrl url)
     {
         this.url = url;
+    }
+    public ChatImageCode(ChatImageUrl url,String name)
+    {
+        this.url = url;
+        this.name ="["+name+"]";
+    }
+    /**
+     * 从字符串 加载 {@link ChatImageCode}
+     * @param code 字符串模式的 {@link ChatImageCode}
+     * @return {@link ChatImageCode}
+     * @throws InvalidChatImageCodeException 加载失败
+     */
+    public static ChatImageCode of(String code) throws InvalidChatImageCodeException
+    {
+        ChatImageCode chatImageCode = new ChatImageCode();
+        chatImageCode.match(code);
+        return chatImageCode;
+    }
+
+    /**
+     * 加载只带{@link #url}的{@link ChatImageCode}
+     * @param url url {@link ChatImageUrl}
+     * @return {@link ChatImageCode}
+     */
+    public static ChatImageCode ofUrl(ChatImageUrl url) {
+        return new ChatImageCode(url);
     }
     /**
      * 载入纹理<br/>
@@ -101,7 +135,7 @@ public class ChatImageCode {
         }
         else
         {
-            throw new InvalidChatImageCodeException("can not match ChatImageCode, please recheck");
+            throw new InvalidChatImageCodeException(originalCode + "<-" + Text.translatable("match.invalidcode.chatimage.exception"));
         }
     }
 
@@ -116,8 +150,8 @@ public class ChatImageCode {
             String[] temps = raw.split("=",2);
             if(temps.length == 2)
             {
-                String name = temps[0].replace(" ","");
-                switch (name)
+                String value = temps[0].replace(" ","");
+                switch (value)
                 {
                     case "url":
                         try {
@@ -129,13 +163,16 @@ public class ChatImageCode {
                     case "nsfw":
                         this.nsfw = Boolean.getBoolean(temps[1]);
                         break;
+                    case "name":
+                        this.name = "["+temps[1]+"]";
+                        break;
                     default:
                         break;
                 }
             }
             else
             {
-                throw new InvalidChatImageCodeException("can not match the value of ChatImageCode, please recheck");
+                throw new InvalidChatImageCodeException(raw + "<-" + Text.translatable("matchvalue.invalidcode.chatimage.exception"));
             }
         }
     }
@@ -185,26 +222,16 @@ public class ChatImageCode {
             width = (int) (limitHeight / hx);
         }
     }
-    /**
-     * 从字符串 加载 {@link ChatImageCode}
-     * @param code 字符串模式的 {@link ChatImageCode}
-     * @return {@link ChatImageCode}
-     * @throws InvalidChatImageCodeException 加载失败
-     */
-    public static ChatImageCode of(String code) throws InvalidChatImageCodeException
-    {
-        ChatImageCode chatImageCode = new ChatImageCode();
-        chatImageCode.match(code);
-        return chatImageCode;
-    }
 
-    /**
-     * 加载只带{@link #url}的{@link ChatImageCode}
-     * @param url url
-     * @return {@link ChatImageCode}
-     */
-    public static ChatImageCode ofUrl(String url) throws InvalidChatImageUrlException {
-        return new ChatImageCode(ChatImageUrl.of(url));
+    public static String parse(String url,boolean nsfw)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[CICode,url=").append(url);
+        if(nsfw)
+        {
+            sb.append(",nsfw=true");
+        }
+        return sb.append("]").toString();
     }
     public String getOriginalUrl()
     {
@@ -251,5 +278,12 @@ public class ChatImageCode {
     public Identifier getIdentifier()
     {
         return this.identifier;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }

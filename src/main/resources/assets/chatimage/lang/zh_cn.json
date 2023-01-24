@@ -1,3 +1,6 @@
 {
-  "message.chatimage.loading": "图片加载中....."
+  "message.chatimage.loading": "图片加载中.....",
+  "codename.chatimage.default": "图片",
+  "matchvalue.invalidcode.chatimage.exception": "无法匹配到ChatImageCode的有效值,请重新检查",
+  "match.invalidcode.chatimage.exception": "无法匹配出任意的ChatImageCode,请重新检查"
 }
