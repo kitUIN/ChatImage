@@ -67,19 +67,7 @@ public class ChatImageClient implements ClientModInitializer {
         });
 
 
-        AttackBlockCallback.EVENT.register((player, world, hand, pos, direction) ->
-        {
-            BlockState state = world.getBlockState(pos);
 
-            player.sendMessage(replaceCode(Text.of("2234[CICode,url=https://blog.kituin.fun/img/bg.png]yyy[CICode,url=https://blog.kituin.fun/img/kit.png]blog.blog.")));
-
-            if (state.isToolRequired() && !player.isSpectator() &&
-                    player.getMainHandStack().isEmpty())
-            {
-                player.damage(DamageSource.GENERIC, 1.0F);
-            }
-            return ActionResult.PASS;
-        });
 
     }
 }

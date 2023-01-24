@@ -30,13 +30,6 @@ public class ChatImage implements ModInitializer {
     @Override
     public void onInitialize() {
 
-        CHAT_MESSAGE.register((message, sender, params)->{
-            System.out.println(message.getSignedContent().describeConstable());
-
-
-
-
-        });
 
     }
 
