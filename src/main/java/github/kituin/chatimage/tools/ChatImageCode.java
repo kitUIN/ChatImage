@@ -15,9 +15,7 @@ import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static github.kituin.chatimage.client.ChatImageClient.LOGGER;
 import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
-
 import static github.kituin.chatimage.tools.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
 import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
 
@@ -31,37 +29,41 @@ public class ChatImageCode {
     private boolean nsfw;
     private MinecraftClient minecraft = MinecraftClient.getInstance();
     private int width;
-    private  Identifier identifier;
+    private Identifier identifier;
     private int height;
     private int originalWidth;
     private int originalHeight;
-    private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME  + "]";
+    private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
 
-    ChatImageCode() { }
+    ChatImageCode() {
+    }
+
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
         this.url = ChatImageUrl.of(url);
     }
-    public ChatImageCode(String url,String name) throws InvalidChatImageUrlException {
+
+    public ChatImageCode(String url, String name) throws InvalidChatImageUrlException {
         this.url = ChatImageUrl.of(url);
-        this.name = "["+name+"]";
+        this.name = "[" + name + "]";
     }
-    public ChatImageCode(ChatImageUrl url)
-    {
+
+    public ChatImageCode(ChatImageUrl url) {
         this.url = url;
     }
-    public ChatImageCode(ChatImageUrl url,String name)
-    {
+
+    public ChatImageCode(ChatImageUrl url, String name) {
         this.url = url;
-        this.name ="["+name+"]";
+        this.name = "[" + name + "]";
     }
+
     /**
      * 从字符串 加载 {@link ChatImageCode}
+     *
      * @param code 字符串模式的 {@link ChatImageCode}
      * @return {@link ChatImageCode}
      * @throws InvalidChatImageCodeException 加载失败
      */
-    public static ChatImageCode of(String code) throws InvalidChatImageCodeException
-    {
+    public static ChatImageCode of(String code) throws InvalidChatImageCodeException {
         ChatImageCode chatImageCode = new ChatImageCode();
         chatImageCode.match(code);
         return chatImageCode;
@@ -69,36 +71,35 @@ public class ChatImageCode {
 
     /**
      * 加载只带{@link #url}的{@link ChatImageCode}
+     *
      * @param url url {@link ChatImageUrl}
      * @return {@link ChatImageCode}
      */
     public static ChatImageCode ofUrl(ChatImageUrl url) {
         return new ChatImageCode(url);
     }
+
     /**
      * 载入纹理<br/>
      * 注意特判 Identifier 不为 null
+     *
      * @return Identifier(如果加载失败返回null)
      */
-    private Identifier loadTexture()  {
+    private Identifier loadTexture() {
         InputStream inputStream = null;
-        String httpUrl =  this.getOriginalUrl();
-        if(CLOCK_MAP.containsKey(httpUrl))
-        {
+        String httpUrl = this.getOriginalUrl();
+        if (CLOCK_MAP.containsKey(httpUrl)) {
             return CLOCK_MAP.get(httpUrl);
         }
-        try{
-            switch (this.getUrlMethod())
-            {
+        try {
+            switch (this.getUrlMethod()) {
                 case HTTP:
                     File temp = new File(this.url.getCachePathUrl());
-                    if(temp.exists()) {
-                        inputStream =  new FileInputStream(temp);
-                    }
-                    else {
+                    if (temp.exists()) {
+                        inputStream = new FileInputStream(temp);
+                    } else {
 
-                        if(!CLOCK_MAP.containsKey(httpUrl))
-                        {
+                        if (!CLOCK_MAP.containsKey(httpUrl)) {
                             HttpUtils.getInputStream(httpUrl);
                         }
                         return null;
@@ -114,8 +115,7 @@ public class ChatImageCode {
             NativeImage nativeImage = NativeImage.read(inputStream);
             return this.minecraft.getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
                     new NativeImageBackedTexture(nativeImage));
-        }catch ( IOException ep)
-        {
+        } catch (IOException ep) {
 
         }
         return null;
@@ -124,35 +124,32 @@ public class ChatImageCode {
 
     /**
      * 匹配 {@link ChatImageCode}
+     *
      * @param originalCode 字符串模式的 {@link ChatImageCode}
      * @throws InvalidChatImageCodeException 匹配失败
      */
     private void match(String originalCode) throws InvalidChatImageCodeException {
         Matcher matcher = pattern.matcher(originalCode);
-        if(matcher.find())
-        {
+        if (matcher.find()) {
             slice(matcher.group(1));
-        }
-        else
-        {
+        } else {
             throw new InvalidChatImageCodeException(originalCode + "<-" + Text.translatable("match.invalidcode.chatimage.exception"));
         }
     }
 
     /**
      * 切片每个code属性
+     *
      * @param rawCode 原始code
      * @throws InvalidChatImageCodeException 切片失败
      */
     private void slice(String rawCode) throws InvalidChatImageCodeException {
         String[] raws = rawCode.split(",");
-        for (String raw:raws) {
-            String[] temps = raw.split("=",2);
-            if(temps.length == 2)
-            {
-                String value = temps[0].replace(" ","");
-                switch (value)
-                {
+        for (String raw : raws) {
+            String[] temps = raw.split("=", 2);
+            if (temps.length == 2) {
+                String value = temps[0].replace(" ", "");
+                switch (value) {
                     case "url":
                         try {
                             this.url = ChatImageUrl.of(temps[1]);
@@ -164,50 +161,48 @@ public class ChatImageCode {
                         this.nsfw = Boolean.getBoolean(temps[1]);
                         break;
                     case "name":
-                        this.name = "["+temps[1]+"]";
+                        this.name = "[" + temps[1] + "]";
                         break;
                     default:
                         break;
                 }
-            }
-            else
-            {
+            } else {
                 throw new InvalidChatImageCodeException(raw + "<-" + Text.translatable("matchvalue.invalidcode.chatimage.exception"));
             }
         }
     }
 
 
-
     /**
      * 载入图片
-     * @param limitWidth 限制的横向长度
+     *
+     * @param limitWidth  限制的横向长度
      * @param limitHeight 限制的纵向长度
-     * @return 载入成功返回true,失败则为false
+     * @return 载入成功返回true, 失败则为false
      */
-    public boolean loadImage(int limitWidth,int limitHeight)
-    {
+    public boolean loadImage(int limitWidth, int limitHeight) {
         identifier = loadTexture();
-        if(identifier == null) {
+        if (identifier == null) {
             return false;
         }
         NativeImageBackedTexture texture = (NativeImageBackedTexture) minecraft.getTextureManager().getTexture(identifier);
         NativeImage image = texture.getImage();
         originalWidth = image.getWidth();
         originalHeight = image.getHeight();
-        limitSize(limitWidth,limitHeight);
+        limitSize(limitWidth, limitHeight);
         return true;
     }
-    /** 限制显示图片的长宽
-     * @param limitWidth 限制的横向长度
+
+    /**
+     * 限制显示图片的长宽
+     *
+     * @param limitWidth  限制的横向长度
      * @param limitHeight 限制的纵向长度
      */
-    private void limitSize(int limitWidth,int limitHeight)
-    {
+    private void limitSize(int limitWidth, int limitHeight) {
         width = originalWidth;
         height = originalHeight;
-        if(limitWidth == 0 && limitHeight == 0)
-        {
+        if (limitWidth == 0 && limitHeight == 0) {
             limitWidth = MinecraftClient.getInstance().getWindow().getScaledWidth() / 2;
             limitHeight = MinecraftClient.getInstance().getWindow().getScaledHeight() / 2;
         }
@@ -223,67 +218,69 @@ public class ChatImageCode {
         }
     }
 
-    public static String parse(String url,boolean nsfw)
-    {
+    public static String parse(String url, boolean nsfw) {
         StringBuilder sb = new StringBuilder();
         sb.append("[CICode,url=").append(url);
-        if(nsfw)
-        {
+        if (nsfw) {
             sb.append(",nsfw=true");
         }
         return sb.append("]").toString();
     }
-    public String getOriginalUrl()
-    {
+
+    public String getOriginalUrl() {
         return this.url.getOriginalUrl();
     }
-    public ChatImageUrl getUrl()
-    {
+
+    public ChatImageUrl getUrl() {
         return this.url;
     }
-    public ChatImageUrl.UrlMethod getUrlMethod()
-    {
+
+    public ChatImageUrl.UrlMethod getUrlMethod() {
         return this.url.getUrlMethod();
     }
-    public boolean getNsfw()
-    {
+
+    public boolean getNsfw() {
         return this.nsfw;
     }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("[CICode,url=").append(this.url.getOriginalUrl());
-        if(nsfw)
-        {
+        if (nsfw) {
             builder.append("nsfw=true");
+        }
+        if (name != null) {
+            builder.append("name=" + name.substring(1, name.length() - 1));
         }
         return builder.append("]").toString();
     }
-    public int getWidth()
-    {
+
+    public int getWidth() {
         return this.width;
     }
-    public int getHeight()
-    {
+
+    public int getHeight() {
         return this.height;
     }
-    public int getOriginalWidth()
-    {
+
+    public int getOriginalWidth() {
         return this.originalWidth;
     }
-    public int getOriginalHeight()
-    {
+
+    public int getOriginalHeight() {
         return this.originalHeight;
     }
-    public Identifier getIdentifier()
-    {
+
+    public Identifier getIdentifier() {
         return this.identifier;
     }
 
     public String getName() {
         return this.name;
     }
+
     public void setName(String name) {
-        this.name = name;
+        this.name = "[" + name + "]";
     }
 }
