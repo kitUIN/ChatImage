@@ -48,7 +48,9 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
+
             if (view != null) {
+
                 if (view.loadImage(0, 0)) {
 
                     int viewWidth = view.getWidth();
@@ -81,7 +83,11 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 
                     matrices.pop();
                 } else {
-                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(Text.translatable("message.chatimage.loading"), Math.max(this.width / 2, 200)), x, y);
+                    Text text = Text.translatable("message.chatimage.loading");
+                    if (view.getFileNotFound()) {
+                        text = Text.translatable("filenotfound.chatimage.exception");
+                    }
+                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                 }
             }
 

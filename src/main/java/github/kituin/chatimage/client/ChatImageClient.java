@@ -56,6 +56,7 @@ public class ChatImageClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        System.setProperty("java.awt.headless", "false");
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(
                     LiteralArgumentBuilder.<FabricClientCommandSource>literal("chatimage")

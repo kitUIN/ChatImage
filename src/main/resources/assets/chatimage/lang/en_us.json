@@ -1,6 +1,5 @@
 {
   "message.chatimage.loading": "Image Loading.....",
   "codename.chatimage.default": "Image",
-  "matchvalue.invalidcode.chatimage.exception": "can not match the value of ChatImageCode, Please Recheck",
-  "match.invalidcode.chatimage.exception": "can not find any String to ChatImageCode, Please Recheck"
+  "filenotfound.chatimage.exception": "Image Not Found"
 }

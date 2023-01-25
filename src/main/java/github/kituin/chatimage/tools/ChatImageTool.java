@@ -31,8 +31,8 @@ public class ChatImageTool {
             key = ttc.getKey();
             if ("chat.type.text".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
-                player = (MutableText)args[0];
-                MutableText contents = (MutableText)args[1];
+                player = (MutableText) args[0];
+                MutableText contents = (MutableText) args[1];
                 if (contents.getContent() instanceof LiteralTextContent) {
                     checkedText = ((LiteralTextContent) contents.getContent()).string();
 
@@ -86,11 +86,10 @@ public class ChatImageTool {
                 res.append(Text.of(checkedText.substring(lastPosition)));
             }
         }
-        if(player ==null)
-        {
+        if (player == null) {
             return res;
-        }else {
-            return MutableText.of(new TranslatableTextContent(key,player,res));
+        } else {
+            return MutableText.of(new TranslatableTextContent(key, player, res));
         }
 
 

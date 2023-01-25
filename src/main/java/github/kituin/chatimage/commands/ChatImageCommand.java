@@ -22,7 +22,7 @@ public class ChatImageCommand {
 
     public static int sendChatImage(CommandContext<FabricClientCommandSource> context) {
         String url = StringArgumentType.getString(context, "url");
-        context.getSource().getPlayer().networkHandler.sendChatMessage(ChatImageCode.parse(url,false));
+        context.getSource().getPlayer().networkHandler.sendChatMessage(ChatImageCode.parse(url,false,null));
         return  Command.SINGLE_SUCCESS;
     }
 }

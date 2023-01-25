@@ -5,13 +5,15 @@ import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.Nullable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Base64;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +36,7 @@ public class ChatImageCode {
     private int originalWidth;
     private int originalHeight;
     private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
+    private boolean fileNotFound = false;
 
     ChatImageCode() {
     }
@@ -87,9 +90,9 @@ public class ChatImageCode {
      */
     private Identifier loadTexture() {
         InputStream inputStream = null;
-        String httpUrl = this.getOriginalUrl();
-        if (CLOCK_MAP.containsKey(httpUrl)) {
-            return CLOCK_MAP.get(httpUrl);
+        String useUrl = this.url.getUrl();
+        if (this.getUrlMethod() == ChatImageUrl.UrlMethod.HTTP && CLOCK_MAP.containsKey(useUrl)) {
+            return CLOCK_MAP.get(useUrl);
         }
         try {
             switch (this.getUrlMethod()) {
@@ -98,16 +101,20 @@ public class ChatImageCode {
                     if (temp.exists()) {
                         inputStream = new FileInputStream(temp);
                     } else {
-
-                        if (!CLOCK_MAP.containsKey(httpUrl)) {
-                            HttpUtils.getInputStream(httpUrl);
+                        if (!CLOCK_MAP.containsKey(useUrl)) {
+                            HttpUtils.getInputStream(useUrl);
                         }
                         return null;
                     }
                     break;
-                case BASE64:
-                    byte[] bytes = Base64.getDecoder().decode(this.url.getBase64Data());
-                    inputStream = new ByteArrayInputStream(bytes);
+                case FILE:
+                    File fileTemp = new File(useUrl);
+                    if (fileTemp.exists()) {
+                        inputStream = new FileInputStream(fileTemp);
+                    } else {
+                        fileNotFound = true;
+                        return null;
+                    }
                     break;
                 default:
                     return null;
@@ -133,7 +140,7 @@ public class ChatImageCode {
         if (matcher.find()) {
             slice(matcher.group(1));
         } else {
-            throw new InvalidChatImageCodeException(originalCode + "<-" + Text.translatable("match.invalidcode.chatimage.exception"));
+            throw new InvalidChatImageCodeException(originalCode + "<-can not find any String to ChatImageCode, Please Recheck");
         }
     }
 
@@ -167,7 +174,7 @@ public class ChatImageCode {
                         break;
                 }
             } else {
-                throw new InvalidChatImageCodeException(raw + "<-" + Text.translatable("matchvalue.invalidcode.chatimage.exception"));
+                throw new InvalidChatImageCodeException(raw + "<-can not match the value of ChatImageCode, Please Recheck");
             }
         }
     }
@@ -218,11 +225,14 @@ public class ChatImageCode {
         }
     }
 
-    public static String parse(String url, boolean nsfw) {
+    public static String parse(String url, boolean nsfw, @Nullable String name) {
         StringBuilder sb = new StringBuilder();
         sb.append("[CICode,url=").append(url);
         if (nsfw) {
             sb.append(",nsfw=true");
+        }
+        if (name != null) {
+            sb.append(",name=").append(name);
         }
         return sb.append("]").toString();
     }
@@ -245,15 +255,7 @@ public class ChatImageCode {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("[CICode,url=").append(this.url.getOriginalUrl());
-        if (nsfw) {
-            builder.append("nsfw=true");
-        }
-        if (name != null) {
-            builder.append("name=" + name.substring(1, name.length() - 1));
-        }
-        return builder.append("]").toString();
+        return parse(url.getOriginalUrl(), nsfw, name.substring(1, name.length() - 1));
     }
 
     public int getWidth() {
@@ -274,6 +276,10 @@ public class ChatImageCode {
 
     public Identifier getIdentifier() {
         return this.identifier;
+    }
+
+    public boolean getFileNotFound() {
+        return this.fileNotFound;
     }
 
     public String getName() {

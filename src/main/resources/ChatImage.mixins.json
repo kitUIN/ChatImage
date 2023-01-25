@@ -4,12 +4,13 @@
   "package": "github.kituin.chatimage.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ScreenMixin",
-    "ChatHudMixin"
+    "ChatHudMixin",
+    "ScreenMixin"
   ],
   "client": [
-    "ScreenMixin",
-    "ChatHudMixin"
+    "ChatHudMixin",
+    "ClipboradMixin",
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
