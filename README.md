@@ -23,6 +23,12 @@
     <img src="https://img.shields.io/github/v/release/kitUIN/ChatImage" alt="release">
   </a>
 </p>
+## 快速开始
+
+聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
+**使用本地图片 目前只有自己能看到**
+
+![_$SZCFVMV(8}XCEZQG</code></code>Q0L](https://user-images.githubusercontent.com/68675068/214302789-6908add5-79b5-4d0e-b5f0-1ef54cf9fe13.png)
 
 ## 规范
 
@@ -46,9 +52,3 @@
 - [X]  手动输入`CICode`
 - [ ]  使用命令发送`CICode`
 
-## 快速开始
-
-聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片
-**使用本地图片 目前只有自己能看到**
-
-![_$SZCFVMV(8}XCEZQG</code></code>Q0L](https://user-images.githubusercontent.com/68675068/214302789-6908add5-79b5-4d0e-b5f0-1ef54cf9fe13.png)
