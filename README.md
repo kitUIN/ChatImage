@@ -28,6 +28,7 @@
   ·
   <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛提交建议</a>
 </p>
+
 ## 快速开始
 
 聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
