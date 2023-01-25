@@ -23,6 +23,7 @@
     <img src="https://img.shields.io/github/v/release/kitUIN/ChatImage" alt="release">
   </a>
 </p>
+
 ## 快速开始
 
 聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
