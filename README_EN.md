@@ -2,7 +2,7 @@
 
 # ChatImage
 
-✨ 在Minecraft聊天栏中显示图片 ✨
+✨ Show image in Minecraft chat ✨
 
 </div>
 
@@ -33,32 +33,34 @@
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">📃English</a>
 </p>
 
-## 快速开始
+**Need Fabric API**
 
-聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
-**目前使用本地图片时只有自己能看到**
+## Quick Start
+
+Enter `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]` in the chat field
+
+than it will transfer to image
+**If you use local pictures, only you can see them**
 
 ![quick](https://chatimage.kituin.fun/img/quick.png)
 
-## 规范
+## Specification
 
-本项目使用 `ChatImageCode` (`[CICode,<arg>=<value>]`)
+It use `ChatImageCode`
 
-| 参数   | 必须  | 类型      | 备注                    |
-|------|-----|---------|-----------------------|
-| url  | 是   | String  | 图片地址(本地文件请使用file:///) |
-| nsfw | 否   | boolean | 暂时没有用                 |
-| name | 否   | String  | 在消息栏显示的名称             |
+| Arg| Require| Type| Remark                                              |  
+|------|-----|---------|-----------------------------------------------------|  
+| url | true | String | Image address (please use `file:///` for local files) |  
+| nsfw | false | boolean | temporarily useless                                 |  
+| name | false | String | The name displayed in the chat                      |  
 
-例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
-上述意思为:
-网络地址 `url`为 `https://blog.kituin.fun/img/bg.png`
-显示名字为 `Image`
-`[CICode,url=https://blog.kituin.fun/img/bg.png]` 为合法`CICode`
+example： 
 
-## 支持方法
+`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+`[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
-- [X]  输入栏直接粘贴图片自动转换`CICode`
-- [X]  手动输入`CICode`
-- [ ]  使用命令发送`CICode`
+## Support input method
 
+- [X] Paste the picture directly in the chat field and automatically convert it to `CICode`
+- [X] manual input `CICode`
+- [ ] send `CICode`  with command
