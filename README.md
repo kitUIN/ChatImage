@@ -24,21 +24,25 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://chatimage.kituin.fun/">📖docs</a>
+  <a href="https://chatimage.kituin.fun/">📖文档</a>
   ·
-  <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛submit suggestion</a>
-  .
+  <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛提交建议</a>
+  ·
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README.md">📃Chinese</a>
-  .
+  ·
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">📃English</a>
+
 </p>
 
 ## 快速开始
 
 聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
+
 **目前使用本地图片时只有自己能看到**
 
 ![quick](https://chatimage.kituin.fun/img/quick.png)
+
+(图片来自画师[甘城なつき](https://www.pixiv.net/users/3036679))
 
 ## 规范
 
@@ -51,10 +55,20 @@
 | name | 否   | String  | 在消息栏显示的名称             |
 
 例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+
 上述意思为:
+
 网络地址 `url`为 `https://blog.kituin.fun/img/bg.png`
+
 显示名字为 `Image`
+
 `[CICode,url=https://blog.kituin.fun/img/bg.png]` 为合法`CICode`
+
+示例：
+
+`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+
+`[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
 ## 支持方法
 

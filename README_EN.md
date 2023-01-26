@@ -40,9 +40,12 @@
 Enter `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]` in the chat field
 
 than it will transfer to image
+
 **If you use local pictures, only you can see them**
 
 ![quick](https://chatimage.kituin.fun/img/quick.png)
+
+(image from [甘城なつき](https://www.pixiv.net/users/3036679))
 
 ## Specification
 
@@ -54,13 +57,14 @@ It use `ChatImageCode`
 | nsfw | false | boolean | temporarily useless                                 |  
 | name | false | String | The name displayed in the chat                      |  
 
-example： 
+example： 
 
 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+
 `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
 ## Support input method
 
 - [X] Paste the picture directly in the chat field and automatically convert it to `CICode`
 - [X] manual input `CICode`
-- [ ] send `CICode`  with command
+- [ ] send `CICode` with command
