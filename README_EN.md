@@ -31,6 +31,8 @@
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README.md">📃Chinese</a>
   .
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">📃English</a>
+  ·
+  <a href="https://www.curseforge.com/minecraft/mc-mods/chatimage">⬇️CurseForge</a>
 </p>
 
 **Need Fabric API**
