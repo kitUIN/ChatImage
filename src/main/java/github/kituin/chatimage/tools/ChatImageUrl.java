@@ -1,22 +1,25 @@
 package github.kituin.chatimage.tools;
 
 import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 import static github.kituin.chatimage.client.ChatImageClient.CACHE_PATH;
+import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
 
 public class ChatImageUrl {
     private String originalUrl;
     private String httpUrl;
-    private String cachePathUrl;
+
     private UrlMethod urlMethod;
     private String fileUrl;
 
 
-    ChatImageUrl(String url) throws InvalidChatImageUrlException {
+
+    public ChatImageUrl(String url) throws InvalidChatImageUrlException {
         this.originalUrl = url;
         init();
     }
@@ -26,28 +29,34 @@ public class ChatImageUrl {
         if (!folder.exists()) {
             folder.mkdirs();
         }
-
-        if (this.originalUrl.startsWith("http")) {
+        if (this.originalUrl.startsWith("http://") || this.originalUrl.startsWith("https://")) {
             this.urlMethod = UrlMethod.HTTP;
-            httpUrl = this.originalUrl.replace("http://", "").replace("https://", "");
-            try {
-                Path path = FileSystems.getDefault().getPath(httpUrl);
-                this.cachePathUrl = CACHE_PATH + "/" + path.getFileName().toString();
-            } catch (java.nio.file.InvalidPathException ep) {
-                throw new InvalidChatImageUrlException(ep.getMessage());
+            this.httpUrl = this.originalUrl;
+            if (!CLOCK_MAP.containsKey(this.httpUrl)) {
+                boolean f = HttpUtils.getInputStream(this.httpUrl);
+                if(!f){
+                    throw new InvalidChatImageUrlException("Invalid HTTP URL",
+                            InvalidChatImageUrlException.InvalidUrlMode.HttpNotFound);
+                }
             }
 
         } else if (this.originalUrl.startsWith("file:///")) {
             this.urlMethod = UrlMethod.FILE;
-            this.fileUrl = this.originalUrl.replace("\\", "\\\\").replace("file:///", "");
+            this.fileUrl = this.originalUrl
+                    .replace("\\", "\\\\")
+                    .replace("file:///", "");
+            File file = new File(this.fileUrl);
+            if(!file.exists()){
+                throw new InvalidChatImageUrlException("file not found",
+                        InvalidChatImageUrlException.InvalidUrlMode.FileNotFound);
+            }
+
         } else {
-            throw new InvalidChatImageUrlException(originalUrl + "<-this url is invalid, Please Recheck");
+            throw new InvalidChatImageUrlException(originalUrl + "<- this url is invalid, Please Recheck",
+                    InvalidChatImageUrlException.InvalidUrlMode.NotFound);
         }
     }
 
-    public static ChatImageUrl of(String url) throws InvalidChatImageUrlException {
-        return new ChatImageUrl(url);
-    }
 
     public String getOriginalUrl() {
         return this.originalUrl;
@@ -56,11 +65,6 @@ public class ChatImageUrl {
     public UrlMethod getUrlMethod() {
         return this.urlMethod;
     }
-
-    public String getCachePathUrl() {
-        return this.cachePathUrl;
-    }
-
 
     public String getUrl() {
         switch (this.urlMethod) {
@@ -93,4 +97,5 @@ public class ChatImageUrl {
          */
         HTTP,
     }
+
 }

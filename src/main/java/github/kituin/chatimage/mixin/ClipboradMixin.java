@@ -19,6 +19,10 @@ import java.io.IOException;
 
 import static github.kituin.chatimage.client.ChatImageClient.CACHE_PATH;
 
+/**
+ * 注入修改剪切板,支持粘贴图片
+ * @author kitUIN
+ */
 @Mixin(Keyboard.class)
 public class ClipboradMixin {
 

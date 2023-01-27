@@ -1,6 +1,9 @@
 {
   "message.chatimage.loading": "图片加载中.....",
   "codename.chatimage.default": "图片",
-  "filenotfound.chatimage.exception": "图片不存在"
-
+  "filenotfound.chatimage.exception": "图片不存在",
+  "message.chatimage.error": "图片加载失败",
+  "send.chatimage.command": "使用显示名称与Url发送CICode",
+  "url.chatimage.command": "使用Url发送CICode(使用默认显示名称)",
+  "help.chatimage.command": "ChatImage 帮助"
 }

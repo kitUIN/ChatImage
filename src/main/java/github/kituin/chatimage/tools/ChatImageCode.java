@@ -37,17 +37,21 @@ public class ChatImageCode {
     private int originalHeight;
     private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
     private boolean fileNotFound = false;
+    private boolean httpNotFound = false;
 
     ChatImageCode() {
     }
 
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
-        this.url = ChatImageUrl.of(url);
+        this.url = new ChatImageUrl(url);
     }
 
-    public ChatImageCode(String url, String name) throws InvalidChatImageUrlException {
-        this.url = ChatImageUrl.of(url);
-        this.name = "[" + name + "]";
+    public ChatImageCode(String url, @Nullable String name) throws InvalidChatImageUrlException {
+        this.url = new ChatImageUrl(url);
+        if (name != null) {
+            this.name = "[" + name + "]";
+        }
+
     }
 
     public ChatImageCode(ChatImageUrl url) {
@@ -95,33 +99,19 @@ public class ChatImageCode {
             return CLOCK_MAP.get(useUrl);
         }
         try {
-            switch (this.getUrlMethod()) {
-                case HTTP:
-                    File temp = new File(this.url.getCachePathUrl());
-                    if (temp.exists()) {
-                        inputStream = new FileInputStream(temp);
-                    } else {
-                        if (!CLOCK_MAP.containsKey(useUrl)) {
-                            HttpUtils.getInputStream(useUrl);
-                        }
-                        return null;
-                    }
-                    break;
-                case FILE:
-                    File fileTemp = new File(useUrl);
-                    if (fileTemp.exists()) {
-                        inputStream = new FileInputStream(fileTemp);
-                    } else {
-                        fileNotFound = true;
-                        return null;
-                    }
-                    break;
-                default:
+            if (this.getUrlMethod() == ChatImageUrl.UrlMethod.FILE) {
+                File fileTemp = new File(useUrl);
+                if (fileTemp.exists()) {
+                    inputStream = new FileInputStream(fileTemp);
+                    NativeImage nativeImage = NativeImage.read(inputStream);
+                    return this.minecraft.getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
+                            new NativeImageBackedTexture(nativeImage));
+                } else {
+                    fileNotFound = true;
                     return null;
+                }
             }
-            NativeImage nativeImage = NativeImage.read(inputStream);
-            return this.minecraft.getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
-                    new NativeImageBackedTexture(nativeImage));
+
         } catch (IOException ep) {
 
         }
@@ -151,24 +141,27 @@ public class ChatImageCode {
      * @throws InvalidChatImageCodeException 切片失败
      */
     private void slice(String rawCode) throws InvalidChatImageCodeException {
+        if (!rawCode.contains("url")) {
+            throw new InvalidChatImageCodeException("not match url in ChatImageCode, Please Recheck");
+        }
         String[] raws = rawCode.split(",");
         for (String raw : raws) {
             String[] temps = raw.split("=", 2);
             if (temps.length == 2) {
-                String value = temps[0].replace(" ", "");
+                String value = temps[0].trim();
                 switch (value) {
                     case "url":
                         try {
-                            this.url = ChatImageUrl.of(temps[1]);
+                            this.url = new ChatImageUrl(temps[1].trim());
                         } catch (InvalidChatImageUrlException e) {
-                            throw new InvalidChatImageCodeException(e.getMessage());
+                            throw new InvalidChatImageCodeException(e.getMessage(), e.getMode());
                         }
                         break;
                     case "nsfw":
-                        this.nsfw = Boolean.getBoolean(temps[1]);
+                        this.nsfw = Boolean.getBoolean(temps[1].trim());
                         break;
                     case "name":
-                        this.name = "[" + temps[1] + "]";
+                        this.name = "[" + temps[1].trim() + "]";
                         break;
                     default:
                         break;
@@ -225,7 +218,7 @@ public class ChatImageCode {
         }
     }
 
-    public static String parse(String url, boolean nsfw, @Nullable String name) {
+    private static String parse(String url, boolean nsfw, @Nullable String name) {
         StringBuilder sb = new StringBuilder();
         sb.append("[CICode,url=").append(url);
         if (nsfw) {
@@ -241,7 +234,7 @@ public class ChatImageCode {
         return this.url.getOriginalUrl();
     }
 
-    public ChatImageUrl getUrl() {
+    public ChatImageUrl getChatImageUrl() {
         return this.url;
     }
 
@@ -282,6 +275,10 @@ public class ChatImageCode {
         return this.fileNotFound;
     }
 
+    public boolean getHttpNotFound() {
+        return this.httpNotFound;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -289,4 +286,6 @@ public class ChatImageCode {
     public void setName(String name) {
         this.name = "[" + name + "]";
     }
+
+
 }

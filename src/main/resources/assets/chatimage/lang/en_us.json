@@ -1,5 +1,9 @@
 {
   "message.chatimage.loading": "Image Loading.....",
   "codename.chatimage.default": "Image",
-  "filenotfound.chatimage.exception": "Image Not Found"
+  "filenotfound.chatimage.exception": "Image Not Found",
+  "message.chatimage.error": "Image Loading Error",
+  "send.chatimage.command": "Send CICode with display name and url",
+  "url.chatimage.command": "Send CICode with url (use default display name)",
+  "help.chatimage.command": "ChatImage help"
 }

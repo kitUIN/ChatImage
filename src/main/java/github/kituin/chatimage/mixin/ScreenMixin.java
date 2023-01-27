@@ -27,8 +27,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.*;
-import static github.kituin.chatimage.tools.ChatImageTool.SHOW_IMAGE;
+import static github.kituin.chatimage.tools.ChatImageStyle.SHOW_IMAGE;
+import static github.kituin.chatimage.tools.HttpUtils.HTTPS_MAP;
 
+/**
+ * 注入修改悬浮显示图片
+ * @author kitUIN
+ */
 @Mixin(Screen.class)
 public abstract class ScreenMixin extends AbstractParentElement implements Drawable {
 
@@ -42,17 +47,15 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
     @Nullable
     protected MinecraftClient client;
 
+
     @Inject(at = @At("RETURN"),
             method = "renderTextHoverEffect")
     protected void renderTextHoverEffect(MatrixStack matrices, Style style, int x, int y, CallbackInfo ci) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-
             if (view != null) {
-
                 if (view.loadImage(0, 0)) {
-
                     int viewWidth = view.getWidth();
                     int viewHeight = view.getHeight();
                     HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
@@ -83,10 +86,21 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 
                     matrices.pop();
                 } else {
-                    Text text = Text.translatable("message.chatimage.loading");
+                    Text text = Text.of("");
+                    if(HTTPS_MAP.containsKey(view.getChatImageUrl().getUrl()))
+                    {
+                        if(HTTPS_MAP.get(view.getChatImageUrl().getUrl()) == 2)
+                        {
+                            text = Text.translatable("message.chatimage.error");
+                        }else{
+                            text = Text.translatable("message.chatimage.loading");
+                        }
+                    }
+
                     if (view.getFileNotFound()) {
                         text = Text.translatable("filenotfound.chatimage.exception");
                     }
+
                     this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                 }
             }
