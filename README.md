@@ -75,7 +75,7 @@
 
 `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
-## Use Command to send [CICode]
+## 使用命令发送 [CICode]
 
 `/chatimage send <display name> <url>`
 
