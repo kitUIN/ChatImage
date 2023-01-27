@@ -67,13 +67,27 @@
 
 示例：
 
+网络图片
+
 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
 
+本地图片
+
 `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
+
+## Use Command to send [CICode]
+
+`/chatimage send <display name> <url>`
+
+使用显示名称与Url发送CICode
+
+`/chatimage url <url>`
+
+使用Url发送CICode(使用默认显示名称)
 
 ## 支持方法
 
 - [X]  输入栏直接粘贴图片自动转换`CICode`
 - [X]  手动输入`CICode`
-- [ ]  使用命令发送`CICode`
+- [x]  使用命令发送`CICode`
 

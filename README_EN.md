@@ -59,14 +59,28 @@ It use `ChatImageCode`
 | nsfw | false | boolean | temporarily useless                                 |  
 | name | false | String | The name displayed in the chat                      |  
 
-example： 
+### Example: 
+
+Web Picture
 
 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
 
+Local Picture
+
 `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
+
+## Use Command to send [CICode]
+
+`/chatimage send <display name> <url>`
+
+Send CICode with display name and url
+
+`/chatimage url <url>`
+
+Send CICode with url (use default display name)
 
 ## Support input method
 
 - [X] Paste the picture directly in the chat field and automatically convert it to `CICode`
 - [X] manual input `CICode`
-- [ ] send `CICode` with command
+- [x] send `CICode` with command
