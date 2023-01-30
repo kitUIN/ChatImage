@@ -1,4 +1,4 @@
-package github.kituin.chatimage.tools;
+package github.kituin.chatimage.tool;
 
 import net.minecraft.text.Text;
 

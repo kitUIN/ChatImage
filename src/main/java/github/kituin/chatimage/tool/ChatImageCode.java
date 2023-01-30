@@ -1,7 +1,7 @@
-package github.kituin.chatimage.tools;
+package github.kituin.chatimage.tool;
 
-import github.kituin.chatimage.Exceptions.InvalidChatImageCodeException;
-import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
+import github.kituin.chatimage.exception.InvalidChatImageCodeException;
+import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
@@ -18,8 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
-import static github.kituin.chatimage.tools.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
-import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
+import static github.kituin.chatimage.tool.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
+import static github.kituin.chatimage.tool.HttpUtils.CLOCK_MAP;
 
 
 /**

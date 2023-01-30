@@ -1,4 +1,4 @@
-package github.kituin.chatimage.Exceptions;
+package github.kituin.chatimage.exception;
 
 public class ImageInitException extends Exception{
     private final String message;

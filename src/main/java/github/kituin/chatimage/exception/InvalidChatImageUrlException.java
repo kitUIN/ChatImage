@@ -1,4 +1,4 @@
-package github.kituin.chatimage.Exceptions;
+package github.kituin.chatimage.exception;
 
 public class InvalidChatImageUrlException extends Exception{
     private final String message;

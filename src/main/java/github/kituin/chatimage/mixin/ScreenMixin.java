@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import github.kituin.chatimage.tools.ChatImageCode;
+import github.kituin.chatimage.tool.ChatImageCode;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
@@ -27,8 +27,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.*;
-import static github.kituin.chatimage.tools.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tools.HttpUtils.HTTPS_MAP;
+import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static github.kituin.chatimage.tool.HttpUtils.HTTPS_MAP;
 
 /**
  * 注入修改悬浮显示图片
@@ -55,11 +55,11 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
             if (view != null) {
-                if (view.loadImage(0, 0)) {
+                if (view.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                     int viewWidth = view.getWidth();
                     int viewHeight = view.getHeight();
                     HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
-                    Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + PADDING_LEFT + PADDING_RIGHT, viewHeight + PADDING_BOTTOM + PADDING_TOP);
+                    Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
                     int l = vector2ic.x();
                     int m = vector2ic.y();
                     matrices.push();
@@ -69,7 +69,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                     RenderSystem.setShader(GameRenderer::getPositionColorProgram);
                     bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
                     Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-                    TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + PADDING_LEFT + PADDING_RIGHT, viewHeight + PADDING_BOTTOM + PADDING_TOP, 400);
+                    TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
                     RenderSystem.enableDepthTest();
                     RenderSystem.disableTexture();
                     RenderSystem.enableBlend();
@@ -82,7 +82,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                     RenderSystem.setShader(GameRenderer::getPositionTexProgram);
                     RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                     RenderSystem.setShaderTexture(0, view.getIdentifier());
-                    drawTexture(matrices, l + PADDING_LEFT, m + PADDING_TOP, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
+                    drawTexture(matrices, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
 
                     matrices.pop();
                 } else {

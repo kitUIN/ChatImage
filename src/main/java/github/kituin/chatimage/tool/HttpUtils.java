@@ -1,4 +1,4 @@
-package github.kituin.chatimage.tools;
+package github.kituin.chatimage.tool;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.MinecraftClient;
@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 
 import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
-import static github.kituin.chatimage.tools.ChatImageTool.bytesToHex;
+import static github.kituin.chatimage.tool.ChatImageTool.bytesToHex;
 
 
 /**
@@ -22,6 +22,7 @@ import static github.kituin.chatimage.tools.ChatImageTool.bytesToHex;
 public class HttpUtils {
     public static HashMap<String, Identifier> CLOCK_MAP = new HashMap<String, Identifier>();
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<String, Integer>();
+
 
     private static String getPicType(byte[] is) {
         byte[] b = new byte[4];
@@ -38,10 +39,9 @@ public class HttpUtils {
         } else if (type.contains("424D")) {
             return "bmp";
         } else {
-            return "unknown";
+            return "png";
         }
     }
-
     public static boolean getInputStream(String url) {
 
         OkHttpClient httpClient = new OkHttpClient();
@@ -66,7 +66,6 @@ public class HttpUtils {
             @Override
             public void onFailure(Call call, IOException e) {
                 HTTPS_MAP.put(url, 2);
-                //HTTPS_MAP.remove(String.valueOf(call.request().url()));
             }
 
             @Override
@@ -82,6 +81,7 @@ public class HttpUtils {
                         CLOCK_MAP.put(url, MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
                                 new NativeImageBackedTexture(nativeImage)));
                     } catch (java.io.IOException e) {
+                        //网络流无法读取或失败
                         HTTPS_MAP.put(url, 2);
                     }
                 }

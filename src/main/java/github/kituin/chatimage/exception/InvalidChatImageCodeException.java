@@ -1,4 +1,4 @@
-package github.kituin.chatimage.Exceptions;
+package github.kituin.chatimage.exception;
 
 
 /**

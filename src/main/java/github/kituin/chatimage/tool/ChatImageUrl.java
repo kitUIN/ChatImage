@@ -1,14 +1,11 @@
-package github.kituin.chatimage.tools;
+package github.kituin.chatimage.tool;
 
-import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
-import org.jetbrains.annotations.NotNull;
+import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 
-import static github.kituin.chatimage.client.ChatImageClient.CACHE_PATH;
-import static github.kituin.chatimage.tools.HttpUtils.CLOCK_MAP;
+import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static github.kituin.chatimage.tool.HttpUtils.CLOCK_MAP;
 
 public class ChatImageUrl {
     private String originalUrl;
@@ -18,14 +15,13 @@ public class ChatImageUrl {
     private String fileUrl;
 
 
-
     public ChatImageUrl(String url) throws InvalidChatImageUrlException {
         this.originalUrl = url;
         init();
     }
 
     private void init() throws InvalidChatImageUrlException {
-        File folder = new File(CACHE_PATH);
+        File folder = new File(CONFIG.cachePath);
         if (!folder.exists()) {
             folder.mkdirs();
         }
@@ -34,7 +30,7 @@ public class ChatImageUrl {
             this.httpUrl = this.originalUrl;
             if (!CLOCK_MAP.containsKey(this.httpUrl)) {
                 boolean f = HttpUtils.getInputStream(this.httpUrl);
-                if(!f){
+                if (!f) {
                     throw new InvalidChatImageUrlException("Invalid HTTP URL",
                             InvalidChatImageUrlException.InvalidUrlMode.HttpNotFound);
                 }
@@ -46,7 +42,7 @@ public class ChatImageUrl {
                     .replace("\\", "\\\\")
                     .replace("file:///", "");
             File file = new File(this.fileUrl);
-            if(!file.exists()){
+            if (!file.exists()) {
                 throw new InvalidChatImageUrlException("file not found",
                         InvalidChatImageUrlException.InvalidUrlMode.FileNotFound);
             }

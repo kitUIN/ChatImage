@@ -1,17 +1,20 @@
-package github.kituin.chatimage.commands;
+package github.kituin.chatimage.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.Exceptions.InvalidChatImageUrlException;
-import github.kituin.chatimage.tools.ChatImageCode;
+import github.kituin.chatimage.config.ChatImageConfig;
+import github.kituin.chatimage.exception.InvalidChatImageUrlException;
+import github.kituin.chatimage.tool.ChatImageCode;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
+import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 public class ChatImageCommand {
 
@@ -36,14 +39,23 @@ public class ChatImageCommand {
     }
 
     public static int help(CommandContext<FabricClientCommandSource> context) {
-        MutableText text = (MutableText) getHelpText("/chatimage help", "", "help.chatimage.command");
+
         context.getSource().sendFeedback(
-                text.append(getHelpText("/chatimage send ", "<name> <url>", "send.chatimage.command"))
-                        .append(getHelpText("/chatimage url ", "<url>", "url.chatimage.command")));
+                getHelpText("/chatimage help", "", "help.chatimage.command")
+                        .append(getHelpText("/chatimage send ", "<name> <url>", "send.chatimage.command"))
+                        .append(getHelpText("/chatimage url ", "<url>", "url.chatimage.command"))
+                        .append(getHelpText("/chatimage reload ", "", "reload.chatimage.command"))
+        );
         return Command.SINGLE_SUCCESS;
     }
 
-    private static Text getHelpText(String help, String arg, String usage) {
+    public static int reloadConfig(CommandContext<FabricClientCommandSource> context) {
+        CONFIG = ChatImageConfig.loadConfig();
+        context.getSource().sendFeedback(Text.translatable("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
+        return Command.SINGLE_SUCCESS;
+    }
+
+    private static MutableText getHelpText(String help, String arg, String usage) {
         String all = help + arg;
         StringBuilder sb = new StringBuilder(all);
         if (all.length() <= 35) {
@@ -55,4 +67,5 @@ public class ChatImageCommand {
         MutableText info = Text.translatable(usage);
         return text.setStyle(Style.EMPTY.withColor(Formatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).append(info).append(Text.of("\n"));
     }
+
 }

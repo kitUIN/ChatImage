@@ -2,14 +2,13 @@ package github.kituin.chatimage.client;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.commands.ChatImageCommand;
+import github.kituin.chatimage.command.ChatImageCommand;
+import github.kituin.chatimage.config.ChatImageConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import org.slf4j.Logger;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -19,17 +18,9 @@ import static com.mojang.brigadier.arguments.StringArgumentType.string;
  */
 @Environment(EnvType.CLIENT)
 public class ChatImageClient implements ClientModInitializer {
-    public static final Logger LOGGER = LogUtils.getLogger();
     public static String MOD_ID = "chatimage";
-    public static String CACHE_PATH = "ChatImageCache";
 
-    public static int LIMIT_WIDTH = 0;
-    public static int LIMIT_HEIGHT = 0;
-    public static int PADDING_LEFT = 3;
-    public static int PADDING_RIGHT = 3;
-    public static int PADDING_TOP = 3;
-    public static int PADDING_BOTTOM = 3;
-
+    public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
 
     @Override
     public void onInitializeClient() {
@@ -51,6 +42,9 @@ public class ChatImageClient implements ClientModInitializer {
                             )
                             .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("help")
                                     .executes(ChatImageCommand::help)
+                            )
+                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
+                                    .executes(ChatImageCommand::reloadConfig)
                             )
             );
         });

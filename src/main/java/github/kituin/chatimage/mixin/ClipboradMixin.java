@@ -17,7 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
-import static github.kituin.chatimage.client.ChatImageClient.CACHE_PATH;
+import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 /**
  * 注入修改剪切板,支持粘贴图片
@@ -39,7 +39,7 @@ public class ClipboradMixin {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     ImageIO.write(image, "png", baos);
                     byte[] byteArr = baos.toByteArray();
-                    String fileName = CACHE_PATH + "/" + DigestUtils.md5Hex(byteArr) + ".png";
+                    String fileName = CONFIG.cachePath + "/" + DigestUtils.md5Hex(byteArr) + ".png";
                     File outputfile = new File(fileName);
                     ImageIO.write(image, "png", outputfile);
                     cir.setReturnValue("[CICode,url=file:///" + outputfile.getAbsolutePath() + "]");

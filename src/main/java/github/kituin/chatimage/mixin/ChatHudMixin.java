@@ -1,9 +1,9 @@
 package github.kituin.chatimage.mixin;
 
 import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.Exceptions.InvalidChatImageCodeException;
-import github.kituin.chatimage.tools.ChatImageCode;
-import github.kituin.chatimage.tools.ChatImageStyle;
+import github.kituin.chatimage.exception.InvalidChatImageCodeException;
+import github.kituin.chatimage.tool.ChatImageCode;
+import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 /**
  * 注入修改文本显示,自动将CICode转换为可鼠标悬浮格式文字
+ *
  * @author kitUIN
  */
 @Mixin(ChatHud.class)
@@ -39,8 +40,7 @@ public class ChatHudMixin extends DrawableHelper {
         MutableText player = null;
         if (text.getContent() instanceof LiteralTextContent) {
             checkedText = ((LiteralTextContent) text.getContent()).string();
-        } else if (text.getContent() instanceof TranslatableTextContent) {
-            TranslatableTextContent ttc = (TranslatableTextContent) text.getContent();
+        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
             if ("chat.type.text".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
@@ -48,18 +48,15 @@ public class ChatHudMixin extends DrawableHelper {
                 MutableText contents = (MutableText) args[1];
                 if (contents.getContent() instanceof LiteralTextContent) {
                     checkedText = ((LiteralTextContent) contents.getContent()).string();
-
                 } else {
                     checkedText = contents.getContent().toString();
                 }
             }
-
         } else {
             checkedText = text.getContent().toString();
         }
         Style style = text.getStyle();
         List<ChatImageCode> chatImageCodeList = Lists.newArrayList();
-
         Matcher m = pattern.matcher(checkedText);
         List<Integer> nums = Lists.newArrayList();
         boolean flag = true;
@@ -88,7 +85,6 @@ public class ChatHudMixin extends DrawableHelper {
         } else {
             res = ChatImageStyle.messageFromCode(chatImageCodeList.get(0));
             j = 2;
-
         }
         for (int i = j; i < nums.size(); i += 2) {
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(i / 2)));
