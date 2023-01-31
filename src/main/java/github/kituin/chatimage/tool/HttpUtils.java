@@ -1,26 +1,25 @@
 package github.kituin.chatimage.tool;
 
+import com.madgag.gif.fmsware.GifDecoder;
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
-import net.minecraft.util.Identifier;
 import okhttp3.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
 
-import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
 import static github.kituin.chatimage.tool.ChatImageTool.bytesToHex;
+import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
 
 
 /**
  * @author kitUIN
  */
 public class HttpUtils {
-    public static HashMap<String, Identifier> CLOCK_MAP = new HashMap<String, Identifier>();
+    public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<String, ChatImageFrame>();
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<String, Integer>();
 
 
@@ -42,6 +41,7 @@ public class HttpUtils {
             return "png";
         }
     }
+
     public static boolean getInputStream(String url) {
 
         OkHttpClient httpClient = new OkHttpClient();
@@ -72,19 +72,24 @@ public class HttpUtils {
             public void onResponse(Call call, Response response) throws IOException {
                 String url = String.valueOf(call.request().url());
                 ResponseBody body = response.body();
-                InputStream inputStream = body.byteStream();
-                byte[] is = inputStream.readAllBytes();
-                //String type = getPicType(is);
-                if (!CLOCK_MAP.containsKey(url)) {
-                    try {
-                        NativeImage nativeImage = NativeImage.read(new ByteArrayInputStream(is));
-                        CLOCK_MAP.put(url, MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
-                                new NativeImageBackedTexture(nativeImage)));
-                    } catch (java.io.IOException e) {
-                        //网络流无法读取或失败
-                        HTTPS_MAP.put(url, 2);
+                if (body != null) {
+                    InputStream inputStream = body.byteStream();
+                    byte[] is = inputStream.readAllBytes();
+                    String type = getPicType(is);
+                    if("gif".equals(type))
+                    {
+                        loadGif(new ByteArrayInputStream(is),url);
                     }
+                    else{
+                        try {
+                            CACHE_MAP.put(url, new ChatImageFrame(new ByteArrayInputStream(is)));
+                        } catch (java.io.IOException e) {
+                            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+                        }
+                    }
+
                 }
+                HTTPS_MAP.put(url, 2);
             }
         });
         return true;

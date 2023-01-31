@@ -23,6 +23,7 @@ public class ChatImageConfig {
     public int paddingRight = 3;
     public int paddingTop = 3;
     public int paddingBottom = 3;
+    public int gifSpeed = 3;
     public boolean nsfw = false;
     public ChatImageConfig()
     {

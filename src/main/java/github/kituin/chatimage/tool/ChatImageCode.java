@@ -3,23 +3,14 @@ package github.kituin.chatimage.tool;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static github.kituin.chatimage.client.ChatImageClient.MOD_ID;
 import static github.kituin.chatimage.tool.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
-import static github.kituin.chatimage.tool.HttpUtils.CLOCK_MAP;
+import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 
 
 /**
@@ -29,15 +20,8 @@ public class ChatImageCode {
     public static Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
     private ChatImageUrl url;
     private boolean nsfw;
-    private MinecraftClient minecraft = MinecraftClient.getInstance();
-    private int width;
-    private Identifier identifier;
-    private int height;
-    private int originalWidth;
-    private int originalHeight;
+
     private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
-    private boolean fileNotFound = false;
-    private boolean httpNotFound = false;
 
     ChatImageCode() {
     }
@@ -92,30 +76,13 @@ public class ChatImageCode {
      *
      * @return Identifier(如果加载失败返回null)
      */
-    private Identifier loadTexture() {
-        InputStream inputStream = null;
+    public ChatImageFrame getFrame() {
         String useUrl = this.url.getUrl();
-        if (this.getUrlMethod() == ChatImageUrl.UrlMethod.HTTP && CLOCK_MAP.containsKey(useUrl)) {
-            return CLOCK_MAP.get(useUrl);
+        if (CACHE_MAP.containsKey(useUrl)) {
+            return CACHE_MAP.get(useUrl);
+        } else {
+            return new ChatImageFrame(ChatImageFrame.FrameError.ID_NOT_FOUND);
         }
-        try {
-            if (this.getUrlMethod() == ChatImageUrl.UrlMethod.FILE) {
-                File fileTemp = new File(useUrl);
-                if (fileTemp.exists()) {
-                    inputStream = new FileInputStream(fileTemp);
-                    NativeImage nativeImage = NativeImage.read(inputStream);
-                    return this.minecraft.getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
-                            new NativeImageBackedTexture(nativeImage));
-                } else {
-                    fileNotFound = true;
-                    return null;
-                }
-            }
-
-        } catch (IOException ep) {
-
-        }
-        return null;
     }
 
 
@@ -173,51 +140,6 @@ public class ChatImageCode {
     }
 
 
-    /**
-     * 载入图片
-     *
-     * @param limitWidth  限制的横向长度
-     * @param limitHeight 限制的纵向长度
-     * @return 载入成功返回true, 失败则为false
-     */
-    public boolean loadImage(int limitWidth, int limitHeight) {
-        identifier = loadTexture();
-        if (identifier == null) {
-            return false;
-        }
-        NativeImageBackedTexture texture = (NativeImageBackedTexture) minecraft.getTextureManager().getTexture(identifier);
-        NativeImage image = texture.getImage();
-        originalWidth = image.getWidth();
-        originalHeight = image.getHeight();
-        limitSize(limitWidth, limitHeight);
-        return true;
-    }
-
-    /**
-     * 限制显示图片的长宽
-     *
-     * @param limitWidth  限制的横向长度
-     * @param limitHeight 限制的纵向长度
-     */
-    private void limitSize(int limitWidth, int limitHeight) {
-        width = originalWidth;
-        height = originalHeight;
-        if (limitWidth == 0 && limitHeight == 0) {
-            limitWidth = MinecraftClient.getInstance().getWindow().getScaledWidth() / 2;
-            limitHeight = MinecraftClient.getInstance().getWindow().getScaledHeight() / 2;
-        }
-        BigDecimal b = new BigDecimal((float) originalHeight / originalWidth);
-        double hx = b.setScale(2, RoundingMode.HALF_UP).doubleValue();
-        if (width > limitWidth) {
-            width = limitWidth;
-            height = (int) (limitWidth * hx);
-        }
-        if (height > limitHeight) {
-            height = limitHeight;
-            width = (int) (limitHeight / hx);
-        }
-    }
-
     private static String parse(String url, boolean nsfw, @Nullable String name) {
         StringBuilder sb = new StringBuilder();
         sb.append("[CICode,url=").append(url);
@@ -249,34 +171,6 @@ public class ChatImageCode {
     @Override
     public String toString() {
         return parse(url.getOriginalUrl(), nsfw, name.substring(1, name.length() - 1));
-    }
-
-    public int getWidth() {
-        return this.width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public int getOriginalWidth() {
-        return this.originalWidth;
-    }
-
-    public int getOriginalHeight() {
-        return this.originalHeight;
-    }
-
-    public Identifier getIdentifier() {
-        return this.identifier;
-    }
-
-    public boolean getFileNotFound() {
-        return this.fileNotFound;
-    }
-
-    public boolean getHttpNotFound() {
-        return this.httpNotFound;
     }
 
     public String getName() {

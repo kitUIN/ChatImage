@@ -74,7 +74,6 @@ public class ChatHudMixin extends DrawableHelper {
         if (flag) {
             MutableText t = MutableText.of(text.getContent());
             t = t.setStyle(text.getStyle());
-
             return t;
         }
         int lastPosition = 0;
@@ -83,16 +82,20 @@ public class ChatHudMixin extends DrawableHelper {
         if (nums.get(0) != 0) {
             res = ((MutableText) Text.of(checkedText.substring(lastPosition, nums.get(0)))).setStyle(style);
         } else {
-            res = ChatImageStyle.messageFromCode(chatImageCodeList.get(0));
+            res = ((MutableText) Text.of(checkedText.substring(lastPosition, nums.get(0)))).setStyle(style);
+            res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(0)));
             j = 2;
         }
         for (int i = j; i < nums.size(); i += 2) {
+            if (i == j && j == 2) {
+                res.append(Text.of(checkedText.substring(nums.get(1), nums.get(2))));
+            }
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(i / 2)));
             lastPosition = nums.get(i + 1);
             if (i + 2 < nums.size() && lastPosition + 1 != nums.get(i + 2)) {
                 String s = checkedText.substring(lastPosition, nums.get(i + 2));
                 res.append(((MutableText) Text.of(s)).setStyle(style));
-            } else if (lastPosition == nums.get(nums.size() - 1) && lastPosition != checkedText.length()) {
+            } else if (lastPosition == nums.get(nums.size() - 1)) {
                 res.append(Text.of(checkedText.substring(lastPosition)));
             }
         }

@@ -9,7 +9,7 @@
   ],
   "client": [
     "ChatHudMixin",
-    "ClipboradMixin",
+    "ClipboardMixin",
     "ScreenMixin"
   ],
   "injectors": {

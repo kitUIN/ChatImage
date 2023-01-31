@@ -1,11 +1,13 @@
 package github.kituin.chatimage.tool;
 
+import com.madgag.gif.fmsware.GifDecoder;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 
-import java.io.File;
+import java.io.*;
+import java.util.concurrent.CompletableFuture;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static github.kituin.chatimage.tool.HttpUtils.CLOCK_MAP;
+import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 
 public class ChatImageUrl {
     private String originalUrl;
@@ -28,7 +30,7 @@ public class ChatImageUrl {
         if (this.originalUrl.startsWith("http://") || this.originalUrl.startsWith("https://")) {
             this.urlMethod = UrlMethod.HTTP;
             this.httpUrl = this.originalUrl;
-            if (!CLOCK_MAP.containsKey(this.httpUrl)) {
+            if (!CACHE_MAP.containsKey(this.httpUrl)) {
                 boolean f = HttpUtils.getInputStream(this.httpUrl);
                 if (!f) {
                     throw new InvalidChatImageUrlException("Invalid HTTP URL",
@@ -42,9 +44,21 @@ public class ChatImageUrl {
                     .replace("\\", "\\\\")
                     .replace("file:///", "");
             File file = new File(this.fileUrl);
-            if (!file.exists()) {
-                throw new InvalidChatImageUrlException("file not found",
-                        InvalidChatImageUrlException.InvalidUrlMode.FileNotFound);
+            if (file.exists()) {
+                try {
+                    if ("gif".equals(fileUrl.substring(fileUrl.length() - 3))) {
+                        loadGif(new FileInputStream(file),this.fileUrl);
+                    } else {
+                        ChatImageFrame frame = new ChatImageFrame(new FileInputStream(file));
+                        CACHE_MAP.put(this.fileUrl, frame);
+                    }
+
+                } catch (IOException e) {
+                    throw new InvalidChatImageUrlException("file open error",
+                            InvalidChatImageUrlException.InvalidUrlMode.FileNotFound);
+                }
+            } else {
+                CACHE_MAP.put(this.fileUrl, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
             }
 
         } else {
@@ -79,7 +93,26 @@ public class ChatImageUrl {
     public String toString() {
         return this.originalUrl;
     }
+    public static void loadGif(InputStream is, String url){
+        CompletableFuture.supplyAsync(() -> {
+            try {
+                GifDecoder gd = new GifDecoder();
+                int status = gd.read(is);
+                if (status != GifDecoder.STATUS_OK) {
+                    return null;
+                }
+                ChatImageFrame frame = new ChatImageFrame(gd.getFrame(0));
+                for (int i = 1; i < gd.getFrameCount(); i++) {
+                    frame.append(new ChatImageFrame(gd.getFrame(i)));
+                }
+                CACHE_MAP.put(url, frame);
 
+            } catch (IOException ignored) {
+                CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+            }
+            return null;
+        });
+    }
     /**
      * Url的类型
      */
