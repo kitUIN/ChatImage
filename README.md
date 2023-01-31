@@ -41,6 +41,8 @@
 
 **目前使用本地图片时只有自己能看到**
 
+支持显示GIF
+
 ![quick](https://chatimage.kituin.fun/img/quick.png)
 
 (图片来自画师[甘城なつき](https://www.pixiv.net/users/3036679))
