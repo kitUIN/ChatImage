@@ -45,6 +45,8 @@ than it will transfer to image
 
 **If you use local pictures, only you can see them**
 
+support display GIF
+
 ![quick](https://chatimage.kituin.fun/img/quick.png)
 
 (image from [甘城なつき](https://www.pixiv.net/users/3036679))
