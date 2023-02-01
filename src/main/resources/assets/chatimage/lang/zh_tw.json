@@ -1,0 +1,11 @@
+{
+  "message.chatimage.loading": "圖片加載中.....",
+  "codename.chatimage.default": "圖片",
+  "filenotfound.chatimage.exception": "未找到圖片",
+  "message.chatimage.error": "圖片載入失敗",
+  "send.chatimage.command": "發送CICode與其顯示名稱以及超連結",
+  "url.chatimage.command": "發送CICode與其超連結（使用預設顯示名稱）",
+  "help.chatimage.command": "ChatImage 幫助",
+  "reload.chatimage.command": "重新載入設定",
+  "success.reload.chatimage.command": "重新載入設定成功"
+}
