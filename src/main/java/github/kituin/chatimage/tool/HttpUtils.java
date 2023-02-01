@@ -21,7 +21,7 @@ import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
 public class HttpUtils {
     public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<String, ChatImageFrame>();
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<String, Integer>();
-
+    public static HashMap<String,Integer> NSFW_MAP = new HashMap<String,Integer>();
 
     private static String getPicType(byte[] is) {
         byte[] b = new byte[4];

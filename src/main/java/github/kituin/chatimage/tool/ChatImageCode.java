@@ -2,8 +2,6 @@ package github.kituin.chatimage.tool;
 
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Matcher;
@@ -19,7 +17,7 @@ import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 public class ChatImageCode {
     public static Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
     private ChatImageUrl url;
-    private boolean nsfw;
+    private boolean nsfw = false;
 
     private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
 
@@ -125,7 +123,7 @@ public class ChatImageCode {
                         }
                         break;
                     case "nsfw":
-                        this.nsfw = Boolean.getBoolean(temps[1].trim());
+                        this.nsfw = Boolean.parseBoolean(temps[1].trim());
                         break;
                     case "name":
                         this.name = "[" + temps[1].trim() + "]";

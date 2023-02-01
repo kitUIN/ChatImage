@@ -1,8 +1,11 @@
 {
-  "message.chatimage.loading": "Image Loading.....",
+  "loading.chatimage.message": "Image Loading.....",
   "codename.chatimage.default": "Image",
   "filenotfound.chatimage.exception": "Image Not Found",
-  "message.chatimage.error": "Image Loading Error",
+  "error.chatimage.message": "Image Loading Error",
+  "nsfw.chatimage.open": "Are you sure you want to open the nsfw image from the link below?",
+  "nsfw.chatimage.warning": "The nsfw image may cause discomfort, please open it with caution",
+  "nsfw.chatimage.message": "This is a nsfw image, click to view, or enable nsfw reading mode in the configuration file",
   "send.chatimage.command": "Send CICode with display name and url",
   "url.chatimage.command": "Send CICode with url (use default display name)",
   "help.chatimage.command": "ChatImage help",
