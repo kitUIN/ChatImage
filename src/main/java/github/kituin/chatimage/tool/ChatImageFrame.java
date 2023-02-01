@@ -5,7 +5,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.util.Identifier;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -25,9 +24,10 @@ public class ChatImageFrame {
     private Identifier id;
     private List<ChatImageFrame> siblings = Lists.newArrayList();
     private final MinecraftClient minecraft = MinecraftClient.getInstance();
-    private FrameError error;
+    private FrameError error = FrameError.OTHER_ERROR;
     private int index = 0;
     private int butter = 0;
+
     public ChatImageFrame(InputStream image) throws IOException {
         NativeImage nativeImage = NativeImage.read(image);
         this.id = this.minecraft.getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
@@ -151,7 +151,8 @@ public class ChatImageFrame {
     public enum FrameError {
         FILE_NOT_FOUND,
         ID_NOT_FOUND,
-        FILE_LOAD_ERROR
+        FILE_LOAD_ERROR,
+        OTHER_ERROR
 
     }
 }

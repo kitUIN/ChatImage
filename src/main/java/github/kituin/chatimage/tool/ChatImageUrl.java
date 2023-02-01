@@ -2,12 +2,22 @@ package github.kituin.chatimage.tool;
 
 import com.madgag.gif.fmsware.GifDecoder;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.c2s.play.CustomPayloadC2SPacket;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
@@ -54,22 +64,20 @@ public class ChatImageUrl {
             if (!CACHE_MAP.containsKey(this.fileUrl)) {
                 if (file.exists()) {
                     try {
-                        if ("gif".equals(fileUrl.substring(fileUrl.length() - 3))) {
-                            loadGif(new FileInputStream(file), this.fileUrl);
-                        } else {
-                            ChatImageFrame frame = new ChatImageFrame(new FileInputStream(file));
-                            CACHE_MAP.put(this.fileUrl, frame);
+                        loadLocalFile(new FileInputStream(file), this.fileUrl);
+                        if (MinecraftClient.getInstance().player != null) {
+                            sendFilePackets(MinecraftClient.getInstance().player, this.fileUrl, file, FILE_CANNEL);
                         }
-                        MinecraftClient.getInstance().player.networkHandler.sendPacket(new CustomPayloadC2SPacket(FILE_CANNEL, getFilePacket(this.fileUrl,file)));
                     } catch (IOException e) {
                         throw new InvalidChatImageUrlException("file open error",
                                 InvalidChatImageUrlException.InvalidUrlMode.FileNotFound);
                     }
                 } else {
-                    PacketByteBuf buf = PacketByteBufs.create();
-                    buf.writeString(this.fileUrl);
-                    MinecraftClient.getInstance().player.networkHandler.sendPacket(new CustomPayloadC2SPacket(GET_FILE_CANNEL, buf));
-                    // CACHE_MAP.put(this.fileUrl, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
+                    if (MinecraftClient.getInstance().player != null) {
+                        PacketByteBuf buf = PacketByteBufs.create();
+                        buf.writeString(this.fileUrl);
+                        sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
+                    }
                 }
             }
 
@@ -80,6 +88,14 @@ public class ChatImageUrl {
         }
     }
 
+    public static void loadLocalFile(InputStream input, String url) throws IOException {
+        if ("gif".equals(url.substring(url.length() - 3))) {
+            loadGif(input, url);
+        } else {
+            ChatImageFrame frame = new ChatImageFrame(input);
+            CACHE_MAP.put(url, frame);
+        }
+    }
 
     public String getOriginalUrl() {
         return this.originalUrl;
@@ -106,23 +122,52 @@ public class ChatImageUrl {
     public String toString() {
         return this.originalUrl;
     }
-    public static PacketByteBuf getFilePacket(String url, File file){
+
+    public static void sendFilePacketAsync(PlayerEntity player, Identifier cannel, PacketByteBuf buf) {
+        CompletableFuture.supplyAsync(() -> {
+            if (player instanceof ClientPlayerEntity) {
+                ClientPlayNetworking.send(cannel, buf);
+            } else if (player instanceof ServerPlayerEntity) {
+                ServerPlayNetworking.send((ServerPlayerEntity) player, cannel, buf);
+            }
+            return null;
+        });
+
+    }
+
+    public static void sendFilePackets(PlayerEntity player, String url, File file, Identifier cannel) {
         try (InputStream input = new FileInputStream(file)) {
             byte[] byt = new byte[input.available()];
+            int limit = 28000 - url.getBytes().length;
             int status = input.read(byt);
-            return getFilePacket(url,byt);
+            ByteBuffer bb = ByteBuffer.wrap(byt);
+            int count = byt.length / 20000;
+            if (byt.length % 20000 == 0) {
+                count -= 1;
+            }
+            for (int i = 0; i <= count; i++) {
+                int bLength = 20000;
+                if (i == count) {
+                    bLength = byt.length - i * 20000;
+                }
+                byte[] cipher = new byte[bLength];
+                System.out.println(limit);
+                sendFilePacketAsync(player, cannel, getFilePacket(i + "->" + count + 1 + "->" + url, bb.get(cipher, 0, cipher.length).array()));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
     }
-    public static PacketByteBuf getFilePacket(String url, byte[] byt){
+
+    public static PacketByteBuf getFilePacket(String url, byte[] byt) {
         PacketByteBuf buf = PacketByteBufs.create();
         HashMap<String, byte[]> fileMap = new HashMap<>();
         fileMap.put(url, byt);
         buf.writeMap(fileMap, PacketByteBuf::writeString, PacketByteBuf::writeByteArray);
         return buf;
     }
+
     public static void loadGif(InputStream is, String url) {
         CompletableFuture.supplyAsync(() -> {
             try {
