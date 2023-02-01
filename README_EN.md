@@ -55,11 +55,11 @@ support display GIF
 
 It use `ChatImageCode`
 
-| Arg| Require| Type| Remark                                              |  
-|------|-----|---------|-----------------------------------------------------|  
-| url | true | String | Image address (please use `file:///` for local files) |  
-| nsfw | false | boolean | Is it an nsfw image                                |  
-| name | false | String | The name displayed in the chat                      |  
+| Arg  | Require | Type    | Remark                                                |
+|------|---------|---------|-------------------------------------------------------|
+| url  | true    | String  | Image address (please use `file:///` for local files) |
+| nsfw | false   | boolean | Is it an nsfw image                                   |
+| name | false   | String  | The name displayed in the chat                        |
 
 `nsfw` will determine whether to display the image directly
 

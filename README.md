@@ -49,15 +49,15 @@
 
 ## 规范
 
-本项目使用 `ChatImageCode` (`[CICode,<arg>=<value>]`)
+本项目使用 [ChatImageCode](https://chatimage.kituin.fun/wiki/chatimage/code) (`[CICode,<arg>=<value>]`)
 
-| 参数   | 必须  | 类型      | 备注                    |
-|------|-----|---------|-----------------------|
-| url  | 是   | String  | 图片地址(本地文件请使用file:///) |
-| nsfw | 否   | boolean | 是否为nsfw图像             |
-| name | 否   | String  | 在消息栏显示的名称             |
+| 参数                                                             | 必须  | 类型      | 备注                    |
+|----------------------------------------------------------------|-----|---------|-----------------------|
+| [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是   | String  | 图片地址(本地文件请使用file:///) |
+| [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否   | boolean | 是否为nsfw图像             |
+| [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否   | String  | 在消息栏显示的名称             |
 
-例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image,nsfw=false]`
 
 上述意思为:
 
@@ -68,6 +68,10 @@
 `[CICode,url=https://blog.kituin.fun/img/bg.png]` 为合法`CICode`
 
 `nsfw`将决定是否直接显示图片,如果设为`true`,则需要点击才能查看(或者配置文件中开启nsfw模式直接查看)
+
+![nsfw1](https://chatimage.kituin.fun/img/nsfw.png)
+
+![nsfw2](https://chatimage.kituin.fun/img/nsfw2.png)
 
 示例：
 
