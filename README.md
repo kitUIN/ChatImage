@@ -54,7 +54,7 @@
 | 参数   | 必须  | 类型      | 备注                    |
 |------|-----|---------|-----------------------|
 | url  | 是   | String  | 图片地址(本地文件请使用file:///) |
-| nsfw | 否   | boolean | 暂时没有用                 |
+| nsfw | 否   | boolean | 是否为nsfw图像             |
 | name | 否   | String  | 在消息栏显示的名称             |
 
 例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
@@ -66,6 +66,8 @@
 显示名字为 `Image`
 
 `[CICode,url=https://blog.kituin.fun/img/bg.png]` 为合法`CICode`
+
+`nsfw`将决定是否直接显示图片,如果设为`true`,则需要点击才能查看(或者配置文件中开启nsfw模式直接查看)
 
 示例：
 

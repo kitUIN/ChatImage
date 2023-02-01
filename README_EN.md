@@ -58,8 +58,12 @@ It use `ChatImageCode`
 | Arg| Require| Type| Remark                                              |  
 |------|-----|---------|-----------------------------------------------------|  
 | url | true | String | Image address (please use `file:///` for local files) |  
-| nsfw | false | boolean | temporarily useless                                 |  
+| nsfw | false | boolean | Is it an nsfw image                                |  
 | name | false | String | The name displayed in the chat                      |  
+
+`nsfw` will determine whether to display the image directly
+
+if it is set to `true`, you need to click to view it (or open the nsfw mode in the configuration file to view it directly)
 
 ### Example: 
 
