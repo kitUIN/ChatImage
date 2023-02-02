@@ -70,6 +70,7 @@ public class ChatImageClient implements ClientModInitializer {
                 String[] order = entry.getKey().split("->");
                 if (order[1].equals(order[0]) && "0".equals(order[1])) {
                     CACHE_MAP.put(order[2], new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
+                    return;
                 }
                 HashMap<Integer, byte[]> list = new HashMap<>();
                 if (CLIENT_CACHE_MAP.containsKey(order[2])) {

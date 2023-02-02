@@ -8,6 +8,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
+import net.minecraft.util.Formatting;
 import org.apache.commons.compress.utils.Lists;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -40,11 +41,12 @@ public class ChatHudMixin extends DrawableHelper {
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
+        boolean isIncoming = false;
         if (text.getContent() instanceof LiteralTextContent) {
             checkedText = ((LiteralTextContent) text.getContent()).string();
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key)) {
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
@@ -53,6 +55,9 @@ public class ChatHudMixin extends DrawableHelper {
                     checkedText = ((LiteralTextContent) contents.getContent()).string();
                 } else {
                     checkedText = contents.getContent().toString();
+                }
+                if ("commands.message.display.incoming".equals(key)) {
+                    isIncoming = true;
                 }
             }
         } else {
@@ -105,10 +110,13 @@ public class ChatHudMixin extends DrawableHelper {
         if (player == null) {
             return res;
         } else {
-            return MutableText.of(new TranslatableTextContent(key, player, res));
+            MutableText resp = MutableText.of(new TranslatableTextContent(key, player, res));
+            if (isIncoming) {
+                return resp.setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(true));
+            } else {
+                return resp;
+            }
         }
-
-
     }
 
     private static Text replaceMessage(Text message) {
