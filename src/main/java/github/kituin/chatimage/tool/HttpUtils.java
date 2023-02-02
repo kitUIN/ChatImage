@@ -1,15 +1,12 @@
 package github.kituin.chatimage.tool;
 
-import com.madgag.gif.fmsware.GifDecoder;
 import com.mojang.logging.LogUtils;
 import okhttp3.*;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.concurrent.CompletableFuture;
 
 import static github.kituin.chatimage.tool.ChatImageTool.bytesToHex;
 import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
@@ -21,7 +18,7 @@ import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
 public class HttpUtils {
     public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<String, ChatImageFrame>();
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<String, Integer>();
-    public static HashMap<String,Integer> NSFW_MAP = new HashMap<String,Integer>();
+    public static HashMap<String, Integer> NSFW_MAP = new HashMap<String, Integer>();
 
     private static String getPicType(byte[] is) {
         byte[] b = new byte[4];
@@ -61,7 +58,7 @@ public class HttpUtils {
             HTTPS_MAP.put(url, 1);
         }
         Call call = httpClient.newCall(getRequest);
-        LogUtils.getLogger().info("[GET]" + url);
+        LogUtils.getLogger().info("[HTTP-GET]" + url);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -76,11 +73,9 @@ public class HttpUtils {
                     InputStream inputStream = body.byteStream();
                     byte[] is = inputStream.readAllBytes();
                     String type = getPicType(is);
-                    if("gif".equals(type))
-                    {
-                        loadGif(new ByteArrayInputStream(is),url);
-                    }
-                    else{
+                    if ("gif".equals(type)) {
+                        loadGif(new ByteArrayInputStream(is), url);
+                    } else {
                         try {
                             CACHE_MAP.put(url, new ChatImageFrame(new ByteArrayInputStream(is)));
                         } catch (java.io.IOException e) {
