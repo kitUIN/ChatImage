@@ -39,9 +39,7 @@
 
 聊天框输入 `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`  即可自动转换为图片  
 
-**目前使用本地图片时只有自己能看到**
-
-支持显示GIF
+支持显示GIF,本地图片
 
 ![quick](https://chatimage.kituin.fun/img/quick.png)
 
@@ -57,31 +55,20 @@
 | [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否   | boolean | 是否为nsfw图像             |
 | [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否   | String  | 在消息栏显示的名称             |
 
-例如：`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image,nsfw=false]`
 
-上述意思为:
+- 网络图片 `[CICode,url=<网络地址>,name=Image]`
+    - 示例: `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
 
-网络地址 `url`为 `https://blog.kituin.fun/img/bg.png`
-
-显示名字为 `Image`
-
-`[CICode,url=https://blog.kituin.fun/img/bg.png]` 为合法`CICode`
+- 本地图片 `[CICode,url=file:///<绝对路径>,name=Image]`
+    - 示例: `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
 `nsfw`将决定是否直接显示图片,如果设为`true`,则需要点击才能查看(或者配置文件中开启nsfw模式直接查看)
+
 
 ![nsfw1](https://chatimage.kituin.fun/img/nsfw.png)
 
 ![nsfw2](https://chatimage.kituin.fun/img/nsfw2.png)
 
-示例：
-
-网络图片
-
-`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
-
-本地图片
-
-`[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
 ## 使用命令发送 [CICode]
 
@@ -98,4 +85,5 @@
 - [X]  输入栏直接粘贴图片自动转换`CICode`
 - [X]  手动输入`CICode`
 - [x]  使用命令发送`CICode`
+- [x]  图片拖拽进聊天栏
 

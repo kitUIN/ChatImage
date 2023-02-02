@@ -47,7 +47,6 @@ public class ChatImage implements ModInitializer {
                 FILE_COUNT_MAP.put(order[2], Integer.valueOf(order[1]));
                 LOGGER.info("[put to server:" + order[0] + "/" + (Integer.parseInt(order[1]) - 1) + "]" + order[2]);
             }
-
         });
         ServerPlayNetworking.registerGlobalReceiver(GET_FILE_CANNEL, (server, player, handler, buf, responseSender) -> {
             String url = buf.readString();

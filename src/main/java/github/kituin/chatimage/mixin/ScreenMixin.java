@@ -92,7 +92,6 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                                 frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
                                 CACHE_MAP.put(view.getChatImageUrl().getUrl(), frame);
                                 frame.setButter(0);
-                                System.out.println(frame.getId());
                             } else {
                                 frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
                             }

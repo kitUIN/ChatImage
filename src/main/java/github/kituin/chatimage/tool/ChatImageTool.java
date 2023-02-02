@@ -3,8 +3,6 @@ package github.kituin.chatimage.tool;
 import net.minecraft.text.Text;
 
 public class ChatImageTool {
-    public static final String DEFAULT_CHAT_IMAGE_SHOW_NAME = Text.translatable("codename.chatimage.default").getString();
-
     /**
      * bytes to Hex String
      *

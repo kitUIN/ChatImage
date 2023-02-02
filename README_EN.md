@@ -43,9 +43,7 @@ Enter `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]` in the chat f
 
 than it will transfer to image
 
-**If you use local pictures, only you can see them**
-
-support display GIF
+support display GIF and local image
 
 ![quick](https://chatimage.kituin.fun/img/quick.png)
 
@@ -67,13 +65,12 @@ if it is set to `true`, you need to click to view it (or open the nsfw mode in t
 
 ### Example: 
 
-Web Picture
+- Web Image `[CICode,url=<Web Url>,name=Image]`
+    - example: `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
 
-`[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+- Local Image `[CICode,url=file:///<absolute file path>,name=Image]`
+    - example: `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
-Local Picture
-
-`[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
 
 ## Use Command to send [CICode]
 
@@ -88,5 +85,6 @@ Send CICode with url (use default display name)
 ## Support input method
 
 - [X] Paste the picture directly in the chat field and automatically convert it to `CICode`
-- [X] manual input `CICode`
-- [x] send `CICode` with command
+- [X] Manual Input `CICode`
+- [x] Send `CICode` With Command
+- [x] Drag Image Into Chat Screen

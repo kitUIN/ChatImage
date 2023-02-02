@@ -28,36 +28,38 @@ import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 @Mixin(Keyboard.class)
 public class ClipboardMixin {
 
+    private static boolean isWindows() {
+        return System.getProperty("os.name").toUpperCase().contains("WINDOWS");
+    }
 
     @Inject(at = @At("RETURN"), method = "getClipboard", cancellable = true)
     public void getClipboard(CallbackInfoReturnable<String> cir) {
-        try {
-            Transferable trans = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
-            if (trans != null && trans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
-                StringBuilder sb = new StringBuilder();
-                Object object = trans.getTransferData(DataFlavor.javaFileListFlavor);
-                if (object instanceof List<?> obj) {
-                    for (Object o : obj) {
-                        sb.append("[CICode,url=file:///").append(((File) o).getPath()).append("]");
+        if (isWindows()) {
+            try {
+                Transferable trans = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
+                if (trans != null && trans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
+                    StringBuilder sb = new StringBuilder();
+                    Object object = trans.getTransferData(DataFlavor.javaFileListFlavor);
+                    if (object instanceof List<?> obj) {
+                        for (Object o : obj) {
+                            sb.append("[CICode,url=file:///").append(((File) o).getPath()).append("]");
+                        }
+                        cir.setReturnValue(sb.toString());
                     }
-                    cir.setReturnValue(sb.toString());
+                } else if (trans != null && trans.isDataFlavorSupported(DataFlavor.imageFlavor)) {
+                    Image image = (Image) trans.getTransferData(DataFlavor.imageFlavor);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    String fileType = "png";
+                    ImageIO.write((BufferedImage) image, fileType, baos);
+                    byte[] byteArr = baos.toByteArray();
+                    String fileName = CONFIG.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + fileType;
+                    File outputfile = new File(fileName);
+                    ImageIO.write((BufferedImage) image, fileType, outputfile);
+                    cir.setReturnValue("[CICode,url=file:///" + outputfile.getAbsolutePath() + "]");
                 }
+            } catch (IOException | UnsupportedFlavorException | IllegalStateException e) {
+                // e.printStackTrace();
             }
-            else if (trans != null && trans.isDataFlavorSupported(DataFlavor.imageFlavor)) {
-                Image image = (Image) trans.getTransferData(DataFlavor.imageFlavor);
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                String fileType = "png";
-                ImageIO.write((BufferedImage) image, fileType, baos);
-                byte[] byteArr = baos.toByteArray();
-                String fileName = CONFIG.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + fileType;
-                File outputfile = new File(fileName);
-                ImageIO.write((BufferedImage) image, fileType, outputfile);
-                cir.setReturnValue("[CICode,url=file:///" + outputfile.getAbsolutePath() + "]");
-            }
-        } catch (IOException | UnsupportedFlavorException | IllegalStateException e) {
-            // e.printStackTrace();
         }
-
-
     }
 }

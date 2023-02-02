@@ -2,12 +2,12 @@ package github.kituin.chatimage.tool;
 
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
+import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static github.kituin.chatimage.tool.ChatImageTool.DEFAULT_CHAT_IMAGE_SHOW_NAME;
 import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 
 
@@ -19,7 +19,7 @@ public class ChatImageCode {
     private ChatImageUrl url;
     private boolean nsfw = false;
 
-    private String name = "[" + DEFAULT_CHAT_IMAGE_SHOW_NAME + "]";
+    private String name = "[" + Text.translatable("codename.chatimage.default").getString() + "]";
 
     ChatImageCode() {
     }
