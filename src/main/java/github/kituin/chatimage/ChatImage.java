@@ -30,11 +30,29 @@ import java.util.concurrent.CompletableFuture;
  */
 public class ChatImage implements ModInitializer {
     private static final Logger LOGGER = LogUtils.getLogger();
+    /**
+     * 客户端发送文件分块到服务器通道
+     */
     public static Identifier FILE_CANNEL = new Identifier("chatimage", "filecannel");
+    /**
+     * 尝试获取图片请求通道
+     */
     public static Identifier GET_FILE_CANNEL = new Identifier("chatimage", "getfilecannel");
+    /**
+     * 发送文件分块到客户端通道
+     */
     public static Identifier DOWNLOAD_FILE_CANNEL = new Identifier("chatimage", "downloadfilecannel");
+    /**
+     * 文件分块
+     */
     public static HashMap<String, HashMap<Integer, byte[]>> SERVER_CACHE_MAP = new HashMap<>();
+    /**
+     * 文件分块总数记录
+     */
     public static HashMap<String, Integer> FILE_COUNT_MAP = new HashMap<>();
+    /**
+     * 广播列表
+     */
     public static HashMap<String, List<String>> USER_CACHE_MAP = new HashMap<>();
 
     @Override
@@ -51,9 +69,9 @@ public class ChatImage implements ModInitializer {
                 SERVER_CACHE_MAP.put(url, list);
                 FILE_COUNT_MAP.put(url, Integer.valueOf(order[1]));
                 LOGGER.info("[put to server:" + order[0] + "/" + (Integer.parseInt(order[1]) - 1) + "]" + url);
-                if(Integer.parseInt(order[1]) == list.size() && USER_CACHE_MAP.containsKey(url)){
+                if (Integer.parseInt(order[1]) == list.size() && USER_CACHE_MAP.containsKey(url)) {
                     List<String> names = USER_CACHE_MAP.get(url);
-                    for(String uuid:names){
+                    for (String uuid : names) {
                         ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
                         for (Map.Entry<Integer, byte[]> en : list.entrySet()) {
                             sendFilePacketAsync(serverPlayer, DOWNLOAD_FILE_CANNEL, getFilePacket(en.getKey() + "->" + order[1] + "->" + url, en.getValue()));
@@ -87,9 +105,9 @@ public class ChatImage implements ModInitializer {
             }
             sendFilePacketAsync(player, DOWNLOAD_FILE_CANNEL, getFilePacket("0->0->" + url, new byte[1]));
             List<String> names;
-            if(USER_CACHE_MAP.containsKey(url)){
+            if (USER_CACHE_MAP.containsKey(url)) {
                 names = USER_CACHE_MAP.get(url);
-            }else{
+            } else {
                 names = Lists.newArrayList();
             }
             names.add(player.getUuidAsString());
