@@ -3,6 +3,8 @@
   "codename.chatimage.default": "圖片",
   "filenotfound.chatimage.exception": "未找到圖片",
   "error.chatimage.message": "圖片載入失敗",
+  "servererror.chatimage.message": "來自服務器的圖片加載失敗",
+  "serverloading.chatimage.message": "从服務器加載圖片中.....",
   "nsfw.chatimage.open": "你確定要查看來自以下鏈接的nsfw圖片?",
   "nsfw.chatimage.warning": "nsfw圖片可能會引起不適,請謹慎查看",
   "nsfw.chatimage.message": "這是一張NSFW圖片,點擊解除NSFW查看,或者在配置文件中開啟NSFW閱讀模式",

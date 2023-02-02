@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageStyle;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
@@ -38,13 +39,16 @@ public class ChatHudMixin extends DrawableHelper {
         String checkedText = "";
         String key = "";
         MutableText player = null;
+        boolean isSelf = false;
+        System.out.println(text);
         if (text.getContent() instanceof LiteralTextContent) {
             checkedText = ((LiteralTextContent) text.getContent()).string();
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
-            if ("chat.type.text".equals(key)) {
+            if ("chat.type.text".equals(key)||"chat.type.announcement".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
                 player = (MutableText) args[0];
+                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
                 MutableText contents = (MutableText) args[1];
                 if (contents.getContent() instanceof LiteralTextContent) {
                     checkedText = ((LiteralTextContent) contents.getContent()).string();
@@ -62,7 +66,7 @@ public class ChatHudMixin extends DrawableHelper {
         boolean flag = true;
         while (m.find()) {
             try {
-                ChatImageCode image = ChatImageCode.of(m.group());
+                ChatImageCode image = ChatImageCode.of(m.group(),isSelf);
                 flag = false;
                 nums.add(m.start());
                 nums.add(m.end());

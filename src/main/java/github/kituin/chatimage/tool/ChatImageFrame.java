@@ -152,7 +152,8 @@ public class ChatImageFrame {
         FILE_NOT_FOUND,
         ID_NOT_FOUND,
         FILE_LOAD_ERROR,
-        OTHER_ERROR
+        OTHER_ERROR,
+        SERVER_FILE_LOAD_ERROR,
 
     }
 }

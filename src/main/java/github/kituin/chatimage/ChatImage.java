@@ -1,5 +1,6 @@
 package github.kituin.chatimage;
 
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -18,7 +19,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 
@@ -32,6 +35,7 @@ public class ChatImage implements ModInitializer {
     public static Identifier DOWNLOAD_FILE_CANNEL = new Identifier("chatimage", "downloadfilecannel");
     public static HashMap<String, HashMap<Integer, byte[]>> SERVER_CACHE_MAP = new HashMap<>();
     public static HashMap<String, Integer> FILE_COUNT_MAP = new HashMap<>();
+    public static HashMap<String, List<String>> USER_CACHE_MAP = new HashMap<>();
 
     @Override
     public void onInitialize() {
@@ -39,13 +43,26 @@ public class ChatImage implements ModInitializer {
             for (Map.Entry<String, byte[]> entry : buf.readMap(PacketByteBuf::readString, PacketByteBuf::readByteArray).entrySet()) {
                 String[] order = entry.getKey().split("->");
                 HashMap<Integer, byte[]> list = new HashMap<>();
-                if (SERVER_CACHE_MAP.containsKey(order[2])) {
-                    list = SERVER_CACHE_MAP.get(order[2]);
+                String url = order[2];
+                if (SERVER_CACHE_MAP.containsKey(url)) {
+                    list = SERVER_CACHE_MAP.get(url);
                 }
                 list.put(Integer.valueOf(order[0]), entry.getValue());
-                SERVER_CACHE_MAP.put(order[2], list);
-                FILE_COUNT_MAP.put(order[2], Integer.valueOf(order[1]));
-                LOGGER.info("[put to server:" + order[0] + "/" + (Integer.parseInt(order[1]) - 1) + "]" + order[2]);
+                SERVER_CACHE_MAP.put(url, list);
+                FILE_COUNT_MAP.put(url, Integer.valueOf(order[1]));
+                LOGGER.info("[put to server:" + order[0] + "/" + (Integer.parseInt(order[1]) - 1) + "]" + url);
+                if(Integer.parseInt(order[1]) == list.size() && USER_CACHE_MAP.containsKey(url)){
+                    List<String> names = USER_CACHE_MAP.get(url);
+                    for(String uuid:names){
+                        ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
+                        for (Map.Entry<Integer, byte[]> en : list.entrySet()) {
+                            sendFilePacketAsync(serverPlayer, DOWNLOAD_FILE_CANNEL, getFilePacket(en.getKey() + "->" + order[1] + "->" + url, en.getValue()));
+                            LOGGER.info("[echo to client:" + en.getKey() + "/" + (list.size() - 1) + "]" + url);
+                        }
+
+                    }
+                    USER_CACHE_MAP.put(url, Lists.newArrayList());
+                }
             }
         });
         ServerPlayNetworking.registerGlobalReceiver(GET_FILE_CANNEL, (server, player, handler, buf, responseSender) -> {
@@ -64,11 +81,19 @@ public class ChatImage implements ModInitializer {
                 File file = new File(url);
                 if (file.exists()) {
                     sendFilePackets(player, url, file, GET_FILE_CANNEL);
-                    LOGGER.info("[send to client]" + url);
+                    LOGGER.info("[send to client(from file)]" + url);
                     return;
                 }
             }
             sendFilePacketAsync(player, DOWNLOAD_FILE_CANNEL, getFilePacket("0->0->" + url, new byte[1]));
+            List<String> names;
+            if(USER_CACHE_MAP.containsKey(url)){
+                names = USER_CACHE_MAP.get(url);
+            }else{
+                names = Lists.newArrayList();
+            }
+            names.add(player.getUuidAsString();
+            USER_CACHE_MAP.put(url, names);
             LOGGER.info("[not found in server]" + url);
         });
     }

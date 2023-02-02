@@ -100,11 +100,18 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         MutableText text;
                         switch (frame.getError()) {
                             case FILE_NOT_FOUND:
-                                text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                if(view.isSendFromSelf()){
+                                    text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
+                                    text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                }else {
+                                    text = Text.translatable("serverloading.chatimage.message");
+                                }
                                 break;
                             case FILE_LOAD_ERROR:
                                 text = Text.translatable("error.chatimage.message");
+                                break;
+                            case SERVER_FILE_LOAD_ERROR:
+                                text = Text.translatable("servererror.chatimage.message");
                                 break;
                             default:
                                 text = Text.translatable("loading.chatimage.message");

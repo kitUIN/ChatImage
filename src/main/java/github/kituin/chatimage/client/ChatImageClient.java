@@ -90,7 +90,7 @@ public class ChatImageClient implements ClientModInitializer {
                         loadLocalFile(new ByteArrayInputStream(bb.array()), order[2]);
                     } catch (IOException e) {
                         LOGGER.error(e.toString());
-                        CACHE_MAP.put(order[2], new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+                        CACHE_MAP.put(order[2], new ChatImageFrame(ChatImageFrame.FrameError.SERVER_FILE_LOAD_ERROR));
                     }
                 }
             }

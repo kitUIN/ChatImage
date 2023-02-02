@@ -3,6 +3,8 @@
   "codename.chatimage.default": "Image",
   "filenotfound.chatimage.exception": "Image Not Found",
   "error.chatimage.message": "Image Loading Error",
+  "servererror.chatimage.message": "The image from the server failed to load",
+  "serverloading.chatimage.message": "Loading images from server.....",
   "nsfw.chatimage.open": "Are you sure you want to open the nsfw image from the link below?",
   "nsfw.chatimage.warning": "The nsfw image may cause discomfort, please open it with caution",
   "nsfw.chatimage.message": "This is a nsfw image, click to view, or enable nsfw reading mode in the configuration file",

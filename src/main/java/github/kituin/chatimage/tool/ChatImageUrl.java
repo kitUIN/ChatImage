@@ -63,21 +63,23 @@ public class ChatImageUrl {
                         CACHE_MAP.put(this.fileUrl,new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
                     }
                 } else {
-                    if (MinecraftClient.getInstance().player != null) {
-                        PacketByteBuf buf = PacketByteBufs.create();
-                        buf.writeString(this.fileUrl);
-                        sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
-                        LogUtils.getLogger().info("[try get from server]" + this.fileUrl);
-                    }else{
-                        CACHE_MAP.put(this.fileUrl,new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
-                    }
+                    tryGetFromServer(this.fileUrl);
                 }
             }
-
-
         } else {
             throw new InvalidChatImageUrlException(originalUrl + "<- this url is invalid, Please Recheck",
                     InvalidChatImageUrlException.InvalidUrlMode.NotFound);
+        }
+    }
+
+    public static void tryGetFromServer(String url) {
+        if (MinecraftClient.getInstance().player != null) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeString(url);
+            sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
+            LogUtils.getLogger().info("[try get from server]" + url);
+        } else {
+            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
         }
     }
 

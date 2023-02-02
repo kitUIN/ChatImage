@@ -18,10 +18,15 @@ public class ChatImageCode {
     public static Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
     private ChatImageUrl url;
     private boolean nsfw = false;
+    private boolean isSelf = false;
 
     private String name = "[" + Text.translatable("codename.chatimage.default").getString() + "]";
 
     ChatImageCode() {
+    }
+
+    ChatImageCode(boolean isSelf) {
+        this.isSelf = isSelf;
     }
 
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
@@ -54,6 +59,12 @@ public class ChatImageCode {
      */
     public static ChatImageCode of(String code) throws InvalidChatImageCodeException {
         ChatImageCode chatImageCode = new ChatImageCode();
+        chatImageCode.match(code);
+        return chatImageCode;
+    }
+
+    public static ChatImageCode of(String code, boolean self) throws InvalidChatImageCodeException {
+        ChatImageCode chatImageCode = new ChatImageCode(self);
         chatImageCode.match(code);
         return chatImageCode;
     }
@@ -179,5 +190,7 @@ public class ChatImageCode {
         this.name = "[" + name + "]";
     }
 
-
+    public boolean isSendFromSelf() {
+        return isSelf;
+    }
 }
