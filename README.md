@@ -87,3 +87,11 @@
 - [x]  使用命令发送`CICode`
 - [x]  图片拖拽进聊天栏
 
+## 支持格式
+- [X] png
+- [X] jpg/jpeg
+- [X] jfif
+- [X] gif
+- [X] webp
+- [X] ico
+- [X] bmp

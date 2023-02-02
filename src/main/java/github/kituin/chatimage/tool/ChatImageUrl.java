@@ -6,11 +6,15 @@ import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.PacketByteBuf;
+import net.sf.image4j.codec.ico.ICODecoder;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static github.kituin.chatimage.ChatImage.*;
@@ -55,12 +59,12 @@ public class ChatImageUrl {
             if (!CACHE_MAP.containsKey(this.fileUrl)) {
                 if (file.exists()) {
                     try {
-                        loadLocalFile(new FileInputStream(file), this.fileUrl);
+                        loadLocalFile(this.fileUrl);
                         if (MinecraftClient.getInstance().player != null) {
                             sendFilePackets(MinecraftClient.getInstance().player, this.fileUrl, file, FILE_CANNEL);
                         }
                     } catch (IOException e) {
-                        CACHE_MAP.put(this.fileUrl,new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+                        CACHE_MAP.put(this.fileUrl, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
                     }
                 } else {
                     tryGetFromServer(this.fileUrl);
@@ -72,6 +76,11 @@ public class ChatImageUrl {
         }
     }
 
+    /**
+     * 尝试从服务器获取图片
+     *
+     * @param url 图片url
+     */
     public static void tryGetFromServer(String url) {
         if (MinecraftClient.getInstance().player != null) {
             PacketByteBuf buf = PacketByteBufs.create();
@@ -83,10 +92,39 @@ public class ChatImageUrl {
         }
     }
 
-    public static void loadLocalFile(InputStream input, String url) throws IOException {
-        if ("gif".equals(url.substring(url.length() - 3))) {
+    /**
+     * 从InputStream直接载入图片
+     *
+     * @param input InputStream
+     * @param url   url
+     * @throws IOException IOException
+     */
+    public static void putLocalFile(InputStream input, String url) throws IOException {
+        if (url.endsWith(".gif")) {
             loadGif(input, url);
         } else {
+            ChatImageFrame frame = new ChatImageFrame(input);
+            CACHE_MAP.put(url, frame);
+        }
+    }
+
+    /**
+     * 从url直接载入图片
+     *
+     * @param url url
+     * @throws IOException IOException
+     */
+    public static void loadLocalFile(String url) throws IOException {
+        if (url.endsWith(".gif")) {
+            loadGif(new FileInputStream(url), url);
+        } else {
+            BufferedImage input;
+            if (url.endsWith(".ico")) {
+                List<BufferedImage> image = ICODecoder.read(new File(url));
+                input = image.get(0);
+            } else {
+                input = ImageIO.read(new File(url));
+            }
             ChatImageFrame frame = new ChatImageFrame(input);
             CACHE_MAP.put(url, frame);
         }

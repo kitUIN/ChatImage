@@ -25,6 +25,7 @@ public class ChatImageConfig {
     public int paddingBottom = 3;
     public int gifSpeed = 3;
     public boolean nsfw = false;
+    public int timeout = 5;
     public ChatImageConfig()
     {
 

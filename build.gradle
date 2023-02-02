@@ -18,9 +18,11 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    include implementation( 'com.squareup.okhttp3:okhttp:3.14.7')
-    include implementation( 'com.squareup.okio:okio:1.17.5')
-    include implementation( 'com.madgag:animated-gif-lib:1.4')
+    include implementation('com.squareup.okhttp3:okhttp:3.14.7')
+    include implementation('com.squareup.okio:okio:1.17.5')
+    include implementation('com.madgag:animated-gif-lib:1.4')
+    include implementation( 'org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
+    include implementation(fileTree(dir: 'lib', include: ['*.jar']))
 
 }
 

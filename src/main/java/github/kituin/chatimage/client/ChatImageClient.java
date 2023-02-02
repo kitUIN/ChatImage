@@ -6,6 +6,7 @@ import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.tool.ChatImageFrame;
+import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -24,7 +25,7 @@ import java.util.Map;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static github.kituin.chatimage.ChatImage.DOWNLOAD_FILE_CANNEL;
-import static github.kituin.chatimage.tool.ChatImageUrl.loadLocalFile;
+import static github.kituin.chatimage.tool.ChatImageUrl.putLocalFile;
 import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 
 /**
@@ -87,7 +88,7 @@ public class ChatImageClient implements ClientModInitializer {
                         bb.put(list.get(i));
                     }
                     try {
-                        loadLocalFile(new ByteArrayInputStream(bb.array()), order[2]);
+                        ChatImageUrl.putLocalFile(new ByteArrayInputStream(bb.array()), order[2]);
                     } catch (IOException e) {
                         LOGGER.error(e.toString());
                         CACHE_MAP.put(order[2], new ChatImageFrame(ChatImageFrame.FrameError.SERVER_FILE_LOAD_ERROR));

@@ -40,12 +40,11 @@ public class ChatHudMixin extends DrawableHelper {
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
-        System.out.println(text);
         if (text.getContent() instanceof LiteralTextContent) {
             checkedText = ((LiteralTextContent) text.getContent()).string();
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
-            if ("chat.type.text".equals(key)||"chat.type.announcement".equals(key)) {
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
@@ -66,7 +65,7 @@ public class ChatHudMixin extends DrawableHelper {
         boolean flag = true;
         while (m.find()) {
             try {
-                ChatImageCode image = ChatImageCode.of(m.group(),isSelf);
+                ChatImageCode image = ChatImageCode.of(m.group(), isSelf);
                 flag = false;
                 nums.add(m.start());
                 nums.add(m.end());

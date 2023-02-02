@@ -88,3 +88,12 @@ Send CICode with url (use default display name)
 - [X] Manual Input `CICode`
 - [x] Send `CICode` With Command
 - [x] Drag Image Into Chat Screen
+
+## Support Image Type
+- [X] png
+- [X] jpg/jpeg
+- [X] jfif
+- [X] gif
+- [X] webp
+- [X] ico
+- [X] bmp

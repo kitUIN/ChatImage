@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 
 
@@ -19,18 +20,21 @@ public class ChatImageCode {
     private ChatImageUrl url;
     private boolean nsfw = false;
     private boolean isSelf = false;
-
+    private long timestamp;
     private String name = "[" + Text.translatable("codename.chatimage.default").getString() + "]";
 
     ChatImageCode() {
+        this.timestamp = System.currentTimeMillis();
     }
 
     ChatImageCode(boolean isSelf) {
         this.isSelf = isSelf;
+        this.timestamp = System.currentTimeMillis();
     }
 
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
         this.url = new ChatImageUrl(url);
+        this.timestamp = System.currentTimeMillis();
     }
 
     public ChatImageCode(String url, @Nullable String name) throws InvalidChatImageUrlException {
@@ -38,16 +42,18 @@ public class ChatImageCode {
         if (name != null) {
             this.name = "[" + name + "]";
         }
-
+        this.timestamp = System.currentTimeMillis();
     }
 
     public ChatImageCode(ChatImageUrl url) {
         this.url = url;
+        this.timestamp = System.currentTimeMillis();
     }
 
     public ChatImageCode(ChatImageUrl url, String name) {
         this.url = url;
         this.name = "[" + name + "]";
+        this.timestamp = System.currentTimeMillis();
     }
 
     /**
@@ -192,5 +198,13 @@ public class ChatImageCode {
 
     public boolean isSendFromSelf() {
         return isSelf;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public boolean isTimeout() {
+        return System.currentTimeMillis() > this.timestamp + 1000L * CONFIG.timeout;
     }
 }

@@ -100,11 +100,15 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         MutableText text;
                         switch (frame.getError()) {
                             case FILE_NOT_FOUND:
-                                if(view.isSendFromSelf()){
+                                if (view.isSendFromSelf()) {
                                     text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
                                     text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
-                                }else {
-                                    text = Text.translatable("serverloading.chatimage.message");
+                                } else {
+                                    if (view.isTimeout()) {
+                                        text = Text.translatable("servererror.chatimage.message");
+                                    } else {
+                                        text = Text.translatable("serverloading.chatimage.message");
+                                    }
                                 }
                                 break;
                             case FILE_LOAD_ERROR:
@@ -114,9 +118,14 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                                 text = Text.translatable("servererror.chatimage.message");
                                 break;
                             default:
-                                text = Text.translatable("loading.chatimage.message");
+                                if (view.isTimeout()) {
+                                    text = Text.translatable("error.chatimage.message");
+                                }else{
+                                    text = Text.translatable("loading.chatimage.message");
+                                }
                                 break;
                         }
+
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
                 } else {
