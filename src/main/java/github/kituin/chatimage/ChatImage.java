@@ -92,7 +92,7 @@ public class ChatImage implements ModInitializer {
             }else{
                 names = Lists.newArrayList();
             }
-            names.add(player.getUuidAsString();
+            names.add(player.getUuidAsString());
             USER_CACHE_MAP.put(url, names);
             LOGGER.info("[not found in server]" + url);
         });
