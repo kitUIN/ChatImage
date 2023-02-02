@@ -26,10 +26,10 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
                 text: '指南',
                 link: '/wiki/chatimage/quick',
                 items: [
-                    {text: '快速开始🎈', link: '/wiki/chatimage/quick'},
-                    {text: 'ChatImageCode', link: '/wiki/chatimage/code'},
-                    {text: 'ChatImageStyle', link: '/wiki/chatimage/style'},
-                    {text: '常见错误🐛', link: '/wiki/chatimage/error'},
+                    {text: '快速开始🎈', link: '/wiki/chatimage/quick/'},
+                    {text: 'ChatImageCode', link: '/wiki/chatimage/code/'},
+                    {text: 'ChatImageStyle', link: '/wiki/chatimage/style/'},
+                    {text: '常见错误🐛', link: '/wiki/chatimage/error/'},
 
 
                 ]
