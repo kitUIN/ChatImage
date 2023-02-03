@@ -46,7 +46,7 @@ public class LimitPaddingScreen extends ConfigRawScreen {
                 Text.translatable("bottom.padding.chatimage.gui"), CONFIG.limitHeight,
                 this.height, HEIGHT, getSliderTooltip(getLimitTooltipText(HEIGHT))));
         this.addDrawableChild(new ButtonWidget(
-                this.width / 2 + 77, this.height / 4 + 96 + -16, 150, 20,
+                this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20,
                 Text.translatable("gui.back"), (button) -> {
             this.client.setScreen(this.parent);
         }));

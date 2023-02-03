@@ -32,7 +32,7 @@ public class ConfigScreen extends ConfigRawScreen {
         this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, Text.translatable("padding.chatimage.gui"), (button) -> {
             this.client.setScreen(new LimitPaddingScreen(this));
         }, getButtonTooltip(Text.translatable("padding.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 77, this.height / 4 + 72 + -16, 150, 20, Text.translatable("gui.back"), (button) -> {
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 72 + -16, 150, 20, Text.translatable("gui.back"), (button) -> {
             this.client.setScreen(this.parent);
         }));
     }

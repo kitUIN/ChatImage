@@ -19,7 +19,7 @@ public abstract class ConfigRawScreen extends Screen {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 3 - 32, 16764108);
+                title, this.width / 2, this.height / 4 - 16, 16764108);
     }
     protected ButtonWidget.TooltipSupplier getButtonTooltip(Text text){
         return new ButtonWidget.TooltipSupplier() {
