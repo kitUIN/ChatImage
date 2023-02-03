@@ -42,7 +42,7 @@ public class ConfigScreen extends ConfigRawScreen {
 //    }
 
     private MutableText getNsfw(boolean enable) {
-        return Text.translatable(enable ? "open.nsfw.chatimage.gui" : "close.nsfw.chatimage.gui");
+        return Text.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }
 
 }
