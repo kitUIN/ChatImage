@@ -28,7 +28,6 @@ dependencies {
     include implementation('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     include implementation('net.sf.image4j:image4j:0.7.2')
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
-
 }
 
 processResources {
@@ -68,7 +67,6 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
     }
-
 }
 
 // configure the maven publication
@@ -81,7 +79,6 @@ publishing {
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-
 
     }
 }
