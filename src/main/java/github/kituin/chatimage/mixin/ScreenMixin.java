@@ -154,7 +154,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null && view.getNsfw() && !NSFW_MAP.containsKey(view.getOriginalUrl())) {
+            if (view != null && view.getNsfw() && !NSFW_MAP.containsKey(view.getOriginalUrl()) && !CONFIG.nsfw) {
                 this.nsfwUrl = view.getOriginalUrl();
                 this.client.setScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
             }
