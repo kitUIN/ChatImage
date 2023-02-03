@@ -7,7 +7,7 @@
   "loading.server.chatimage.message": "从服務器加載圖片中.....",
   "nsfw.chatimage.open": "你確定要查看來自以下鏈接的nsfw圖片?",
   "nsfw.chatimage.warning": "nsfw圖片可能會引起不適,請謹慎查看",
-  "nsfw.chatimage.message": "這是一張NSFW圖片,點擊解除NSFW查看,或者在配置文件中開啟NSFW閱讀模式",
+  "nsfw.chatimage.message": "這是一張nsfw圖片,點擊解除nsfw查看,或者在配置文件關閉NSFW警告",
   "send.chatimage.command": "發送CICode與其顯示名稱以及超連結",
   "url.chatimage.command": "發送CICode與其超連結（使用預設顯示名稱）",
   "help.chatimage.command": "ChatImage 幫助",
@@ -28,5 +28,15 @@
   "height.limit.chatimage.gui": "橫向長度限制",
   "width.limit.chatimage.gui": "縱向長度限制",
   "padding.chatimage.gui": "圖片大小設置",
-  "default.chatimage.gui": "默認"
+  "default.chatimage.gui": "默認",
+  "gif.chatimage.tooltip": "GIF圖片的播放速率\n範圍:1-20",
+  "nsfw.chatimage.tooltip": "開:對於nsfw=true的圖片進行查看警告\n關:不警告",
+  "timeout.chatimage.tooltip": "圖片加載超時時間,超過後將自動顯示加載失敗\n範圍:3-60s",
+  "padding.chatimage.tooltip": "設置懸浮時圖片展示的大小",
+  "left.padding.chatimage.tooltip": "圖片距離左邊框的距離\n範圍:0-窗口橫向長度的一半",
+  "right.padding.chatimage.tooltip": "圖片距離右邊框的距離\n範圍:0-窗口橫向長度的一半",
+  "top.padding.chatimage.tooltip": "圖片距離上邊框的距離\n範圍:0-窗口縱向長度的一半",
+  "bottom.padding.chatimage.tooltip": "圖片距離下邊框的距離\n範圍:0-窗口縱向長度的一半",
+  "height.limit.chatimage.tooltip": "圖片橫向長度限制\n範圍:1-窗口橫向長度",
+  "width.limit.chatimage.tooltip": "圖片縱向長度限制\n範圍:1-窗口縱向長度"
 }

@@ -6,6 +6,8 @@ import github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.narration.Narration;
+import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.GridWidget;
 import net.minecraft.client.gui.widget.SimplePositioningWidget;
@@ -32,12 +34,12 @@ public class ConfigScreen extends Screen {
             CONFIG.nsfw = !CONFIG.nsfw;
             button.setMessage(getNsfw(CONFIG.nsfw));
             ChatImageConfig.saveConfig(CONFIG);
-        }).build());
+        }).tooltip(Tooltip.of(Text.translatable("nsfw.chatimage.tooltip"))).build());
         adder.add(new GifSlider());
         adder.add(new TimeOutSlider());
         adder.add(ButtonWidget.builder(Text.translatable("padding.chatimage.gui"), (button) -> {
             this.client.setScreen(new LimitPaddingScreen(Text.translatable("padding.chatimage.gui")));
-        }).build());
+        }).tooltip(Tooltip.of(Text.translatable("padding.chatimage.tooltip"))).build());
         gridWidget.recalculateDimensions();
         SimplePositioningWidget.setPos(gridWidget, 0, this.height / 5 - 12, this.width, this.height, 0.5F, 0.0F);
         this.addDrawableChild(gridWidget);

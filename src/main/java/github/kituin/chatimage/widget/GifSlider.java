@@ -1,6 +1,7 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
+import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
@@ -13,8 +14,9 @@ public class GifSlider extends SettingSliderWidget {
 
 
     public GifSlider() {
-        super(100, 100, 150, 20, CONFIG.gifSpeed, 1, 10);
+        super(100, 100, 150, 20, CONFIG.gifSpeed, 1, 20);
         this.updateMessage();
+        this.setTooltip(Tooltip.of(Text.translatable("gif.chatimage.tooltip")));
     }
 
     @Override
@@ -23,4 +25,5 @@ public class GifSlider extends SettingSliderWidget {
         CONFIG.gifSpeed = this.position;
         ChatImageConfig.saveConfig(CONFIG);
     }
+
 }

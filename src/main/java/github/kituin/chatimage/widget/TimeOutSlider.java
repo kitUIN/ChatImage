@@ -1,6 +1,7 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
+import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
@@ -12,6 +13,7 @@ public class TimeOutSlider extends SettingSliderWidget {
     public TimeOutSlider() {
         super(100, 100, 150, 20, CONFIG.timeout, 3, 60);
         this.updateMessage();
+        this.setTooltip(Tooltip.of(Text.translatable("timeout.chatimage.tooltip")));
     }
 
     @Override

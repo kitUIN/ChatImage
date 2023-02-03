@@ -7,7 +7,7 @@
   "loading.server.chatimage.message": "Loading images from server.....",
   "nsfw.chatimage.open": "Are you sure you want to open the nsfw image from the link below?",
   "nsfw.chatimage.warning": "The nsfw image may cause discomfort, please open it with caution",
-  "nsfw.chatimage.message": "This is a nsfw image, click to view, or enable nsfw reading mode in the configuration file",
+  "nsfw.chatimage.message": "This is a nsfw image, click to remove nsfw to view, or turn off the nsfw warning in the configuration file",
   "send.chatimage.command": "Send CICode with display name and url",
   "url.chatimage.command": "Send CICode with url (use default display name)",
   "help.chatimage.command": "ChatImage help",
@@ -28,5 +28,15 @@
   "height.limit.chatimage.gui": "Horizontal length limit",
   "width.limit.chatimage.gui": "Vertical Length Limit",
   "padding.chatimage.gui": "Image size setting",
-  "default.chatimage.gui": "default"
+  "default.chatimage.gui": "default",
+  "gif.chatimage.tooltip": "The playback speed of GIF images\nRange: 1-20",
+  "nsfw.chatimage.tooltip": "On: View warnings for nsfw=true pictures\nOff: No warning",
+  "timeout.chatimage.tooltip": "Image loading timeout, after exceeding, it will automatically display loading failure\nRange: 3-60s",
+  "padding.chatimage.tooltip": "Set the size of the image display when hovering",
+  "left.padding.chatimage.tooltip": "The distance between the image and the left border\nRange: 0-half the horizontal length of the window",
+  "right.padding.chatimage.tooltip": "The distance between the image and the right border\nRange: 0-half the horizontal length of the window",
+  "top.padding.chatimage.tooltip": "The distance between the picture and the top border\nRange: 0-half the vertical length of the window",
+  "bottom.padding.chatimage.tooltip": "The distance between the picture and the bottom border\nRange: 0-half the vertical length of the window",
+  "height.limit.chatimage.tooltip": "Image horizontal length limit\nRange: 1-window horizontal length",
+  "width.limit.chatimage.tooltip": "Picture vertical length limit\nRange: 1-window vertical length"
 }
