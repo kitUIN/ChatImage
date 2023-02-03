@@ -29,7 +29,7 @@ public class ChatImageCommand {
         }
         try {
             ChatImageCode code = new ChatImageCode(url, name);
-            context.getSource().getPlayer().networkHandler.sendChatMessage(code.toString());
+            context.getSource().getPlayer().sendChatMessage(code.toString(),null);
         } catch (InvalidChatImageUrlException e) {
             MutableText text = Text.literal(e.getMode().toString() + ": " + e.getMessage());
             context.getSource().sendFeedback(text.setStyle(Style.EMPTY.withColor(Formatting.RED)));

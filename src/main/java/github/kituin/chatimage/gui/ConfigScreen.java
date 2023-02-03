@@ -6,64 +6,43 @@ import github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.narration.Narration;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.GridWidget;
-import net.minecraft.client.gui.widget.SimplePositioningWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 @Environment(EnvType.CLIENT)
-public class ConfigScreen extends Screen {
-    private Screen parent;
-    public ConfigScreen() {
-        super(Text.translatable("config.chatimage.category"));
-
-    }
+public class ConfigScreen extends ConfigRawScreen {
 
     public ConfigScreen(Screen screen) {
-        super(Text.translatable("config.chatimage.category"));
-        this.parent = screen;
+        super(Text.translatable("config.chatimage.category"), screen);
     }
 
 
     protected void init() {
         super.init();
-        GridWidget gridWidget = new GridWidget();
-        gridWidget.getMainPositioner().marginX(5).marginBottom(4).alignHorizontalCenter();
-        GridWidget.Adder adder = gridWidget.createAdder(2);
-        adder.add(ButtonWidget.builder(getNsfw(CONFIG.nsfw), (button) -> {
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
             CONFIG.nsfw = !CONFIG.nsfw;
             button.setMessage(getNsfw(CONFIG.nsfw));
             ChatImageConfig.saveConfig(CONFIG);
-        }).tooltip(Tooltip.of(Text.translatable("nsfw.chatimage.tooltip"))).build());
-        adder.add(new GifSlider());
-        adder.add(new TimeOutSlider());
-        adder.add(ButtonWidget.builder(Text.translatable("padding.chatimage.gui"), (button) -> {
+        }, getButtonTooltip(Text.translatable("nsfw.chatimage.tooltip"))));
+        this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(Text.translatable("gif.chatimage.tooltip"))));
+        this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(Text.translatable("timeout.chatimage.tooltip"))));
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, Text.translatable("padding.chatimage.gui"), (button) -> {
             this.client.setScreen(new LimitPaddingScreen(this));
-        }).tooltip(Tooltip.of(Text.translatable("padding.chatimage.tooltip"))).build());
-        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
+        }, getButtonTooltip(Text.translatable("padding.chatimage.tooltip"))));
+        this.addDrawableChild(new ButtonWidget(this.width / 2 + 77, this.height / 4 + 72 + -16, 150, 20, Text.translatable("gui.back"), (button) -> {
             this.client.setScreen(this.parent);
-        }).build(), 2);
-        gridWidget.recalculateDimensions();
-        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
-        this.addDrawableChild(gridWidget);
+        }));
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 3 - 32, 16764108);
-    }
+//    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+//        super.render(matrices, mouseX, mouseY, delta);
+//    }
 
     private MutableText getNsfw(boolean enable) {
         return Text.translatable(enable ? "open.nsfw.chatimage.gui" : "close.nsfw.chatimage.gui");
     }
-
 
 }

@@ -1,57 +1,85 @@
 package github.kituin.chatimage.gui;
 
-import github.kituin.chatimage.config.ChatImageConfig;
-import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.LimitSlider;
 import github.kituin.chatimage.widget.PaddingSlider;
-import github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.GridWidget;
-import net.minecraft.client.gui.widget.SimplePositioningWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static github.kituin.chatimage.widget.LimitSlider.LimitType.HEIGHT;
+import static github.kituin.chatimage.widget.LimitSlider.LimitType.WIDTH;
+import static github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 
 @Environment(EnvType.CLIENT)
-public class LimitPaddingScreen extends Screen {
-    private Screen parent;
+public class LimitPaddingScreen extends ConfigRawScreen {
     public LimitPaddingScreen(Screen screen) {
-        super(Text.translatable("padding.chatimage.gui"));
-        this.parent = screen;
-    }
-    protected void init() {
-        super.init();
-        GridWidget gridWidget = new GridWidget();
-        gridWidget.getMainPositioner().marginX(5).marginBottom(4).alignHorizontalCenter();
-        GridWidget.Adder adder = gridWidget.createAdder(2);
-        adder.add(new PaddingSlider(Text.translatable("left.padding.chatimage.gui"),
-                CONFIG.paddingLeft, 0F, this.width / 2, PaddingSlider.PaddingType.LEFT));
-        adder.add(new PaddingSlider(Text.translatable("right.padding.chatimage.gui"),
-                CONFIG.paddingRight, 0F, this.width / 2, PaddingSlider.PaddingType.RIGHT));
-        adder.add(new PaddingSlider(Text.translatable("top.padding.chatimage.gui"),
-                CONFIG.paddingTop, 0F, this.height / 2, PaddingSlider.PaddingType.TOP));
-        adder.add(new PaddingSlider(Text.translatable("bottom.padding.chatimage.gui"),
-                CONFIG.paddingBottom, 0F, this.height / 2, PaddingSlider.PaddingType.BOTTOM));
-        adder.add(new LimitSlider(Text.translatable("width.limit.chatimage.gui"),
-                CONFIG.limitWidth, 0F, this.width, LimitSlider.LimitType.WIDTH));
-        adder.add(new LimitSlider(Text.translatable("height.limit.chatimage.gui"),
-                CONFIG.limitHeight, 0F, this.height, LimitSlider.LimitType.HEIGHT));
-        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
-        }).build(), 2);
-        gridWidget.recalculateDimensions();
-        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
-        this.addDrawableChild(gridWidget);
+        super(Text.translatable("padding.chatimage.gui"), screen);
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 3 - 32, 16764108);
+    protected void init() {
+        super.init();
+        this.addDrawableChild(new PaddingSlider(
+                this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
+                Text.translatable("left.padding.chatimage.gui"), CONFIG.paddingLeft,
+                this.width / 2, LEFT, getSliderTooltip(getPaddingTooltipText(LEFT))));
+        this.addDrawableChild(new PaddingSlider(
+                this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20,
+                Text.translatable("right.padding.chatimage.gui"), CONFIG.paddingRight,
+                this.width / 2, RIGHT, getSliderTooltip(getPaddingTooltipText(RIGHT))));
+        this.addDrawableChild(new PaddingSlider(
+                this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20,
+                Text.translatable("top.padding.chatimage.gui"), CONFIG.paddingTop,
+                this.height / 2, TOP, getSliderTooltip(getPaddingTooltipText(TOP))));
+        this.addDrawableChild(new PaddingSlider(
+                this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20,
+                Text.translatable("bottom.padding.chatimage.gui"), CONFIG.paddingBottom,
+                this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
+        this.addDrawableChild(new LimitSlider(
+                this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
+                Text.translatable("top.padding.chatimage.gui"), CONFIG.limitWidth,
+                this.width, WIDTH, getSliderTooltip(getLimitTooltipText(WIDTH))));
+        this.addDrawableChild(new LimitSlider(
+                this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,
+                Text.translatable("bottom.padding.chatimage.gui"), CONFIG.limitHeight,
+                this.height, HEIGHT, getSliderTooltip(getLimitTooltipText(HEIGHT))));
+        this.addDrawableChild(new ButtonWidget(
+                this.width / 2 + 77, this.height / 4 + 96 + -16, 150, 20,
+                Text.translatable("gui.back"), (button) -> {
+            this.client.setScreen(this.parent);
+        }));
+
+
+    }
+
+    private Text getLimitTooltipText(LimitSlider.LimitType limitType) {
+        if (limitType == WIDTH) {
+            return Text.translatable("width.limit.chatimage.tooltip");
+        } else {
+            return Text.translatable("height.limit.chatimage.tooltip");
+        }
+    }
+
+    private Text getPaddingTooltipText(PaddingSlider.PaddingType paddingType) {
+        Text text;
+        switch (paddingType) {
+            case TOP:
+                text = Text.translatable("top.padding.chatimage.tooltip");
+                break;
+            case BOTTOM:
+                text = Text.translatable("bottom.padding.chatimage.tooltip");
+                break;
+            case LEFT:
+                text = Text.translatable("left.padding.chatimage.tooltip");
+                break;
+            case RIGHT:
+                text = Text.translatable("right.padding.chatimage.tooltip");
+                break;
+            default:
+                return null;
+        }
+        return text;
     }
 }

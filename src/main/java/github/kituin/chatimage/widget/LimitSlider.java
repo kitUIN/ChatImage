@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
@@ -11,12 +10,11 @@ public class LimitSlider extends SettingSliderWidget {
     protected final Text title;
     protected final LimitType limitType;
 
-    public LimitSlider(Text title, int value, float min, float max, LimitType limitType) {
-        super(100, 100, 150, 20, value, min, max);
+    public LimitSlider(int x, int y, int width, int height, Text title, int value, float max, LimitType limitType, TooltipSupplier tooltipSupplier) {
+        super(x, y, width, height, value, 0F, max, tooltipSupplier);
         this.title = title;
         this.limitType = limitType;
         this.updateMessage();
-        this.tooltip();
     }
 
     @Override
@@ -35,20 +33,7 @@ public class LimitSlider extends SettingSliderWidget {
         }
         ChatImageConfig.saveConfig(CONFIG);
     }
-    private void tooltip() {
-        Text text;
-        switch (limitType) {
-            case WIDTH:
-                text = Text.translatable("width.limit.chatimage.tooltip");
-                break;
-            case HEIGHT:
-                text = Text.translatable("height.limit.chatimage.tooltip");
-                break;
-            default:
-                return;
-        }
-        this.setTooltip(Tooltip.of(text));
-    }
+
     public enum LimitType {
         WIDTH, HEIGHT
 

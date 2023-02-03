@@ -58,7 +58,7 @@ public class ChatImageClient implements ClientModInitializer {
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
-                client.setScreen(new ConfigScreen());
+                client.setScreen(new ConfigScreen(null));
             }
         });
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {

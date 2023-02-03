@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 
@@ -11,12 +10,11 @@ public class PaddingSlider extends SettingSliderWidget {
     protected final Text title;
     protected final PaddingType paddingType;
 
-    public PaddingSlider(Text title, int value, float min, float max, PaddingType paddingType) {
-        super(100, 100, 150, 20, value, min, max);
+    public PaddingSlider(int x, int y, int width, int height, Text title, int value, float max, PaddingType paddingType, TooltipSupplier tooltipSupplier) {
+        super(x, y, width, height, value, 0F, max, tooltipSupplier);
         this.title = title;
         this.paddingType = paddingType;
         this.updateMessage();
-        this.tooltip();
     }
 
     @Override
@@ -41,26 +39,6 @@ public class PaddingSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-    private void tooltip() {
-        Text text;
-        switch (paddingType) {
-            case TOP:
-                text = Text.translatable("top.padding.chatimage.tooltip");
-                break;
-            case BOTTOM:
-                text = Text.translatable("bottom.padding.chatimage.tooltip");
-                break;
-            case LEFT:
-                text = Text.translatable("left.padding.chatimage.tooltip");
-                break;
-            case RIGHT:
-                text = Text.translatable("right.padding.chatimage.tooltip");
-                break;
-            default:
-                return;
-        }
-        this.setTooltip(Tooltip.of(text));
-    }
 
     public enum PaddingType {
         LEFT, RIGHT, TOP, BOTTOM
