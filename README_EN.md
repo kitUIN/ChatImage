@@ -83,7 +83,7 @@ Send CICode with display name and url
 Send CICode with url (use default display name)
 
 ## Config Settings
-- manual configuration
+- manual configure
   - The configuration file is located at: `.minecraft/conifg/fabric/chatimageconfig.json`
   - After modifying the configuration file, please use `/chatimage reload` to reload the configuration file
 - Use key binding (default `End` key)
