@@ -19,11 +19,17 @@ import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
-
-    public ConfigScreen(Text title) {
-        super(title);
+    private Screen parent;
+    public ConfigScreen() {
+        super(Text.translatable("config.chatimage.category"));
 
     }
+
+    public ConfigScreen(Screen screen) {
+        super(Text.translatable("config.chatimage.category"));
+        this.parent = screen;
+    }
+
 
     protected void init() {
         super.init();
@@ -38,10 +44,13 @@ public class ConfigScreen extends Screen {
         adder.add(new GifSlider());
         adder.add(new TimeOutSlider());
         adder.add(ButtonWidget.builder(Text.translatable("padding.chatimage.gui"), (button) -> {
-            this.client.setScreen(new LimitPaddingScreen(Text.translatable("padding.chatimage.gui")));
+            this.client.setScreen(new LimitPaddingScreen(this));
         }).tooltip(Tooltip.of(Text.translatable("padding.chatimage.tooltip"))).build());
+        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
+            this.client.setScreen(this.parent);
+        }).build(), 2);
         gridWidget.recalculateDimensions();
-        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 5 - 12, this.width, this.height, 0.5F, 0.0F);
+        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
         this.addDrawableChild(gridWidget);
     }
 
@@ -49,7 +58,7 @@ public class ConfigScreen extends Screen {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 5 - 32, 16764108);
+                title, this.width / 2, this.height / 3 - 32, 16764108);
     }
 
     private MutableText getNsfw(boolean enable) {

@@ -19,9 +19,9 @@ import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 @Environment(EnvType.CLIENT)
 public class LimitPaddingScreen extends Screen {
     private Screen parent;
-    public LimitPaddingScreen(Text title) {
-        super(title);
-
+    public LimitPaddingScreen(Screen screen) {
+        super(Text.translatable("padding.chatimage.gui"));
+        this.parent = screen;
     }
     protected void init() {
         super.init();
@@ -40,8 +40,11 @@ public class LimitPaddingScreen extends Screen {
                 CONFIG.limitWidth, 0F, this.width, LimitSlider.LimitType.WIDTH));
         adder.add(new LimitSlider(Text.translatable("height.limit.chatimage.gui"),
                 CONFIG.limitHeight, 0F, this.height, LimitSlider.LimitType.HEIGHT));
+        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
+            this.client.setScreen(this.parent);
+        }).build(), 2);
         gridWidget.recalculateDimensions();
-        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 5 - 12, this.width, this.height, 0.5F, 0.0F);
+        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
         this.addDrawableChild(gridWidget);
     }
 
@@ -49,6 +52,6 @@ public class LimitPaddingScreen extends Screen {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 5 - 32, 16764108);
+                title, this.width / 2, this.height / 3 - 32, 16764108);
     }
 }

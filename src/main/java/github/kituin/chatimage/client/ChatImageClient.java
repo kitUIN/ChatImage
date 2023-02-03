@@ -17,6 +17,7 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
@@ -57,7 +58,7 @@ public class ChatImageClient implements ClientModInitializer {
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
-                client.setScreen(new ConfigScreen(Text.translatable("config.chatimage.category")));
+                client.setScreen(new ConfigScreen());
             }
         });
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
@@ -81,12 +82,7 @@ public class ChatImageClient implements ClientModInitializer {
                             .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
                                     .executes(ChatImageCommand::reloadConfig)
                             )
-                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("config")
-                                    .executes((context) -> {
-                                        context.getSource().getClient().setScreen(new ConfigScreen(Text.of("config")));
-                                        return Command.SINGLE_SUCCESS;
-                                    })
-                            )
+
             );
         });
         ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CANNEL, (client, handler, buf, responseSender) -> {

@@ -3,11 +3,15 @@
   "id": "chatimage",
   "version": "${version}",
   "name": "ChatImage",
-  "description": "show image in chat line",
-  "authors": ["kitUIN"],
+  "description": "Show Image In Chat",
+  "authors": [
+    "kitUIN"
+  ],
   "contact": {
     "homepage": "https://github.com/kitUIN/ChatImage",
-    "sources": "https://github.com/kitUIN/ChatImage"
+    "sources": "https://github.com/kitUIN/ChatImage",
+    "issues": "https://github.com/kitUIN/ChatImage/issues",
+    "email": "kulujun@gmail.com"
   },
   "license": "MIT",
   "icon": "logo.png",
@@ -18,6 +22,9 @@
     ],
     "main": [
       "github.kituin.chatimage.ChatImage"
+    ],
+    "modmenu": [
+      "github.kituin.chatimage.integration.ModmenuIntegration"
     ]
   },
   "mixins": [

@@ -80,6 +80,13 @@
 
 使用Url发送CICode(使用默认显示名称)
 
+## 配置文件设置
+- 手动配置
+    - 配置文件位于：`.minecraft/conifg/fabric/chatimageconfig.json`
+    - 修改配置文件后，请使用 `/chatimage reload` 重载配置文件
+- 使用按键（默认为`End`键）
+- 使用[Mod Menu](https://github.com/TerraformersMC/ModMenu)，点击配置按钮进行配置
+
 ## 支持方法
 
 - [X]  输入栏直接粘贴图片自动转换`CICode`

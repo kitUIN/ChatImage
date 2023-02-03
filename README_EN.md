@@ -82,6 +82,13 @@ Send CICode with display name and url
 
 Send CICode with url (use default display name)
 
+## Config Settings
+- manual configuration
+  - The configuration file is located at: `.minecraft/conifg/fabric/chatimageconfig.json`
+  - After modifying the configuration file, please use `/chatimage reload` to reload the configuration file
+- Use key binding (default `End` key)
+- Use [Mod Menu](https://github.com/TerraformersMC/ModMenu), click the configuration button to configure
+
 ## Support input method
 
 - [X] Paste the picture directly in the chat field and automatically convert it to `CICode`

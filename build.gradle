@@ -7,7 +7,11 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
+    mavenCentral()
     flatDir { dirs 'lib' }
+    maven {
+        name = 'TerraformersMC'
+        url = "https://maven.terraformersmc.com/releases" }
 }
 
 dependencies {
@@ -23,7 +27,7 @@ dependencies {
     include implementation('com.madgag:animated-gif-lib:1.4')
     include implementation('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     include implementation('net.sf.image4j:image4j:0.7.2')
-
+    modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 
 }
 

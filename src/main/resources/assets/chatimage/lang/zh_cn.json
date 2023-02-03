@@ -38,5 +38,6 @@
   "top.padding.chatimage.tooltip": "图片距离上边框的距离\n范围:0-窗口纵向长度的一半",
   "bottom.padding.chatimage.tooltip": "图片距离下边框的距离\n范围:0-窗口纵向长度的一半",
   "height.limit.chatimage.tooltip": "图片横向长度限制\n范围:1-窗口横向长度",
-  "width.limit.chatimage.tooltip": "图片纵向长度限制\n范围:1-窗口纵向长度"
+  "width.limit.chatimage.tooltip": "图片纵向长度限制\n范围:1-窗口纵向长度",
+  "modmenu.descriptionTranslation.chatimage": "在聊天栏中显示图片"
 }
