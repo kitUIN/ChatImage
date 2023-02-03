@@ -84,8 +84,10 @@ public class ChatImageFrame {
     public void limitSize(int limitWidth, int limitHeight) {
         this.width = originalWidth;
         this.height = originalHeight;
-        if (limitWidth == 0 && limitHeight == 0) {
+        if (limitWidth == 0) {
             limitWidth = this.minecraft.getWindow().getScaledWidth() / 2;
+        }
+        if (limitHeight == 0) {
             limitHeight = this.minecraft.getWindow().getScaledHeight() / 2;
         }
         BigDecimal b = new BigDecimal((float) originalHeight / originalWidth);

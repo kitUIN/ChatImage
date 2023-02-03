@@ -12,18 +12,15 @@ import net.minecraft.text.Text;
 
 @Environment(EnvType.CLIENT)
 public class ConfirmNsfwScreen extends ConfirmScreen {
-    private static final Text WARNING = Text.translatable("nsfw.chatimage.warning");
-    private final String link;
 
     public ConfirmNsfwScreen(BooleanConsumer callback, String link) {
-        this(callback, Text.translatable("nsfw.chatimage.open"), Text.literal(link), link);
+        this(callback, Text.translatable("nsfw.chatimage.open"), Text.literal(link));
     }
 
-    public ConfirmNsfwScreen(BooleanConsumer callback, Text title, Text message, String link) {
+    public ConfirmNsfwScreen(BooleanConsumer callback, Text title, Text message) {
         super(callback, title, message);
         this.yesText = ScreenTexts.YES;
         this.noText = ScreenTexts.NO;
-        this.link = link;
     }
 
     protected void addButtons(int y) {
@@ -37,6 +34,7 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer, WARNING, this.width / 2, 110, 16764108);
+        drawCenteredText(matrices, this.textRenderer,
+                Text.translatable("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
     }
 }

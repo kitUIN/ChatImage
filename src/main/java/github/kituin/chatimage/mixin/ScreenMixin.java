@@ -105,9 +105,9 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                                     text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
                                 } else {
                                     if (view.isTimeout()) {
-                                        text = Text.translatable("servererror.chatimage.message");
+                                        text = Text.translatable("error.server.chatimage.message");
                                     } else {
-                                        text = Text.translatable("serverloading.chatimage.message");
+                                        text = Text.translatable("loading.server.chatimage.message");
                                     }
                                 }
                                 break;
@@ -115,7 +115,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                                 text = Text.translatable("error.chatimage.message");
                                 break;
                             case SERVER_FILE_LOAD_ERROR:
-                                text = Text.translatable("servererror.chatimage.message");
+                                text = Text.translatable("error.server.chatimage.message");
                                 break;
                             default:
                                 if (view.isTimeout()) {
