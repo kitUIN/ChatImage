@@ -7,16 +7,12 @@ import github.kituin.chatimage.tool.ChatImageFrame;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
-import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner;
-import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
+import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector2ic;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -50,6 +46,9 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
     protected MinecraftClient client;
 
 
+    @Shadow
+    public int height;
+
     @Inject(at = @At("RETURN"),
             method = "renderTextHoverEffect")
     protected void renderTextHoverEffect(MatrixStack matrices, Style style, int x, int y, CallbackInfo ci) {
@@ -62,26 +61,41 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
-                        HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
-                        Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
-                        int l = vector2ic.x();
-                        int m = vector2ic.y();
+                        int i = 100;
+                        int j = 100;
+                        int l = x + 12;
+                        int m = y - 12;
+                        if (l + i > this.width) {
+                            l -= 28 + i;
+                        }
+                        if (m + j + 6 > this.height) {
+                            m = this.height - j - 6;
+                        }
                         matrices.push();
                         Tessellator tessellator = Tessellator.getInstance();
                         BufferBuilder bufferBuilder = tessellator.getBuffer();
-                        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
                         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
                         Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-                        TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m - 4, l + i + 3, m - 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m + j + 3, l + i + 3, m + j + 4, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m - 3, l + i + 3, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferBuilder, l - 4, m - 3, l - 3, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferBuilder, l + i + 3, m - 3, l + i + 4, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m - 3 + 1, l - 3 + 1, m + j + 3 - 1, 400, 1347420415, 1344798847);
+                        fillGradient(matrix4f, bufferBuilder, l + i + 2, m - 3 + 1, l + i + 3, m + j + 3 - 1, 400, 1347420415, 1344798847);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m - 3, l + i + 3, m - 3 + 1, 400, 1347420415, 1347420415);
+                        fillGradient(matrix4f, bufferBuilder, l - 3, m + j + 2, l + i + 3, m + j + 3, 400, 1344798847, 1344798847);
+
                         RenderSystem.enableDepthTest();
                         RenderSystem.disableTexture();
                         RenderSystem.enableBlend();
                         RenderSystem.defaultBlendFunc();
-                        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+                        BufferRenderer.drawWithShader(bufferBuilder.end());
                         RenderSystem.disableBlend();
                         RenderSystem.enableTexture();
                         matrices.translate(0.0F, 0.0F, 400.0F);
-                        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
                         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                         RenderSystem.setShaderTexture(0, frame.getId());
 
@@ -120,7 +134,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                             default:
                                 if (view.isTimeout()) {
                                     text = Text.translatable("error.chatimage.message");
-                                }else{
+                                } else {
                                     text = Text.translatable("loading.chatimage.message");
                                 }
                                 break;
