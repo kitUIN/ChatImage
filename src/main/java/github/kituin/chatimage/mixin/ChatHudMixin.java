@@ -1,5 +1,6 @@
 package github.kituin.chatimage.mixin;
 
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.tool.ChatImageCode;
@@ -9,7 +10,7 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-import org.apache.commons.compress.utils.Lists;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
