@@ -1,5 +1,6 @@
 package github.kituin.chatimage.mixin;
 
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.tool.ChatImageCode;
@@ -9,7 +10,7 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-import org.apache.commons.compress.utils.Lists;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -46,7 +47,7 @@ public class ChatHudMixin extends DrawableHelper {
             checkedText = ((LiteralTextContent) text.getContent()).string();
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)) {
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                 Text[] args = (Text[]) ttc.getArgs();
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
@@ -56,7 +57,7 @@ public class ChatHudMixin extends DrawableHelper {
                 } else {
                     checkedText = contents.getContent().toString();
                 }
-                if ("commands.message.display.incoming".equals(key)) {
+                if ("commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                     isIncoming = true;
                 }
             }
