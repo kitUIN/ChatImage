@@ -10,7 +10,6 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -48,10 +47,10 @@ public class ChatHudMixin extends DrawableHelper {
             System.out.println("000");
             key = ttc.getKey();
             Object[] args = ttc.getArgs();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)||"commands.message.display.outgoing".equals(key)) {
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                 player = (LiteralText) args[0];
                 isSelf = player.asString().equals(MinecraftClient.getInstance().player.getName().asString());
-                if ("commands.message.display.incoming".equals(key)) {
+                if ("commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                     isIncoming = true;
                 }
             }
