@@ -1,7 +1,8 @@
 package github.kituin.chatimage.tool;
 
-import com.mojang.logging.LogUtils;
+
 import okhttp3.*;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class HttpUtils {
                     .get()
                     .build();
         } catch (java.lang.IllegalArgumentException ep) {
-            LogUtils.getLogger().info("can not request url: " + url);
+            LogManager.getLogger().info("can not request url: " + url);
             return false;
         }
         if (HTTPS_MAP.containsKey(url) && HTTPS_MAP.get(url) == 1) {
@@ -58,7 +59,7 @@ public class HttpUtils {
             HTTPS_MAP.put(url, 1);
         }
         Call call = httpClient.newCall(getRequest);
-        LogUtils.getLogger().info("[HTTP-GET]" + url);
+        LogManager.getLogger().info("[HTTP-GET]" + url);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {

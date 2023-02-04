@@ -1,12 +1,12 @@
 package github.kituin.chatimage.tool;
 
 import com.madgag.gif.fmsware.GifDecoder;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.PacketByteBuf;
 import net.sf.image4j.codec.ico.ICODecoder;
+import org.apache.logging.log4j.LogManager;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -86,7 +86,7 @@ public class ChatImageUrl {
             PacketByteBuf buf = PacketByteBufs.create();
             buf.writeString(url);
             sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
-            LogUtils.getLogger().info("[try get from server]" + url);
+            LogManager.getLogger().info("[try get from server]" + url);
         } else {
             CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
         }

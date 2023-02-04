@@ -1,9 +1,7 @@
 package github.kituin.chatimage.client;
 
-import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
@@ -17,14 +15,12 @@ import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.text.Text;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
-import org.slf4j.Logger;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -45,9 +41,10 @@ public class ChatImageClient implements ClientModInitializer {
     public static String MOD_ID = "chatimage";
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
-    private static final Logger LOGGER = LogUtils.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
     private static KeyBinding configKeyBinding;
+
     @Override
     public void onInitializeClient() {
         System.setProperty("java.awt.headless", "false");
@@ -63,25 +60,25 @@ public class ChatImageClient implements ClientModInitializer {
             }
         });
         ClientCommandManager.DISPATCHER.register(
-                    LiteralArgumentBuilder.<FabricClientCommandSource>literal("chatimage").executes(ChatImageCommand::help)
-                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("send")
-                                    .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("name", string())
-                                            .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("url", greedyString())
-                                                    .executes(ChatImageCommand::sendChatImage)
-                                            )
-                                    )
-                            )
-                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("url")
-                                    .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("url", greedyString())
-                                            .executes(ChatImageCommand::sendChatImage)
-                                    )
-                            )
-                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("help")
-                                    .executes(ChatImageCommand::help)
-                            )
-                            .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
-                                    .executes(ChatImageCommand::reloadConfig)
-                            )
+                LiteralArgumentBuilder.<FabricClientCommandSource>literal("chatimage").executes(ChatImageCommand::help)
+                        .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("send")
+                                .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("name", string())
+                                        .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("url", greedyString())
+                                                .executes(ChatImageCommand::sendChatImage)
+                                        )
+                                )
+                        )
+                        .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("url")
+                                .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("url", greedyString())
+                                        .executes(ChatImageCommand::sendChatImage)
+                                )
+                        )
+                        .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("help")
+                                .executes(ChatImageCommand::help)
+                        )
+                        .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
+                                .executes(ChatImageCommand::reloadConfig)
+                        )
         );
         ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CANNEL, (client, handler, buf, responseSender) -> {
             for (Map.Entry<String, byte[]> entry : buf.readMap(PacketByteBuf::readString, PacketByteBuf::readByteArray).entrySet()) {

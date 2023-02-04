@@ -1,6 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.mojang.logging.LogUtils;
+
+import com.google.common.collect.Lists;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageStyle;
@@ -9,8 +10,10 @@ import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-import org.apache.commons.compress.utils.Lists;
+import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
@@ -26,6 +29,9 @@ import java.util.regex.Pattern;
  */
 @Mixin(ChatHud.class)
 public class ChatHudMixin extends DrawableHelper {
+    @Shadow
+    @Final
+    private static Logger LOGGER;
     private static Pattern pattern = Pattern.compile("(\\[CICode,(.*?)\\])");
 
     @ModifyVariable(at = @At("HEAD"),
@@ -37,24 +43,22 @@ public class ChatHudMixin extends DrawableHelper {
 
 
     private static Text replaceCode(Text text) {
-        System.out.println(text);
         String checkedText;
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
         boolean isIncoming = false;
         if (text instanceof TranslatableText ttc) {
-            System.out.println("000");
             key = ttc.getKey();
             Object[] args = ttc.getArgs();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)||"commands.message.display.outgoing".equals(key)) {
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) ||
+                    "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                 player = (LiteralText) args[0];
                 isSelf = player.asString().equals(MinecraftClient.getInstance().player.getName().asString());
-                if ("commands.message.display.incoming".equals(key)) {
+                if ("commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                     isIncoming = true;
                 }
             }
-            System.out.println("11111");
             if (args[1] instanceof String content) {
                 checkedText = content;
             } else {
@@ -77,10 +81,9 @@ public class ChatHudMixin extends DrawableHelper {
                 nums.add(m.end());
                 chatImageCodeList.add(image);
             } catch (InvalidChatImageCodeException e) {
-                LogUtils.getLogger().error(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
         }
-        System.out.println("222");
         if (flag) {
             return text;
         }
@@ -94,7 +97,6 @@ public class ChatHudMixin extends DrawableHelper {
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(0)));
             j = 2;
         }
-        System.out.println("3333");
         for (int i = j; i < nums.size(); i += 2) {
             if (i == j && j == 2) {
                 res.append(Text.of(checkedText.substring(nums.get(1), nums.get(2))));
@@ -108,10 +110,8 @@ public class ChatHudMixin extends DrawableHelper {
                 res.append(Text.of(checkedText.substring(lastPosition)));
             }
         }
-        System.out.println("4444");
         if (player != null) {
             TranslatableText resp = new TranslatableText(key, player, res);
-            System.out.println("5555");
             if (isIncoming) {
                 return resp.setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(true));
             }

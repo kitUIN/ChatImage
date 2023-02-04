@@ -3,18 +3,19 @@ package github.kituin.chatimage.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import github.kituin.chatimage.tool.ChatImageCode;
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 public class ChatImageCommand {
-
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public static int sendChatImage(CommandContext<FabricClientCommandSource> context) {
         String name = null;
@@ -22,7 +23,7 @@ public class ChatImageCommand {
         try {
             name = StringArgumentType.getString(context, "name");
         } catch (java.lang.IllegalArgumentException e) {
-            LogUtils.getLogger().info("arg: `name` is omitted, use the default string");
+            LOGGER.info("arg: `name` is omitted, use the default string");
         }
         try {
             ChatImageCode code = new ChatImageCode(url, name);
