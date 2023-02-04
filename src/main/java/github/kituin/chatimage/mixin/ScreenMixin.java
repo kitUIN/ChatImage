@@ -91,7 +91,8 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         RenderSystem.disableTexture();
                         RenderSystem.enableBlend();
                         RenderSystem.defaultBlendFunc();
-                        BufferRenderer.drawWithShader(bufferBuilder.end());
+                        bufferBuilder.end();
+                        BufferRenderer.draw(bufferBuilder);
                         RenderSystem.disableBlend();
                         RenderSystem.enableTexture();
                         matrices.translate(0.0F, 0.0F, 400.0F);
@@ -116,26 +117,26 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                             case FILE_NOT_FOUND:
                                 if (view.isSendFromSelf()) {
                                     text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                    text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                    text.append(Text.of("\n↑")).append(new TranslatableText("filenotfound.chatimage.exception"));
                                 } else {
                                     if (view.isTimeout()) {
-                                        text = Text.translatable("error.server.chatimage.message");
+                                        text = new TranslatableText("error.server.chatimage.message");
                                     } else {
-                                        text = Text.translatable("loading.server.chatimage.message");
+                                        text = new TranslatableText("loading.server.chatimage.message");
                                     }
                                 }
                                 break;
                             case FILE_LOAD_ERROR:
-                                text = Text.translatable("error.chatimage.message");
+                                text = new TranslatableText("error.chatimage.message");
                                 break;
                             case SERVER_FILE_LOAD_ERROR:
-                                text = Text.translatable("error.server.chatimage.message");
+                                text = new TranslatableText("error.server.chatimage.message");
                                 break;
                             default:
                                 if (view.isTimeout()) {
-                                    text = Text.translatable("error.chatimage.message");
+                                    text = new TranslatableText("error.chatimage.message");
                                 } else {
-                                    text = Text.translatable("loading.chatimage.message");
+                                    text = new TranslatableText("loading.chatimage.message");
                                 }
                                 break;
                         }
@@ -143,7 +144,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
                 } else {
-                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(Text.translatable("nsfw.chatimage.message"), Math.max(this.width / 2, 200)), x, y);
+                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(new TranslatableText("nsfw.chatimage.message"), Math.max(this.width / 2, 200)), x, y);
                 }
 
             }

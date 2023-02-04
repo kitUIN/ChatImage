@@ -3,6 +3,7 @@ package github.kituin.chatimage.tool;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.Matcher;
@@ -21,7 +22,7 @@ public class ChatImageCode {
     private boolean nsfw = false;
     private boolean isSelf = false;
     private long timestamp;
-    private String name = "[" + Text.translatable("codename.chatimage.default").getString() + "]";
+    private String name = "[" + new TranslatableText("codename.chatimage.default").getString() + "]";
 
     ChatImageCode() {
         this.timestamp = System.currentTimeMillis();

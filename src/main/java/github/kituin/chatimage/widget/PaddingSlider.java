@@ -1,7 +1,8 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.screen.ScreenTexts;
+import net.minecraft.client.gui.screen.ScreenTexts;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
@@ -19,7 +20,7 @@ public class PaddingSlider extends SettingSliderWidget {
 
     @Override
     protected void updateMessage() {
-        this.setMessage(ScreenTexts.composeGenericOptionText(title, Text.literal(String.valueOf(this.position))));
+        this.setMessage(ScreenTexts.composeGenericOptionText(title, new LiteralText(String.valueOf(this.position))));
         switch (paddingType) {
             case TOP:
                 CONFIG.paddingTop = this.position;

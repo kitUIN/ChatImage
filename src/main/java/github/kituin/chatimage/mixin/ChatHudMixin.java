@@ -29,7 +29,7 @@ public class ChatHudMixin extends DrawableHelper {
     private static Pattern pattern = Pattern.compile("(\\[CICode,(.*?)\\])");
 
     @ModifyVariable(at = @At("HEAD"),
-            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
+            method = "addMessage(Lnet/minecraft/text/Text;IIZ)V",
             argsOnly = true)
     public Text addMessage(Text message) {
         return replaceMessage(message);
@@ -37,31 +37,32 @@ public class ChatHudMixin extends DrawableHelper {
 
 
     private static Text replaceCode(Text text) {
-        String checkedText = "";
+        System.out.println(text);
+        String checkedText;
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
         boolean isIncoming = false;
-        if (text.getContent() instanceof LiteralTextContent) {
-            checkedText = ((LiteralTextContent) text.getContent()).string();
-        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
+        if (text instanceof TranslatableText ttc) {
+            System.out.println("000");
             key = ttc.getKey();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)) {
-                Text[] args = (Text[]) ttc.getArgs();
-                player = (MutableText) args[0];
-                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
-                MutableText contents = (MutableText) args[1];
-                if (contents.getContent() instanceof LiteralTextContent) {
-                    checkedText = ((LiteralTextContent) contents.getContent()).string();
-                } else {
-                    checkedText = contents.getContent().toString();
-                }
+            Object[] args = ttc.getArgs();
+            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key)||"commands.message.display.outgoing".equals(key)) {
+                player = (LiteralText) args[0];
+                isSelf = player.asString().equals(MinecraftClient.getInstance().player.getName().asString());
                 if ("commands.message.display.incoming".equals(key)) {
                     isIncoming = true;
                 }
             }
+            System.out.println("11111");
+            if (args[1] instanceof String content) {
+                checkedText = content;
+            } else {
+                MutableText contents = (MutableText) args[1];
+                checkedText = contents.asString();
+            }
         } else {
-            checkedText = text.getContent().toString();
+            checkedText = text.asString();
         }
         Style style = text.getStyle();
         List<ChatImageCode> chatImageCodeList = Lists.newArrayList();
@@ -79,10 +80,9 @@ public class ChatHudMixin extends DrawableHelper {
                 LogUtils.getLogger().error(e.getMessage());
             }
         }
+        System.out.println("222");
         if (flag) {
-            MutableText t = MutableText.of(text.getContent());
-            t = t.setStyle(text.getStyle());
-            return t;
+            return text;
         }
         int lastPosition = 0;
         int j = 0;
@@ -94,6 +94,7 @@ public class ChatHudMixin extends DrawableHelper {
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(0)));
             j = 2;
         }
+        System.out.println("3333");
         for (int i = j; i < nums.size(); i += 2) {
             if (i == j && j == 2) {
                 res.append(Text.of(checkedText.substring(nums.get(1), nums.get(2))));
@@ -107,15 +108,16 @@ public class ChatHudMixin extends DrawableHelper {
                 res.append(Text.of(checkedText.substring(lastPosition)));
             }
         }
-        if (player == null) {
-            return res;
-        } else {
-            MutableText resp = MutableText.of(new TranslatableTextContent(key, player, res));
+        System.out.println("4444");
+        if (player != null) {
+            TranslatableText resp = new TranslatableText(key, player, res);
+            System.out.println("5555");
             if (isIncoming) {
                 return resp.setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(true));
-            } else {
-                return resp;
             }
+            return resp;
+        } else {
+            return res;
         }
     }
 

@@ -12,11 +12,12 @@ import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
@@ -61,8 +62,7 @@ public class ChatImageClient implements ClientModInitializer {
                 client.setScreen(new ConfigScreen(null));
             }
         });
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(
+        ClientCommandManager.DISPATCHER.register(
                     LiteralArgumentBuilder.<FabricClientCommandSource>literal("chatimage").executes(ChatImageCommand::help)
                             .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("send")
                                     .then(RequiredArgumentBuilder.<FabricClientCommandSource, String>argument("name", string())
@@ -82,9 +82,7 @@ public class ChatImageClient implements ClientModInitializer {
                             .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
                                     .executes(ChatImageCommand::reloadConfig)
                             )
-
-            );
-        });
+        );
         ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CANNEL, (client, handler, buf, responseSender) -> {
             for (Map.Entry<String, byte[]> entry : buf.readMap(PacketByteBuf::readString, PacketByteBuf::readByteArray).entrySet()) {
                 String[] order = entry.getKey().split("->");

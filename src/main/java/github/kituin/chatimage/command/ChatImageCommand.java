@@ -7,11 +7,8 @@ import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import github.kituin.chatimage.tool.ChatImageCode;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.text.ClickEvent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
+import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
+import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
@@ -29,9 +26,9 @@ public class ChatImageCommand {
         }
         try {
             ChatImageCode code = new ChatImageCode(url, name);
-            context.getSource().getPlayer().sendChatMessage(code.toString(),null);
+            context.getSource().getPlayer().sendChatMessage(code.toString());
         } catch (InvalidChatImageUrlException e) {
-            MutableText text = Text.literal(e.getMode().toString() + ": " + e.getMessage());
+            MutableText text = new LiteralText(e.getMode().toString() + ": " + e.getMessage());
             context.getSource().sendFeedback(text.setStyle(Style.EMPTY.withColor(Formatting.RED)));
         }
 
@@ -51,7 +48,7 @@ public class ChatImageCommand {
 
     public static int reloadConfig(CommandContext<FabricClientCommandSource> context) {
         CONFIG = ChatImageConfig.loadConfig();
-        context.getSource().sendFeedback(Text.translatable("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
+        context.getSource().sendFeedback(new TranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
         return Command.SINGLE_SUCCESS;
     }
 
@@ -64,7 +61,7 @@ public class ChatImageCommand {
             }
         }
         MutableText text = (MutableText) Text.of(sb.toString());
-        MutableText info = Text.translatable(usage);
+        MutableText info = new TranslatableText(usage);
         return text.setStyle(Style.EMPTY.withColor(Formatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).append(info).append(Text.of("\n"));
     }
 
