@@ -15,12 +15,12 @@ import static github.kituin.chatimage.Chatimage.CONFIG;
 @OnlyIn(Dist.CLIENT)
 public class GifSlider extends SettingSliderWidget {
 
-
-    public GifSlider() {
-        super(100, 100, 150, 20, CONFIG.gifSpeed, 1, 20);
+    public GifSlider(int x, int y, int width, int height) {
+        super(x, y, width, height, CONFIG.gifSpeed, 1, 20);
         this.updateMessage();
-        this.setTooltip(Tooltip.create(Component.translatable("gif.chatimage.tooltip")));
+        this.tooltip();
     }
+
 
     @Override
     protected void updateMessage() {
@@ -29,4 +29,8 @@ public class GifSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
+    @Override
+    protected void tooltip() {
+        this.setTooltip(Tooltip.create(Component.translatable("gif.chatimage.tooltip")));
+    }
 }

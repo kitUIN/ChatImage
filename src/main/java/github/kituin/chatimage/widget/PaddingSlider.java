@@ -8,13 +8,14 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static github.kituin.chatimage.Chatimage.CONFIG;
+
 @OnlyIn(Dist.CLIENT)
 public class PaddingSlider extends SettingSliderWidget {
     protected final Component title;
     protected final PaddingType paddingType;
 
-    public PaddingSlider(Component title, int value, float min, float max, PaddingType paddingType) {
-        super(100, 100, 150, 20, value, min, max);
+    public PaddingSlider(int x, int y, int width, int height, Component title, int value, float max, PaddingType paddingType) {
+        super(x, y, width, height, value, 0F, max);
         this.title = title;
         this.paddingType = paddingType;
         this.updateMessage();
@@ -43,7 +44,7 @@ public class PaddingSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-    private void tooltip() {
+    public void tooltip() {
         Component text;
         switch (paddingType) {
             case TOP:

@@ -7,6 +7,7 @@ import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageFrame;
 import github.kituin.chatimage.tool.HttpUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
@@ -43,8 +44,6 @@ import static github.kituin.chatimage.tool.ChatImageUrl.CACHE_MAP;
 @Mixin(Screen.class)
 public abstract class ScreenMixin extends AbstractContainerEventHandler implements Renderable {
 
-    @Shadow
-    public abstract void renderTooltip(PoseStack p_96618_, List<? extends FormattedCharSequence> p_96619_, int p_96620_, int p_96621_);
 
     @Shadow
     public int width;
@@ -53,6 +52,12 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
     @Nullable
     protected Minecraft minecraft;
 
+
+    @Shadow
+    protected Font font;
+
+    @Shadow
+    public abstract void renderTooltip(PoseStack p_96618_, List<? extends FormattedCharSequence> p_96619_, int p_96620_, int p_96621_);
 
     @Inject(at = @At("RETURN"),
             method = "renderComponentHoverEffect")

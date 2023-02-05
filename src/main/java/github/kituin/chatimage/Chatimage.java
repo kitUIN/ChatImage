@@ -15,7 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ClientCommandSourceStack;
+import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +23,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -88,7 +89,6 @@ public class Chatimage {
     }
 
 
-
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
 
@@ -99,8 +99,6 @@ public class Chatimage {
 
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
-
-
         }
 
         public static void onKeyInput(InputEvent.Key event) {
@@ -108,6 +106,7 @@ public class Chatimage {
                 Minecraft.getInstance().setScreen(new ConfigScreen());
             }
         }
+
         public static void onClientStaring(RegisterCommandsEvent event) {
             CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
             LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
@@ -118,19 +117,19 @@ public class Chatimage {
                                                     .executes(SendChatImage.instance)
                                             )
                                     )
-
-                                    .then(Commands.literal("url")
-                                            .then(Commands.argument("url", greedyString())
-                                                    .executes(SendChatImage.instance)
-                                            )
-                                    )
-                                    .then(Commands.literal("help")
-                                            .executes(Help.instance)
-                                    )
-                                    .then(Commands.literal("reload")
-                                            .executes(ReloadConfig.instance)
+                            )
+                            .then(Commands.literal("url")
+                                    .then(Commands.argument("url", greedyString())
+                                            .executes(SendChatImage.instance)
                                     )
                             )
+                            .then(Commands.literal("help")
+                                    .executes(Help.instance)
+                            )
+                            .then(Commands.literal("reload")
+                                    .executes(ReloadConfig.instance)
+                            )
+
             );
         }
     }

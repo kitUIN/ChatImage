@@ -12,16 +12,19 @@ import static github.kituin.chatimage.Chatimage.CONFIG;
 public class TimeOutSlider extends SettingSliderWidget {
 
 
-    public TimeOutSlider() {
-        super(100, 100, 150, 20, CONFIG.timeout, 3, 60);
+    public TimeOutSlider(int x, int y, int width, int height){
+        super(x,y,width,height, CONFIG.timeout, 3, 60);
         this.updateMessage();
-        this.setTooltip(Tooltip.create(Component.translatable("timeout.chatimage.tooltip")));
+        this.tooltip();
     }
-
     @Override
     protected void updateMessage() {
         this.setMessage(CommonComponents.optionNameValue(Component.translatable("timeout.chatimage.gui"), Component.literal(String.valueOf(this.position))).append(" ").append(Component.translatable("seconds.chatimage.gui")));
         CONFIG.timeout = this.position;
         ChatImageConfig.saveConfig(CONFIG);
+    }
+    @Override
+    protected void tooltip() {
+        this.setTooltip(Tooltip.create(Component.translatable("timeout.chatimage.tooltip")));
     }
 }

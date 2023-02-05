@@ -4,16 +4,13 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import github.kituin.chatimage.widget.LimitSlider;
 import github.kituin.chatimage.widget.PaddingSlider;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.FrameWidget;
-import net.minecraft.client.gui.components.GridWidget;
-
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.widget.LimitSlider.LimitType.WIDTH;
 
 @OnlyIn(Dist.CLIENT)
 public class LimitPaddingScreen extends Screen {
@@ -26,28 +23,23 @@ public class LimitPaddingScreen extends Screen {
 
     protected void init() {
         super.init();
-        GridWidget gridWidget = new GridWidget();
-        GridWidget gridwidget = new GridWidget();
-        gridwidget.defaultCellSetting().paddingHorizontal(5).paddingBottom(4).alignHorizontallyCenter();
-        GridWidget.RowHelper adder = gridwidget.createRowHelper(2);
-        adder.addChild(new PaddingSlider(Component.translatable("left.padding.chatimage.gui"),
-                CONFIG.paddingLeft, 0F, this.width / 2, PaddingSlider.PaddingType.LEFT));
-        adder.addChild(new PaddingSlider(Component.translatable("right.padding.chatimage.gui"),
-                CONFIG.paddingRight, 0F, this.width / 2, PaddingSlider.PaddingType.RIGHT));
-        adder.addChild(new PaddingSlider(Component.translatable("top.padding.chatimage.gui"),
-                CONFIG.paddingTop, 0F, this.height / 2, PaddingSlider.PaddingType.TOP));
-        adder.addChild(new PaddingSlider(Component.translatable("bottom.padding.chatimage.gui"),
-                CONFIG.paddingBottom, 0F, this.height / 2, PaddingSlider.PaddingType.BOTTOM));
-        adder.addChild(new LimitSlider(Component.translatable("width.limit.chatimage.gui"),
-                CONFIG.limitWidth, 0F, this.width, LimitSlider.LimitType.WIDTH));
-        adder.addChild(new LimitSlider(Component.translatable("height.limit.chatimage.gui"),
-                CONFIG.limitHeight, 0F, this.height, LimitSlider.LimitType.HEIGHT));
-        adder.addChild(Button.builder(Component.translatable("gui.back"), (button) -> {
+
+        addRenderableWidget(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, Component.translatable("left.padding.chatimage.gui"),
+                CONFIG.paddingLeft, this.width / 2, PaddingSlider.PaddingType.LEFT));
+        addRenderableWidget(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, Component.translatable("right.padding.chatimage.gui"),
+                CONFIG.paddingRight, this.width / 2, PaddingSlider.PaddingType.RIGHT));
+        addRenderableWidget(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, Component.translatable("top.padding.chatimage.gui"),
+                CONFIG.paddingTop, this.height / 2, PaddingSlider.PaddingType.TOP));
+        addRenderableWidget(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, Component.translatable("bottom.padding.chatimage.gui"),
+                CONFIG.paddingBottom, this.height / 2, PaddingSlider.PaddingType.BOTTOM));
+        addRenderableWidget(new LimitSlider(this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,Component.translatable("width.limit.chatimage.gui"),
+                CONFIG.limitWidth,  this.width, LimitSlider.LimitType.WIDTH));
+        addRenderableWidget(new LimitSlider(this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,Component.translatable("height.limit.chatimage.gui"),
+                CONFIG.limitHeight,   this.height, LimitSlider.LimitType.HEIGHT));
+        addRenderableWidget(Button.builder(Component.translatable("gui.back"), (button) -> {
             this.minecraft.setScreen(this.parent);
-        }).build(), 2);
-        gridwidget.pack();
-        FrameWidget.alignInRectangle(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
-        this.addRenderableWidget(gridWidget);
+        }).bounds(this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20).build());
+
     }
 
     public void render(PoseStack p_96249_, int p_96250_, int p_96251_, float p_96252_) {

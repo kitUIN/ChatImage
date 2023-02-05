@@ -7,15 +7,15 @@ import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-
 import static github.kituin.chatimage.Chatimage.CONFIG;
+
 @OnlyIn(Dist.CLIENT)
 public class LimitSlider extends SettingSliderWidget {
     protected final Component title;
     protected final LimitType limitType;
 
-    public LimitSlider(Component title, int value, float min, float max, LimitType limitType) {
-        super(100, 100, 150, 20, value, min, max);
+    public LimitSlider(int x, int y, int width, int height, Component title, int value, float max, LimitType limitType) {
+        super(x, y, width, height, value, 0F, max);
         this.title = title;
         this.limitType = limitType;
         this.updateMessage();
@@ -38,7 +38,8 @@ public class LimitSlider extends SettingSliderWidget {
         }
         ChatImageConfig.saveConfig(CONFIG);
     }
-    private void tooltip() {
+
+    public void tooltip() {
         Component text;
         switch (limitType) {
             case WIDTH:
@@ -52,6 +53,7 @@ public class LimitSlider extends SettingSliderWidget {
         }
         this.setTooltip(Tooltip.create(text));
     }
+
     public enum LimitType {
         WIDTH, HEIGHT
 
