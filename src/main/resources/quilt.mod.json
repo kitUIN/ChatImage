@@ -1,0 +1,42 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "github.kiutin",
+		"id": "chatimage",
+		"version": "${version}",
+		"metadata": {
+			"name": "ChatImage",
+			"description": "Show Image In Chat",
+			"contributors": {
+				"kitUIN": "Owner"
+			},
+			"contact": {
+				"homepage": "https://github.com/kitUIN/ChatImage",
+				"sources": "https://github.com/kitUIN/ChatImage",
+				"issues": "https://github.com/kitUIN/ChatImage/issues",
+				"email": "kulujun@gmail.com"
+			},
+			"icon": "icon.png"
+		},
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"entrypoints": {
+			"init": "github.kituin.chatimage.ChatImage",
+			"modmenu": "github.kituin.chatimage.integration.ModmenuIntegration"
+		},
+		"depends": [
+			{
+				"id": "quilt_loader",
+				"versions": ">=0.17.6-"
+			},
+			{
+				"id": "quilted_fabric_api",
+				"versions": ">=5.0.0-"
+			},
+			{
+				"id": "minecraft",
+				"versions": ">=1.19.3"
+			}
+		]
+	},
+	"mixin": "chatimage.mixins.json"
+}
