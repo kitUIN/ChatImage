@@ -32,7 +32,7 @@ public class ChatHudMixin extends DrawableHelper {
     @Shadow
     @Final
     private static Logger LOGGER;
-    private static Pattern pattern = Pattern.compile("(\\[CICode,(.*?)\\])");
+    private static Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
     @ModifyVariable(at = @At("HEAD"),
             method = "addMessage(Lnet/minecraft/text/Text;IIZ)V",

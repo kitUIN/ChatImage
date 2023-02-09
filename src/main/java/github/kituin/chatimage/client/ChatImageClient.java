@@ -5,6 +5,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
+import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageFrame;
 import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
@@ -15,7 +16,11 @@ import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.texture.NativeImage;
+import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import org.apache.logging.log4j.LogManager;
@@ -30,8 +35,9 @@ import java.util.Map;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
-import static github.kituin.chatimage.ChatImage.DOWNLOAD_FILE_CANNEL;
-import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
+import static github.kituin.chatimage.ChatImage.*;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+
 
 /**
  * @author kitUIN
@@ -47,6 +53,22 @@ public class ChatImageClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        ChatImageFrame.textureHelper = image -> {
+            NativeImage nativeImage = NativeImage.read(image);
+            return new ChatImageFrame.TextureReader<>(
+                    MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(MOD_ID + "/chatimage",
+                            new NativeImageBackedTexture(nativeImage)),
+                    nativeImage.getWidth(),
+                    nativeImage.getHeight()
+            );
+        };
+        ChatImageUrl.networkHelper = (url, file, isServer) -> {
+            if (isServer) {
+                sendFilePackets(MinecraftClient.getInstance().player, url, file, FILE_CANNEL);
+            } else {
+                tryGetFromServer(url);
+            }
+        };
         System.setProperty("java.awt.headless", "false");
         configKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "config.chatimage.key",
@@ -114,5 +136,20 @@ public class ChatImageClient implements ClientModInitializer {
 
         });
 
+    }
+    /**
+     * 尝试从服务器获取图片
+     *
+     * @param url 图片url
+     */
+    public static void tryGetFromServer(String url) {
+        if (MinecraftClient.getInstance().player != null) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeString(url);
+            sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
+            LogManager.getLogger().info("[try get from server]" + url);
+        } else {
+            CACHE_MAP.put(url, new ChatImageFrame<>(ChatImageFrame.FrameError.FILE_NOT_FOUND));
+        }
     }
 }
