@@ -47,7 +47,8 @@ public class LimitSlider extends SettingSliderWidget {
             default:
                 return;
         }
-        this.setTooltip(Tooltip.of(text));
+        this.tip = Tooltip.of(text);
+        this.setTooltip(this.tip);
     }
     public enum LimitType {
         WIDTH, HEIGHT

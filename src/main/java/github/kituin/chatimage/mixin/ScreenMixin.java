@@ -14,6 +14,7 @@ import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
+import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
 import org.joml.Vector2ic;
@@ -27,8 +28,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
 
 /**
@@ -83,7 +84,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         matrices.translate(0.0F, 0.0F, 400.0F);
                         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
                         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        RenderSystem.setShaderTexture(0, frame.getId());
+                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
 
                         drawTexture(matrices, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         matrices.pop();

@@ -16,7 +16,8 @@ public class GifSlider extends SettingSliderWidget {
     public GifSlider() {
         super(100, 100, 150, 20, CONFIG.gifSpeed, 1, 20);
         this.updateMessage();
-        this.setTooltip(Tooltip.of(Text.translatable("gif.chatimage.tooltip")));
+        this.tip = Tooltip.of(Text.translatable("gif.chatimage.tooltip"));
+        this.setTooltip(this.tip);
     }
 
     @Override

@@ -37,9 +37,9 @@ public class LimitPaddingScreen extends Screen {
         adder.add(new PaddingSlider(Text.translatable("bottom.padding.chatimage.gui"),
                 CONFIG.paddingBottom, 0F, this.height / 2, PaddingSlider.PaddingType.BOTTOM));
         adder.add(new LimitSlider(Text.translatable("width.limit.chatimage.gui"),
-                CONFIG.limitWidth, 0F, this.width, LimitSlider.LimitType.WIDTH));
+                CONFIG.limitWidth, 1F, this.width, LimitSlider.LimitType.WIDTH));
         adder.add(new LimitSlider(Text.translatable("height.limit.chatimage.gui"),
-                CONFIG.limitHeight, 0F, this.height, LimitSlider.LimitType.HEIGHT));
+                CONFIG.limitHeight, 1F, this.height, LimitSlider.LimitType.HEIGHT));
         adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
             this.client.setScreen(this.parent);
         }).build(), 2);

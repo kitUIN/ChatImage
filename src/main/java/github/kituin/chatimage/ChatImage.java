@@ -95,13 +95,6 @@ public class ChatImage implements ModInitializer {
                     }
                     return;
                 }
-            } else {
-                File file = new File(url);
-                if (file.exists()) {
-                    sendFilePackets(player, url, file, GET_FILE_CANNEL);
-                    LOGGER.info("[send to client(from file)]" + url);
-                    return;
-                }
             }
             sendFilePacketAsync(player, DOWNLOAD_FILE_CANNEL, getFilePacket("0->0->" + url, new byte[1]));
             List<String> names;

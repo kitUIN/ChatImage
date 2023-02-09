@@ -13,7 +13,8 @@ public class TimeOutSlider extends SettingSliderWidget {
     public TimeOutSlider() {
         super(100, 100, 150, 20, CONFIG.timeout, 3, 60);
         this.updateMessage();
-        this.setTooltip(Tooltip.of(Text.translatable("timeout.chatimage.tooltip")));
+        this.tip = Tooltip.of(Text.translatable("timeout.chatimage.tooltip"));
+        this.setTooltip(this.tip);
     }
 
     @Override
