@@ -36,7 +36,7 @@
 
 ## Quick Start
 
-Enter `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]` in the chat field
+Enter `[[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]` in the chat field
 
 than it will transfer to image
 
@@ -48,7 +48,9 @@ support display GIF and local image
 
 ## Specification
 
-It use `ChatImageCode`
+It use `ChatImageCode` (`[[CICode,<arg>=<value>]]`)
+
+ps: `CICode` used in version `1.0.2` and below has only 1 pair of [], `1.1.0` and above use 2 pairs of []
 
 | Arg  | Require | Type    | Remark                                                |
 |------|---------|---------|-------------------------------------------------------|
@@ -62,14 +64,14 @@ if it is set to `true`, you need to click to view it (or open the nsfw mode in t
 
 ### Example: 
 
-- Web Image `[CICode,url=<Web Url>,name=Image]`
-    - example: `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]`
+- Web Image `[[CICode,url=<Web Url>,name=Image]]`
+    - example: `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]`
 
-- Local Image `[CICode,url=file:///<absolute file path>,name=Image]`
-    - example: `[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]`
+- Local Image `[[CICode,url=file:///<absolute file path>,name=Image]]`
+    - example: `[[CICode,url=file:///C:\blog\kituin\fun\img\bg.png,name=Image]]`
 
 
-## Use Command to send [CICode]
+## Use Command to send [[CICode]]
 
 `/chatimage send <display name> <url>`
 
