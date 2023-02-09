@@ -1,11 +1,7 @@
 package github.kituin.chatimage.tool;
 
 import com.madgag.gif.fmsware.GifDecoder;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-
-import net.minecraft.network.PacketByteBuf;
 import net.sf.image4j.codec.ico.ICODecoder;
 
 import javax.imageio.ImageIO;
@@ -17,15 +13,13 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static github.kituin.chatimage.ChatImage.GET_FILE_CANNEL;
-import static github.kituin.chatimage.ChatImage.sendFilePacketAsync;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 
 public class ChatImageUrl {
-    private String originalUrl;
+    private final String originalUrl;
     private String httpUrl;
-    private UrlMethod urlMethod;
+    private final UrlMethod urlMethod;
     private String fileUrl;
     public static NetworkHelper networkHelper;
 
@@ -74,8 +68,6 @@ public class ChatImageUrl {
     public interface NetworkHelper {
         void send(String url, File file, boolean isServer);
     }
-
-
 
 
     /**

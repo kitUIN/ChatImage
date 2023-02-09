@@ -38,7 +38,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
     public void applyValue() {
         this.position = (int) MathHelper.lerp(MathHelper.clamp(this.value, 0.0, 1.0), this.min, this.max);
     }
-
+    @Override
     protected void renderBackground(MatrixStack matrices, MinecraftClient client, int mouseX, int mouseY) {
         super.renderBackground(matrices, client, mouseX, mouseY);
         if (this.isHovered() && !this.isClick) {
@@ -53,7 +53,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
         default void supply(Consumer<Text> consumer) {
         }
     }
-
+    @Override
     public void onClick(double mouseX, double mouseY) {
         super.onClick(mouseX, mouseY);
         this.isClick = true;
