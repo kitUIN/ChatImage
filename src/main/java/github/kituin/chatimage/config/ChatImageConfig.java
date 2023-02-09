@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+
 /**
  * @author kitUIN
  */
@@ -17,12 +18,12 @@ public class ChatImageConfig {
 
     public String cachePath = "ChatImageCache";
 
-    public int limitWidth = 0;
-    public int limitHeight = 0;
-    public int paddingLeft = 3;
-    public int paddingRight = 3;
-    public int paddingTop = 3;
-    public int paddingBottom = 3;
+    public int limitWidth = 125;
+    public int limitHeight = 125;
+    public int paddingLeft = 1;
+    public int paddingRight = 1;
+    public int paddingTop = 1;
+    public int paddingBottom = 1;
     public int gifSpeed = 3;
     public boolean nsfw = false;
     public int timeout = 5;
