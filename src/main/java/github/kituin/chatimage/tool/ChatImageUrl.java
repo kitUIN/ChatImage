@@ -2,11 +2,7 @@ package github.kituin.chatimage.tool;
 
 import com.madgag.gif.fmsware.GifDecoder;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.network.PacketByteBuf;
 import net.sf.image4j.codec.ico.ICODecoder;
-import org.apache.logging.log4j.LogManager;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -17,24 +13,18 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static github.kituin.chatimage.ChatImage.*;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 
 public class ChatImageUrl {
-    private String originalUrl;
+    private final String originalUrl;
     private String httpUrl;
-
-    private UrlMethod urlMethod;
+    private final UrlMethod urlMethod;
     private String fileUrl;
-
+    public static NetworkHelper networkHelper;
 
     public ChatImageUrl(String url) throws InvalidChatImageUrlException {
         this.originalUrl = url;
-        init();
-    }
-
-    private void init() throws InvalidChatImageUrlException {
         File folder = new File(CONFIG.cachePath);
         if (!folder.exists()) {
             folder.mkdirs();
@@ -60,14 +50,12 @@ public class ChatImageUrl {
                 if (file.exists()) {
                     try {
                         loadLocalFile(this.fileUrl);
-                        if (MinecraftClient.getInstance().player != null) {
-                            sendFilePackets(MinecraftClient.getInstance().player, this.fileUrl, file, FILE_CANNEL);
-                        }
+                        networkHelper.send(this.fileUrl, file, true);
                     } catch (IOException e) {
-                        CACHE_MAP.put(this.fileUrl, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+                        CACHE_MAP.put(this.fileUrl, new ChatImageFrame<>(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
                     }
                 } else {
-                    tryGetFromServer(this.fileUrl);
+                    networkHelper.send(this.fileUrl, file, false);
                 }
             }
         } else {
@@ -76,21 +64,13 @@ public class ChatImageUrl {
         }
     }
 
-    /**
-     * 尝试从服务器获取图片
-     *
-     * @param url 图片url
-     */
-    public static void tryGetFromServer(String url) {
-        if (MinecraftClient.getInstance().player != null) {
-            PacketByteBuf buf = PacketByteBufs.create();
-            buf.writeString(url);
-            sendFilePacketAsync(MinecraftClient.getInstance().player, GET_FILE_CANNEL, buf);
-            LogManager.getLogger().info("[try get from server]" + url);
-        } else {
-            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
-        }
+    @FunctionalInterface
+    public interface NetworkHelper {
+        void send(String url, File file, boolean isServer);
     }
+
+
+
 
     /**
      * 从InputStream直接载入图片
@@ -103,8 +83,7 @@ public class ChatImageUrl {
         if (url.endsWith(".gif")) {
             loadGif(input, url);
         } else {
-            ChatImageFrame frame = new ChatImageFrame(input);
-            CACHE_MAP.put(url, frame);
+            CACHE_MAP.put(url, new ChatImageFrame<>(input));
         }
     }
 
@@ -125,8 +104,7 @@ public class ChatImageUrl {
             } else {
                 input = ImageIO.read(new File(url));
             }
-            ChatImageFrame frame = new ChatImageFrame(input);
-            CACHE_MAP.put(url, frame);
+            CACHE_MAP.put(url, new ChatImageFrame<>(input));
         }
     }
 
@@ -165,9 +143,9 @@ public class ChatImageUrl {
                 if (status != GifDecoder.STATUS_OK) {
                     return null;
                 }
-                ChatImageFrame frame = new ChatImageFrame(gd.getFrame(0));
+                ChatImageFrame frame = new ChatImageFrame<>(gd.getFrame(0));
                 for (int i = 1; i < gd.getFrameCount(); i++) {
-                    frame.append(new ChatImageFrame(gd.getFrame(i)));
+                    frame.append(new ChatImageFrame<>(gd.getFrame(i)));
                 }
                 CACHE_MAP.put(url, frame);
 

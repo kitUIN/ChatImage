@@ -11,6 +11,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,8 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.HttpUtils.CACHE_MAP;
 import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
 
 /**
@@ -74,8 +75,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         matrices.push();
                         Tessellator tessellator = Tessellator.getInstance();
                         BufferBuilder bufferBuilder = tessellator.getBuffer();
-                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-                        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
+                        bufferBuilder.begin(7, VertexFormats.POSITION_COLOR);
                         Matrix4f matrix4f = matrices.peek().getModel();
                         fillGradient(matrix4f, bufferBuilder, l - 3, m - 4, l + i + 3, m - 3, 400, -267386864, -267386864);
                         fillGradient(matrix4f, bufferBuilder, l - 3, m + j + 3, l + i + 3, m + j + 4, 400, -267386864, -267386864);
@@ -91,15 +91,17 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         RenderSystem.disableTexture();
                         RenderSystem.enableBlend();
                         RenderSystem.defaultBlendFunc();
+
                         bufferBuilder.end();
                         BufferRenderer.draw(bufferBuilder);
+
                         RenderSystem.disableBlend();
                         RenderSystem.enableTexture();
                         matrices.translate(0.0F, 0.0F, 400.0F);
-                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
-                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        RenderSystem.setShaderTexture(0, frame.getId());
 
+
+                        RenderSystem.blendColor(1.0F, 1.0F, 1.0F, 1.0F);
+                        this.client.getTextureManager().bindTexture((Identifier) frame.getId());
                         drawTexture(matrices, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         matrices.pop();
                         if (frame.getSiblings().size() != 0) {
@@ -160,7 +162,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
             NSFW_MAP.put(nsfwUrl, 1);
         }
         this.nsfwUrl = null;
-        this.client.setScreen((Screen) (Object) this);
+        this.client.openScreen((Screen) (Object) this);
     }
 
     @Inject(at = @At("RETURN"),
@@ -171,7 +173,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
             ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
             if (view != null && view.getNsfw() && !NSFW_MAP.containsKey(view.getOriginalUrl()) && !CONFIG.nsfw) {
                 this.nsfwUrl = view.getOriginalUrl();
-                this.client.setScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                this.client.openScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
             }
         }
     }

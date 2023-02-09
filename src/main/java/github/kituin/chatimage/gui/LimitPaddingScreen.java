@@ -22,34 +22,34 @@ public class LimitPaddingScreen extends ConfigRawScreen {
 
     protected void init() {
         super.init();
-        this.addDrawableChild(new PaddingSlider(
+        this.addButton(new PaddingSlider(
                 this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
                 new TranslatableText("left.padding.chatimage.gui"), CONFIG.paddingLeft,
                 this.width / 2, LEFT, getSliderTooltip(getPaddingTooltipText(LEFT))));
-        this.addDrawableChild(new PaddingSlider(
+        this.addButton(new PaddingSlider(
                 this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20,
                 new TranslatableText("right.padding.chatimage.gui"), CONFIG.paddingRight,
                 this.width / 2, RIGHT, getSliderTooltip(getPaddingTooltipText(RIGHT))));
-        this.addDrawableChild(new PaddingSlider(
+        this.addButton(new PaddingSlider(
                 this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20,
                 new TranslatableText("top.padding.chatimage.gui"), CONFIG.paddingTop,
                 this.height / 2, TOP, getSliderTooltip(getPaddingTooltipText(TOP))));
-        this.addDrawableChild(new PaddingSlider(
+        this.addButton(new PaddingSlider(
                 this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20,
                 new TranslatableText("bottom.padding.chatimage.gui"), CONFIG.paddingBottom,
                 this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
-        this.addDrawableChild(new LimitSlider(
+        this.addButton(new LimitSlider(
                 this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
-                new TranslatableText("top.padding.chatimage.gui"), CONFIG.limitWidth,
+                new TranslatableText("width.limit.chatimage.gui"), CONFIG.limitWidth,
                 this.width, WIDTH, getSliderTooltip(getLimitTooltipText(WIDTH))));
-        this.addDrawableChild(new LimitSlider(
+        this.addButton(new LimitSlider(
                 this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,
-                new TranslatableText("bottom.padding.chatimage.gui"), CONFIG.limitHeight,
+                new TranslatableText("height.limit.chatimage.gui"), CONFIG.limitHeight,
                 this.height, HEIGHT, getSliderTooltip(getLimitTooltipText(HEIGHT))));
-        this.addDrawableChild(new ButtonWidget(
+        this.addButton(new ButtonWidget(
                 this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20,
                 new TranslatableText("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+            this.client.openScreen(this.parent);
         }));
 
 

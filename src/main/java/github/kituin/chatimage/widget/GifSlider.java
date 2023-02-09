@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
@@ -19,7 +18,7 @@ public class GifSlider extends SettingSliderWidget {
 
     @Override
     protected void updateMessage() {
-        this.setMessage(ScreenTexts.composeGenericOptionText(new TranslatableText("gif.chatimage.gui"), new LiteralText(String.valueOf(this.position))));
+        this.setMessage(composeGenericOptionText(new TranslatableText("gif.chatimage.gui"), new LiteralText(String.valueOf(this.position))));
         CONFIG.gifSpeed = this.position;
         ChatImageConfig.saveConfig(CONFIG);
     }

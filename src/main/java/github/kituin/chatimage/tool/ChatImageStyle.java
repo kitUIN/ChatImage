@@ -4,10 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import net.minecraft.text.HoverEvent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
+import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.JsonHelper;
 
@@ -89,9 +86,15 @@ public class ChatImageStyle {
      * @return {@link MutableText}
      */
     public static MutableText messageFromCode(ChatImageCode code) {
-        MutableText text = (MutableText) Text.of(code.getName());
+        MutableText t = (MutableText) Text.of("[");
+        if ("codename.chatimage.default".equals(code.getName())) {
+            t.append(new TranslatableText(code.getName()));
+        } else {
+            t.append(Text.of(code.getName()));
+        }
+        t.append("]");
         Style style = ChatImageStyle.getStyleFromCode(code);
-        return text.fillStyle(style);
+        return t.fillStyle(style);
     }
 
     /**

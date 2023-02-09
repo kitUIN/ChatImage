@@ -20,14 +20,14 @@ public class FileDragMixin {
     @Final
     private MinecraftClient client;
 
-    @Inject(at = @At("RETURN"), method = "onFilesDropped")
-    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+    @Inject(at = @At("RETURN"), method = "method_29616")
+    private void method_29616(long window, List<Path> paths, CallbackInfo ci) {
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
-                   sb.append("[CICode,url=file:///").append(o).append("]");
+                   sb.append("[[CICode,url=file:///").append(o).append("]]");
             }
-            this.client.setScreen(new ChatScreen(sb.toString()));
+            this.client.openScreen(new ChatScreen(sb.toString()));
         }
     }
 }

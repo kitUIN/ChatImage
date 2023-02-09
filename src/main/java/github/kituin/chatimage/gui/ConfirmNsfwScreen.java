@@ -25,10 +25,10 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
     }
 
     protected void addButtons(int y) {
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 50 - 52, y, 100, 20, this.yesTranslated, (button) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 50 - 52, y, 100, 20, this.yesTranslated, (button) -> {
             this.callback.accept(true);
         }));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 50 + 52, y, 100, 20, this.noTranslated, (button) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 50 + 52, y, 100, 20, this.noTranslated, (button) -> {
             this.callback.accept(false);
         }));
     }

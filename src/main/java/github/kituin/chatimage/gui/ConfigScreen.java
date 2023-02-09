@@ -23,18 +23,18 @@ public class ConfigScreen extends ConfigRawScreen {
 
     protected void init() {
         super.init();
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
+        this.addButton(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
             CONFIG.nsfw = !CONFIG.nsfw;
             button.setMessage(getNsfw(CONFIG.nsfw));
             ChatImageConfig.saveConfig(CONFIG);
         }, getButtonTooltip(new TranslatableText("nsfw.chatimage.tooltip"))));
-        this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(new TranslatableText("gif.chatimage.tooltip"))));
-        this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(new TranslatableText("timeout.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, new TranslatableText("padding.chatimage.gui"), (button) -> {
-            this.client.setScreen(new LimitPaddingScreen(this));
+        this.addButton(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(new TranslatableText("gif.chatimage.tooltip"))));
+        this.addButton(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(new TranslatableText("timeout.chatimage.tooltip"))));
+        this.addButton(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, new TranslatableText("padding.chatimage.gui"), (button) -> {
+            this.client.openScreen(new LimitPaddingScreen(this));
         }, getButtonTooltip(new TranslatableText("padding.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 72 + -16, 150, 20, new TranslatableText("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+        this.addButton(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 72 + -16, 150, 20, new TranslatableText("gui.back"), (button) -> {
+            this.client.openScreen(this.parent);
         }));
     }
 

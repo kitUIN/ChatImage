@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -13,7 +12,7 @@ public class LimitSlider extends SettingSliderWidget {
     protected final LimitType limitType;
 
     public LimitSlider(int x, int y, int width, int height, Text title, int value, float max, LimitType limitType, TooltipSupplier tooltipSupplier) {
-        super(x, y, width, height, value, 0F, max, tooltipSupplier);
+        super(x, y, width, height, value, 1F, max, tooltipSupplier);
         this.title = title;
         this.limitType = limitType;
         this.updateMessage();
@@ -23,11 +22,11 @@ public class LimitSlider extends SettingSliderWidget {
     protected void updateMessage() {
         switch (limitType) {
             case WIDTH:
-                this.setMessage(ScreenTexts.composeGenericOptionText(title, CONFIG.limitWidth == 0 ? new TranslatableText("default.chatimage.gui") : new LiteralText(String.valueOf(this.position))));
+                this.setMessage(composeGenericOptionText(title, CONFIG.limitWidth == 0 ? new TranslatableText("default.chatimage.gui") : new LiteralText(String.valueOf(this.position))));
                 CONFIG.limitWidth = this.position;
                 break;
             case HEIGHT:
-                this.setMessage(ScreenTexts.composeGenericOptionText(title, CONFIG.limitHeight == 0 ? new TranslatableText("default.chatimage.gui") : new LiteralText(String.valueOf(this.position))));
+                this.setMessage(composeGenericOptionText(title, CONFIG.limitHeight == 0 ? new TranslatableText("default.chatimage.gui") : new LiteralText(String.valueOf(this.position))));
                 CONFIG.limitHeight = this.position;
                 break;
             default:

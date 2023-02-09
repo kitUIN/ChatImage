@@ -1,6 +1,7 @@
 package github.kituin.chatimage;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -23,6 +24,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 
 /**
@@ -58,7 +62,7 @@ public class ChatImage implements ModInitializer {
     @Override
     public void onInitialize() {
         ServerPlayNetworking.registerGlobalReceiver(FILE_CANNEL, (server, player, handler, buf, responseSender) -> {
-            for (Map.Entry<String, byte[]> entry : buf.readMap(PacketByteBuf::readString, PacketByteBuf::readByteArray).entrySet()) {
+            for (Map.Entry<String, byte[]> entry : readMap(buf, PacketByteBuf::readString, PacketByteBuf::readByteArray).entrySet()) {
                 String[] order = entry.getKey().split("->");
                 HashMap<Integer, byte[]> list = new HashMap<>();
                 String url = order[2];
@@ -95,13 +99,6 @@ public class ChatImage implements ModInitializer {
                     }
                     return;
                 }
-            } else {
-                File file = new File(url);
-                if (file.exists()) {
-                    sendFilePackets(player, url, file, GET_FILE_CANNEL);
-                    LOGGER.info("[send to client(from file)]" + url);
-                    return;
-                }
             }
             sendFilePacketAsync(player, DOWNLOAD_FILE_CANNEL, getFilePacket("0->0->" + url, new byte[1]));
             List<String> names;
@@ -120,7 +117,7 @@ public class ChatImage implements ModInitializer {
         PacketByteBuf buf = PacketByteBufs.create();
         HashMap<String, byte[]> fileMap = new HashMap<>();
         fileMap.put(url, byt);
-        buf.writeMap(fileMap, PacketByteBuf::writeString, PacketByteBuf::writeByteArray);
+        writeMap(buf, fileMap, PacketByteBuf::writeString, PacketByteBuf::writeByteArray);
         return buf;
     }
 
@@ -170,5 +167,30 @@ public class ChatImage implements ModInitializer {
             e.printStackTrace();
         }
 
+    }
+
+    public static <K, V, M extends Map<K, V>> M readMap(PacketByteBuf buf, IntFunction<M> mapFactory, Function<PacketByteBuf, K> keyParser, Function<PacketByteBuf, V> valueParser) {
+        int i = buf.readVarInt();
+        M map = mapFactory.apply(i);
+
+        for (int j = 0; j < i; ++j) {
+            K object = keyParser.apply(buf);
+            V object2 = valueParser.apply(buf);
+            map.put(object, object2);
+        }
+
+        return map;
+    }
+
+    public static <K, V> Map<K, V> readMap(PacketByteBuf buf, Function<PacketByteBuf, K> keyParser, Function<PacketByteBuf, V> valueParser) {
+        return readMap(buf, Maps::newHashMapWithExpectedSize, keyParser, valueParser);
+    }
+
+    public static <K, V> void writeMap(PacketByteBuf buf, Map<K, V> map, BiConsumer<PacketByteBuf, K> keySerializer, BiConsumer<PacketByteBuf, V> valueSerializer) {
+        buf.writeVarInt(map.size());
+        map.forEach((key, value) -> {
+            keySerializer.accept(buf, key);
+            valueSerializer.accept(buf, value);
+        });
     }
 }
