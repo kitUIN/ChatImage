@@ -20,7 +20,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 java {
-    archivesBaseName = 'chatimage'
+    archivesBaseName = '[Forge-1.19.3]ChatImage'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 configurations {

@@ -2,62 +2,51 @@ package github.kituin.chatimage.tool;
 
 import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-
-
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-import static github.kituin.chatimage.tool.ChatImageUrl.CACHE_MAP;
 import static github.kituin.chatimage.Chatimage.CONFIG;
+
 
 /**
  * @author kitUIN
  */
 public class ChatImageCode {
-    public static Pattern pattern = Pattern.compile("\\[CICode,(.+)\\]");
+    public static Pattern pattern = Pattern.compile("\\[\\[CICode,(.+)\\]\\]");
+    public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<>();
     private ChatImageUrl url;
     private boolean nsfw = false;
-    private boolean isSelf = false;
-    private long timestamp;
-    private MutableComponent name =  Component.translatable("codename.chatimage.default") ;
-
-    ChatImageCode() {
-        this.timestamp = System.currentTimeMillis();
-    }
+    private final boolean isSelf;
+    private final long timestamp;
+    private String name = "codename.chatimage.default";
 
     ChatImageCode(boolean isSelf) {
-
         this.isSelf = isSelf;
         this.timestamp = System.currentTimeMillis();
     }
 
     public ChatImageCode(String url) throws InvalidChatImageUrlException {
-        this.url = new ChatImageUrl(url);
-        this.timestamp = System.currentTimeMillis();
+        this(new ChatImageUrl(url), null, false);
     }
 
     public ChatImageCode(String url, @Nullable String name) throws InvalidChatImageUrlException {
-        this.url = new ChatImageUrl(url);
-        if (name != null) {
-            this.name = Component.literal(name) ;;
-        }
-        this.timestamp = System.currentTimeMillis();
+        this(new ChatImageUrl(url), name, false);
     }
 
     public ChatImageCode(ChatImageUrl url) {
-        this.url = url;
-        this.timestamp = System.currentTimeMillis();
+        this(url, null, false);
     }
 
-    public ChatImageCode(ChatImageUrl url, String name) {
+    public ChatImageCode(ChatImageUrl url, @Nullable String name, boolean isSelf) {
         this.url = url;
-        this.name = Component.literal(name);
+        if (name != null) {
+            this.name = name;
+        }
         this.timestamp = System.currentTimeMillis();
+        this.isSelf = isSelf;
     }
 
     /**
@@ -68,25 +57,13 @@ public class ChatImageCode {
      * @throws InvalidChatImageCodeException 加载失败
      */
     public static ChatImageCode of(String code) throws InvalidChatImageCodeException {
-        ChatImageCode chatImageCode = new ChatImageCode();
-        chatImageCode.match(code);
-        return chatImageCode;
+        return ChatImageCode.of(code, false);
     }
 
     public static ChatImageCode of(String code, boolean self) throws InvalidChatImageCodeException {
         ChatImageCode chatImageCode = new ChatImageCode(self);
         chatImageCode.match(code);
         return chatImageCode;
-    }
-
-    /**
-     * 加载只带{@link #url}的{@link ChatImageCode}
-     *
-     * @param url url {@link ChatImageUrl}
-     * @return {@link ChatImageCode}
-     */
-    public static ChatImageCode ofUrl(ChatImageUrl url) {
-        return new ChatImageCode(url);
     }
 
     /**
@@ -147,7 +124,7 @@ public class ChatImageCode {
                         this.nsfw = Boolean.parseBoolean(temps[1].trim());
                         break;
                     case "name":
-                        this.name = Component.literal(temps[1].trim());
+                        this.name = temps[1].trim();
                         break;
                     default:
                         break;
@@ -159,18 +136,6 @@ public class ChatImageCode {
     }
 
 
-    private String parse() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[CICode,url=").append(getOriginalUrl());
-        if (nsfw) {
-            sb.append(",nsfw=true");
-        }
-        if (name != null) {
-            sb.append(",name=").append(name.getString());
-        }
-        return sb.append("]").toString();
-    }
-
     public String getOriginalUrl() {
         return this.url.getOriginalUrl();
     }
@@ -179,20 +144,24 @@ public class ChatImageCode {
         return this.url;
     }
 
-    public ChatImageUrl.UrlMethod getUrlMethod() {
-        return this.url.getUrlMethod();
-    }
-
     public boolean getNsfw() {
         return this.nsfw;
     }
 
     @Override
     public String toString() {
-        return parse();
+        StringBuilder sb = new StringBuilder();
+        sb.append("[[CICode,url=").append(this.url.getOriginalUrl());
+        if (nsfw) {
+            sb.append(",nsfw=true");
+        }
+        if (name != null) {
+            sb.append(",name=").append(name);
+        }
+        return sb.append("]]").toString();
     }
 
-    public Component getName() {
+    public String getName() {
         return this.name;
     }
 
@@ -200,9 +169,6 @@ public class ChatImageCode {
         return isSelf;
     }
 
-    public long getTimestamp() {
-        return timestamp;
-    }
 
     public boolean isTimeout() {
         return System.currentTimeMillis() > this.timestamp + 1000L * CONFIG.timeout;

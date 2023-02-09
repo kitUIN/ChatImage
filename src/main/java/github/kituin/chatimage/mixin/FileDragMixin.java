@@ -25,7 +25,7 @@ public class FileDragMixin {
         if (this.minecraft.screen != null && this.minecraft.player != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
-                sb.append("[CICode,url=file:///").append(o).append("]");
+                sb.append("[[CICode,url=file:///").append(o).append("]]");
             }
             this.minecraft.setScreen(new ChatScreen(sb.toString()));
         }

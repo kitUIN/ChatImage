@@ -43,7 +43,7 @@ public class ClipboardMixin {
                     Object object = trans.getTransferData(DataFlavor.javaFileListFlavor);
                     if (object instanceof List<?> obj) {
                         for (Object o : obj) {
-                            sb.append("[CICode,url=file:///").append(((File) o).getPath()).append("]");
+                            sb.append("[[CICode,url=file:///").append(((File) o).getPath()).append("]]");
                         }
                         cir.setReturnValue(sb.toString());
                     }
@@ -56,7 +56,7 @@ public class ClipboardMixin {
                     String fileName = CONFIG.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + fileType;
                     File outputfile = new File(fileName);
                     ImageIO.write((BufferedImage) image, fileType, outputfile);
-                    cir.setReturnValue("[CICode,url=file:///" + outputfile.getAbsolutePath() + "]");
+                    cir.setReturnValue("[[CICode,url=file:///" + outputfile.getAbsolutePath() + "]]");
                 }
             } catch (IOException | UnsupportedFlavorException | IllegalStateException e) {
                 // e.printStackTrace();

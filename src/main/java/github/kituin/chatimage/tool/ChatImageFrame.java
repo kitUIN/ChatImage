@@ -1,10 +1,6 @@
 package github.kituin.chatimage.tool;
 
 import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.NativeImage;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.resources.ResourceLocation;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -16,38 +12,33 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-import static github.kituin.chatimage.Chatimage.MOD_ID;
-
-
-public class ChatImageFrame {
+public class ChatImageFrame<T> {
     private int width, height;
     private int originalHeight, originalWidth;
-    private ResourceLocation id;
-    private List<ChatImageFrame> siblings = Lists.newArrayList();
-    private final Minecraft minecraft = Minecraft.getInstance();
+    private T id;
+    private final List<ChatImageFrame<T>> siblings = Lists.newArrayList();
+    public static TextureHelper<?> textureHelper;
     private FrameError error = FrameError.OTHER_ERROR;
     private int index = 0;
     private int butter = 0;
 
     public ChatImageFrame(InputStream image) throws IOException {
-        NativeImage nativeImage = NativeImage.read(image);
-        this.id = this.minecraft.getTextureManager().register(MOD_ID + "/chatimage",
-                new DynamicTexture(nativeImage));
-        this.originalWidth = nativeImage.getWidth();
-        this.originalHeight = nativeImage.getHeight();
+        TextureReader<T> temp = (TextureReader<T>) textureHelper.loadTexture(image);
+        this.id = temp.getId();
+        this.originalWidth = temp.getWidth();
+        this.originalHeight = temp.getHeight();
     }
 
     public ChatImageFrame(BufferedImage image) throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ImageIO.write(image, "png", os);
-        NativeImage nativeImage = NativeImage.read(new ByteArrayInputStream(os.toByteArray()));
-        this.id = this.minecraft.getTextureManager().register(MOD_ID + "/chatimage",
-                new DynamicTexture(nativeImage));
-        this.originalWidth = nativeImage.getWidth();
-        this.originalHeight = nativeImage.getHeight();
+        TextureReader<T> temp = (TextureReader<T>) textureHelper.loadTexture(new ByteArrayInputStream(os.toByteArray()));
+        this.id = temp.getId();
+        this.originalWidth = temp.getWidth();
+        this.originalHeight = temp.getHeight();
     }
 
-    public ChatImageFrame append(ChatImageFrame frame) {
+    public ChatImageFrame<T> append(ChatImageFrame<T> frame) {
         this.siblings.add(frame);
         return this;
     }
@@ -85,12 +76,6 @@ public class ChatImageFrame {
     public void limitSize(int limitWidth, int limitHeight) {
         this.width = originalWidth;
         this.height = originalHeight;
-        if (limitWidth == 0) {
-            limitWidth = this.minecraft.getWindow().getScreenWidth() / 2;
-        }
-        if (limitHeight == 0) {
-            limitHeight = this.minecraft.getWindow().getScreenHeight() / 2;
-        }
         BigDecimal b = new BigDecimal((float) originalHeight / originalWidth);
         double hx = b.setScale(2, RoundingMode.HALF_UP).doubleValue();
         if (width > limitWidth) {
@@ -107,11 +92,11 @@ public class ChatImageFrame {
         return error;
     }
 
-    public ResourceLocation getId() {
+    public T getId() {
         if (index == 0) {
             return id;
         } else {
-            return this.siblings.get(index - 1).getId();
+            return (T) this.siblings.get(index - 1).getId();
         }
     }
 
@@ -119,7 +104,7 @@ public class ChatImageFrame {
         return height;
     }
 
-    public List<ChatImageFrame> getSiblings() {
+    public List<ChatImageFrame<T>> getSiblings() {
         return siblings;
     }
 
@@ -157,6 +142,36 @@ public class ChatImageFrame {
         FILE_LOAD_ERROR,
         OTHER_ERROR,
         SERVER_FILE_LOAD_ERROR,
+
+    }
+
+    public static class TextureReader<T> {
+        public T id;
+        public int width;
+        public int height;
+
+        public TextureReader(T id, int width, int height) {
+            this.id = id;
+            this.width = width;
+            this.height = height;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public T getId() {
+            return id;
+        }
+    }
+
+    @FunctionalInterface
+    public interface TextureHelper<T> {
+        TextureReader<T> loadTexture(InputStream image) throws IOException;
 
     }
 }

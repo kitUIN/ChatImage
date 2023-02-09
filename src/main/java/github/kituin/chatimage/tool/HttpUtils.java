@@ -3,13 +3,12 @@ package github.kituin.chatimage.tool;
 import com.mojang.logging.LogUtils;
 import okhttp3.*;
 
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import static github.kituin.chatimage.tool.ChatImageTool.bytesToHex;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
 
 
@@ -17,6 +16,7 @@ import static github.kituin.chatimage.tool.ChatImageUrl.loadGif;
  * @author kitUIN
  */
 public class HttpUtils {
+
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<String, Integer>();
     public static HashMap<String, Integer> NSFW_MAP = new HashMap<String, Integer>();
 
@@ -77,9 +77,9 @@ public class HttpUtils {
                         loadGif(new ByteArrayInputStream(is), url);
                     } else {
                         try {
-                            ChatImageUrl.CACHE_MAP.put(url, new ChatImageFrame(new ByteArrayInputStream(is)));
+                            CACHE_MAP.put(url, new ChatImageFrame(new ByteArrayInputStream(is)));
                         } catch (IOException e) {
-                            ChatImageUrl.CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
+                            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
                         }
                     }
 
@@ -91,6 +91,16 @@ public class HttpUtils {
 
     }
 
-
+    public static String bytesToHex(byte[] bytes) {
+        StringBuffer sb = new StringBuffer();
+        for (byte aByte : bytes) {
+            String hex = Integer.toHexString(aByte & 0xFF);
+            if (hex.length() < 2) {
+                sb.append(0);
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
 }
 

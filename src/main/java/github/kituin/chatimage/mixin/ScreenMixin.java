@@ -19,6 +19,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Matrix4f;
@@ -33,8 +34,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.ChatImageUrl.CACHE_MAP;
+
 
 /**
  * 注入修改悬浮显示图片
@@ -93,7 +95,7 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
                         p_96571_.translate(0.0F, 0.0F, 400.0F);
                         RenderSystem.setShader(GameRenderer::getPositionColorShader);
                         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        RenderSystem.setShaderTexture(0, frame.getId());
+                        RenderSystem.setShaderTexture(0, (ResourceLocation) frame.getId());
 
                         GuiComponent.blit(p_96571_, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         p_96571_.popPose();

@@ -1,8 +1,10 @@
 package github.kituin.chatimage;
 
+import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.command.Help;
 import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
@@ -11,11 +13,15 @@ import github.kituin.chatimage.gui.ConfigScreen;
 import github.kituin.chatimage.network.DownloadFileCannel;
 import github.kituin.chatimage.network.FileCannel;
 import github.kituin.chatimage.network.GetFileCannel;
+import github.kituin.chatimage.network.GetFileCannelPacket;
+import github.kituin.chatimage.tool.ChatImageFrame;
+import github.kituin.chatimage.tool.ChatImageUrl;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +41,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
+import static github.kituin.chatimage.network.FileCannelPacket.sendFilePackets;
+import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 
 
 @Mod(Chatimage.MOD_ID)
@@ -59,6 +67,7 @@ public class Chatimage {
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
 
     public Chatimage() {
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(Chatimage::init);
@@ -94,9 +103,25 @@ public class Chatimage {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ChatImageFrame.textureHelper = image -> {
+                NativeImage nativeImage = NativeImage.read(image);
+                return new ChatImageFrame.TextureReader<>(
+                        Minecraft.getInstance().getTextureManager().register(MOD_ID + "/chatimage",
+                                new DynamicTexture(nativeImage)),
+                        nativeImage.getWidth(),
+                        nativeImage.getHeight()
+                );
+            };
+            ChatImageUrl.networkHelper = (url, file, isServer) -> {
+                if (isServer) {
+                    sendFilePackets(url, file);
+                } else {
+                    tryGetFromServer(url);
+                }
+            };
             System.setProperty("java.awt.headless", "false");
             LOGGER.info("Client start");
-
+            ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
         }
@@ -133,5 +158,17 @@ public class Chatimage {
             );
         }
     }
-
+    /**
+     * 尝试从服务器获取图片
+     *
+     * @param url 图片url
+     */
+    public static void tryGetFromServer(String url) {
+        if (Minecraft.getInstance().player != null) {
+            GetFileCannel.sendToServer(new GetFileCannelPacket(url));
+            LogUtils.getLogger().info("[try get from server]" + url);
+        } else {
+            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
+        }
+    }
 }

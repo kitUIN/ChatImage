@@ -15,7 +15,7 @@ public class LimitSlider extends SettingSliderWidget {
     protected final LimitType limitType;
 
     public LimitSlider(int x, int y, int width, int height, Component title, int value, float max, LimitType limitType) {
-        super(x, y, width, height, value, 0F, max);
+        super(x, y, width, height, value, 1F, max);
         this.title = title;
         this.limitType = limitType;
         this.updateMessage();

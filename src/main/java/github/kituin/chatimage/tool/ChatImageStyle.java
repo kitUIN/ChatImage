@@ -89,9 +89,16 @@ public class ChatImageStyle {
      * @return {@link MutableComponent}
      */
     public static MutableComponent messageFromCode(ChatImageCode code) {
-        MutableComponent text = Component.literal("[").append(code.getName()).append("]");
+        MutableComponent t = Component.literal("[");
+        if ("codename.chatimage.default".equals(code.getName())) {
+            t.append(Component.translatable(code.getName()));
+        } else {
+            t.append(Component.literal(code.getName()));
+        }
+        t.append("]");
         Style style = ChatImageStyle.getStyleFromCode(code);
-        return text.withStyle(style);
+        return t.withStyle(style);
+
     }
 
     /**
