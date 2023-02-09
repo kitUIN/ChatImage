@@ -39,11 +39,11 @@ public class LimitPaddingScreen extends ConfigRawScreen {
                 this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
         this.addDrawableChild(new LimitSlider(
                 this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
-                Text.translatable("top.padding.chatimage.gui"), CONFIG.limitWidth,
+                Text.translatable("width.limit.chatimage.gui"), CONFIG.limitWidth,
                 this.width, WIDTH, getSliderTooltip(getLimitTooltipText(WIDTH))));
         this.addDrawableChild(new LimitSlider(
                 this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,
-                Text.translatable("bottom.padding.chatimage.gui"), CONFIG.limitHeight,
+                Text.translatable("height.limit.chatimage.gui"), CONFIG.limitHeight,
                 this.height, HEIGHT, getSliderTooltip(getLimitTooltipText(HEIGHT))));
         this.addDrawableChild(new ButtonWidget(
                 this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20,

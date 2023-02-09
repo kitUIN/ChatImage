@@ -17,6 +17,7 @@ import net.minecraft.util.JsonHelper;
  */
 public class ChatImageStyle {
     public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE = new HoverEvent.Action<>("show_chatimage", true, ChatImageStyle::fromJson, ChatImageStyle::toJson, ChatImageStyle::fromJson);
+
     /**
      * 文本 悬浮图片样式
      *
@@ -89,9 +90,15 @@ public class ChatImageStyle {
      * @return {@link MutableText}
      */
     public static MutableText messageFromCode(ChatImageCode code) {
-        MutableText text = (MutableText) Text.of(code.getName());
+        MutableText t = (MutableText) Text.of("[");
+        if ("codename.chatimage.default".equals(code.getName())) {
+            t.append(Text.translatable(code.getName()));
+        } else {
+            t.append(Text.of(code.getName()));
+        }
+        t.append("]");
         Style style = ChatImageStyle.getStyleFromCode(code);
-        return text.fillStyle(style);
+        return t.fillStyle(style);
     }
 
     /**

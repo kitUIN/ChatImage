@@ -25,7 +25,7 @@ public class FileDragMixin {
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
-                   sb.append("[CICode,url=file:///").append(o).append("]");
+                   sb.append("[[CICode,url=file:///").append(o).append("]]");
             }
             this.client.setScreen(new ChatScreen(sb.toString()));
         }

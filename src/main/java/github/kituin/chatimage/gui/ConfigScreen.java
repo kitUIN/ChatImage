@@ -37,10 +37,6 @@ public class ConfigScreen extends ConfigRawScreen {
         }));
     }
 
-//    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-//        super.render(matrices, mouseX, mouseY, delta);
-//    }
-
     private MutableText getNsfw(boolean enable) {
         return Text.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }

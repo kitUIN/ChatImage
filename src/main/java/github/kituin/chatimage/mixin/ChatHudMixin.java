@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  */
 @Mixin(ChatHud.class)
 public class ChatHudMixin extends DrawableHelper {
-    private static Pattern pattern = Pattern.compile("(\\[CICode,(.*?)\\])");
+    private static Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
     @ModifyVariable(at = @At("HEAD"),
             method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
