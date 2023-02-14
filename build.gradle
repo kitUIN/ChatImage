@@ -29,7 +29,7 @@ configurations {
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.3'
+    mappings channel: 'official', version: "${minecraft_version}"
 
     runs {
         client {
@@ -146,6 +146,7 @@ dependencies {
 }
 shadowJar {
     configurations = [project.configurations.shadow]
+    archiveClassifier.set('')
     dependencies {
         include(dependency('com.squareup.okhttp3:okhttp:3.14.7'))
         include(dependency('com.squareup.okio:okio:1.17.5'))
@@ -169,4 +170,10 @@ jar {
         ])
     }
 }
+reobf {
+    shadowJar {}
+}
+
 tasks.build.dependsOn shadowJar
+tasks.build.dependsOn reobfShadowJar
+jar.finalizedBy('reobfJar')
