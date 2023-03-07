@@ -63,14 +63,14 @@ java {
     // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
-
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
     }
-
 }
-
+remapJar{
+    destinationDir(new File("D:\\IdeaProjects\\out"))
+}
 // configure the maven publication
 publishing {
     publications {
@@ -78,10 +78,6 @@ publishing {
             from components.java
         }
     }
-
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
-
-
     }
 }

@@ -6,7 +6,6 @@ import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
-import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageFrame;
 import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
@@ -69,7 +68,6 @@ public class ChatImageClient implements ClientModInitializer {
                 tryGetFromServer(url);
             }
         };
-        System.setProperty("java.awt.headless", "false");
         configKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "config.chatimage.key",
                 InputUtil.Type.KEYSYM,

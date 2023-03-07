@@ -90,7 +90,6 @@ Send CICode with url (use default display name)
 
 ## Support input method
 
-- [X] Paste the picture directly in the chat field and automatically convert it to `CICode`
 - [X] Manual Input `CICode`
 - [x] Send `CICode` With Command
 - [x] Drag Image Into Chat Screen

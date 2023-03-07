@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
-
+@SuppressWarnings(value = {"unchecked"})
 public class ChatImageFrame<T> {
     private int width, height;
     private int originalHeight, originalWidth;
