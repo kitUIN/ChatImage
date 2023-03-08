@@ -74,7 +74,7 @@ body:
     attributes:
       multiple: true
       label: 运行设备
-      description: 选择你当前运行哔哩的设备类型
+      description: 选择你当前运行Mod的设备类型
       options:
         - Windows 11
         - Windows 10
