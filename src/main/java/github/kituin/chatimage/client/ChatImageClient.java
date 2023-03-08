@@ -69,7 +69,6 @@ public class ChatImageClient implements ClientModInitializer {
                 tryGetFromServer(url);
             }
         };
-        System.setProperty("java.awt.headless", "false");
         configKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "config.chatimage.key",
                 InputUtil.Type.KEYSYM,
