@@ -46,7 +46,16 @@ body:
     attributes:
       label: 截图
       description: 如果可以，提交截图更有助于我们分析问题
+  - type: textarea
+    id: log-info
+    validations:
+      required: true
+    attributes:
+      label: 日志记录
+      description: 请打开日志文件夹，选取问题发生当日的日志记录(如latest.log)作为 Issue 的附件上传
   - type: checkboxes
+    validations:
+      required: true
     id: environment-app-target-version
     attributes:
       label: Mod版本
@@ -75,11 +84,7 @@ body:
         - MacOS M1
         - Linux
         - 其它 (需注明)
-  - type: textarea
-    id: log-info
-    attributes:
-      label: 日志记录
-      description: 请打开日志文件夹，选取问题发生当日的日志记录(如latest.log)作为 Issue 的附件上传
+
   - type: textarea
     id: additional-context
     attributes:
