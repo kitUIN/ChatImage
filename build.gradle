@@ -68,7 +68,9 @@ jar {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
-
+remapJar{
+    destinationDir(new File("D:\\IdeaProjects\\out"))
+}
 // configure the maven publication
 publishing {
     publications {
