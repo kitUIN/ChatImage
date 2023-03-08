@@ -119,7 +119,6 @@ public class Chatimage {
                     tryGetFromServer(url);
                 }
             };
-            System.setProperty("java.awt.headless", "false");
             LOGGER.info("Client start");
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);

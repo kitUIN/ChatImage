@@ -8,7 +8,6 @@
   ],
   "client": [
     "ChatComponentMixin",
-    "ClipboardMixin",
     "FileDragMixin",
     "ScreenMixin"
   ],

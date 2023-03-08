@@ -20,7 +20,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 java {
-    archivesBaseName = '[Forge-1.19.3]ChatImage'
+    archivesBaseName = 'ChatImage'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 configurations {
@@ -154,6 +154,7 @@ shadowJar {
         include(dependency('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0'))
         include(dependency("net.sf.image4j:image4j:0.7.2"))
     }
+    destinationDir(new File("D:\\IdeaProjects\\out"))
 }
 
 
@@ -172,6 +173,7 @@ jar {
 }
 reobf {
     shadowJar {}
+
 }
 
 tasks.build.dependsOn shadowJar
