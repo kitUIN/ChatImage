@@ -7,7 +7,6 @@
   ],
   "client": [
     "ChatHudMixin",
-    "ClipboardMixin",
     "FileDragMixin",
     "ScreenMixin"
   ],
