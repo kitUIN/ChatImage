@@ -73,6 +73,8 @@ body:
         - Windows 10 Arm
         - MacOS
         - MacOS M1
+        - Linux
+        - 其它 (需注明)
   - type: textarea
     id: log-info
     attributes:
