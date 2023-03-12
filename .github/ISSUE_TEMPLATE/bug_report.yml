@@ -1,5 +1,5 @@
 name: Bug 报告
-description: 提交 Bug 以帮助我们提高应用体验
+description: 提交 Bug 以帮助我们提高Mod体验
 title: "[Bug] 我的标题"
 assignees: kitUIN
 labels:
@@ -34,18 +34,7 @@ body:
         3. 点击 '....'
         4. 滚动至 '....'
         5. 发现问题
-  - type: textarea
-    id: expected-behavior
-    validations:
-      required: true
-    attributes:
-      label: 预期行为
-      description: 简要描述你希望看到什么样的结果
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: 截图
-      description: 如果可以，提交截图更有助于我们分析问题
+
   - type: textarea
     id: log-info
     validations:
@@ -56,35 +45,20 @@ body:
   - type: checkboxes
     validations:
       required: true
-    id: environment-app-target-version
     attributes:
       label: Mod版本
-      description: 选择一个你发现问题的Mod版本
-      options:
-        - label: 1.0.2+1.19.3+forge
-        - label: 1.0.2+1.19.3+fabric
-        - label: 1.0.2+1.19.2+fabric
-        - label: 1.0.2+1.19.1+fabric
-        - label: 1.0.2+1.18.2+fabric
-        - label: 1.0.2+1.17.1+fabric
-        - label: 1.0.2+1.16.5+fabric
-        - label: 其它 (需注明)
-  - type: dropdown
-    id: form-factor
+      description: 你发现问题的Mod版本(mod版本号+mc版本+fabric/forge)
+  - type: system
+    validations:
+      required: true
     attributes:
-      multiple: true
-      label: 运行设备
-      description: 选择你当前运行Mod的设备类型
-      options:
-        - Windows 11
-        - Windows 10
-        - Windows 11 Arm
-        - Windows 10 Arm
-        - MacOS
-        - MacOS M1
-        - Linux
-        - 其它 (需注明)
-
+      label: java
+      description: 你的电脑系统与JAVA版本
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: 如果可以，提交截图更有助于我们分析问题
   - type: textarea
     id: additional-context
     attributes:
