@@ -46,12 +46,14 @@ body:
       required: true
     attributes:
       label: Mod版本
-      description: 你发现问题的Mod版本(mod版本号+mc版本+fabric/forge)
+      description: 你发现问题的Mod版本
+      placeholder: |
+        Mod版本号+MC版本+fabric/forge
   - type: textarea
     validations:
       required: true
     attributes:
-      label: java
+      label: 电脑系统|JAVA版本
       description: 你的电脑系统与JAVA版本
   - type: textarea
     id: screenshots
