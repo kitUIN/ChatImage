@@ -36,19 +36,18 @@ body:
         5. 发现问题
 
   - type: textarea
-    id: log-info
     validations:
       required: true
     attributes:
       label: 日志记录
       description: 请打开日志文件夹，选取问题发生当日的日志记录(如latest.log)作为 Issue 的附件上传
-  - type: checkboxes
+  - type: textarea
     validations:
       required: true
     attributes:
       label: Mod版本
       description: 你发现问题的Mod版本(mod版本号+mc版本+fabric/forge)
-  - type: system
+  - type: textarea
     validations:
       required: true
     attributes:
