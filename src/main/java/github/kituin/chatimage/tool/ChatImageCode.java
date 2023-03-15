@@ -113,21 +113,17 @@ public class ChatImageCode {
             if (temps.length == 2) {
                 String value = temps[0].trim();
                 switch (value) {
-                    case "url":
+                    case "url" -> {
                         try {
                             this.url = new ChatImageUrl(temps[1].trim());
                         } catch (InvalidChatImageUrlException e) {
                             throw new InvalidChatImageCodeException(e.getMessage(), e.getMode());
                         }
-                        break;
-                    case "nsfw":
-                        this.nsfw = Boolean.parseBoolean(temps[1].trim());
-                        break;
-                    case "name":
-                        this.name = temps[1].trim();
-                        break;
-                    default:
-                        break;
+                    }
+                    case "nsfw" -> this.nsfw = Boolean.parseBoolean(temps[1].trim());
+                    case "name" -> this.name = temps[1].trim();
+                    default -> {
+                    }
                 }
             } else {
                 throw new InvalidChatImageCodeException(raw + "<-can not match the value of ChatImageCode, Please Recheck");
