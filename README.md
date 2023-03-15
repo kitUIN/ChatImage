@@ -31,7 +31,7 @@
   ·
   <a href="https://www.curseforge.com/minecraft/mc-mods/chatimage">⬇️CurseForge</a>
   ·
-  <a href="https://www.mcmod.cn/class/9111.html">⬇️McMod</a>
+  <a href="https://www.mcmod.cn/class/9111.html">⬇️MC百科</a>
 </p>
 
 ## 快速开始
