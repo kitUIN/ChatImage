@@ -129,7 +129,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 dependencies {
-    minecraft('net.minecraftforge:forge:1.19.3-44.1.0')
+    minecraft('net.minecraftforge:forge:1.19.2-43.2.6')
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
@@ -15,10 +14,9 @@ import static github.kituin.chatimage.Chatimage.CONFIG;
 @OnlyIn(Dist.CLIENT)
 public class GifSlider extends SettingSliderWidget {
 
-    public GifSlider(int x, int y, int width, int height) {
-        super(x, y, width, height, CONFIG.gifSpeed, 1, 20);
+    public GifSlider(int x, int y, int width, int height, SettingSliderWidget.OnTooltip tooltip) {
+        super(x, y, width, height, CONFIG.gifSpeed, 1, 20, tooltip);
         this.updateMessage();
-        this.tooltip();
     }
 
 
@@ -29,8 +27,8 @@ public class GifSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-    @Override
-    protected void tooltip() {
-        this.setTooltip(Tooltip.create(Component.translatable("gif.chatimage.tooltip")));
+
+    public static Component tooltip() {
+        return Component.translatable("gif.chatimage.tooltip");
     }
 }

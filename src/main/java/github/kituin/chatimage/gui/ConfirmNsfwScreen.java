@@ -24,12 +24,10 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 
     @Override
     protected void addButtons(int y) {
-        this.addRenderableWidget(Button.builder(this.yesButton, (button) -> {
-            this.callback.accept(true);
-        }).bounds(this.width / 2 - 50 - 52, y, 100, 20).build());
-        this.addRenderableWidget(Button.builder(this.noButton, (button) -> {
-            this.callback.accept(false);
-        }).bounds(this.width / 2 - 50 + 52, y, 100, 20).build());
+        this.addRenderableWidget(new Button(this.width / 2 - 50 - 52, y, 100, 20, this.yesButton,
+                (button) -> this.callback.accept(true)));
+        this.addRenderableWidget(new Button(this.width / 2 - 50 + 52, y, 100, 20, this.noButton,
+                (button) -> this.callback.accept(false)));
     }
 
     @Override

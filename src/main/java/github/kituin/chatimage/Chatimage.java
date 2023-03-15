@@ -127,7 +127,7 @@ public class Chatimage {
 
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
-                Minecraft.getInstance().setScreen(new ConfigScreen());
+                Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));
             }
         }
 

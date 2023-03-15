@@ -2,6 +2,7 @@ package github.kituin.chatimage.mixin;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageFrame;
@@ -9,21 +10,19 @@ import github.kituin.chatimage.tool.HttpUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
-import net.minecraft.client.gui.components.Renderable;
+import net.minecraft.client.gui.components.Widget;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPositioner;
-import net.minecraft.client.gui.screens.inventory.tooltip.TooltipRenderUtil;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector2ic;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -44,7 +43,7 @@ import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
  * @author kitUIN
  */
 @Mixin(Screen.class)
-public abstract class ScreenMixin extends AbstractContainerEventHandler implements Renderable {
+public abstract class ScreenMixin extends AbstractContainerEventHandler implements Widget {
 
 
     @Shadow
@@ -61,6 +60,13 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
     @Shadow
     public abstract void renderTooltip(PoseStack p_96618_, List<? extends FormattedCharSequence> p_96619_, int p_96620_, int p_96621_);
 
+
+    @Shadow public int height;
+
+    @Shadow protected ItemRenderer itemRenderer;
+
+
+
     @Inject(at = @At("RETURN"),
             method = "renderComponentHoverEffect")
     protected void renderComponentHoverEffect(PoseStack p_96571_, @javax.annotation.Nullable Style p_96572_, int p_96573_, int p_96574_, CallbackInfo ci) {
@@ -73,18 +79,35 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
-                        DefaultTooltipPositioner positioner = (DefaultTooltipPositioner) DefaultTooltipPositioner.INSTANCE;
+                        int i = viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight;
+                        int j = viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom;
+                        int l = p_96573_ + 12;
+                        int m = p_96574_ - 12;
+                        if (l + i > this.width) {
+                            l -= 28 + i;
+                        }
 
-                        Vector2ic vector2ic = positioner.positionTooltip((Screen) (Object) this, p_96573_, p_96574_, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
-                        int l = vector2ic.x();
-                        int m = vector2ic.y();
+                        if (m + j + 6 > this.height) {
+                            m = this.height - j - 6;
+                        }
                         p_96571_.pushPose();
+                        float f = this.itemRenderer.blitOffset;
+                        this.itemRenderer.blitOffset = 400.0F;
                         Tesselator tesselator = Tesselator.getInstance();
                         BufferBuilder bufferbuilder = tesselator.getBuilder();
                         RenderSystem.setShader(GameRenderer::getPositionColorShader);
                         bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
                         Matrix4f matrix4f = p_96571_.last().pose();
-                        TooltipRenderUtil.renderTooltipBackground(GuiComponent::fillGradient, matrix4f, bufferbuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m - 4, l + i + 3, m - 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m + j + 3, l + i + 3, m + j + 4, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m - 3, l + i + 3, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferbuilder, l - 4, m - 3, l - 3, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferbuilder, l + i + 3, m - 3, l + i + 4, m + j + 3, 400, -267386864, -267386864);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m - 3 + 1, l - 3 + 1, m + j + 3 - 1, 400, 1347420415, 1344798847);
+                        fillGradient(matrix4f, bufferbuilder, l + i + 2, m - 3 + 1, l + i + 3, m + j + 3 - 1, 400, 1347420415, 1344798847);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m - 3, l + i + 3, m - 3 + 1, 400, 1347420415, 1347420415);
+                        fillGradient(matrix4f, bufferbuilder, l - 3, m + j + 2, l + i + 3, m + j + 3, 400, 1344798847, 1344798847);
+
                         RenderSystem.enableDepthTest();
                         RenderSystem.disableTexture();
                         RenderSystem.enableBlend();
@@ -111,7 +134,7 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
                     } else {
                         MutableComponent text;
                         switch (frame.getError()) {
-                            case FILE_NOT_FOUND:
+                            case FILE_NOT_FOUND -> {
                                 if (view.isSendFromSelf()) {
                                     text = Component.literal(view.getChatImageUrl().getUrl());
                                     text.append(Component.literal("\n↑")).append(Component.translatable("filenotfound.chatimage.exception"));
@@ -122,22 +145,18 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
                                         text = Component.translatable("loading.server.chatimage.message");
                                     }
                                 }
-                                break;
-                            case FILE_LOAD_ERROR:
-                                text = Component.translatable("error.chatimage.message");
-                                break;
-                            case SERVER_FILE_LOAD_ERROR:
-                                text = Component.translatable("error.server.chatimage.message");
-                                break;
-                            default:
+                            }
+                            case FILE_LOAD_ERROR -> text = Component.translatable("error.chatimage.message");
+                            case SERVER_FILE_LOAD_ERROR ->
+                                    text = Component.translatable("error.server.chatimage.message");
+                            default -> {
                                 if (view.isTimeout()) {
                                     text = Component.translatable("error.chatimage.message");
                                 } else {
                                     text = Component.translatable("loading.chatimage.message");
                                 }
-                                break;
+                            }
                         }
-
                         this.renderTooltip(p_96571_, this.minecraft.font.split(text, Math.max(this.width / 2, 200)), p_96573_, p_96574_);
                     }
                 } else {

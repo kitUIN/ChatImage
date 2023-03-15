@@ -1,7 +1,6 @@
 package github.kituin.chatimage.widget;
 
 import github.kituin.chatimage.config.ChatImageConfig;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
@@ -14,12 +13,11 @@ public class PaddingSlider extends SettingSliderWidget {
     protected final Component title;
     protected final PaddingType paddingType;
 
-    public PaddingSlider(int x, int y, int width, int height, Component title, int value, float max, PaddingType paddingType) {
-        super(x, y, width, height, value, 0F, max);
+    public PaddingSlider(int x, int y, int width, int height, Component title, int value, float max, PaddingType paddingType, SettingSliderWidget.OnTooltip tooltip) {
+        super(x, y, width, height, value, 0F, max, tooltip);
         this.title = title;
         this.paddingType = paddingType;
         this.updateMessage();
-        this.tooltip();
     }
 
     @Override
@@ -44,25 +42,13 @@ public class PaddingSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-    public void tooltip() {
-        Component text;
-        switch (paddingType) {
-            case TOP:
-                text = Component.translatable("top.padding.chatimage.tooltip");
-                break;
-            case BOTTOM:
-                text = Component.translatable("bottom.padding.chatimage.tooltip");
-                break;
-            case LEFT:
-                text = Component.translatable("left.padding.chatimage.tooltip");
-                break;
-            case RIGHT:
-                text = Component.translatable("right.padding.chatimage.tooltip");
-                break;
-            default:
-                return;
-        }
-        this.setTooltip(Tooltip.create(text));
+    public static Component tooltip(PaddingType paddingType) {
+        return switch (paddingType) {
+            case TOP -> Component.translatable("top.padding.chatimage.tooltip");
+            case BOTTOM -> Component.translatable("bottom.padding.chatimage.tooltip");
+            case LEFT -> Component.translatable("left.padding.chatimage.tooltip");
+            case RIGHT -> Component.translatable("right.padding.chatimage.tooltip");
+        };
     }
 
     public enum PaddingType {

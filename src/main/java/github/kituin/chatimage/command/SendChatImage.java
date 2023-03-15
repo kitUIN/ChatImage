@@ -31,7 +31,7 @@ public class SendChatImage implements Command<CommandSourceStack> {
         try {
             ChatImageCode code = new ChatImageCode(url, name);
             if (Minecraft.getInstance().player != null) {
-                Minecraft.getInstance().player.connection.sendChat(code.toString());
+                Minecraft.getInstance().player.chatSigned(code.toString(),Component.literal(code.toString()));
             }
         } catch (InvalidChatImageUrlException e) {
             MutableComponent text = Component.literal(e.getMode().toString() + ": " + e.getMessage());
