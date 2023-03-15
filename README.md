@@ -23,7 +23,7 @@
 <p align="center">
   <a href="https://chatimage.kituin.fun/">📖文档</a>
   ·
-  <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛提交建议</a>
+  <a href="https://github.com/kitUIN/ChatImage/issues/new/choose">🐛提交建议</a>
   ·
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README.md">📃Chinese</a>
   ·
