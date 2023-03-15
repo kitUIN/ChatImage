@@ -17,7 +17,7 @@ public class ChatImageFrame<T> {
     private int originalHeight, originalWidth;
     private T id;
     private final List<ChatImageFrame<T>> siblings = Lists.newArrayList();
-    public static ChatImageFrame.TextureHelper<?> textureHelper;
+    public static TextureHelper<?> textureHelper;
     private FrameError error = FrameError.OTHER_ERROR;
     private int index = 0;
     private int butter = 0;
@@ -62,7 +62,6 @@ public class ChatImageFrame<T> {
             limitSize(limitWidth, limitHeight);
         } else {
             this.siblings.get(index - 1).limitSize(limitWidth, limitHeight);
-            ;
         }
         return true;
     }
@@ -96,7 +95,7 @@ public class ChatImageFrame<T> {
         if (index == 0) {
             return id;
         } else {
-            return (T) this.siblings.get(index - 1).getId();
+            return this.siblings.get(index - 1).getId();
         }
     }
 
