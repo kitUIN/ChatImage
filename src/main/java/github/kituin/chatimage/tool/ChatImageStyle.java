@@ -14,6 +14,7 @@ import net.minecraft.util.JsonHelper;
  */
 public class ChatImageStyle {
     public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE = new HoverEvent.Action<>("show_chatimage", true, ChatImageStyle::fromJson, ChatImageStyle::toJson, ChatImageStyle::fromJson);
+
     /**
      * 文本 悬浮图片样式
      *
