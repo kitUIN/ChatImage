@@ -121,11 +121,16 @@ public class ChatHudMixin extends DrawableHelper {
     }
 
     private static Text replaceMessage(Text message) {
-        MutableText res = (MutableText) replaceCode(message);
-        for (Text t : message.getSiblings()) {
-            res.append(replaceMessage(t));
+        try{
+            MutableText res = (MutableText) replaceCode(message);
+            for (Text t : message.getSiblings()) {
+                res.append(replaceMessage(t));
+            }
+            return res;
         }
-        return res;
+        catch (Exception e){
+            return message;
+        }
     }
 }
 

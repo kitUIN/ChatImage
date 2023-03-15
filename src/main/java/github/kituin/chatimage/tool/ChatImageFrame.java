@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
-@SuppressWarnings(value = {"unchecked"})
+
 public class ChatImageFrame<T> {
     private int width, height;
     private int originalHeight, originalWidth;
@@ -62,7 +62,6 @@ public class ChatImageFrame<T> {
             limitSize(limitWidth, limitHeight);
         } else {
             this.siblings.get(index - 1).limitSize(limitWidth, limitHeight);
-            ;
         }
         return true;
     }
@@ -96,7 +95,7 @@ public class ChatImageFrame<T> {
         if (index == 0) {
             return id;
         } else {
-            return (T) this.siblings.get(index - 1).getId();
+            return this.siblings.get(index - 1).getId();
         }
     }
 
