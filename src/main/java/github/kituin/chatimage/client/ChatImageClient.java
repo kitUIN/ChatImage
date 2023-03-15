@@ -99,12 +99,8 @@ public class ChatImageClient implements ClientModInitializer {
                         )
 
         ));
-        ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> {
-            ChatImagePacket.clientDownloadFileChannelReceived(buf);
-        });
-        ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> {
-            ChatImagePacket.clientGetFileChannelReceived(buf);
-        });
+        ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientDownloadFileChannelReceived(buf));
+        ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientGetFileChannelReceived(buf));
     }
 
 }
