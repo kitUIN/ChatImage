@@ -21,9 +21,9 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://chatimage.kituin.fun/">📖docs</a>
+  <a href="https://chatimage.kituin.fun/">📖Docs</a>
   ·
-  <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛submit suggestion</a>
+  <a href="https://github.com/kitUIN/ChatImage/issues/new">🐛Submit Suggestion/Bug</a>
   .
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README.md">📃Chinese</a>
   .
