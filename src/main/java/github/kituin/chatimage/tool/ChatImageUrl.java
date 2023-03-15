@@ -6,10 +6,7 @@ import net.sf.image4j.codec.ico.ICODecoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -69,19 +66,37 @@ public class ChatImageUrl {
         void send(String url, File file, boolean isServer);
     }
 
+    public static String bytesToHex(byte[] bytes) {
+        StringBuffer sb = new StringBuffer();
+        for (byte aByte : bytes) {
+            String hex = Integer.toHexString(aByte & 0xFF);
+            if (hex.length() < 2) {
+                sb.append(0);
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
+    }
 
-    /**
-     * 从InputStream直接载入图片
-     *
-     * @param input InputStream
-     * @param url   url
-     * @throws IOException IOException
-     */
-    public static void putLocalFile(InputStream input, String url) throws IOException {
-        if (url.endsWith(".gif")) {
-            loadGif(input, url);
+    public static String getPicType(byte[] is) {
+        byte[] b = new byte[4];
+        for (int i = 0; i < b.length; i++) {
+            b[i] = is[i];
+        }
+        String type_ = bytesToHex(b).toUpperCase();
+        System.out.println(type_.substring(0, 6));
+        if (type_.startsWith("47494638")) {
+            return "gif";
+//        } else if (type_.startsWith("89504E47")) {
+//            return "png";
+//        } else if (type_.startsWith("FFD8FF")) {
+//            return "jpg";
+//        } else if (type_.startsWith("424D")) {
+//            return "bmp";
+        } else if (type_.startsWith("00000100")) {
+            return "ico";
         } else {
-            CACHE_MAP.put(url, new ChatImageFrame<>(input));
+            return "png";
         }
     }
 
@@ -92,17 +107,35 @@ public class ChatImageUrl {
      * @throws IOException IOException
      */
     public static void loadLocalFile(String url) throws IOException {
-        if (url.endsWith(".gif")) {
-            loadGif(new FileInputStream(url), url);
+        InputStream inputStream = new FileInputStream(url);
+        loadLocalFile(inputStream, url);
+    }
+
+    /**
+     * 从InputStream直接载入图片
+     *
+     * @param input InputStream
+     * @param url   url
+     * @throws IOException IOException
+     */
+    public static void loadLocalFile(InputStream input, String url) throws IOException {
+        byte[] is = input.readAllBytes();
+        String t = getPicType(is);
+        if ("gif".equals(t)) {
+            loadGif(new ByteArrayInputStream(is), url);
         } else {
-            BufferedImage input;
-            if (url.endsWith(".ico")) {
-                List<BufferedImage> image = ICODecoder.read(new File(url));
-                input = image.get(0);
-            } else {
-                input = ImageIO.read(new File(url));
+            try {
+                BufferedImage image;
+                if ("ico".equals(t)) {
+                    List<BufferedImage> images = ICODecoder.read(new File(url));
+                    image = images.get(0);
+                } else {
+                    image = ImageIO.read(new File(url));
+                }
+                CACHE_MAP.put(url, new ChatImageFrame<>(image));
+            } catch (java.io.IOException e) {
+                ChatImageCode.CACHE_MAP.put(url, new ChatImageFrame<>(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
             }
-            CACHE_MAP.put(url, new ChatImageFrame<>(input));
         }
     }
 
@@ -115,16 +148,11 @@ public class ChatImageUrl {
     }
 
     public String getUrl() {
-        switch (this.urlMethod) {
-
-            case FILE:
-                return this.fileUrl;
-            case HTTP:
-                return this.httpUrl;
-            default:
-                return this.originalUrl;
-        }
-
+        return switch (this.urlMethod) {
+            case FILE -> this.fileUrl;
+            case HTTP -> this.httpUrl;
+            default -> this.originalUrl;
+        };
     }
 
     @Override
@@ -139,6 +167,7 @@ public class ChatImageUrl {
                 GifDecoder gd = new GifDecoder();
                 int status = gd.read(is);
                 if (status != GifDecoder.STATUS_OK) {
+                    CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
                     return null;
                 }
                 ChatImageFrame frame = new ChatImageFrame<>(gd.getFrame(0));
@@ -146,7 +175,6 @@ public class ChatImageUrl {
                     frame.append(new ChatImageFrame<>(gd.getFrame(i)));
                 }
                 CACHE_MAP.put(url, frame);
-
             } catch (IOException ignored) {
                 CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_LOAD_ERROR));
             }

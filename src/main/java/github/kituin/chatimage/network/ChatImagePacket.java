@@ -1,7 +1,9 @@
-package github.kituin.chatimage.tool;
+package github.kituin.chatimage.network;
 
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
+import github.kituin.chatimage.tool.ChatImageFrame;
+import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -299,7 +301,7 @@ public class ChatImagePacket {
                     bb.put(blocks.get(i));
                 }
                 try {
-                    ChatImageUrl.putLocalFile(new ByteArrayInputStream(bb.array()), url);
+                    ChatImageUrl.loadLocalFile(new ByteArrayInputStream(bb.array()), url);
                 } catch (IOException e) {
                     LOGGER.error("[merge load error]" + e.toString());
                     CACHE_MAP.put(url, new ChatImageFrame<>(ChatImageFrame.FrameError.SERVER_FILE_LOAD_ERROR));

@@ -1,6 +1,6 @@
 package github.kituin.chatimage;
 
-import github.kituin.chatimage.tool.ChatImagePacket;
+import github.kituin.chatimage.network.ChatImagePacket;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 

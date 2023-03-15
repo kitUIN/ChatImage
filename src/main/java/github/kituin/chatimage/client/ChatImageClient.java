@@ -7,7 +7,7 @@ import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
 import github.kituin.chatimage.tool.ChatImageFrame;
-import github.kituin.chatimage.tool.ChatImagePacket;
+import github.kituin.chatimage.network.ChatImagePacket;
 import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -26,18 +26,12 @@ import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
-import static github.kituin.chatimage.ChatImage.*;
-import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
-import static github.kituin.chatimage.tool.ChatImagePacket.*;
+import static github.kituin.chatimage.network.ChatImagePacket.*;
 
 /**
  * @author kitUIN

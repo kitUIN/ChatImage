@@ -24,8 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
 
 /**
@@ -67,7 +67,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         int l = x + 12;
                         int m = y - 12;
                         if (l + i > this.width) {
-                            l -= 28 + i;
+                            l = this.width - 6 - i;
                         }
                         if (m + j + 6 > this.height) {
                             m = this.height - j - 6;
@@ -114,33 +114,18 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                     } else {
                         MutableText text;
                         switch (frame.getError()) {
-                            case FILE_NOT_FOUND:
+                            case FILE_NOT_FOUND -> {
                                 if (view.isSendFromSelf()) {
-                                    text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                    text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                    text = ((MutableText) Text.of(view.getChatImageUrl().getUrl())).append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
                                 } else {
-                                    if (view.isTimeout()) {
-                                        text = Text.translatable("error.server.chatimage.message");
-                                    } else {
-                                        text = Text.translatable("loading.server.chatimage.message");
-                                    }
+                                    text = view.isTimeout() ? Text.translatable("error.chatimage.message") : Text.translatable("loading.chatimage.message");
                                 }
-                                break;
-                            case FILE_LOAD_ERROR:
-                                text = Text.translatable("error.chatimage.message");
-                                break;
-                            case SERVER_FILE_LOAD_ERROR:
-                                text = Text.translatable("error.server.chatimage.message");
-                                break;
-                            default:
-                                if (view.isTimeout()) {
-                                    text = Text.translatable("error.chatimage.message");
-                                } else {
-                                    text = Text.translatable("loading.chatimage.message");
-                                }
-                                break;
+                            }
+                            case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
+                            case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
+                            default ->
+                                    text = view.isTimeout() ? Text.translatable("error.chatimage.message") : Text.translatable("loading.chatimage.message");
                         }
-
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
                 } else {
