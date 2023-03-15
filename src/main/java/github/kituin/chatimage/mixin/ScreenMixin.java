@@ -69,8 +69,8 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         int j = viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom;
                         int l = x + 12;
                         int m = y - 12;
-                        if (l + i > this.width) {
-                            l = this.width - i;
+                        if (l + i + 3 > this.width) {
+                            l = this.width - i - 3;
                         }
                         if (m + j + 6 > this.height) {
                             m = this.height - j - 6;
