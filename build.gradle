@@ -2,22 +2,25 @@ buildscript {
     repositories {
         gradlePluginPortal()
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
 
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
 plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+
 }
 
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 java {
     archivesBaseName = 'ChatImage'
@@ -29,7 +32,7 @@ configurations {
 }
 
 minecraft {
-    mappings channel: 'official', version: "${minecraft_version}"
+    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
 
     runs {
         client {
