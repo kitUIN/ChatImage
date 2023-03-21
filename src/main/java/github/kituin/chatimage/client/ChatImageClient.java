@@ -17,7 +17,6 @@ import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.texture.NativeImage;
@@ -27,19 +26,11 @@ import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
-import static github.kituin.chatimage.ChatImage.*;
 import static github.kituin.chatimage.network.ChatImagePacket.*;
-import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
-import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 
 /**
  * @author kitUIN
@@ -50,7 +41,7 @@ public class ChatImageClient implements ClientModInitializer {
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
+
     private static KeyBinding configKeyBinding;
 
     @Override
