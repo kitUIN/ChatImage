@@ -26,7 +26,6 @@ import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
@@ -42,7 +41,6 @@ public class ChatImageClient implements ClientModInitializer {
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
     private static final Logger LOGGER = LogUtils.getLogger();
-    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
     private static KeyBinding configKeyBinding;
 
     @Override

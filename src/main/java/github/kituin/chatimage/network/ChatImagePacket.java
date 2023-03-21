@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import static github.kituin.chatimage.client.ChatImageClient.CLIENT_CACHE_MAP;
 import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
 
 public class ChatImagePacket {
@@ -55,6 +54,10 @@ public class ChatImagePacket {
      * 广播列表 URL->List(UUID)
      */
     public static HashMap<String, List<String>> USER_CACHE_MAP = new HashMap<>();
+    /**
+     * 本地块缓存
+     */
+    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
 
     /**
      * 创建一个Map网络包
@@ -107,7 +110,7 @@ public class ChatImagePacket {
         try (InputStream input = new FileInputStream(file)) {
             List<PacketByteBuf> bufs = Lists.newArrayList();
             byte[] byt = new byte[input.available()];
-            int limit = 20000 - url.getBytes().length;
+            int limit = 29000 - url.getBytes().length;
             int status = input.read(byt);
             ByteBuffer bb = ByteBuffer.wrap(byt);
             int count = byt.length / limit;
