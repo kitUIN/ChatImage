@@ -11,11 +11,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 public class ChatImage implements ModInitializer {
     @Override
     public void onInitialize() {
-        ServerPlayNetworking.registerGlobalReceiver(ChatImagePacket.FILE_CHANNEL, (server, player, handler, buf, responseSender) -> {
-            ChatImagePacket.serverFileChannelReceived(server, buf);
-        });
-        ServerPlayNetworking.registerGlobalReceiver(ChatImagePacket.GET_FILE_CHANNEL, (server, player, handler, buf, responseSender) -> {
-            ChatImagePacket.serverGetFileChannelReceived(player, buf);
-        });
+        ServerPlayNetworking.registerGlobalReceiver(ChatImagePacket.FILE_CHANNEL, (server, player, handler, buf, responseSender) -> ChatImagePacket.serverFileChannelReceived(server, buf));
+        ServerPlayNetworking.registerGlobalReceiver(ChatImagePacket.GET_FILE_CHANNEL, (server, player, handler, buf, responseSender) -> ChatImagePacket.serverGetFileChannelReceived(player, buf));
     }
 }

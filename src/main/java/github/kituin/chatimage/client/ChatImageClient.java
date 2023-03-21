@@ -43,7 +43,7 @@ public class ChatImageClient implements ClientModInitializer {
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
     private static final Logger LOGGER = LogManager.getLogger();
-    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
+
     private static KeyBinding configKeyBinding;
 
     @Override
