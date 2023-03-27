@@ -17,7 +17,7 @@ public class ChatImageFrame<T> {
     private int originalHeight, originalWidth;
     private T id;
     private final List<ChatImageFrame<T>> siblings = Lists.newArrayList();
-    public static ChatImageFrame.TextureHelper<?> textureHelper;
+    public static TextureHelper<?> textureHelper;
     private FrameError error = FrameError.OTHER_ERROR;
     private int index = 0;
     private int butter = 0;
