@@ -116,15 +116,17 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         switch (frame.getError()) {
                             case FILE_NOT_FOUND -> {
                                 if (view.isSendFromSelf()) {
-                                    text = ((MutableText) Text.of(view.getChatImageUrl().getUrl())).append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                    text = Text.literal(view.getChatImageUrl().getUrl())
+                                            .append("\n↑")
+                                            .append(Text.translatable("filenotfound.chatimage.exception"));
                                 } else {
-                                    text = view.isTimeout() ? Text.translatable("error.chatimage.message") : Text.translatable("loading.chatimage.message");
+                                    text = Text.translatable(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
                                 }
                             }
                             case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
                             case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
                             default ->
-                                    text = view.isTimeout() ? Text.translatable("error.chatimage.message") : Text.translatable("loading.chatimage.message");
+                                    text = Text.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
