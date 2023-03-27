@@ -22,16 +22,14 @@ import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static github.kituin.chatimage.network.ChatImagePacket.*;
+
 
 /**
  * @author kitUIN
@@ -41,8 +39,6 @@ public class ChatImageClient implements ClientModInitializer {
     public static String MOD_ID = "chatimage";
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
-    private static final Logger LOGGER = LogManager.getLogger();
-    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
     private static KeyBinding configKeyBinding;
 
     @Override
@@ -60,7 +56,7 @@ public class ChatImageClient implements ClientModInitializer {
             if (isServer) {
                 List<PacketByteBuf> bufs = createFilePacket(url, file);
                 if (bufs != null) {
-                    sendPacketAsync(MinecraftClient.getInstance().player, FILE_CHANNEL, bufs);
+                    sendPacketAsync(FILE_CHANNEL, bufs);
                 }
             } else {
                 loadFromServer(url);

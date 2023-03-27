@@ -2,23 +2,24 @@ package github.kituin.chatimage.network;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.gson.Gson;
 import github.kituin.chatimage.tool.ChatImageFrame;
-import github.kituin.chatimage.tool.ChatImageUrl;
+import github.kituin.chatimage.tool.ChatImageIndex;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.List;
@@ -29,11 +30,12 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 
-import static github.kituin.chatimage.client.ChatImageClient.CLIENT_CACHE_MAP;
-import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.ChatImage.LOGGER;
+import static github.kituin.chatimage.tool.ChatImageHandler.AddChatImageError;
+import static github.kituin.chatimage.tool.ChatImageHandler.loadFile;
 
 public class ChatImagePacket {
-    private static final Logger LOGGER = LogManager.getLogger();
+
     /**
      * 客户端发送文件分块到服务器通道(Map)
      */
@@ -59,21 +61,11 @@ public class ChatImagePacket {
      * 广播列表 URL->List(UUID)
      */
     public static HashMap<String, List<String>> USER_CACHE_MAP = new HashMap<>();
-
     /**
-     * 创建一个Map网络包
-     *
-     * @param key 键
-     * @param byt bytes
-     * @return {@link PacketByteBuf}
+     * 用户本地分块缓存
      */
-    public static PacketByteBuf createMapPacket(String key, byte[] byt) {
-        PacketByteBuf buf = PacketByteBufs.create();
-        HashMap<String, byte[]> fileMap = new HashMap<>();
-        fileMap.put(key, byt);
-        writeMap(buf,fileMap, PacketByteBuf::writeString, PacketByteBuf::writeByteArray);
-        return buf;
-    }
+    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
+    public static Gson gson = new Gson();
 
     /**
      * 创建一个String网络包
@@ -97,7 +89,11 @@ public class ChatImagePacket {
      * @return {@link PacketByteBuf}
      */
     public static PacketByteBuf createMapPacket(int index, int total, String url, byte[] byt) {
-        return createMapPacket(index + "->" + total + "->" + url, byt);
+        PacketByteBuf buf = PacketByteBufs.create();
+        HashMap<String, byte[]> fileMap = new HashMap<>();
+        fileMap.put(gson.toJson(new ChatImageIndex(index, total, url)), byt);
+        writeMap(buf, fileMap, PacketByteBuf::writeString, PacketByteBuf::writeByteArray);
+        return buf;
     }
 
     /**
@@ -111,7 +107,7 @@ public class ChatImagePacket {
         try (InputStream input = new FileInputStream(file)) {
             List<PacketByteBuf> bufs = Lists.newArrayList();
             byte[] byt = new byte[input.available()];
-            int limit = 20000 - url.getBytes().length;
+            int limit = 29000 - url.getBytes().length;
             int status = input.read(byt);
             ByteBuffer bb = ByteBuffer.wrap(byt);
             int count = byt.length / limit;
@@ -142,33 +138,42 @@ public class ChatImagePacket {
     }
 
     /**
-     * 发送一个网络包(异步)
+     * 发送给客户端一个网络包(异步)
      *
      * @param player  发送者(ClientPlayerEntity状态为发送给服务器,反之则发送给玩家)
      * @param channel 发送频道
      * @param buf     网络包数据
      */
-    public static void sendPacketAsync(PlayerEntity player, Identifier channel, PacketByteBuf buf) {
+    public static void sendPacketAsync(ServerPlayerEntity player, Identifier channel, PacketByteBuf buf) {
         CompletableFuture.supplyAsync(() -> {
-            if (player instanceof ClientPlayerEntity) {
-                ClientPlayNetworking.send(channel, buf);
-            } else if (player instanceof ServerPlayerEntity) {
-                ServerPlayNetworking.send((ServerPlayerEntity) player, channel, buf);
-            }
+            ServerPlayNetworking.send(player, channel, buf);
             return null;
         });
     }
 
     /**
-     * 发送一连串网络包(异步)
+     * 发送给服务器一个网络包(异步)
      *
-     * @param player  发送者(ClientPlayerEntity状态为发送给服务器,反之则发送给玩家)
+     * @param channel 发送频道
+     * @param buf     网络包数据
+     */
+    @Environment(EnvType.CLIENT)
+    public static void sendPacketAsync(Identifier channel, PacketByteBuf buf) {
+        CompletableFuture.supplyAsync(() -> {
+            ClientPlayNetworking.send(channel, buf);
+            return null;
+        });
+    }
+
+    /**
+     * 发送给服务器一连串网络包(异步)
+     *
      * @param channel 发送频道
      * @param bufs    网络包数据列表
      */
-    public static void sendPacketAsync(PlayerEntity player, Identifier channel, List<PacketByteBuf> bufs) {
+    public static void sendPacketAsync(Identifier channel, List<PacketByteBuf> bufs) {
         for (PacketByteBuf buf : bufs) {
-            sendPacketAsync(player, channel, buf);
+            sendPacketAsync(channel, buf);
         }
     }
 
@@ -180,25 +185,16 @@ public class ChatImagePacket {
      */
     public static void loadFromServer(String url) {
         if (MinecraftClient.getInstance().player != null) {
-            sendPacketAsync(MinecraftClient.getInstance().player, GET_FILE_CHANNEL, createStringPacket(url));
-            LOGGER.info("[try get from server]" + url);
+            sendPacketAsync(GET_FILE_CHANNEL, createStringPacket(url));
+            LOGGER.info("[GetFileChannel-Try]" + url);
         } else {
-            CACHE_MAP.put(url, new ChatImageFrame<>(ChatImageFrame.FrameError.FILE_NOT_FOUND));
+            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         }
     }
 
-    /**
-     * 使用->切分字符串
-     *
-     * @param s 原始字符串
-     * @return 切分后的字符串
-     */
-    public static String[] splits(String s) {
-        return StringUtils.split(s, "->");
-    }
 
     public static Map<String, byte[]> readMap(PacketByteBuf buf) {
-        return readMap(buf,PacketByteBuf::readString, PacketByteBuf::readByteArray);
+        return readMap(buf, PacketByteBuf::readString, PacketByteBuf::readByteArray);
     }
 
     /**
@@ -209,27 +205,24 @@ public class ChatImagePacket {
      */
     public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
         for (Map.Entry<String, byte[]> entry : ChatImagePacket.readMap(buf).entrySet()) {
-            String[] order = ChatImagePacket.splits(entry.getKey());
-            String url = order[2];
-            int index = Integer.parseInt(order[0]);
-            int total = Integer.parseInt(order[1]);
-            HashMap<Integer, byte[]> blocks = SERVER_BLOCK_CACHE.containsKey(url) ? SERVER_BLOCK_CACHE.get(url) : new HashMap<>();
-            if (total == blocks.size()) {
-                if (USER_CACHE_MAP.containsKey(url)) {
+            ChatImageIndex title = gson.fromJson(entry.getKey(), ChatImageIndex.class);
+            HashMap<Integer, byte[]> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
+            blocks.put(title.index, entry.getValue());
+            SERVER_BLOCK_CACHE.put(title.url, blocks);
+            FILE_COUNT_MAP.put(title.url, title.total);
+            LOGGER.debug("[FileChannel->Server:" + title.index + "/" + (title.total - 1) + "]" + title.url);
+            if (title.total == blocks.size()) {
+                if (USER_CACHE_MAP.containsKey(title.url)) {
                     // 通知之前请求但是没图片的客户端
-                    List<String> names = USER_CACHE_MAP.get(url);
+                    List<String> names = USER_CACHE_MAP.get(title.url);
                     for (String uuid : names) {
                         ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
-                        sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + url));
-                        LOGGER.info("[echo to client(" + uuid + ")]" + url);
+                        sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + title.url));
+                        LOGGER.info("[FileChannel->Client(" + uuid + ")]" + title.url);
                     }
-                    USER_CACHE_MAP.put(url, Lists.newArrayList());
+                    USER_CACHE_MAP.put(title.url, Lists.newArrayList());
                 }
-            } else {
-                blocks.put(index, entry.getValue());
-                SERVER_BLOCK_CACHE.put(url, blocks);
-                FILE_COUNT_MAP.put(url, total);
-                LOGGER.info("[put to server:" + index + "/" + (total - 1) + "]" + url);
+                LOGGER.info("[FileChannel->Server]" + title.url);
             }
         }
     }
@@ -249,19 +242,20 @@ public class ChatImagePacket {
                 // 服务器存在缓存图片,直接发送给客户端
                 for (Map.Entry<Integer, byte[]> entry : list.entrySet()) {
                     sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createMapPacket(entry.getKey(), total, url, entry.getValue()));
-                    LOGGER.info("[send to client:" + entry.getKey() + "/" + (list.size() - 1) + "]" + url);
+                    LOGGER.debug("[GetFileChannel->Client:" + entry.getKey() + "/" + (list.size() - 1) + "]" + url);
                 }
+                LOGGER.info("[GetFileChannel->Client]" + url);
                 return;
             }
         }
         //通知客户端无文件
         sendPacketAsync(player, GET_FILE_CHANNEL, createStringPacket("null->" + url));
+        LOGGER.error("[GetFileChannel]not found in server:" + url);
         // 记录uuid,后续有文件了推送
         List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
         names.add(player.getUuidAsString());
         USER_CACHE_MAP.put(url, names);
-        LOGGER.info("[not found in server]" + url);
-
+        LOGGER.info("[GetFileChannel]记录uuid:" + player.getUuidAsString());
     }
 
     /**
@@ -270,11 +264,14 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientGetFileChannelReceived(PacketByteBuf buf) {
-        String[] order = ChatImagePacket.splits(buf.readString());
-        if ("null".equals(order[0])) {
-            CACHE_MAP.put(order[1], new ChatImageFrame<>(ChatImageFrame.FrameError.FILE_NOT_FOUND));
-        } else if ("true".equals(order[0])) {
-            loadFromServer(order[1]);
+        String data = buf.readString();
+        String url = data.substring(6);
+        LOGGER.info(url);
+        if (data.startsWith("null")) {
+            LOGGER.info("[GetFileChannel-NULL]" + url);
+            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+        } else if (data.startsWith("true")) {
+            loadFromServer(url);
         }
     }
 
@@ -286,16 +283,12 @@ public class ChatImagePacket {
      */
     public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
         for (Map.Entry<String, byte[]> entry : readMap(buf).entrySet()) {
-            String[] order = ChatImagePacket.splits(entry.getKey());
-            String url = order[2];
-            int index = Integer.parseInt(order[0]);
-            int total = Integer.parseInt(order[1]);
-            HashMap<Integer, byte[]> blocks = CLIENT_CACHE_MAP.containsKey(url) ? CLIENT_CACHE_MAP.get(url) : new HashMap<>();
-            blocks.put(index, entry.getValue());
-            CLIENT_CACHE_MAP.put(url, blocks);
-            if (blocks.size() == total) {
+            ChatImageIndex title = gson.fromJson(entry.getKey(), ChatImageIndex.class);
+            HashMap<Integer, byte[]> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
+            blocks.put(title.index, entry.getValue());
+            CLIENT_CACHE_MAP.put(title.url, blocks);
+            if (blocks.size() == title.total) {
                 // 合并文件分块
-                LOGGER.info("[merge]" + url);
                 int length = 0;
                 for (Map.Entry<Integer, byte[]> en : blocks.entrySet()) {
                     length += en.getValue().length;
@@ -304,12 +297,8 @@ public class ChatImagePacket {
                 for (int i = 0; i < blocks.size(); i++) {
                     bb.put(blocks.get(i));
                 }
-                try {
-                    ChatImageUrl.loadLocalFile(new ByteArrayInputStream(bb.array()), url);
-                } catch (IOException e) {
-                    LOGGER.error("[merge load error]" + e.toString());
-                    CACHE_MAP.put(url, new ChatImageFrame<>(ChatImageFrame.FrameError.SERVER_FILE_LOAD_ERROR));
-                }
+                LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
+                loadFile(bb.array(), title.url);
             }
         }
     }

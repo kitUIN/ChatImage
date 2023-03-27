@@ -28,8 +28,9 @@ import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.tool.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
+
 
 /**
  * 注入修改悬浮显示图片
