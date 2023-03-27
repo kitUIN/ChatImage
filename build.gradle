@@ -25,7 +25,7 @@ dependencies {
     include implementation('com.squareup.okhttp3:okhttp:3.14.7')
     include implementation('com.squareup.okio:okio:1.17.5')
     include implementation('com.madgag:animated-gif-lib:1.4')
-    include implementation('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
+    // include implementation('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     include implementation('net.sf.image4j:image4j:0.7.2')
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }
