@@ -28,9 +28,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.tool.ChatImageCode.NSFW_MAP;
+import static github.kituin.chatimage.tool.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
 
 /**
  * 注入修改悬浮显示图片
@@ -91,7 +91,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         if (frame.getSiblings().size() != 0) {
                             if (frame.getButter() == CONFIG.gifSpeed) {
                                 frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                CACHE_MAP.put(view.getChatImageUrl().getUrl(), frame);
+                                AddChatImage(frame, view.getChatImageUrl().getUrl());
                                 frame.setButter(0);
                             } else {
                                 frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
@@ -100,33 +100,20 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                     } else {
                         MutableText text;
                         switch (frame.getError()) {
-                            case FILE_NOT_FOUND:
+                            case FILE_NOT_FOUND -> {
                                 if (view.isSendFromSelf()) {
-                                    text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                    text.append(Text.of("\n↑")).append(Text.translatable("filenotfound.chatimage.exception"));
+                                    text = Text.literal(view.getChatImageUrl().getUrl())
+                                            .append("\n↑")
+                                            .append(Text.translatable("filenotfound.chatimage.exception"));
                                 } else {
-                                    if (view.isTimeout()) {
-                                        text = Text.translatable("error.server.chatimage.message");
-                                    } else {
-                                        text = Text.translatable("loading.server.chatimage.message");
-                                    }
+                                    text = Text.translatable(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
                                 }
-                                break;
-                            case FILE_LOAD_ERROR:
-                                text = Text.translatable("error.chatimage.message");
-                                break;
-                            case SERVER_FILE_LOAD_ERROR:
-                                text = Text.translatable("error.server.chatimage.message");
-                                break;
-                            default:
-                                if (view.isTimeout()) {
-                                    text = Text.translatable("error.chatimage.message");
-                                }else{
-                                    text = Text.translatable("loading.chatimage.message");
-                                }
-                                break;
+                            }
+                            case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
+                            case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
+                            default ->
+                                    text = Text.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }
-
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
                 } else {

@@ -99,6 +99,5 @@ ps: `1.0.2`及以下版本使用的`CICode`只有1对[],`1.1.0`及以上使用2�
 - [X] jpg/jpeg
 - [X] jfif
 - [X] gif
-- [X] webp
 - [X] ico
 - [X] bmp

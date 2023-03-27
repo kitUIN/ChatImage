@@ -101,6 +101,5 @@ Send CICode with url (use default display name)
 - [X] jpg/jpeg
 - [X] jfif
 - [X] gif
-- [X] webp
 - [X] ico
 - [X] bmp

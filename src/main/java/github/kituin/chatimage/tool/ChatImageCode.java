@@ -16,7 +16,14 @@ import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
  */
 public class ChatImageCode {
     public static Pattern pattern = Pattern.compile("\\[\\[CICode,(.+)\\]\\]");
+    /**
+     * 图片缓存
+     */
     public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<>();
+    /**
+     * NSFW列表
+     */
+    public static HashMap<String, Integer> NSFW_MAP = new HashMap<>();
     private ChatImageUrl url;
     private boolean nsfw = false;
     private final boolean isSelf;
@@ -36,9 +43,6 @@ public class ChatImageCode {
         this(new ChatImageUrl(url), name, false);
     }
 
-    public ChatImageCode(ChatImageUrl url) {
-        this(url, null, false);
-    }
 
     public ChatImageCode(ChatImageUrl url, @Nullable String name, boolean isSelf) {
         this.url = url;
@@ -168,5 +172,9 @@ public class ChatImageCode {
 
     public boolean isTimeout() {
         return System.currentTimeMillis() > this.timestamp + 1000L * CONFIG.timeout;
+    }
+
+    public enum ChatImageType {
+        GIF, PNG, ICO, WEBP
     }
 }
