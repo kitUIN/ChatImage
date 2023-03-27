@@ -25,8 +25,9 @@ import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.tool.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static github.kituin.chatimage.tool.HttpUtils.NSFW_MAP;
+
 
 /**
  * 注入修改悬浮显示图片
@@ -66,8 +67,8 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         int j = viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom;
                         int l = x + 12;
                         int m = y - 12;
-                        if (l + i > this.width) {
-                            l = this.width - i;
+                        if (l + i + 6> this.width) {
+                            l = this.width - i - 6;
                         }
                         if (m + j + 6 > this.height) {
                             m = this.height - j - 6;
@@ -117,17 +118,17 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         switch (frame.getError()) {
                             case FILE_NOT_FOUND -> {
                                 if (view.isSendFromSelf()) {
-                                    text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                    text.append(Text.of("\n↑")).append(new TranslatableText("filenotfound.chatimage.exception"));
+                                    text = new LiteralText(view.getChatImageUrl().getUrl())
+                                            .append("\n↑")
+                                            .append(new TranslatableText("filenotfound.chatimage.exception"));
                                 } else {
-                                    text = view.isTimeout() ? new TranslatableText("error.server.chatimage.message") : new TranslatableText("loading.server.chatimage.message");
+                                    text = new TranslatableText(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
                                 }
                             }
                             case FILE_LOAD_ERROR -> text = new TranslatableText("error.chatimage.message");
-                            case SERVER_FILE_LOAD_ERROR ->
-                                    text = new TranslatableText("error.server.chatimage.message");
+                            case SERVER_FILE_LOAD_ERROR -> text = new TranslatableText("error.server.chatimage.message");
                             default ->
-                                    text = view.isTimeout() ? new TranslatableText("error.chatimage.message") : new TranslatableText("loading.chatimage.message");
+                                    text = new TranslatableText(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }

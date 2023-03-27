@@ -1,24 +1,20 @@
 package github.kituin.chatimage.tool;
 
 import okhttp3.*;
-import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-import static github.kituin.chatimage.tool.ChatImageUrl.loadLocalFile;
-
+import static github.kituin.chatimage.ChatImage.LOGGER;
+import static github.kituin.chatimage.tool.ChatImageHandler.loadFile;
 
 /**
  * @author kitUIN
  */
-public class HttpUtils {
+public class ChatImageHttpHandler {
     public static HashMap<String, Integer> HTTPS_MAP = new HashMap<>();
-    public static HashMap<String, Integer> NSFW_MAP = new HashMap<>();
-
 
     public static boolean getInputStream(String url) {
-
         OkHttpClient httpClient = new OkHttpClient();
         Request getRequest;
         try {
@@ -26,8 +22,8 @@ public class HttpUtils {
                     .url(url)
                     .get()
                     .build();
-        } catch (java.lang.IllegalArgumentException ep) {
-            LogManager.getLogger().info("can not request url: " + url);
+        } catch (IllegalArgumentException ep) {
+            LOGGER.error("[ChatImageHttpHandler]can not request url: " + url);
             return false;
         }
         if (HTTPS_MAP.containsKey(url) && HTTPS_MAP.get(url) == 1) {
@@ -36,7 +32,7 @@ public class HttpUtils {
             HTTPS_MAP.put(url, 1);
         }
         Call call = httpClient.newCall(getRequest);
-        LogManager.getLogger().info("[HTTP-GET]" + url);
+        LOGGER.info("[ChatImageHttpHandler-GET]" + url);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -44,11 +40,11 @@ public class HttpUtils {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(Call call, Response response) {
                 String url = String.valueOf(call.request().url());
                 ResponseBody body = response.body();
                 if (body != null) {
-                    loadLocalFile(body.byteStream(), url);
+                    loadFile(body.byteStream(), url);
                 }
                 HTTPS_MAP.put(url, 2);
             }
