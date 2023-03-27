@@ -7,14 +7,16 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-import static github.kituin.chatimage.Chatimage.MOD_ID;
+import static github.kituin.chatimage.ChatImage.MOD_ID;
 
 /**
  * 发送文件分块到客户端通道
  */
-public class DownloadFileCannel {
-
-    public static ResourceLocation DOWNLOAD_FILE_CANNEL = new ResourceLocation(MOD_ID, "downloadfilecannel");
+public class DownloadFileChannel {
+    /**
+     * 发送文件分块到客户端通道(Map)
+     */
+    public static ResourceLocation DOWNLOAD_FILE_CHANNEL = new ResourceLocation(MOD_ID, "download_file_channel");
 
     public static SimpleChannel INSTANCE;
     private static int packetId = 0;
@@ -24,7 +26,7 @@ public class DownloadFileCannel {
 
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(DOWNLOAD_FILE_CANNEL)
+                .named(DOWNLOAD_FILE_CHANNEL)
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)
@@ -32,10 +34,10 @@ public class DownloadFileCannel {
 
         INSTANCE = net;
 
-        net.messageBuilder(DownloadFileCannelPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(DownloadFileCannelPacket::new)
-                .encoder(DownloadFileCannelPacket::toBytes)
-                .consumerNetworkThread(DownloadFileCannelPacket::handle)
+        net.messageBuilder(DownloadFileChannelPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(DownloadFileChannelPacket::new)
+                .encoder(DownloadFileChannelPacket::toBytes)
+                .consumerNetworkThread(DownloadFileChannelPacket::clientHandle)
                 .add();
     }
 

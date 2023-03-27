@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.ChatImage.CONFIG;
 
 
 /**
@@ -16,7 +16,14 @@ import static github.kituin.chatimage.Chatimage.CONFIG;
  */
 public class ChatImageCode {
     public static Pattern pattern = Pattern.compile("\\[\\[CICode,(.+)\\]\\]");
+    /**
+     * 图片缓存
+     */
     public static HashMap<String, ChatImageFrame> CACHE_MAP = new HashMap<>();
+    /**
+     * NSFW列表
+     */
+    public static HashMap<String, Integer> NSFW_MAP = new HashMap<>();
     private ChatImageUrl url;
     private boolean nsfw = false;
     private final boolean isSelf;
@@ -36,9 +43,6 @@ public class ChatImageCode {
         this(new ChatImageUrl(url), name, false);
     }
 
-    public ChatImageCode(ChatImageUrl url) {
-        this(url, null, false);
-    }
 
     public ChatImageCode(ChatImageUrl url, @Nullable String name, boolean isSelf) {
         this.url = url;
@@ -113,21 +117,17 @@ public class ChatImageCode {
             if (temps.length == 2) {
                 String value = temps[0].trim();
                 switch (value) {
-                    case "url":
+                    case "url" -> {
                         try {
                             this.url = new ChatImageUrl(temps[1].trim());
                         } catch (InvalidChatImageUrlException e) {
                             throw new InvalidChatImageCodeException(e.getMessage(), e.getMode());
                         }
-                        break;
-                    case "nsfw":
-                        this.nsfw = Boolean.parseBoolean(temps[1].trim());
-                        break;
-                    case "name":
-                        this.name = temps[1].trim();
-                        break;
-                    default:
-                        break;
+                    }
+                    case "nsfw" -> this.nsfw = Boolean.parseBoolean(temps[1].trim());
+                    case "name" -> this.name = temps[1].trim();
+                    default -> {
+}
                 }
             } else {
                 throw new InvalidChatImageCodeException(raw + "<-can not match the value of ChatImageCode, Please Recheck");
@@ -172,5 +172,9 @@ public class ChatImageCode {
 
     public boolean isTimeout() {
         return System.currentTimeMillis() > this.timestamp + 1000L * CONFIG.timeout;
+    }
+
+    public enum ChatImageType {
+        GIF, PNG, ICO,WEBP
     }
 }

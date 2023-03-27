@@ -35,7 +35,7 @@ public class ChatComponentMixin extends GuiComponent {
     @Shadow
     @Final
     private Minecraft minecraft;
-    private static Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
+    private static final Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
     @ModifyVariable(at = @At("HEAD"),
             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V",
@@ -127,11 +127,15 @@ public class ChatComponentMixin extends GuiComponent {
     }
 
     private Component replaceMessage(Component message) {
-        MutableComponent res = (MutableComponent) replaceCode(message);
-        for (Component t : message.getSiblings()) {
-            res.append(replaceMessage(t));
+        try {
+            MutableComponent res = (MutableComponent) replaceCode(message);
+            for (Component t : message.getSiblings()) {
+                res.append(replaceMessage(t));
+            }
+            return res;
+        } catch (Exception e) {
+            return message;
         }
-        return res;
     }
 }
 

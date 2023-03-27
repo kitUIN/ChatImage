@@ -1,22 +1,21 @@
 package github.kituin.chatimage.network;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
-import static github.kituin.chatimage.Chatimage.MOD_ID;
+import static github.kituin.chatimage.ChatImage.MOD_ID;
 /**
  * 客户端发送文件分块到服务器通道
  */
-public class FileCannel {
-
-    public static ResourceLocation FILE_CANNEL = new ResourceLocation(MOD_ID, "filecannel");
+public class FileChannel {
+    /**
+     * 客户端发送文件分块到服务器通道(Map)
+     */
+    public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
     private static SimpleChannel INSTANCE;
 
-    // Every packet needs a unique ID (unique for this channel)
     private static int packetId = 0;
     private static int id() {
         return packetId++;
@@ -24,7 +23,7 @@ public class FileCannel {
 
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
-                .named(FILE_CANNEL)
+                .named(FILE_CHANNEL)
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)
@@ -32,10 +31,10 @@ public class FileCannel {
 
         INSTANCE = net;
 
-        net.messageBuilder(FileCannelPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(FileCannelPacket::new)
-                .encoder(FileCannelPacket::toBytes)
-                .consumerNetworkThread(FileCannelPacket::handle)
+        net.messageBuilder(FileChannelPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(FileChannelPacket::new)
+                .encoder(FileChannelPacket::toBytes)
+                .consumerNetworkThread(FileChannelPacket::serverHandle)
                 .add();
     }
 

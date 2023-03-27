@@ -10,7 +10,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.ChatImage.CONFIG;
 
 @OnlyIn(Dist.CLIENT)
 public class ConfigScreen extends ConfigRawScreen {

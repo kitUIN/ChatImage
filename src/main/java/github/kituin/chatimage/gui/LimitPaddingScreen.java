@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.widget.LimitSlider.LimitType.HEIGHT;
 import static github.kituin.chatimage.widget.LimitSlider.LimitType.WIDTH;
 import static github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;

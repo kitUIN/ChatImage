@@ -8,7 +8,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 
-import static github.kituin.chatimage.Chatimage.CONFIG;
+import static github.kituin.chatimage.ChatImage.CONFIG;
 
 public class ReloadConfig implements Command<CommandSourceStack> {
     public final static ReloadConfig instance = new ReloadConfig();

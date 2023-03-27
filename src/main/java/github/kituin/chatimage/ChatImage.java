@@ -4,16 +4,15 @@ import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.command.Help;
 import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
-import github.kituin.chatimage.network.DownloadFileCannel;
-import github.kituin.chatimage.network.FileCannel;
-import github.kituin.chatimage.network.GetFileCannel;
-import github.kituin.chatimage.network.GetFileCannelPacket;
+import github.kituin.chatimage.network.DownloadFileChannel;
+import github.kituin.chatimage.network.FileChannel;
+import github.kituin.chatimage.network.FileChannelPacket;
+import github.kituin.chatimage.network.GetFileChannel;
 import github.kituin.chatimage.tool.ChatImageFrame;
 import github.kituin.chatimage.tool.ChatImageUrl;
 import net.minecraft.client.Minecraft;
@@ -37,49 +36,34 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
 import java.util.List;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
-import static github.kituin.chatimage.network.FileCannelPacket.sendFilePackets;
-import static github.kituin.chatimage.tool.ChatImageCode.CACHE_MAP;
+import static github.kituin.chatimage.network.ChatImagePacket.*;
 
 
-@Mod(Chatimage.MOD_ID)
-public class Chatimage {
-    private static final Logger LOGGER = LogManager.getLogger();
+@Mod(ChatImage.MOD_ID)
+public class ChatImage {
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "chatimage";
-    /**
-     * 文件分块
-     */
-    public static HashMap<String, HashMap<Integer, byte[]>> SERVER_CACHE_MAP = new HashMap<>();
-    /**
-     * 文件分块总数记录
-     */
-    public static HashMap<String, Integer> FILE_COUNT_MAP = new HashMap<>();
-    /**
-     * 广播列表
-     */
-    public static HashMap<String, List<String>> USER_CACHE_MAP = new HashMap<>();
-    public static HashMap<String, HashMap<Integer, byte[]>> CLIENT_CACHE_MAP = new HashMap<>();
 
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
 
-    public Chatimage() {
+    public ChatImage() {
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(Chatimage::init);
-        modEventBus.addListener(Chatimage::onKeyBindRegister);
+        modEventBus.addListener(ChatImage::init);
+        modEventBus.addListener(ChatImage::onKeyBindRegister);
         // modEventBus.addListener(Chatimage::onKeyInput);
     }
 
     public static void init(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            FileCannel.register();
-            GetFileCannel.register();
-            DownloadFileCannel.register();
+            FileChannel.register();
+            GetFileChannel.register();
+            DownloadFileChannel.register();
 
         });
         LOGGER.info("Cannel Register");
@@ -114,9 +98,12 @@ public class Chatimage {
             };
             ChatImageUrl.networkHelper = (url, file, isServer) -> {
                 if (isServer) {
-                    sendFilePackets(url, file);
+                    List<FileChannelPacket> bufs = createFilePacket(url, file);
+                    if (bufs != null) {
+                        sendFilePackets(bufs);
+                    }
                 } else {
-                    tryGetFromServer(url);
+                    loadFromServer(url);
                 }
             };
             LOGGER.info("Client start");
@@ -157,17 +144,5 @@ public class Chatimage {
             );
         }
     }
-    /**
-     * 尝试从服务器获取图片
-     *
-     * @param url 图片url
-     */
-    public static void tryGetFromServer(String url) {
-        if (Minecraft.getInstance().player != null) {
-            GetFileCannel.sendToServer(new GetFileCannelPacket(url));
-            LogUtils.getLogger().info("[try get from server]" + url);
-        } else {
-            CACHE_MAP.put(url, new ChatImageFrame(ChatImageFrame.FrameError.FILE_NOT_FOUND));
-        }
-    }
+
 }

@@ -140,7 +140,7 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
     shadow('com.squareup.okhttp3:okhttp:3.14.7')
-    shadow( 'com.squareup.okio:okio:1.17.5')
+    shadow('com.squareup.okio:okio:1.17.5')
     shadow('com.madgag:animated-gif-lib:1.4')
     shadow('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     shadow("net.sf.image4j:image4j:0.7.2")
