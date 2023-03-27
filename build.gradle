@@ -32,7 +32,7 @@ configurations {
 }
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
+    mappings channel: 'parchment', version: "${parchment_version}"
 
     runs {
         client {
@@ -132,7 +132,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 dependencies {
-    minecraft('net.minecraftforge:forge:1.19.2-43.2.6')
+    minecraft("net.minecraftforge:forge:${minecraftforge_version}")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
@@ -142,7 +142,7 @@ dependencies {
     shadow('com.squareup.okhttp3:okhttp:3.14.7')
     shadow('com.squareup.okio:okio:1.17.5')
     shadow('com.madgag:animated-gif-lib:1.4')
-    shadow('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
+    // shadow('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     shadow("net.sf.image4j:image4j:0.7.2")
 
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
@@ -154,7 +154,7 @@ shadowJar {
         include(dependency('com.squareup.okhttp3:okhttp:3.14.7'))
         include(dependency('com.squareup.okio:okio:1.17.5'))
         include(dependency('com.madgag:animated-gif-lib:1.4'))
-        include(dependency('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0'))
+        // include(dependency('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0'))
         include(dependency("net.sf.image4j:image4j:0.7.2"))
     }
     destinationDir(new File("D:\\IdeaProjects\\out"))

@@ -1,6 +1,5 @@
 package github.kituin.chatimage.tool;
 
-import com.luciad.imageio.webp.WebPReadParam;
 import com.madgag.gif.fmsware.GifDecoder;
 import net.sf.image4j.codec.ico.ICODecoder;
 
@@ -108,12 +107,13 @@ public class ChatImageHandler {
                 }
                 case PNG -> AddChatImage(ImageIO.read(new ByteArrayInputStream(input)), url);
                 case WEBP -> {
-                    ImageReader reader = ImageIO.getImageReadersByMIMEType("image/webp").next();
-                    WebPReadParam readParam = new WebPReadParam();
-                    readParam.setBypassFiltering(true);
-                    reader.setInput(new MemoryCacheImageInputStream(new ByteArrayInputStream(input)));
-                    BufferedImage image = reader.read(0, readParam);
-                    AddChatImage(image, url);
+                    // 忽略Webp
+//                    ImageReader reader = ImageIO.getImageReadersByMIMEType("image/webp").next();
+//                    WebPReadParam readParam = new WebPReadParam();
+//                    readParam.setBypassFiltering(true);
+//                    reader.setInput(new MemoryCacheImageInputStream(new ByteArrayInputStream(input)));
+//                    BufferedImage image = reader.read(0, readParam);
+//                    AddChatImage(image, url);
                 }
             }
         } catch (IOException e) {
