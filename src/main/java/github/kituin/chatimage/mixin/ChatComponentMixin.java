@@ -44,7 +44,7 @@ public class ChatComponentMixin extends GuiComponent {
     private Component replaceCode(Component text) {
         String checkedText = "";
         String key = "";
-        MutableComponent player = null;
+        TextComponent player = null;
         boolean isSelf = false;
         boolean isIncoming = false;
         if (text instanceof TextComponent lc) {
@@ -53,13 +53,12 @@ public class ChatComponentMixin extends GuiComponent {
             key = ttc.getKey();
             if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                 Object[] args = ttc.getArgs();
-                player = (MutableComponent) args[0];
+                player = (TextComponent) args[0];
                 isSelf = player.getContents().equals(this.minecraft.player.getName().getContents());
-                MutableComponent contents = (MutableComponent) args[1];
-                if (contents instanceof TextComponent lc) {
+                if (args[1] instanceof TextComponent lc) {
                     checkedText = lc.getContents();
                 } else {
-                    checkedText = contents.getContents();
+                    checkedText = (String) args[1];
                 }
                 if ("commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
                     isIncoming = true;
@@ -68,7 +67,6 @@ public class ChatComponentMixin extends GuiComponent {
         } else {
             checkedText = text.getContents();
         }
-        System.out.println(checkedText);
         Style style = text.getStyle();
         List<ChatImageCode> chatImageCodeList = Lists.newArrayList();
         Matcher m = pattern.matcher(checkedText);
