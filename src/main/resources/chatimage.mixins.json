@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "github.kituin.chatimage.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "ChatImage.refmap.json",
+  "refmap": "chatimage.refmap.json",
   "mixins": [
   ],
   "client": [
