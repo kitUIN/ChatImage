@@ -61,7 +61,6 @@ public class ChatImage {
             FileChannel.register();
             GetFileChannel.register();
             DownloadFileChannel.register();
-
         });
         LOGGER.info("Cannel Register");
     }
@@ -73,18 +72,18 @@ public class ChatImage {
     }
 
 
-    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
-        KeyBindings.init(event);
-        LOGGER.info("KeyBindings Register");
-    }
+
 
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
-
+        @SubscribeEvent
+        public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
+            KeyBindings.init(event);
+            LOGGER.info("KeyBindings Register");
+        }
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            FMLJavaModLoadingContext.get().getModEventBus().addListener(ChatImage::onKeyBindRegister);
             ChatImageFrame.textureHelper = image -> {
                 NativeImage nativeImage = NativeImage.read(image);
                 return new ChatImageFrame.TextureReader<>(
@@ -108,6 +107,7 @@ public class ChatImage {
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+
         }
 
         public static void onKeyInput(InputEvent.Key event) {
