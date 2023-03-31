@@ -28,11 +28,11 @@ public class ConfigScreen extends ConfigRawScreen {
         }, createButtonTooltip(Component.translatable("nsfw.chatimage.tooltip"))));
         this.addRenderableWidget(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 - 16, 150, 20, createSliderTooltip(GifSlider.tooltip())));
         this.addRenderableWidget(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 - 16, 150, 20, createSliderTooltip(TimeOutSlider.tooltip())));
-        addRenderableWidget(new Button(this.width / 2 + 4, this.height / 4 + 48 - 16, 150, 20,
+        this.addRenderableWidget(new Button(this.width / 2 + 4, this.height / 4 + 48 - 16, 150, 20,
                 Component.translatable("padding.chatimage.gui"),
                 (button) -> this.minecraft.setScreen(new LimitPaddingScreen(this)),
                 createButtonTooltip(Component.translatable("padding.chatimage.tooltip"))));
-        addRenderableWidget(new Button(this.width / 2 - 77, this.height / 4 + 72 - 16, 150, 20,
+        this.addRenderableWidget(new Button(this.width / 2 - 77, this.height / 4 + 72 - 16, 150, 20,
                 Component.translatable("gui.back"),
                 (button) -> this.minecraft.setScreen(this.parent)));
     }

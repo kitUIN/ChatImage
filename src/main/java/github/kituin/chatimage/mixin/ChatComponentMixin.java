@@ -51,7 +51,7 @@ public class ChatComponentMixin extends GuiComponent {
         MutableComponent player = null;
         boolean isSelf = false;
         boolean isIncoming = false;
-        System.out.println(text);
+
         if (text.getContents() instanceof LiteralContents lc) {
             checkedText = lc.toString();
         } else if (text.getContents() instanceof TranslatableContents ttc) {
@@ -73,7 +73,6 @@ public class ChatComponentMixin extends GuiComponent {
         } else {
             checkedText = text.getContents().toString();
         }
-        System.out.println(checkedText);
         Style style = text.getStyle();
         List<ChatImageCode> chatImageCodeList = Lists.newArrayList();
         Matcher m = pattern.matcher(checkedText);

@@ -51,12 +51,9 @@ public class ChatImage {
     public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
 
     public ChatImage() {
-
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(ChatImage::init);
-        modEventBus.addListener(ChatImage::onKeyBindRegister);
-        // modEventBus.addListener(Chatimage::onKeyInput);
     }
 
     public static void init(FMLCommonSetupEvent event) {
@@ -87,6 +84,7 @@ public class ChatImage {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ChatImage::onKeyBindRegister);
             ChatImageFrame.textureHelper = image -> {
                 NativeImage nativeImage = NativeImage.read(image);
                 return new ChatImageFrame.TextureReader<>(
