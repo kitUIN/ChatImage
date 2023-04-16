@@ -84,7 +84,9 @@ public class ChatComponentMixin extends GuiComponent {
             }
         }
         if (flag) {
-            return text;
+            MutableComponent res = text.copy();
+            res.getSiblings().clear();
+            return res;
         }
         int lastPosition = 0;
         int j = 0;

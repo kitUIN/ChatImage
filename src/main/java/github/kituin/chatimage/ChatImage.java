@@ -60,7 +60,6 @@ public class ChatImage {
             FileChannel.register();
             GetFileChannel.register();
             DownloadFileChannel.register();
-
         });
         LOGGER.info("Cannel Register");
     }
