@@ -90,7 +90,7 @@ public class ChatComponentMixin extends GuiComponent {
             }
         }
         if (flag) {
-            return text;
+            return MutableComponent.create(text.getContents()).setStyle(text.getStyle());
         }
         int lastPosition = 0;
         int j = 0;
