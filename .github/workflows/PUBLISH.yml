@@ -7,8 +7,7 @@ on:
     tags:
       - v1.**
   workflow_dispatch:
-    branches:
-      - fabric-1.18.2
+
 env:
   MINECRAFT_VERSION: 1.18.2
   JAVA_VERSION: 17
@@ -39,31 +38,30 @@ jobs:
           distribution: "temurin"
           java-version: 17
 
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@ccb4328a959376b642e027874838f60f8e596de3
+      - name: 使 Gradle Wrapper 可执行
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@749f47bda3e44aa060e82d7b3ef7e40d953bd629
+      - name: 构建
+        run: ./gradlew clean build
+
+      - name: 发布（CurseForge/Modrinth/Github）
+        uses: Kir-Antipov/mc-publish@v3.2
         with:
-          arguments: build
-#
-#      - name: 发布（CurseForge/Modrinth/Github）
-#        uses: Kir-Antipov/mc-publish@v3.2
-#        with:
-#          curseforge-id: 818089
-#          curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
-#
-##          modrinth-id: 1q2w3e4r
-##          modrinth-token: "${{env.MODRINTH_TOKEN}}"
-#
-##          github-tag: "v${{env.VERSION}}"
-##          github-token: "${{env.GITHUB_TOKEN}}"
-#
-#          name: "${{env.RELEASE_NAME}}"
-#          version: "${{env.VERSION}}"
-#          version-type: release
-#          changelog-file: CHANGELOG.md
-#
-#          loaders: fabric
-#          game-versions: "${{env.MINECRAFT_VERSION}}"
-#          java: "${{env.JAVA_VERSION}}"
+          curseforge-id: 818089
+          curseforge-token: "${{env.CURSEFORGE_TOKEN}}"
+
+#          modrinth-id: 1q2w3e4r
+#          modrinth-token: "${{env.MODRINTH_TOKEN}}"
+
+#          github-tag: "v${{env.VERSION}}"
+#          github-token: "${{env.GITHUB_TOKEN}}"
+
+          name: "${{env.RELEASE_NAME}}"
+          version: "${{env.VERSION}}"
+          version-type: release
+          changelog-file: CHANGELOG.md
+
+          loaders: fabric
+          game-versions: "${{env.MINECRAFT_VERSION}}"
+          java: "${{env.JAVA_VERSION}}"
