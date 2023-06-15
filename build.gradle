@@ -70,7 +70,7 @@ jar {
     }
 }
 remapJar{
-    destinationDir(new File("/out"))
+    // destinationDir(new File("/out"))
 }
 // configure the maven publication
 publishing {
