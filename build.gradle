@@ -27,6 +27,7 @@ dependencies {
     include implementation('com.madgag:animated-gif-lib:1.4')
     // include implementation('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
     include implementation('net.sf.image4j:image4j:0.7.2')
+    // modImplementation fileTree(dir: 'mods', include: '*.jar')
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }
 
@@ -69,7 +70,7 @@ jar {
     }
 }
 remapJar{
-    destinationDir(new File("D:\\IdeaProjects\\out"))
+    destinationDir(new File("/out"))
 }
 // configure the maven publication
 publishing {

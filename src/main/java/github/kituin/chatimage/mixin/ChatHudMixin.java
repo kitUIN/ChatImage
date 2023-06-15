@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
+import java.awt.*;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,7 +80,7 @@ public class ChatHudMixin extends DrawableHelper {
             }
         }
         if (flag) {
-            return text;
+            return text.copy();
         }
         int lastPosition = 0;
         int j = 0;
@@ -116,6 +117,7 @@ public class ChatHudMixin extends DrawableHelper {
     }
 
     private static Text replaceMessage(Text message) {
+
         try {
             MutableText res = (MutableText) replaceCode(message);
             for (Text t : message.getSiblings()) {
