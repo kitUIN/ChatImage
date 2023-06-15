@@ -80,7 +80,7 @@ public class ChatHudMixin extends DrawableHelper {
             }
         }
         if (flag) {
-            return text.copy();
+            return text.copy().setStyle(style);
         }
         int lastPosition = 0;
         int j = 0;
