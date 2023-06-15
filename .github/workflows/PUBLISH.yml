@@ -1,7 +1,10 @@
 name: 发布到 Github、Curseforge 和 Modrinth
 
 on:
+
   push:
+    branches:
+      - fabric-1.18.2
     tags:
       - v1.**
   workflow_dispatch:
