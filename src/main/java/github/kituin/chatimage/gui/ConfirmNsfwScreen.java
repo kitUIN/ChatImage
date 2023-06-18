@@ -3,6 +3,7 @@ package github.kituin.chatimage.gui;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ConfirmScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
@@ -32,9 +33,8 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
         }).dimensions(this.width / 2 - 50 + 52, y, 100, 20).build());
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer,
-                Text.translatable("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        super.render(context, mouseX, mouseY, delta);
+        context.drawCenteredTextWithShadow(this.textRenderer, Text.translatable("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
     }
 }

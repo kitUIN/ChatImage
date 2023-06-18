@@ -34,11 +34,11 @@ public class ChatImageStyle {
      * @return {@link MutableText}
      */
     public static MutableText messageFromCode(ChatImageCode code) {
-        MutableText t = (MutableText) Text.of("[");
+        MutableText t = Text.literal("[");
         if ("codename.chatimage.default".equals(code.getName())) {
             t.append(Text.translatable(code.getName()));
         } else {
-            t.append(Text.of(code.getName()));
+            t.append(Text.literal(code.getName()));
         }
         t.append("]");
         Style style = ChatImageStyle.getStyleFromCode(code);

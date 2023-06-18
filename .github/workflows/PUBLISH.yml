@@ -1,0 +1,56 @@
+name: 发布到CurseForge
+
+on:
+  release:
+    types: [published]
+    branches:
+      - fabric-1.20.1
+  workflow_dispatch:
+env:
+  MINECRAFT_VERSION: 1.20.1
+  JAVA_VERSION: 17
+  VERSION: 1.1.6+1.20.1+fabric
+  RELEASE_NAME: ChatImage-1.1.6+1.20.1+fabric.jar
+
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检查环境变量
+        run: env
+
+      - name: 签出存储库
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: 设置 Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: 17
+
+      - name: 使 Gradle Wrapper 可执行
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+
+      - name: 构建
+        run: ./gradlew clean build
+
+      - name: 发布（CurseForge/Modrinth/Github）
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          curseforge-token: "${{ secrets.PUBLISH_CURSEFORGE_TOKEN }}"
+
+          name: "${{env.RELEASE_NAME}}"
+          version: "${{env.VERSION}}"
+          version-type: release
+          changelog-file: CHANGELOG.md
+
+          loaders: fabric
+          game-versions: "${{env.MINECRAFT_VERSION}}"
+          java: "${{env.JAVA_VERSION}}"

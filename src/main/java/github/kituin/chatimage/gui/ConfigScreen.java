@@ -5,6 +5,7 @@ import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.narration.Narration;
 import net.minecraft.client.gui.tooltip.Tooltip;
@@ -49,16 +50,15 @@ public class ConfigScreen extends Screen {
         adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
             this.client.setScreen(this.parent);
         }).build(), 2);
-        gridWidget.recalculateDimensions();
+        gridWidget.refreshPositions();
         SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
-        this.addDrawableChild(gridWidget);
+        gridWidget.forEachChild(this::addDrawableChild);
     }
 
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, this.textRenderer,
-                title, this.width / 2, this.height / 3 - 32, 16764108);
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
+        super.render(context, mouseX, mouseY, delta);
+        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
     }
 
     private MutableText getNsfw(boolean enable) {

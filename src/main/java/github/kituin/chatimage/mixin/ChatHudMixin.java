@@ -6,7 +6,6 @@ import github.kituin.chatimage.exception.InvalidChatImageCodeException;
 import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
@@ -15,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * @author kitUIN
  */
 @Mixin(ChatHud.class)
-public class ChatHudMixin extends DrawableHelper {
+public class ChatHudMixin {
     private static Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
     @ModifyVariable(at = @At("HEAD"),
@@ -81,37 +81,34 @@ public class ChatHudMixin extends DrawableHelper {
             }
         }
         if (flag) {
-            MutableText t = MutableText.of(text.getContent());
-            t = t.setStyle(text.getStyle());
-            return t;
+            return MutableText.of(text.getContent()).setStyle(text.getStyle());
         }
         int lastPosition = 0;
         int j = 0;
         MutableText res;
         if (nums.get(0) != 0) {
-            res = ((MutableText) Text.of(checkedText.substring(lastPosition, nums.get(0)))).setStyle(style);
+            res = Text.literal(checkedText.substring(lastPosition, nums.get(0))).setStyle(style);
         } else {
-            res = ((MutableText) Text.of(checkedText.substring(lastPosition, nums.get(0)))).setStyle(style);
+            res = Text.literal(checkedText.substring(lastPosition, nums.get(0))).setStyle(style);
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(0)));
             j = 2;
         }
         for (int i = j; i < nums.size(); i += 2) {
             if (i == j && j == 2) {
-                res.append(Text.of(checkedText.substring(nums.get(1), nums.get(2))));
+                res.append(Text.literal(checkedText.substring(nums.get(1), nums.get(2))));
             }
             res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(i / 2)));
             lastPosition = nums.get(i + 1);
             if (i + 2 < nums.size() && lastPosition + 1 != nums.get(i + 2)) {
-                String s = checkedText.substring(lastPosition, nums.get(i + 2));
-                res.append(((MutableText) Text.of(s)).setStyle(style));
+                res.append(Text.literal(checkedText.substring(lastPosition, nums.get(i + 2))).setStyle(style));
             } else if (lastPosition == nums.get(nums.size() - 1)) {
-                res.append(Text.of(checkedText.substring(lastPosition)));
+                res.append(Text.literal(checkedText.substring(lastPosition)));
             }
         }
         if (player == null) {
             return res;
         } else {
-            MutableText resp = MutableText.of(new TranslatableTextContent(key, player, res));
+            MutableText resp =  Text.translatable(key, player, res);
             if (isIncoming) {
                 return resp.setStyle(Style.EMPTY.withColor(Formatting.GRAY).withItalic(true));
             } else {
