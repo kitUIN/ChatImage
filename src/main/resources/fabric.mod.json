@@ -35,5 +35,11 @@
     "fabric-api": "*",
     "minecraft": "~1.20",
     "java": ">=17"
+  },
+  "custom": {
+    "mc-publish": {
+      "curseforge": 818089,
+      "loaders": ["fabric"]
+    }
   }
 }
