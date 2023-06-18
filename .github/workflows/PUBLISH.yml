@@ -46,6 +46,11 @@ jobs:
         with:
           curseforge-token: "${{ secrets.PUBLISH_CURSEFORGE_TOKEN }}"
 
+          github-tag:  "${{env.VERSION}}"
+          github-token: ${{ secrets.TAG_TOKEN }}
+          files: |
+            build/libs/!(*-@(dev|sources|javadoc)).jar
+
           name: "${{env.RELEASE_NAME}}"
           version: "${{env.VERSION}}"
           version-type: release
