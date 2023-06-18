@@ -4,13 +4,13 @@ on:
   release:
     types: [published]
     branches:
-      - fabric-1.20.1
+      - fabric-1.20
   workflow_dispatch:
 env:
-  MINECRAFT_VERSION: 1.20.1
+  MINECRAFT_VERSION: 1.20
   JAVA_VERSION: 17
-  VERSION: 1.1.6+1.20.1+fabric
-  RELEASE_NAME: ChatImage-1.1.6+1.20.1+fabric.jar
+  VERSION: 1.1.6+1.20+fabric
+  RELEASE_NAME: ChatImage-1.1.6+1.20+fabric.jar
 
 
 permissions:
