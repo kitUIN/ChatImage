@@ -16,7 +16,7 @@ public class FileChannel {
     public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
     private static SimpleChannel INSTANCE;
 
-    private static int packetId = 0;
+    private static int packetId = 1;
     private static int id() {
         return packetId++;
     }
@@ -41,5 +41,4 @@ public class FileChannel {
     public static <MSG> void sendToServer(MSG message) {
         INSTANCE.sendToServer(message);
     }
-
 }

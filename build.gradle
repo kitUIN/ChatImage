@@ -4,6 +4,7 @@ buildscript {
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         mavenCentral()
 
+        flatDir { dirs 'lib' }
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
@@ -136,11 +137,8 @@ dependencies {
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
-    shadow('com.squareup.okhttp3:okhttp:3.14.7')
-    shadow('com.squareup.okio:okio:1.17.5')
-    shadow('com.madgag:animated-gif-lib:1.4')
-    // shadow('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0')
-    shadow("net.sf.image4j:image4j:0.7.2")
+    shadow(fileTree(dir: 'lib', includes: ['*.jar']))
+
 
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
@@ -148,11 +146,7 @@ shadowJar {
     configurations = [project.configurations.shadow]
     archiveClassifier.set('')
     dependencies {
-        include(dependency('com.squareup.okhttp3:okhttp:3.14.7'))
-        include(dependency('com.squareup.okio:okio:1.17.5'))
-        include(dependency('com.madgag:animated-gif-lib:1.4'))
-        // include(dependency('org.sejda.webp-imageio:webp-imageio-sejda:0.1.0'))
-        include(dependency("net.sf.image4j:image4j:0.7.2"))
+        include(dependency('com.github.chatimagecode:ChatImageCode:0.5.0'))
     }
     destinationDir(new File("D:\\IdeaProjects\\out"))
 }

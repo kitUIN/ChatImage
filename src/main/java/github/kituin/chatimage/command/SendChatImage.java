@@ -1,11 +1,11 @@
 package github.kituin.chatimage.command;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.exception.InvalidChatImageUrlException;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import github.kituin.chatimage.tool.ChatImageCode;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;

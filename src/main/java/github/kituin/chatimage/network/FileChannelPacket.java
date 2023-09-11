@@ -2,8 +2,9 @@ package github.kituin.chatimage.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
@@ -11,18 +12,19 @@ import static github.kituin.chatimage.network.ChatImagePacket.serverFileChannelR
 public class FileChannelPacket {
 
 
-    private final Map<String, byte[]> message;
+    private final String message;
 
+    private static final Logger LOGGER = LogManager.getLogger();
     public FileChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readMap(FriendlyByteBuf::readUtf, FriendlyByteBuf::readByteArray);
+        message = buffer.readUtf();
     }
 
-    public FileChannelPacket(Map<String, byte[]> message) {
+    public FileChannelPacket(String message) {
         this.message = message;
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeMap(this.message, FriendlyByteBuf::writeUtf, FriendlyByteBuf::writeByteArray);
+        buf.writeUtf(this.message);
     }
 
     /**
