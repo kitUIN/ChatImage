@@ -1,13 +1,14 @@
 package github.kituin.chatimage.client;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.ChatImageFrame;
+import com.github.chatimagecode.ChatImageUrl;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import github.kituin.chatimage.command.ChatImageCommand;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
 import github.kituin.chatimage.network.ChatImagePacket;
-import github.kituin.chatimage.tool.ChatImageFrame;
-import github.kituin.chatimage.tool.ChatImageUrl;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -24,8 +25,10 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.network.PacketByteBuf;
 import org.lwjgl.glfw.GLFW;
 
+import java.io.File;
 import java.util.List;
 
+import static com.github.chatimagecode.ChatImagePacketHelper.createFilePacket;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static github.kituin.chatimage.network.ChatImagePacket.*;
@@ -52,16 +55,21 @@ public class ChatImageClient implements ClientModInitializer {
                     nativeImage.getHeight()
             );
         };
-        ChatImageUrl.networkHelper = (url, file, isServer) -> {
-            if (isServer) {
-                List<PacketByteBuf> bufs = createFilePacket(url, file);
-                if (bufs != null) {
-                    sendPacketAsync(FILE_CHANNEL, bufs);
-                }
+        ChatImageUrl.networkHelper = (url, file, exist) -> {
+            if (exist) {
+                List<String> bufs = createFilePacket(url, file);
+                sendPacketAsync(FILE_CHANNEL, bufs);
             } else {
                 loadFromServer(url);
             }
         };
+        ChatImageUrl.cachePathHelper = () -> {
+            File folder = new File(CONFIG.cachePath);
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+        };
+        ChatImageCode.timeoutHelper = () -> CONFIG.timeout;
         configKeyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "config.chatimage.key",
                 InputUtil.Type.KEYSYM,

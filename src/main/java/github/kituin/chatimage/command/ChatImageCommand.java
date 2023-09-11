@@ -1,12 +1,12 @@
 package github.kituin.chatimage.command;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.exception.InvalidChatImageUrlException;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.config.ChatImageConfig;
-import github.kituin.chatimage.exception.InvalidChatImageUrlException;
-import github.kituin.chatimage.tool.ChatImageCode;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.MutableText;

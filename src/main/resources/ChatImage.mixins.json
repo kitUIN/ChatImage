@@ -4,12 +4,12 @@
   "package": "github.kituin.chatimage.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "DrawContextMixin"
   ],
   "client": [
     "ChatHudMixin",
     "FileDragMixin",
-    "ScreenMixin"
+    "ScreenMixin",
+    "DrawContextMixin"
   ],
   "injectors": {
     "defaultRequire": 1

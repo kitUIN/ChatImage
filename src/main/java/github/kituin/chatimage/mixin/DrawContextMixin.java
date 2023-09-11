@@ -1,20 +1,16 @@
 package github.kituin.chatimage.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import github.kituin.chatimage.tool.ChatImageCode;
-import github.kituin.chatimage.tool.ChatImageFrame;
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.ChatImageFrame;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner;
 import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
-import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
 import org.joml.Vector2ic;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,9 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static github.kituin.chatimage.tool.ChatImageCode.NSFW_MAP;
-import static github.kituin.chatimage.tool.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
 /**
@@ -87,7 +82,6 @@ public abstract class DrawContextMixin {
                         if (frame.getSiblings().size() != 0) {
                             if (frame.getButter() == CONFIG.gifSpeed) {
                                 frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                AddChatImage(frame, view.getChatImageUrl().getUrl());
                                 frame.setButter(0);
                             } else {
                                 frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
