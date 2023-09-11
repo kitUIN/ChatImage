@@ -1,9 +1,9 @@
 package github.kituin.chatimage.mixin;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.exception.InvalidChatImageCodeException;
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.exception.InvalidChatImageCodeException;
-import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
@@ -121,13 +121,14 @@ public class ChatHudMixin extends DrawableHelper {
     }
 
     private static Text replaceMessage(Text message) {
-        try {
+        try{
             MutableText res = (MutableText) replaceCode(message);
             for (Text t : message.getSiblings()) {
                 res.append(replaceMessage(t));
             }
             return res;
-        } catch (Exception e) {
+        }
+        catch (Exception e){
             return message;
         }
     }
