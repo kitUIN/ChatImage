@@ -1,5 +1,8 @@
 package github.kituin.chatimage;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.ChatImageFrame;
+import com.github.chatimagecode.ChatImageUrl;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -9,12 +12,7 @@ import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
-import github.kituin.chatimage.network.DownloadFileChannel;
-import github.kituin.chatimage.network.FileChannel;
-import github.kituin.chatimage.network.FileChannelPacket;
-import github.kituin.chatimage.network.GetFileChannel;
-import github.kituin.chatimage.tool.ChatImageFrame;
-import github.kituin.chatimage.tool.ChatImageUrl;
+import github.kituin.chatimage.network.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.commands.CommandSourceStack;
@@ -36,11 +34,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.util.List;
 
+import static com.github.chatimagecode.ChatImagePacketHelper.createFilePacket;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
-import static github.kituin.chatimage.network.ChatImagePacket.*;
-
+import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
+import static github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;
 
 @Mod(ChatImage.MOD_ID)
 public class ChatImage {
@@ -57,18 +57,40 @@ public class ChatImage {
     }
 
     public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            FileChannel.register();
-            GetFileChannel.register();
-            DownloadFileChannel.register();
-        });
-        LOGGER.info("Cannel Register");
+        event.enqueueWork(FileChannel::register);
+        event.enqueueWork(FileInfoChannel::registerMessage);
+        event.enqueueWork(FileBackChannel::register);
+        event.enqueueWork(DownloadFileChannel::register);
+        LOGGER.info("[ChatImage]Channel Register");
     }
 
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        LOGGER.info("Server starting");
+        LOGGER.info("[ChatImage]Server starting");
+        CommandDispatcher<CommandSourceStack> dispatcher = event.getServer().getCommands().getDispatcher();
+        LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+                Commands.literal(MOD_ID)
+                        .then(Commands.literal("send")
+                                .then(Commands.argument("name", StringArgumentType.string())
+                                        .then(Commands.argument("url", greedyString())
+                                                .executes(SendChatImage.instance)
+                                        )
+                                )
+                        )
+                        .then(Commands.literal("url")
+                                .then(Commands.argument("url", greedyString())
+                                        .executes(SendChatImage.instance)
+                                )
+                        )
+                        .then(Commands.literal("help")
+                                .executes(Help.instance)
+                        )
+                        .then(Commands.literal("reload")
+                                .executes(ReloadConfig.instance)
+                        )
+
+        );
     }
 
 
@@ -93,17 +115,22 @@ public class ChatImage {
                         nativeImage.getHeight()
                 );
             };
-            ChatImageUrl.networkHelper = (url, file, isServer) -> {
-                if (isServer) {
-                    List<FileChannelPacket> bufs = createFilePacket(url, file);
-                    if (bufs != null) {
-                        sendFilePackets(bufs);
-                    }
+            ChatImageUrl.networkHelper = (url, file, exist) -> {
+                if (exist) {
+                    List<String> bufs = createFilePacket(url, file);
+                    sendFilePackets(bufs);
                 } else {
                     loadFromServer(url);
                 }
             };
-            LOGGER.info("Client start");
+            ChatImageUrl.cachePathHelper = () -> {
+                File folder = new File(CONFIG.cachePath);
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
+            };
+            ChatImageCode.timeoutHelper = () -> CONFIG.timeout;
+            LOGGER.info("[ChatImage]Client start");
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
@@ -117,29 +144,7 @@ public class ChatImage {
         }
 
         public static void onClientStaring(RegisterCommandsEvent event) {
-            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
-            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
-                    Commands.literal(MOD_ID)
-                            .then(Commands.literal("send")
-                                    .then(Commands.argument("name", StringArgumentType.string())
-                                            .then(Commands.argument("url", greedyString())
-                                                    .executes(SendChatImage.instance)
-                                            )
-                                    )
-                            )
-                            .then(Commands.literal("url")
-                                    .then(Commands.argument("url", greedyString())
-                                            .executes(SendChatImage.instance)
-                                    )
-                            )
-                            .then(Commands.literal("help")
-                                    .executes(Help.instance)
-                            )
-                            .then(Commands.literal("reload")
-                                    .executes(ReloadConfig.instance)
-                            )
 
-            );
         }
     }
 

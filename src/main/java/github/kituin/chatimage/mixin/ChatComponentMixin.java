@@ -1,9 +1,9 @@
 package github.kituin.chatimage.mixin;
 
+import com.github.chatimagecode.exception.InvalidChatImageCodeException;
+import com.github.chatimagecode.ChatImageCode;
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.exception.InvalidChatImageCodeException;
-import github.kituin.chatimage.tool.ChatImageCode;
 import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -14,6 +14,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.contents.LiteralContents;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -35,6 +36,7 @@ public class ChatComponentMixin extends GuiComponent {
     @Shadow
     @Final
     private Minecraft minecraft;
+    @Shadow @Final private static Logger LOGGER;
     private static final Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
     @ModifyVariable(at = @At("HEAD"),
@@ -51,7 +53,6 @@ public class ChatComponentMixin extends GuiComponent {
         MutableComponent player = null;
         boolean isSelf = false;
         boolean isIncoming = false;
-
         if (text.getContents() instanceof LiteralContents lc) {
             checkedText = lc.toString();
         } else if (text.getContents() instanceof TranslatableContents ttc) {
@@ -86,11 +87,13 @@ public class ChatComponentMixin extends GuiComponent {
                 nums.add(m.end());
                 chatImageCodeList.add(image);
             } catch (InvalidChatImageCodeException e) {
-                LogUtils.getLogger().error(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
         }
         if (flag) {
-            return MutableComponent.create(text.getContents()).setStyle(text.getStyle());
+            MutableComponent res = text.copy();
+            res.getSiblings().clear();
+            return res;
         }
         int lastPosition = 0;
         int j = 0;
@@ -133,6 +136,7 @@ public class ChatComponentMixin extends GuiComponent {
             }
             return res;
         } catch (Exception e) {
+            LOGGER.warn("识别失败:"+e.getMessage());
             return message;
         }
     }
