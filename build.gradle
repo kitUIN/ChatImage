@@ -141,7 +141,7 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
-    shadow(fileTree(dir: 'lib', includes: ['*.jar']))
+    shadow('com.github.chatimagecode:ChatImageCode:0.5.0')
 
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
@@ -151,7 +151,7 @@ shadowJar {
     dependencies {
         include(dependency('com.github.chatimagecode:ChatImageCode:0.5.0'))
     }
-    destinationDir(new File("./out"))
+    destinationDir(new File("D:\\out"))
 }
 
 
