@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+
 
 /**
  * 注入修改文本显示,自动将CICode转换为可鼠标悬浮格式文字
@@ -28,6 +30,7 @@ import java.util.regex.Pattern;
 public class ChatHudMixin extends DrawableHelper {
     private static Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
 
+    private static final Pattern cqPattern = Pattern.compile("\\[CQ:image,(.*?)\\]");
     @ModifyVariable(at = @At("HEAD"),
             method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
             argsOnly = true)
@@ -62,6 +65,23 @@ public class ChatHudMixin extends DrawableHelper {
             }
         } else {
             checkedText = text.getContent().toString();
+        }
+        if(CONFIG.cqCode){
+            Matcher cqm = cqPattern.matcher(checkedText);
+            while (cqm.find()) {
+                String[] cqArgs = cqm.group(1).split(",");
+                String cq_Url = "";
+                for(int i=0;i<cqArgs.length;i++){
+                    String[] cqParams = cqArgs[i].split("=");
+                    if("url".equals(cqParams[0])){
+                        cq_Url = cqParams[1];
+                        break;
+                    }
+                }
+                if(!cq_Url.isEmpty()){
+                    checkedText = checkedText.replace(cqm.group(0), String.format("[[CICode,url=%s]]", cq_Url));
+                }
+            }
         }
         Style style = text.getStyle();
         List<ChatImageCode> chatImageCodeList = Lists.newArrayList();

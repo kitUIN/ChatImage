@@ -24,19 +24,19 @@ public class LimitPaddingScreen extends ConfigRawScreen {
         this.addDrawableChild(new PaddingSlider(
                 this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
                 Text.translatable("left.padding.chatimage.gui"), CONFIG.paddingLeft,
-                this.width / 2, LEFT, getSliderTooltip(getPaddingTooltipText(LEFT))));
+                (float) this.width / 2, LEFT, getSliderTooltip(getPaddingTooltipText(LEFT))));
         this.addDrawableChild(new PaddingSlider(
                 this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20,
                 Text.translatable("right.padding.chatimage.gui"), CONFIG.paddingRight,
-                this.width / 2, RIGHT, getSliderTooltip(getPaddingTooltipText(RIGHT))));
+                (float) this.width / 2, RIGHT, getSliderTooltip(getPaddingTooltipText(RIGHT))));
         this.addDrawableChild(new PaddingSlider(
                 this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20,
                 Text.translatable("top.padding.chatimage.gui"), CONFIG.paddingTop,
-                this.height / 2, TOP, getSliderTooltip(getPaddingTooltipText(TOP))));
+                (float) this.height / 2, TOP, getSliderTooltip(getPaddingTooltipText(TOP))));
         this.addDrawableChild(new PaddingSlider(
                 this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20,
                 Text.translatable("bottom.padding.chatimage.gui"), CONFIG.paddingBottom,
-                this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
+                (float) this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
         this.addDrawableChild(new LimitSlider(
                 this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
                 Text.translatable("width.limit.chatimage.gui"), CONFIG.limitWidth,
@@ -48,7 +48,9 @@ public class LimitPaddingScreen extends ConfigRawScreen {
         this.addDrawableChild(new ButtonWidget(
                 this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20,
                 Text.translatable("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+            if (this.client != null) {
+                this.client.setScreen(this.parent);
+            }
         }));
 
 
