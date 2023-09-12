@@ -49,7 +49,7 @@
 本项目使用 [ChatImageCode](https://chatimage.kituin.fun/wiki/chatimage/code) (`[[CICode,<arg>=<value>]]`)
 
 ps: `1.0.2`及以下版本使用的`CICode`只有1对[],`1.1.0`及以上使用2对[]
-
+ps2: `1.1.9`及以上版本支持使用[CQCode](https://docs.go-cqhttp.org/cqcode/#%E5%9B%BE%E7%89%87)
 | 参数                                                             | 必须  | 类型      | 备注                    |
 |----------------------------------------------------------------|-----|---------|-----------------------|
 | [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是   | String  | 图片地址(本地文件请使用file:///) |
