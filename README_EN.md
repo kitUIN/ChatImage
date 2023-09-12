@@ -54,6 +54,8 @@ It use `ChatImageCode` (`[[CICode,<arg>=<value>]]`)
 
 ps: `CICode` used in version `1.0.2` and below has only 1 pair of [], `1.1.0` and above use 2 pairs of []
 
+ps2: `1.1.9`and above could use [CQCode](https://docs.go-cqhttp.org/cqcode/#%E5%9B%BE%E7%89%87)
+
 | Arg  | Require | Type    | Remark                                                |
 |------|---------|---------|-------------------------------------------------------|
 | url  | true    | String  | Image address (please use `file:///` for local files) |
