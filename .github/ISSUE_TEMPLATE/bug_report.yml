@@ -41,7 +41,7 @@ body:
     attributes:
       label: 日志记录
       description: 请打开日志文件夹，选取问题发生当日的日志记录(如latest.log)作为 Issue 的附件上传
-  - type: checkboxes
+  - type: dropdown
     id: mod-loader
     validations:
       required: true
@@ -49,10 +49,11 @@ body:
        label: 模组加载器
        description: 选择一个你发现问题的加载器类型
        options:
-         - label: Forge
-         - label: Fabric
-         - label: 其它 (需注明)
-  - type: checkboxes
+         - Forge
+         - Fabric
+         - NeoForge
+         - Quilt
+  - type: dropdown
     id: mc-version
     validations:
       required: true
@@ -60,13 +61,12 @@ body:
        label: 我的世界版本
        description: 选择一个你发现问题的MC版本
        options:
-         - label: 1.20.x
-         - label: 1.19.3/1.19.4
-         - label: 1.19.1/1.19.2
-         - label: 1.18.x
-         - label: 1.17.x
-         - label: 1.16.x
-         - label: 其它 (需注明)
+         - 1.20.x
+         - 1.19.3/1.19.4
+         - 1.19.1/1.19.2
+         - 1.18.x
+         - 1.17.x
+         - 1.16.x
   - type: textarea
     validations:
       required: true
