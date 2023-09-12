@@ -25,19 +25,23 @@ public class LimitPaddingScreen extends ConfigRawScreen {
         super.init();
 
         addRenderableWidget(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, Component.translatable("left.padding.chatimage.gui"),
-                CONFIG.paddingLeft, this.width / 2, LEFT, createSliderTooltip(PaddingSlider.tooltip(LEFT))));
+                CONFIG.paddingLeft, (float) this.width / 2, LEFT, createSliderTooltip(PaddingSlider.tooltip(LEFT))));
         addRenderableWidget(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, Component.translatable("right.padding.chatimage.gui"),
-                CONFIG.paddingRight, this.width / 2, RIGHT, createSliderTooltip(PaddingSlider.tooltip(RIGHT))));
+                CONFIG.paddingRight, (float) this.width / 2, RIGHT, createSliderTooltip(PaddingSlider.tooltip(RIGHT))));
         addRenderableWidget(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, Component.translatable("top.padding.chatimage.gui"),
-                CONFIG.paddingTop, this.height / 2, TOP, createSliderTooltip(PaddingSlider.tooltip(TOP))));
+                CONFIG.paddingTop, (float) this.height / 2, TOP, createSliderTooltip(PaddingSlider.tooltip(TOP))));
         addRenderableWidget(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, Component.translatable("bottom.padding.chatimage.gui"),
-                CONFIG.paddingBottom, this.height / 2, BOTTOM, createSliderTooltip(PaddingSlider.tooltip(BOTTOM))));
+                CONFIG.paddingBottom, (float) this.height / 2, BOTTOM, createSliderTooltip(PaddingSlider.tooltip(BOTTOM))));
         addRenderableWidget(new LimitSlider(this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20, Component.translatable("width.limit.chatimage.gui"),
                 CONFIG.limitWidth, this.width, WIDTH, createSliderTooltip(LimitSlider.tooltip(WIDTH))));
         addRenderableWidget(new LimitSlider(this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20, Component.translatable("height.limit.chatimage.gui"),
                 CONFIG.limitHeight, this.height, HEIGHT, createSliderTooltip(LimitSlider.tooltip(HEIGHT))));
         addRenderableWidget(new Button(this.width / 2 - 77, this.height / 4 + 96 - 16, 150, 20,
                 Component.translatable("gui.back"),
-                (button) -> this.minecraft.setScreen(this.parent)));
+                (button) -> {
+                    if (this.minecraft != null) {
+                        this.minecraft.setScreen(this.parent);
+                    }
+                }));
     }
 }

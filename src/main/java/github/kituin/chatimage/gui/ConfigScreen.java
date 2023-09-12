@@ -30,14 +30,29 @@ public class ConfigScreen extends ConfigRawScreen {
         this.addRenderableWidget(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 - 16, 150, 20, createSliderTooltip(TimeOutSlider.tooltip())));
         this.addRenderableWidget(new Button(this.width / 2 + 4, this.height / 4 + 48 - 16, 150, 20,
                 Component.translatable("padding.chatimage.gui"),
-                (button) -> this.minecraft.setScreen(new LimitPaddingScreen(this)),
+                (button) -> {
+                    if (this.minecraft != null) {
+                        this.minecraft.setScreen(new LimitPaddingScreen(this));
+                    }
+                },
                 createButtonTooltip(Component.translatable("padding.chatimage.tooltip"))));
-        this.addRenderableWidget(new Button(this.width / 2 - 77, this.height / 4 + 72 - 16, 150, 20,
+        this.addRenderableWidget(new Button(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
+            CONFIG.cqCode = !CONFIG.cqCode;
+            button.setMessage(getCq(CONFIG.cqCode));
+            ChatImageConfig.saveConfig(CONFIG);
+        }, createButtonTooltip(Component.translatable("cq.chatimage.tooltip"))));
+        this.addRenderableWidget(new Button(this.width / 2 - 77, this.height / 4 + 96 - 16, 150, 20,
                 Component.translatable("gui.back"),
-                (button) -> this.minecraft.setScreen(this.parent)));
+                (button) -> {
+                    if (this.minecraft != null) {
+                        this.minecraft.setScreen(this.parent);
+                    }
+                }));
     }
 
-
+    private MutableComponent getCq(boolean enable) {
+        return Component.translatable(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+    }
     private MutableComponent getNsfw(boolean enable) {
         return Component.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }
