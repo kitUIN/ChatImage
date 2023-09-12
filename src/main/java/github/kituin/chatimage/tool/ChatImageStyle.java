@@ -1,9 +1,9 @@
 package github.kituin.chatimage.tool;
 
+import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.exception.InvalidChatImageUrlException;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import github.kituin.chatimage.exception.InvalidChatImageCodeException;
-import github.kituin.chatimage.exception.InvalidChatImageUrlException;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.JsonHelper;
