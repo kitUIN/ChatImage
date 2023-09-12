@@ -1,4 +1,4 @@
-name: Bug 报告
+name: 🐛Bug 报告
 description: 提交 Bug 以帮助我们提高Mod体验
 title: "[Bug] 我的标题"
 assignees: kitUIN
@@ -41,6 +41,32 @@ body:
     attributes:
       label: 日志记录
       description: 请打开日志文件夹，选取问题发生当日的日志记录(如latest.log)作为 Issue 的附件上传
+  - type: checkboxes
+    id: mod-loader
+    validations:
+      required: true
+    attributes:
+       label: 模组加载器
+       description: 选择一个你发现问题的加载器类型
+       options:
+         - label: Forge
+         - label: Fabric
+         - label: 其它 (需注明)
+  - type: checkboxes
+    id: mc-version
+    validations:
+      required: true
+    attributes:
+       label: 我的世界版本
+       description: 选择一个你发现问题的MC版本
+       options:
+         - label: 1.20.x
+         - label: 1.19.3/1.19.4
+         - label: 1.19.1/1.19.2
+         - label: 1.18.x
+         - label: 1.17.x
+         - label: 1.16.x
+         - label: 其它 (需注明)
   - type: textarea
     validations:
       required: true
@@ -48,7 +74,7 @@ body:
       label: Mod版本
       description: 你发现问题的Mod版本
       placeholder: |
-        Mod版本号+MC版本+fabric/forge
+        Mod版本号
   - type: textarea
     validations:
       required: true
