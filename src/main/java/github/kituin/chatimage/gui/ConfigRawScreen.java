@@ -24,7 +24,9 @@ public abstract class ConfigRawScreen extends Screen {
     protected ButtonWidget.TooltipSupplier getButtonTooltip(Text text){
         return new ButtonWidget.TooltipSupplier() {
             public void onTooltip(ButtonWidget buttonWidget, MatrixStack matrixStack, int i, int j) {
-                ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                if (ConfigRawScreen.this.client != null) {
+                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                }
             }
 
             public void supply(Consumer<Text> consumer) {
@@ -35,7 +37,9 @@ public abstract class ConfigRawScreen extends Screen {
     protected SettingSliderWidget.TooltipSupplier getSliderTooltip(Text text){
         return new SettingSliderWidget.TooltipSupplier() {
             public void onTooltip(SettingSliderWidget buttonWidget, MatrixStack matrixStack, int i, int j) {
-                ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                if (ConfigRawScreen.this.client != null) {
+                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                }
             }
 
             public void supply(Consumer<Text> consumer) {
