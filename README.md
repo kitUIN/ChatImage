@@ -16,6 +16,9 @@
   <a href="https://github.com/FabricMC/fabric-loader/releases">
     <img src="https://img.shields.io/badge/Fabric-1.20--1.16-blue?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAgVJREFUOE9jZCAALEy0/p84c40RmzKsgjCFII2L53QxxKaUMTD//St99PzNZ8iGENQ8d1obw4SpCxjuP3oc/fXT18vHz964DDOAoOa+jmoGURF+hrySFoZ3Hz4vOnnmajxBzchObqkrYpCRFmM4fuo8w8y5KxlgYYBhs7WhutRfZuanMBtBtoD8XF6YxiAhIcogIswP5oMMQNFsaaJZyi/A75WWGOagrqrE8P37TwZ+fm6Gy1dvMWzfdZhBTkaSwcnekqG4qp3hPyPDThTN5ibaC4UEeOMm9dSAvfX6zUewf0EA5Gd5ORmGkAAPhpqmPrAYXDPIj+nJ4Qw2lsYoUQoyAAS+f//BcP7iVYY1G3YweLg5M+zYtReiGRY4IPa/f/8Y3r77DLcRJPbw0QuwARcuXQNrBgGwn0Eay4qyGHS1FLDaCHI2SHNn/yyGT5+/okYVSHNBTgqDuoosAzsHGwMrCzPYkI8fvzJ8/wEJsKPHzzOs27jzwJcvX7YdP3O9Gx7PIM1JcSEMIiJiDDLSIgyC/DxwF8CcCwognMkTZgAvLx8DDzc3g4aaLNgAkGaQRoIZA2SAnbUpg5qqIoOQkAgDHw8HXo0oUWVppO0uJilSwsPN6eLiZMOwb/8xhtt3H+C0FUUziANKJNxc7HERIT4M8xatgUcJSjQgcXCmbVhc4tIIEgcAl83Xiz8XILwAAAAASUVORK5CYII=" alt="fabric">
   </a>
+    <a href="https://github.com/kitUIN/ChatImage/releases">
+    <img src="https://img.shields.io/github/v/release/kitUIN/ChatImage" alt="release">
+  </a>
 </p>
 <p align="center">
   <a href="https://chatimage.kituin.fun/">📖文档</a>
