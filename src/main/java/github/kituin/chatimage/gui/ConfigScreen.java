@@ -30,15 +30,26 @@ public class ConfigScreen extends ConfigRawScreen {
         this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(Text.translatable("gif.chatimage.tooltip"))));
         this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(Text.translatable("timeout.chatimage.tooltip"))));
         this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, Text.translatable("padding.chatimage.gui"), (button) -> {
-            this.client.setScreen(new LimitPaddingScreen(this));
+            if (this.client != null) {
+                this.client.setScreen(new LimitPaddingScreen(this));
+            }
         }, getButtonTooltip(Text.translatable("padding.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 72 + -16, 150, 20, Text.translatable("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
+            CONFIG.cqCode = !CONFIG.cqCode;
+            button.setMessage(getCq(CONFIG.cqCode));
+            ChatImageConfig.saveConfig(CONFIG);
+        }, getButtonTooltip(Text.translatable("cq.chatimage.tooltip"))));
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20, Text.translatable("gui.back"), (button) -> {
+            if (this.client != null) {
+                this.client.setScreen(this.parent);
+            }
         }));
     }
 
     private MutableText getNsfw(boolean enable) {
         return Text.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }
-
+    private MutableText getCq(boolean enable) {
+        return Text.translatable(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+    }
 }
