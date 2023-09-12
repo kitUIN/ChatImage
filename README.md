@@ -22,13 +22,13 @@
   ·
   <a href="https://github.com/kitUIN/ChatImage/issues/new/choose">🐛提交建议</a>
   ·
-  <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README.md">📃Chinese</a>
-  ·
   <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">📃English</a>
   ·
   <a href="https://www.curseforge.com/minecraft/mc-mods/chatimage">⬇️CurseForge</a>
   ·
   <a href="https://www.mcmod.cn/class/9111.html">⬇️MC百科</a>
+  ·
+  <a href="https://modrinth.com/mod/chatimage">⬇️Modrinth</a>
 </p>
 
 ## 快速开始
