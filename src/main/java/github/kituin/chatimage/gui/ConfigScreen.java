@@ -43,10 +43,19 @@ public class ConfigScreen extends Screen {
         adder.add(new GifSlider());
         adder.add(new TimeOutSlider());
         adder.add(ButtonWidget.builder(Text.translatable("padding.chatimage.gui"), (button) -> {
-            this.client.setScreen(new LimitPaddingScreen(this));
+            if (this.client != null) {
+                this.client.setScreen(new LimitPaddingScreen(this));
+            }
         }).tooltip(Tooltip.of(Text.translatable("padding.chatimage.tooltip"))).build());
+        adder.add(ButtonWidget.builder(getCq(CONFIG.cqCode), (button) -> {
+            CONFIG.cqCode = !CONFIG.cqCode;
+            button.setMessage(getCq(CONFIG.cqCode));
+            ChatImageConfig.saveConfig(CONFIG);
+        }).tooltip(Tooltip.of(Text.translatable("cq.chatimage.tooltip"))).build());
         adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+            if (this.client != null) {
+                this.client.setScreen(this.parent);
+            }
         }).build(), 2);
         gridWidget.refreshPositions();
         SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
@@ -63,6 +72,8 @@ public class ConfigScreen extends Screen {
     private MutableText getNsfw(boolean enable) {
         return Text.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }
-
+    private MutableText getCq(boolean enable) {
+        return Text.translatable(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+    }
 
 }
