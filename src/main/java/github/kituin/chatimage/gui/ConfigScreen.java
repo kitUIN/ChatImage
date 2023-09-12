@@ -36,7 +36,12 @@ public class ConfigScreen extends ConfigRawScreen {
                         this.minecraft.displayGuiScreen(new LimitPaddingScreen(this));
                     }
                 },createButtonTooltip(new TranslationTextComponent("padding.chatimage.tooltip"))));
-        this.addButton(new Button(this.width / 2 - 77, this.height / 4 + 72 - 16, 150, 20,
+        this.addButton(new Button(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
+            CONFIG.cqCode = !CONFIG.cqCode;
+            button.setMessage(getCq(CONFIG.cqCode));
+            ChatImageConfig.saveConfig(CONFIG);
+        }, createButtonTooltip(new TranslationTextComponent("cq.chatimage.tooltip"))));
+        this.addButton(new Button(this.width / 2 - 77, this.height / 4 + 96 - 16, 150, 20,
                 new TranslationTextComponent("gui.back"),
                 (button) -> {
                     if (this.minecraft != null) {
@@ -45,7 +50,9 @@ public class ConfigScreen extends ConfigRawScreen {
                 }));
     }
 
-
+    private TextComponent getCq(boolean enable) {
+        return new TranslationTextComponent(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+    }
     private TextComponent getNsfw(boolean enable) {
         return new TranslationTextComponent(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
     }

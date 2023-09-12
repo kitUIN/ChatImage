@@ -27,20 +27,20 @@ public class LimitPaddingScreen extends ConfigRawScreen {
 
         addButton(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20,
                 new TranslationTextComponent("right.padding.chatimage.gui"),
-                CONFIG.paddingRight, this.width / 2, RIGHT, createSliderTooltip(PaddingSlider.tooltip(RIGHT))));
+                CONFIG.paddingRight, (float) this.width / 2, RIGHT, createSliderTooltip(PaddingSlider.tooltip(RIGHT))));
 
         addButton(new PaddingSlider(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20,
                 new TranslationTextComponent("bottom.padding.chatimage.gui"),
-                CONFIG.paddingBottom, this.height / 2, BOTTOM, createSliderTooltip(PaddingSlider.tooltip(BOTTOM))));
+                CONFIG.paddingBottom, (float) this.height / 2, BOTTOM, createSliderTooltip(PaddingSlider.tooltip(BOTTOM))));
         addButton(new LimitSlider(this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,
                 new TranslationTextComponent("height.limit.chatimage.gui"),
                 CONFIG.limitHeight, this.height, HEIGHT, createSliderTooltip(LimitSlider.tooltip(HEIGHT))));
         addButton(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
                 new TranslationTextComponent("left.padding.chatimage.gui"),
-                CONFIG.paddingLeft, this.width / 2, LEFT, createSliderTooltip(PaddingSlider.tooltip(LEFT))));
+                CONFIG.paddingLeft, (float) this.width / 2, LEFT, createSliderTooltip(PaddingSlider.tooltip(LEFT))));
         addButton(new PaddingSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20,
                 new TranslationTextComponent("top.padding.chatimage.gui"),
-                CONFIG.paddingTop, this.height / 2, TOP, createSliderTooltip(PaddingSlider.tooltip(TOP))));
+                CONFIG.paddingTop, (float) this.height / 2, TOP, createSliderTooltip(PaddingSlider.tooltip(TOP))));
         addButton(new LimitSlider(this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
                 new TranslationTextComponent("width.limit.chatimage.gui"),
                 CONFIG.limitWidth, this.width, WIDTH, createSliderTooltip(LimitSlider.tooltip(WIDTH))));
