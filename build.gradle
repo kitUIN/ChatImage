@@ -148,6 +148,7 @@ shadowJar {
     dependencies {
         include(dependency('com.github.chatimagecode:ChatImageCode:0.5.0'))
     }
+    relocate "net.sf.image4j", "chatimage.shadow.net.sf.image4j"
     destinationDir(new File("D:\\out"))
 }
 // Example for how to get properties into the manifest for reading at runtime.
