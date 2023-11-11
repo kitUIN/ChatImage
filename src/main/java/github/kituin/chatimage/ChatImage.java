@@ -20,6 +20,7 @@ import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigGuiHandler.ConfigGuiFactory;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -68,30 +69,6 @@ public class ChatImage {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        CommandDispatcher<CommandSourceStack> dispatcher = event.getServer().getCommands().getDispatcher();
-        LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
-                Commands.literal(MOD_ID)
-                        .then(Commands.literal("send")
-                                .then(Commands.argument("name", StringArgumentType.string())
-                                        .then(Commands.argument("url", greedyString())
-                                                .executes(SendChatImage.instance)
-                                        )
-                                )
-                        )
-                        .then(Commands.literal("url")
-                                .then(Commands.argument("url", greedyString())
-                                        .executes(SendChatImage.instance)
-                                )
-                        )
-                        .then(Commands.literal("help")
-                                .executes(Help.instance)
-                        )
-                        .then(Commands.literal("reload")
-                                .executes(ReloadConfig.instance)
-                        )
-
-        );
-
         LOGGER.info("Server starting");
     }
 
@@ -99,6 +76,31 @@ public class ChatImage {
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
 
+        public static void onClientCommand(RegisterClientCommandsEvent event) {
+            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+                    Commands.literal(MOD_ID)
+                            .then(Commands.literal("send")
+                                    .then(Commands.argument("name", StringArgumentType.string())
+                                            .then(Commands.argument("url", greedyString())
+                                                    .executes(SendChatImage.instance)
+                                            )
+                                    )
+                            )
+                            .then(Commands.literal("url")
+                                    .then(Commands.argument("url", greedyString())
+                                            .executes(SendChatImage.instance)
+                                    )
+                            )
+                            .then(Commands.literal("help")
+                                    .executes(Help.instance)
+                            )
+                            .then(Commands.literal("reload")
+                                    .executes(ReloadConfig.instance)
+                            )
+
+            );
+        }
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ChatImageFrame.textureHelper = image -> {
@@ -130,6 +132,7 @@ public class ChatImage {
             LOGGER.info("KeyBindings Register");
             ModLoadingContext.get().registerExtensionPoint(ConfigGuiFactory.class, () -> new ConfigGuiFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
+            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
         }
 
