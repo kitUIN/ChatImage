@@ -45,10 +45,14 @@ public class ConfigScreen extends Screen {
         adder.add(new GifSlider());
         adder.add(new TimeOutSlider());
         adder.add(ButtonWidget.builder(Text.translatable("padding.chatimage.gui"), (button) -> {
-            this.client.setScreen(new LimitPaddingScreen(this));
+            if (this.client != null) {
+                this.client.setScreen(new LimitPaddingScreen(this));
+            }
         }).tooltip(Tooltip.of(Text.translatable("padding.chatimage.tooltip"))).build());
         adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
-            this.client.setScreen(this.parent);
+            if (this.client != null) {
+                this.client.setScreen(this.parent);
+            }
         }).build(), 2);
         gridWidget.refreshPositions();
         SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
@@ -56,7 +60,7 @@ public class ConfigScreen extends Screen {
     }
 
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context);
+        this.renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
         context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
     }
