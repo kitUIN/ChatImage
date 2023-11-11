@@ -20,6 +20,7 @@ import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 import net.minecraftforge.client.event.InputEvent;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
@@ -68,29 +69,7 @@ public class ChatImage {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("[ChatImage]Server starting");
-        CommandDispatcher<CommandSourceStack> dispatcher = event.getServer().getCommands().getDispatcher();
-        LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
-                Commands.literal(MOD_ID)
-                        .then(Commands.literal("send")
-                                .then(Commands.argument("name", StringArgumentType.string())
-                                        .then(Commands.argument("url", greedyString())
-                                                .executes(SendChatImage.instance)
-                                        )
-                                )
-                        )
-                        .then(Commands.literal("url")
-                                .then(Commands.argument("url", greedyString())
-                                        .executes(SendChatImage.instance)
-                                )
-                        )
-                        .then(Commands.literal("help")
-                                .executes(Help.instance)
-                        )
-                        .then(Commands.literal("reload")
-                                .executes(ReloadConfig.instance)
-                        )
 
-        );
     }
 
 
@@ -134,9 +113,34 @@ public class ChatImage {
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
 
         }
+        public static void onClientCommand(RegisterClientCommandsEvent event) {
+            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+                    Commands.literal(MOD_ID)
+                            .then(Commands.literal("send")
+                                    .then(Commands.argument("name", StringArgumentType.string())
+                                            .then(Commands.argument("url", greedyString())
+                                                    .executes(SendChatImage.instance)
+                                            )
+                                    )
+                            )
+                            .then(Commands.literal("url")
+                                    .then(Commands.argument("url", greedyString())
+                                            .executes(SendChatImage.instance)
+                                    )
+                            )
+                            .then(Commands.literal("help")
+                                    .executes(Help.instance)
+                            )
+                            .then(Commands.literal("reload")
+                                    .executes(ReloadConfig.instance)
+                            )
 
+            );
+        }
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));
