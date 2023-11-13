@@ -23,7 +23,7 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    include(modImplementation("com.github.chatimagecode:ChatImageCode:0.5.0"))
+    include(modImplementation("com.github.chatimagecode:ChatImageCode:${project.ChatImageCode_version}"))
 
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 
