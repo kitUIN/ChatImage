@@ -2,8 +2,8 @@ package github.kituin.chatimage.widget;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractSliderButton;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -40,15 +40,15 @@ public abstract class SettingSliderWidget extends AbstractSliderButton {
         this.position = (int) Mth.lerp(Mth.clamp(this.value, 0.0, 1.0), this.min, this.max);
     }
 
-    public void renderToolTip(PoseStack p_93736_, int p_93737_, int p_93738_) {
+    public void renderToolTip(GuiGraphics p_283427_, int p_281447_, int p_282852_) {
         if(this.canTooltip){
-            this.onTooltip.onTooltip(this, p_93736_, p_93737_, p_93738_);
+            this.onTooltip.onTooltip(this, p_283427_, p_281447_, p_282852_);
         }
     }
-    public void renderBg(PoseStack p_93600_, Minecraft p_93601_, int p_93602_, int p_93603_) {
-        super.renderBg(p_93600_, p_93601_, p_93602_, p_93603_);
+    public void renderWidget(GuiGraphics p_283427_, int p_281447_, int p_282852_, float p_282409_) {
+        super.renderWidget(p_283427_, p_281447_, p_282852_, p_282409_);
         if (this.isHoveredOrFocused()) {
-            this.renderToolTip(p_93600_, p_93602_, p_93603_);
+            this.renderToolTip(p_283427_, p_281447_, p_282852_);
         }
     }
     public void onClick(double p_93588_, double p_93589_) {
@@ -62,7 +62,7 @@ public abstract class SettingSliderWidget extends AbstractSliderButton {
     }
     @OnlyIn(Dist.CLIENT)
     public interface OnTooltip {
-        void onTooltip(SettingSliderWidget p_93753_, PoseStack p_93754_, int p_93755_, int p_93756_);
+        void onTooltip(SettingSliderWidget p_93753_, GuiGraphics p_283427_, int p_281447_, int p_282852_);
 
         default void narrateTooltip(Consumer<Component> p_168842_) {
         }

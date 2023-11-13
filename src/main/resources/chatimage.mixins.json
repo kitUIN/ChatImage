@@ -9,6 +9,7 @@
   "client": [
     "ChatComponentMixin",
     "FileDragMixin",
+    "GuiGraphicsMixin",
     "ScreenMixin"
   ],
   "injectors": {

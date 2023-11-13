@@ -16,7 +16,6 @@ import java.util.UUID;
 
 import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
 import static com.github.chatimagecode.ChatImagePacketHelper.*;
-import static com.github.chatimagecode.ChatImagePacketHelper.CLIENT_CACHE_MAP;
 
 public class ChatImagePacket {
 

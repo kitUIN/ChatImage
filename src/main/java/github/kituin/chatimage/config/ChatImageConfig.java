@@ -2,7 +2,6 @@ package github.kituin.chatimage.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.commons.io.IOUtils;
 

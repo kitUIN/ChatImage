@@ -25,8 +25,8 @@ public class Help implements Command<CommandSourceStack> {
     private static MutableComponent getHelpText(String help, String arg, String usage) {
         String all = help + arg;
         StringBuilder sb = new StringBuilder(all);
-        if (all.length() <= 35) {
-            for (int i = 0; i < 35 - all.length(); i++) {
+        if (all.length() <= 30) {
+            for (int i = 0; i < 30 - all.length(); i++) {
                 sb.append(" ");
             }
         }

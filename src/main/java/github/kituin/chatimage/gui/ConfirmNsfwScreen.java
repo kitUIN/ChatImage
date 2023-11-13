@@ -1,7 +1,7 @@
 package github.kituin.chatimage.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.network.chat.CommonComponents;
@@ -24,16 +24,20 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 
     @Override
     protected void addButtons(int y) {
-        this.addRenderableWidget(new Button(this.width / 2 - 50 - 52, y, 100, 20, this.yesButton,
-                (button) -> this.callback.accept(true)));
-        this.addRenderableWidget(new Button(this.width / 2 - 50 + 52, y, 100, 20, this.noButton,
-                (button) -> this.callback.accept(false)));
+        this.addRenderableWidget(Button.builder(
+                this.yesButton,(button) -> this.callback.accept(true)
+        ).bounds(this.width / 2 - 50 - 52, y, 100, 20).build());
+
+        this.addRenderableWidget(Button.builder(
+                this.noButton,(button) -> this.callback.accept(false)
+        ).bounds(this.width / 2 - 50 + 52, y, 100, 20).build());
     }
 
+
     @Override
-    public void render(PoseStack p_96249_, int p_96250_, int p_96251_, float p_96252_) {
-        super.render(p_96249_, p_96250_, p_96251_, p_96252_);
-        drawCenteredString(p_96249_, this.font,
+    public void render(GuiGraphics p_281549_, int p_281550_, int p_282878_, float p_282465_) {
+        super.render(p_281549_,p_281550_,p_282878_,p_282465_);
+        p_281549_.drawCenteredString(this.font,
                 Component.translatable("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
     }
 }

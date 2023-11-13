@@ -33,7 +33,8 @@ configurations {
 }
 
 minecraft {
-    mappings channel: 'parchment', version: "${parchment_version}"
+    mappings channel: "${mapping_channel}", version: "${mapping_version}"
+
 
     runs {
         client {
@@ -51,6 +52,11 @@ minecraft {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         server {
@@ -133,27 +139,24 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 dependencies {
-    minecraft("net.minecraftforge:forge:${minecraftforge_version}")
-
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
-    shadow('com.github.chatimagecode:ChatImageCode:0.5.0')
+    shadow(implementation('com.github.chatimagecode:ChatImageCode:0.5.0'))
 
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
 shadowJar {
-
     configurations = [project.configurations.shadow]
     archiveClassifier.set('')
     dependencies {
         include(dependency('com.github.chatimagecode:ChatImageCode:0.5.0'))
     }
     relocate "net.sf.image4j", "chatimage.net.sf.image4j"
-    destinationDir(new File("D:\\out"))
 }
 
 
@@ -174,7 +177,6 @@ reobf {
     shadowJar {}
 
 }
-
+jar.finalizedBy('reobfJar')
 tasks.build.dependsOn shadowJar
 tasks.build.dependsOn reobfShadowJar
-jar.finalizedBy('reobfJar')

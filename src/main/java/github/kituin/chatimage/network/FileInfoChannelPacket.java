@@ -15,7 +15,6 @@ import java.util.function.Supplier;
 
 import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
 import static com.github.chatimagecode.ChatImagePacketHelper.*;
-import static com.github.chatimagecode.ChatImagePacketHelper.USER_CACHE_MAP;
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 
 public class FileInfoChannelPacket {

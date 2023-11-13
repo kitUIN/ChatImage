@@ -1,13 +1,11 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.exception.InvalidChatImageCodeException;
 import com.github.chatimagecode.ChatImageCode;
+import com.github.chatimagecode.exception.InvalidChatImageCodeException;
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -34,7 +32,7 @@ import static github.kituin.chatimage.ChatImage.CONFIG;
  * @author kitUIN
  */
 @Mixin(ChatComponent.class)
-public class ChatComponentMixin extends GuiComponent {
+public class ChatComponentMixin  {
     @Shadow
     @Final
     private Minecraft minecraft;
@@ -46,11 +44,11 @@ public class ChatComponentMixin extends GuiComponent {
             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V",
             argsOnly = true)
     public Component addMessage(Component p_241484_) {
-        return replaceMessage(p_241484_);
+        return chatimage$replaceMessage(p_241484_);
     }
 
 
-    private Component replaceCode(Component text) {
+    private Component chatimage$replaceCode(Component text) {
         String checkedText = "";
         String key = "";
         MutableComponent player = null;
@@ -140,7 +138,7 @@ public class ChatComponentMixin extends GuiComponent {
         if (player == null) {
             return res;
         } else {
-            MutableComponent resp = MutableComponent.create(new TranslatableContents(key, player, res));
+            MutableComponent resp = MutableComponent.create(new TranslatableContents(key,(String)null, new Object[]{player, res}));
             if (isIncoming) {
                 return resp.setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true));
             } else {
@@ -149,11 +147,11 @@ public class ChatComponentMixin extends GuiComponent {
         }
     }
 
-    private Component replaceMessage(Component message) {
+    private Component chatimage$replaceMessage(Component message) {
         try {
-            MutableComponent res = (MutableComponent) replaceCode(message);
+            MutableComponent res = (MutableComponent) chatimage$replaceCode(message);
             for (Component t : message.getSiblings()) {
-                res.append(replaceMessage(t));
+                res.append(chatimage$replaceMessage(t));
             }
             return res;
         } catch (Exception e) {
