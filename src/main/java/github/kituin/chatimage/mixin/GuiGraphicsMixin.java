@@ -27,7 +27,6 @@ import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
 import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static javax.swing.text.html.CSS.Attribute.BACKGROUND_COLOR;
 
 
 /**

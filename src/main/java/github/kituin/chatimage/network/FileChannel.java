@@ -1,9 +1,10 @@
 package github.kituin.chatimage.network;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.network.ChannelBuilder;
 import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.PacketDistributor;
+import net.minecraftforge.network.SimpleChannel;
 
 import static github.kituin.chatimage.ChatImage.MOD_ID;
 /**
@@ -22,11 +23,12 @@ public class FileChannel {
     }
 
     public static void register() {
-        SimpleChannel net = NetworkRegistry.ChannelBuilder
+        SimpleChannel net = ChannelBuilder
                 .named(FILE_CHANNEL)
-                .networkProtocolVersion(() -> "1.0")
-                .clientAcceptedVersions(s -> true)
-                .serverAcceptedVersions(s -> true)
+                .networkProtocolVersion(1)
+                .acceptedVersions((s, v) -> v == 1)
+                .clientAcceptedVersions((s, v) -> true)
+                .serverAcceptedVersions((s, v) -> true)
                 .simpleChannel();
 
         INSTANCE = net;
@@ -41,6 +43,6 @@ public class FileChannel {
     }
 
     public static <MSG> void sendToServer(MSG message) {
-        INSTANCE.sendToServer(message);
+        INSTANCE.send(message, PacketDistributor.SERVER.noArg());
     }
 }

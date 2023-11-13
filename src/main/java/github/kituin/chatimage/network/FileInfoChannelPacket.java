@@ -4,21 +4,20 @@ import com.github.chatimagecode.ChatImageFrame;
 import com.google.common.collect.Lists;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
 
 import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
 import static com.github.chatimagecode.ChatImagePacketHelper.*;
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 
 public class FileInfoChannelPacket {
-    private final String message;
+    public final String message;
     private static final Logger LOGGER = LogManager.getLogger();
 
     public FileInfoChannelPacket(FriendlyByteBuf buffer) {
@@ -33,11 +32,10 @@ public class FileInfoChannelPacket {
         buf.writeUtf(this.message);
     }
 
-    public void handler(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            LOGGER.info(message);
-            String url = message;
-            ServerPlayer player = ctx.get().getSender();
+    public static void handler(FileInfoChannelPacket packet,CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> {
+            String url = packet.message;
+            ServerPlayer player = ctx.getSender();
             if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
                 HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
                 Integer total = FILE_COUNT_MAP.get(url);
@@ -63,12 +61,11 @@ public class FileInfoChannelPacket {
             LOGGER.info("[GetFileChannel]记录uuid:" + player.getStringUUID());
             LOGGER.info("[not found in server]" + url);
         });
-        ctx.get().setPacketHandled(true);
+        ctx.setPacketHandled(true);
     }
-    public void clientHandle(Supplier<NetworkEvent.Context> supplier) {
-        NetworkEvent.Context ctx = supplier.get();
+    public static void clientHandle(FileInfoChannelPacket packet,CustomPayloadEvent.Context ctx) {
         ctx.enqueueWork(() -> {
-            String data = message;
+            String data = packet.message;
             String url = data.substring(6);
             LOGGER.info(url);
             if (data.startsWith("null")) {

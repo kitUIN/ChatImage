@@ -1,6 +1,5 @@
 package github.kituin.chatimage.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import github.kituin.chatimage.widget.SettingSliderWidget;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
@@ -17,7 +16,7 @@ public abstract class ConfigRawScreen extends Screen {
         this.parent = screen;
     }
     public void render(GuiGraphics p_281549_, int p_281550_, int p_282878_, float p_282465_) {
-        renderBackground(p_281549_);
+        renderBackground(p_281549_,p_281550_,p_282878_,p_282465_);
         super.render(p_281549_,p_281550_,p_282878_,p_282465_);
         p_281549_.drawCenteredString(this.font,
                 title, this.width / 2, this.height / 4 - 16, 16764108);

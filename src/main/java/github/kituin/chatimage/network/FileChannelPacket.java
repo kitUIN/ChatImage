@@ -1,11 +1,9 @@
 package github.kituin.chatimage.network;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
 
@@ -30,9 +28,8 @@ public class FileChannelPacket {
     /**
      * 服务端接收 图片文件分块 的处理
      */
-    public boolean serverHandle(Supplier<NetworkEvent.Context> supplier) {
-        NetworkEvent.Context ctx = supplier.get();
-        ctx.enqueueWork(() -> serverFileChannelReceived(ctx.getSender(), this.message));
+    public static boolean serverHandle(FileChannelPacket packet, CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> serverFileChannelReceived(ctx.getSender(), packet.message));
         return true;
     }
 

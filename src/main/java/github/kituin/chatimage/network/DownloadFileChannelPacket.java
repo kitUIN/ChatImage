@@ -1,15 +1,13 @@
 package github.kituin.chatimage.network;
 
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 import static github.kituin.chatimage.network.ChatImagePacket.clientDownloadFileChannelReceived;
 
 public class DownloadFileChannelPacket {
 
-    private String message;
+    public String message;
 
     public DownloadFileChannelPacket(FriendlyByteBuf buffer) {
         message = buffer.readUtf();
@@ -22,9 +20,8 @@ public class DownloadFileChannelPacket {
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeUtf(this.message);
     }
-    public boolean clientHandle(Supplier<NetworkEvent.Context> supplier) {
-        NetworkEvent.Context ctx = supplier.get();
-        ctx.enqueueWork(() -> clientDownloadFileChannelReceived(this.message));
+    public static boolean clientHandle(DownloadFileChannelPacket packet,CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> clientDownloadFileChannelReceived(packet.message));
         return true;
     }
 
