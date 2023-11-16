@@ -5,7 +5,6 @@ import com.mojang.brigadier.context.CommandContext;
 import github.kituin.chatimage.config.ChatImageConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TranslatableComponent;
 

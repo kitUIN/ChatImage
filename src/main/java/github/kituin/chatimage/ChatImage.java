@@ -1,8 +1,5 @@
 package github.kituin.chatimage;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
-import com.github.chatimagecode.ChatImageUrl;
 import com.mojang.blaze3d.platform.NativeImage;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -12,7 +9,13 @@ import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
 import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
-import github.kituin.chatimage.network.*;
+import github.kituin.chatimage.network.DownloadFileChannel;
+import github.kituin.chatimage.network.FileBackChannel;
+import github.kituin.chatimage.network.FileChannel;
+import github.kituin.chatimage.network.FileInfoChannel;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageUrl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.commands.CommandSourceStack;
@@ -37,9 +40,10 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImagePacketHelper.createFilePacket;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
-import static github.kituin.chatimage.network.ChatImagePacket.*;
+import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
+import static github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.createFilePacket;
 
 
 @Mod(ChatImage.MOD_ID)
