@@ -4,8 +4,6 @@ buildscript {
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
-
-        flatDir { dirs 'lib' }
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
@@ -22,6 +20,9 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+
+version = project.mod_version + "+" + project.minecraft_version + "+forge"
+
 
 java {
     archivesBaseName = 'ChatImage'
@@ -122,9 +123,6 @@ repositories {
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-    flatDir {
-        dir 'lib'
-    }
 }
 mixin {
     add sourceSets.main, "chatimage.refmap.json"
@@ -146,16 +144,16 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
-    shadow(implementation('com.github.chatimagecode:ChatImageCode:0.5.0'))
-
+    shadow(implementation "io.github.kituin:ChatImageCode:${project.code_version}")
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
 shadowJar {
     configurations = [project.configurations.shadow]
     archiveClassifier.set('')
     dependencies {
-        include(dependency('com.github.chatimagecode:ChatImageCode:0.5.0'))
+        include(dependency("io.github.kituin:ChatImageCode:${project.code_version}"))
     }
+    destinationDir=file("./../ChatImage-jar/${project.mod_version}")
     relocate "net.sf.image4j", "chatimage.net.sf.image4j"
 }
 

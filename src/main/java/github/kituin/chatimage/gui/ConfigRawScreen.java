@@ -1,6 +1,5 @@
 package github.kituin.chatimage.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import github.kituin.chatimage.widget.SettingSliderWidget;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
