@@ -3,12 +3,12 @@ plugins {
     id 'maven-publish'
 }
 
-version = project.mod_version
+
+version = project.mod_version + "+" + project.minecraft_version + "+fabric"
 group = project.maven_group
 
 repositories {
     mavenCentral()
-    flatDir { dirs 'lib' }
     maven {
         name = 'TerraformersMC'
         url = "https://maven.terraformersmc.com/releases" }
@@ -23,7 +23,7 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    include(modImplementation("com.github.chatimagecode:ChatImageCode:0.5.0"))
+    include(modImplementation("io.github.kituin:ChatImageCode:${project.code_version}"))
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }
 
@@ -66,7 +66,8 @@ jar {
     }
 }
 remapJar{
-    destinationDir(new File("D:\\out"))
+
+    destinationDir = file("./../ChatImage-jar/${project.mod_version}")
 }
 // configure the maven publication
 publishing {
