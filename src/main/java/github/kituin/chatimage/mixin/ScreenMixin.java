@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
 
@@ -28,8 +28,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
-import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
