@@ -1,9 +1,9 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
 import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
@@ -27,10 +27,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
-import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 
 /**
  * 注入修改悬浮显示图片
