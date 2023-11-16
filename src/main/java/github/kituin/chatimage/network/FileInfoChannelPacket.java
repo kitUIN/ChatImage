@@ -1,7 +1,7 @@
 package github.kituin.chatimage.network;
 
-import com.github.chatimagecode.ChatImageFrame;
 import com.google.common.collect.Lists;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -13,10 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
-import static com.github.chatimagecode.ChatImagePacketHelper.*;
-import static com.github.chatimagecode.ChatImagePacketHelper.USER_CACHE_MAP;
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
 
 public class FileInfoChannelPacket {
     private final String message;

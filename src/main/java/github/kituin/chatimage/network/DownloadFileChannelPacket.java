@@ -3,7 +3,6 @@ package github.kituin.chatimage.network;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.clientDownloadFileChannelReceived;

@@ -1,9 +1,9 @@
 package github.kituin.chatimage.network;
 
-import com.github.chatimagecode.ChatImageFrame;
-import com.github.chatimagecode.ChatImageIndex;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageIndex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.LogManager;
@@ -14,9 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
-import static com.github.chatimagecode.ChatImagePacketHelper.*;
-import static com.github.chatimagecode.ChatImagePacketHelper.CLIENT_CACHE_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
 
 public class ChatImagePacket {
 
