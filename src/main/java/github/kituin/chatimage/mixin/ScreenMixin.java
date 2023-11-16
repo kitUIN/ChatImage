@@ -1,35 +1,23 @@
 package github.kituin.chatimage.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageCode;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner;
-import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
-import net.minecraft.client.render.*;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.*;
-import net.minecraft.util.Identifier;
+import net.minecraft.text.HoverEvent;
+import net.minecraft.text.Style;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector2ic;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.List;
-
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
-import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
 
 /**
  * 注入点击nsfw
