@@ -1,6 +1,5 @@
 package github.kituin.chatimage;
 
-import com.github.chatimagecode.ChatImageUrl;
 import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.network.ChatImagePacket;
 import net.fabricmc.api.ModInitializer;
