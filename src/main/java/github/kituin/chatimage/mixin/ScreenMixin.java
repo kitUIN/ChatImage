@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
+import io.github.kituin.ChatImageCode.ChatImageCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
 
 @Mixin(Screen.class)
 public abstract class ScreenMixin extends AbstractContainerEventHandler implements Renderable {

@@ -1,8 +1,8 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -23,10 +23,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
-import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 
 
 /**
