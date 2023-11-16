@@ -1,9 +1,9 @@
 package github.kituin.chatimage.network;
 
-import com.github.chatimagecode.ChatImageFrame;
-import com.github.chatimagecode.ChatImageIndex;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageIndex;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -22,9 +22,9 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import static com.github.chatimagecode.ChatImageHandler.AddChatImageError;
-import static com.github.chatimagecode.ChatImagePacketHelper.*;
 import static github.kituin.chatimage.ChatImage.LOGGER;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
 
 public class ChatImagePacket {
 
