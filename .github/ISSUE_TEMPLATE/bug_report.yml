@@ -89,6 +89,12 @@ body:
     attributes:
       label: 截图
       description: 如果可以，提交截图更有助于我们分析问题
+
+  - type: textarea
+    id: serverVersion
+    attributes:
+      label: 服务器版本
+      description: 如果在服务器上出错,请提供服务器核心版本号
   - type: textarea
     id: additional-context
     attributes:
