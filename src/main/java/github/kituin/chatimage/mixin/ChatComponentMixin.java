@@ -55,7 +55,7 @@ public class ChatComponentMixin  {
         boolean isSelf = false;
         boolean isIncoming = false;
         if (text.getContents() instanceof LiteralContents lc) {
-            checkedText = lc.toString();
+            checkedText = lc.text();
         } else if (text.getContents() instanceof TranslatableContents ttc) {
             key = ttc.getKey();
             if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
@@ -75,7 +75,6 @@ public class ChatComponentMixin  {
         } else {
             checkedText = text.getContents().toString();
         }
-
         if(CONFIG.cqCode){
             Matcher cqm = cqPattern.matcher(checkedText);
             while (cqm.find()) {
