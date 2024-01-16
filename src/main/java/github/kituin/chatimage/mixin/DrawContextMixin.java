@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
@@ -101,6 +101,7 @@ public abstract class DrawContextMixin {
                             }
                             case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
                             case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
+                            case ILLEGAL_CICODE_ERROR -> text = Text.translatable("illegalcode.chatimage.exception");
                             default ->
                                     text = Text.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }

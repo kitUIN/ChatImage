@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.exception.InvalidChatImageCodeException;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.tool.ChatImageStyle;
@@ -48,7 +48,7 @@ public class ChatHudMixin {
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
             if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
-                Text[] args = (Text[]) ttc.getArgs();
+                Object[] args = ttc.getArgs();
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
                 MutableText contents = (MutableText) args[1];

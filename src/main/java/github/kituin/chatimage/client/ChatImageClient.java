@@ -1,8 +1,8 @@
 package github.kituin.chatimage.client;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
-import com.github.chatimagecode.ChatImageUrl;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageUrl;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import github.kituin.chatimage.command.ChatImageCommand;
@@ -28,7 +28,7 @@ import org.lwjgl.glfw.GLFW;
 import java.io.File;
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImagePacketHelper.createFilePacket;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.createFilePacket;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
 import static github.kituin.chatimage.network.ChatImagePacket.*;
