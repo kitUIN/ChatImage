@@ -61,9 +61,12 @@ body:
        label: 我的世界版本
        description: 选择一个你发现问题的MC版本
        options:
-         - 1.20.x
+         - 1.20.2
+         - 1.20.1
+         - 1.20
          - 1.19.3/1.19.4
          - 1.19.1/1.19.2
+         - 1.19
          - 1.18.x
          - 1.17.x
          - 1.16.x
@@ -82,10 +85,17 @@ body:
       label: 电脑系统|JAVA版本
       description: 你的电脑系统与JAVA版本
   - type: textarea
+    id: serverVersion
+    attributes:
+      label: 服务器版本
+      description: 如果在服务器上出错,请提供服务器核心版本号
+  - type: textarea
     id: screenshots
     attributes:
       label: 截图
       description: 如果可以，提交截图更有助于我们分析问题
+
+
   - type: textarea
     id: additional-context
     attributes:
