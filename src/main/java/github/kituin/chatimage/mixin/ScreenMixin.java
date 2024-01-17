@@ -144,6 +144,7 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
                             case FILE_LOAD_ERROR -> text = new TranslatableComponent("error.chatimage.message");
                             case SERVER_FILE_LOAD_ERROR ->
                                     text = new TranslatableComponent("error.server.chatimage.message");
+                            case ILLEGAL_CICODE_ERROR -> text = new TranslatableComponent("illegalcode.chatimage.exception");
                             default ->
                                     text = new TranslatableComponent(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }
