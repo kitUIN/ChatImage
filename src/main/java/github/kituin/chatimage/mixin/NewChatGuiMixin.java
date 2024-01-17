@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.exception.InvalidChatImageCodeException;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
 import com.google.common.collect.Lists;
 import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.Minecraft;

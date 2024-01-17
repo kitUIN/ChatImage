@@ -2,6 +2,7 @@
   "loading.chatimage.message": "Image Loading.....",
   "codename.chatimage.default": "Image",
   "filenotfound.chatimage.exception": "Image Not Found",
+  "illegalcode.chatimage.exception": "Illegal CICode",
   "error.chatimage.message": "Image Loading Error",
   "error.server.chatimage.message": "The image from the server failed to load",
   "loading.server.chatimage.message": "Loading images from server.....",

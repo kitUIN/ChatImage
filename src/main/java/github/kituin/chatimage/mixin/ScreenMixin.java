@@ -1,7 +1,7 @@
 package github.kituin.chatimage.mixin;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
 
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImageCode.NSFW_MAP;
-import static com.github.chatimagecode.ChatImageHandler.AddChatImage;
+import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
+import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
@@ -150,6 +150,9 @@ public abstract class ScreenMixin extends FocusableGui implements IScreen, IRend
                                 break;
                             case SERVER_FILE_LOAD_ERROR:
                                 text = new TranslationTextComponent("error.server.chatimage.message");
+                                break;
+                            case ILLEGAL_CICODE_ERROR:
+                                text = new TranslationTextComponent("illegalcode.chatimage.exception");
                                 break;
                             default:
                                 text = new TranslationTextComponent(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");

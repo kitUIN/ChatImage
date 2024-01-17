@@ -1,8 +1,8 @@
 package github.kituin.chatimage;
 
-import com.github.chatimagecode.ChatImageCode;
-import com.github.chatimagecode.ChatImageFrame;
-import com.github.chatimagecode.ChatImageUrl;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageUrl;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -35,7 +35,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.util.List;
 
-import static com.github.chatimagecode.ChatImagePacketHelper.createFilePacket;
+import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.createFilePacket;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static github.kituin.chatimage.network.ChatImagePacket.*;
 
