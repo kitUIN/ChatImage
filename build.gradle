@@ -146,7 +146,7 @@ shadowJar {
     dependencies {
         include(dependency("io.github.kituin:ChatImageCode:${project.code_version}"))
     }
-    destinationDir=file("./../ChatImage-jar/${project.mod_version}")
+    destinationDirectory=file("./../ChatImage-jar/${project.mod_version}")
     relocate "net.sf.image4j", "chatimage.shadow.net.sf.image4j"
 }
 
