@@ -4,10 +4,11 @@ plugins {
 }
 
 
-version = project.mod_version + "+" + project.minecraft_version + "+fabric"
+version = "${project.mod_version}+${project.minecraft_version}+fabric"
 group = project.maven_group
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name = 'TerraformersMC'

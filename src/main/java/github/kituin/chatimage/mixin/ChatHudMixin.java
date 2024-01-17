@@ -50,7 +50,7 @@ public class ChatHudMixin extends DrawableHelper {
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
             if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
-                Text[] args = (Text[]) ttc.getArgs();
+                Object[] args = ttc.getArgs();
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
                 MutableText contents = (MutableText) args[1];
