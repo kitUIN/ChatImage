@@ -112,6 +112,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                             }
                             case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
                             case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
+                            case ILLEGAL_CICODE_ERROR -> text = Text.translatable("illegalcode.chatimage.exception");
                             default ->
                                     text = Text.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
                         }
