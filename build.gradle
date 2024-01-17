@@ -3,10 +3,11 @@ plugins {
     id 'maven-publish'
 }
 
-version = project.mod_version + "+" + project.minecraft_version + "+fabric"
+version = "${project.mod_version}+${project.minecraft_version}+fabric"
 group = project.maven_group
 
 repositories {
+    mavenLocal()
     mavenCentral()
     flatDir { dirs 'lib' }
     maven {
