@@ -22,7 +22,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 
-version = "${project.mod_version}+${project.minecraft_version}+forge"
+version = project.mod_version + "+" + project.minecraft_version + "+forge"
 
 java {
     archivesBaseName = 'ChatImage'
