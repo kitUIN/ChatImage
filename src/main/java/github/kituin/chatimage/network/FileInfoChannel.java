@@ -17,12 +17,12 @@ public class FileInfoChannel {
     }
 
     public static void registerMessage() {
-        INSTANCE = NetworkRegistry.newSimpleChannel(
-                new ResourceLocation(MOD_ID, "first_networking"),
-                () -> VERSION,
-                (version) -> version.equals(VERSION),
-                (version) -> version.equals(VERSION)
-        );
+        INSTANCE = NetworkRegistry.ChannelBuilder
+                .named(new ResourceLocation(MOD_ID, "first_networking"))
+                .networkProtocolVersion(() -> "1.0")
+                .clientAcceptedVersions(s -> true)
+                .serverAcceptedVersions(s -> true)
+                .simpleChannel();
         INSTANCE.messageBuilder(FileInfoChannelPacket.class, nextID(), NetworkDirection.PLAY_TO_SERVER)
                 .encoder(FileInfoChannelPacket::toBytes)
                 .decoder(FileInfoChannelPacket::new)

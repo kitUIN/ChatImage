@@ -19,13 +19,12 @@ public class FileBackChannel {
     }
 
     public static void register() {
-        INSTANCE = NetworkRegistry.newSimpleChannel(
-                new ResourceLocation(MOD_ID, "file_back"),
-                () -> VERSION,
-                (version) -> version.equals(VERSION),
-                (version) -> version.equals(VERSION)
-        );
-
+        INSTANCE = NetworkRegistry.ChannelBuilder
+                .named(new ResourceLocation(MOD_ID, "file_back"))
+                .networkProtocolVersion(() -> "1.0")
+                .clientAcceptedVersions(s -> true)
+                .serverAcceptedVersions(s -> true)
+                .simpleChannel();
         INSTANCE.messageBuilder(FileInfoChannelPacket.class, nextID(), NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(FileInfoChannelPacket::toBytes)
                 .decoder(FileInfoChannelPacket::new)
