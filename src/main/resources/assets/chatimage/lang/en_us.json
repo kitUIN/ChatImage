@@ -1,7 +1,6 @@
 {
-  "loading.chatimage.exception": "Image Loading.....",
   "codename.chatimage.default": "Image",
-
+  "process.chatimage.message": "Image Loading...%s%%",
   "file_not_found.chatimage.exception":"File Not Found",
   "id_not_found.chatimage.exception":"Image Id Not Found",
   "file_load_error.chatimage.exception":"Image Loading Error",
@@ -11,11 +10,10 @@
   "image_type_not_support.chatimage.exception":"Image Type Not Support",
   "file_too_large.chatimage.exception":"File Size Too Large",
   "timeout.chatimage.exception":"Time Out",
-  "invalid_http_url.chatimage.exception":"Invalid Http Url",
+  "invalid_image_url.chatimage.exception":"Invalid Image Url",
   "invalid_url.chatimage.exception":"Invalid Url",
+  "loading_from_server.chatimage.exception": "Loading images from server.....",
 
-
-  "loading.server.chatimage.message": "Loading images from server.....",
   "nsfw.chatimage.open": "Are you sure you want to open the nsfw image from the link below?",
   "nsfw.chatimage.warning": "The nsfw image may cause discomfort, please open it with caution",
   "nsfw.chatimage.message": "This is a nsfw image, click to remove nsfw to view, or turn off the nsfw warning in the configuration file",

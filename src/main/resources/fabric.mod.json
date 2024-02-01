@@ -25,13 +25,22 @@
     ],
     "modmenu": [
       "github.kituin.chatimage.integration.ModmenuIntegration"
+    ],
+    "actionlib": [
+      "github.kituin.chatimage.integration.ActionLibIntegration"
     ]
   },
   "mixins": [
     "ChatImage.mixins.json"
   ],
   "depends": {
+    "fabric-api-base": "*",
+    "fabric-resource-loader-v0": "*",
+    "fabric-key-binding-api-v1": "*",
+    "fabric-lifecycle-events-v1": "*",
+    "fabric-command-api-v1": "*",
+    "fabric-networking-api-v1": "*",
     "fabricloader": ">=0.14.10",
-    "minecraft": "~1.16.5"
+    "minecraft": ">=1.16.5-"
   }
 }

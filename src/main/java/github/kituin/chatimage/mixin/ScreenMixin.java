@@ -3,7 +3,11 @@ package github.kituin.chatimage.mixin;
 import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ClientStorage;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.AbstractParentElement;
 import net.minecraft.client.gui.Drawable;
@@ -19,16 +23,17 @@ import net.minecraft.util.math.Matrix4f;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static io.github.kituin.ChatImageCode.ChatImageCode.CACHE_MAP;
-import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
 
@@ -37,6 +42,7 @@ import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
  *
  * @author kitUIN
  */
+@Environment(EnvType.CLIENT)
 @Mixin(Screen.class)
 public abstract class ScreenMixin extends AbstractParentElement implements Drawable {
 
@@ -59,10 +65,10 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
     protected void renderTextHoverEffect(MatrixStack matrices, Style style, int x, int y, CallbackInfo ci) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null) {
-                if (CONFIG.nsfw || !view.getNsfw() || NSFW_MAP.containsKey(view.getOriginalUrl())) {
-                    ChatImageFrame frame = view.getFrame();
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null) {
+                if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
+                    ChatImageFrame frame = code.getFrame();
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
@@ -108,34 +114,12 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
                         this.client.getTextureManager().bindTexture((Identifier) frame.getId());
                         drawTexture(matrices, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         matrices.pop();
-                        if (frame.getSiblings().size() != 0) {
-                            if (frame.getButter() == CONFIG.gifSpeed) {
-                                frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                CACHE_MAP.put(view.getChatImageUrl().getUrl(), frame);
-                                frame.setButter(0);
-                            } else {
-                                frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
-                            }
-                        }
+                        frame.gifLoop(CONFIG.gifSpeed);
                     } else {
-                        MutableText text;
-                        switch (frame.getError()) {
-                            case FILE_NOT_FOUND -> {
-                                if (view.isSendFromSelf()) {
-                                    text = (MutableText) Text.of(view.getChatImageUrl().getUrl());
-                                    text.append(Text.of("\n↑")).append(new TranslatableText("filenotfound.chatimage.exception"));
-                                } else {
-                                    text = view.isTimeout() ? new TranslatableText("error.server.chatimage.message") : new TranslatableText("loading.server.chatimage.message");
-                                }
-                            }
-                            case FILE_LOAD_ERROR -> text = new TranslatableText("error.chatimage.message");
-                            case SERVER_FILE_LOAD_ERROR ->
-                                    text = new TranslatableText("error.server.chatimage.message");
-                            case ILLEGAL_CICODE_ERROR -> text = new TranslatableText("illegalcode.chatimage.exception");
-
-                            default ->
-                                    text = view.isTimeout() ? new TranslatableText("error.chatimage.message") : new TranslatableText("loading.chatimage.message");
-                        }
+                        MutableText text = (MutableText) frame.getErrorMessage(
+                                (str) -> new LiteralText((String) str),
+                                (str) -> new TranslatableText((String) str),
+                                (obj, s)-> ((MutableText)obj).append((Text)s) , code);
                         this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
                     }
                 } else {
@@ -148,25 +132,28 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 
     }
 
+    @Unique
     private String nsfwUrl;
 
+    @Unique
     private void confirmNsfw(boolean open) {
         if (open) {
-            NSFW_MAP.put(nsfwUrl, 1);
+            ClientStorage.AddNsfw(nsfwUrl, 1);
         }
         this.nsfwUrl = null;
         this.client.openScreen((Screen) (Object) this);
     }
 
     @Inject(at = @At("RETURN"),
-            method = "handleTextClick")
+            method = "handleTextClick",cancellable = true)
     private void handleTextClick(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null && view.getNsfw() && !NSFW_MAP.containsKey(view.getOriginalUrl()) && !CONFIG.nsfw) {
-                this.nsfwUrl = view.getOriginalUrl();
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null && code.isNsfw() && !ClientStorage.ContainNsfw(code.getUrl()) && !CONFIG.nsfw) {
+                this.nsfwUrl = code.getUrl();
                 this.client.openScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                cir.setReturnValue(true);
             }
         }
     }
