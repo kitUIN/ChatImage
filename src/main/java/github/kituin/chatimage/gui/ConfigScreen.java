@@ -62,7 +62,7 @@ public class ConfigScreen extends ConfigRawScreen {
         return getEnable( "cq.chatimage.gui", enable);
     }
     private MutableText getNsfw(boolean enable) {
-        return getEnable( "nsfw.chatimage.gui", enable);
+        return getEnable( "nsfw.chatimage.gui", !enable);
     }
     private MutableText getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
