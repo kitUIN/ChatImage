@@ -1,10 +1,7 @@
 package github.kituin.chatimage.gui;
 
-import github.kituin.chatimage.config.ChatImageConfig;
-import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.LimitSlider;
 import github.kituin.chatimage.widget.PaddingSlider;
-import github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
