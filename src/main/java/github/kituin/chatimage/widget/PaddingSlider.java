@@ -1,6 +1,6 @@
 package github.kituin.chatimage.widget;
 
-import github.kituin.chatimage.config.ChatImageConfig;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;

@@ -3,10 +3,9 @@ package github.kituin.chatimage.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.logging.LogUtils;
-import github.kituin.chatimage.config.ChatImageConfig;
 import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.exception.InvalidChatImageUrlException;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.text.ClickEvent;
 import net.minecraft.text.MutableText;
@@ -15,26 +14,21 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 
 public class ChatImageCommand {
 
 
     public static int sendChatImage(CommandContext<FabricClientCommandSource> context) {
-        String name = null;
         String url = StringArgumentType.getString(context, "url");
+        ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {
-            name = StringArgumentType.getString(context, "name");
+            String name = StringArgumentType.getString(context, "name");
+            builder.setName(name);
         } catch (java.lang.IllegalArgumentException e) {
-            LogUtils.getLogger().info("arg: `name` is omitted, use the default string");
+            LOGGER.info("arg: `name` is omitted, use the default string");
         }
-        try {
-            ChatImageCode code = new ChatImageCode(url, name);
-            context.getSource().getPlayer().networkHandler.sendChatMessage(code.toString());
-        } catch (InvalidChatImageUrlException e) {
-            MutableText text = Text.literal(e.getMode().toString() + ": " + e.getMessage());
-            context.getSource().sendFeedback(text.setStyle(Style.EMPTY.withColor(Formatting.RED)));
-        }
-
+        context.getSource().getPlayer().networkHandler.sendChatMessage(builder.build().toString());
         return Command.SINGLE_SUCCESS;
     }
 

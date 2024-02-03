@@ -1,8 +1,8 @@
 package github.kituin.chatimage.gui;
 
-import github.kituin.chatimage.config.ChatImageConfig;
 import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.TimeOutSlider;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.DrawContext;
@@ -15,6 +15,7 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static net.minecraft.screen.ScreenTexts.composeGenericOptionText;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
@@ -53,6 +54,16 @@ public class ConfigScreen extends Screen {
             button.setMessage(getCq(CONFIG.cqCode));
             ChatImageConfig.saveConfig(CONFIG);
         }).tooltip(Tooltip.of(Text.translatable("cq.chatimage.tooltip"))).build());
+        adder.add(ButtonWidget.builder(getDrag(CONFIG.dragUseCicode), (button) -> {
+            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+            button.setMessage(getDrag(CONFIG.dragUseCicode));
+            ChatImageConfig.saveConfig(CONFIG);
+        }).tooltip(Tooltip.of(Text.translatable("drag.chatimage.tooltip"))).build());
+        adder.add(ButtonWidget.builder(getUri(CONFIG.checkImageUri), (button) -> {
+            CONFIG.checkImageUri = !CONFIG.checkImageUri;
+            button.setMessage(getUri(CONFIG.checkImageUri));
+            ChatImageConfig.saveConfig(CONFIG);
+        }).build());
         adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
             if (this.client != null) {
                 this.client.setScreen(this.parent);
@@ -69,12 +80,21 @@ public class ConfigScreen extends Screen {
         context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
     }
 
-    private MutableText getNsfw(boolean enable) {
-        return Text.translatable(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
-    }
-
     private MutableText getCq(boolean enable) {
-        return Text.translatable(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+        return getEnable( "cq.chatimage.gui", enable);
+    }
+    private MutableText getNsfw(boolean enable) {
+        return getEnable( "nsfw.chatimage.gui", enable);
+    }
+    private MutableText getDrag(boolean enable) {
+        return getEnable("drag.chatimage.gui", enable);
+    }
+    private MutableText getUri(boolean enable) {
+        return getEnable("uri.chatimage.gui", enable);
+    }
+    public static MutableText getEnable(String key,boolean enable)
+    {
+        return composeGenericOptionText(Text.translatable(key),Text.translatable((enable ? "open" : "close") + ".chatimage.common"));
     }
 
 }

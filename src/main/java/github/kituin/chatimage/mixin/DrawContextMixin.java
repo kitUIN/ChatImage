@@ -2,6 +2,7 @@ package github.kituin.chatimage.mixin;
 
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ClientStorage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -23,8 +24,6 @@ import java.util.List;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 
 /**
  * 注入修改悬浮显示图片
@@ -55,10 +54,10 @@ public abstract class DrawContextMixin {
     public void drawHoverEvent(TextRenderer textRenderer, Style style, int x, int y, CallbackInfo ci) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null) {
-                if (CONFIG.nsfw || !view.getNsfw() || NSFW_MAP.containsKey(view.getOriginalUrl())) {
-                    ChatImageFrame frame = view.getFrame();
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null) {
+                if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
+                    ChatImageFrame frame = code.getFrame();
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
@@ -80,32 +79,12 @@ public abstract class DrawContextMixin {
                         this.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                         this.drawTexture((Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 400,0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
 
-                        if (frame.getSiblings().size() != 0) {
-                            if (frame.getButter() == CONFIG.gifSpeed) {
-                                frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                AddChatImage(frame, view.getChatImageUrl().getUrl());
-                                frame.setButter(0);
-                            } else {
-                                frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
-                            }
-                        }
+                        frame.gifLoop(CONFIG.gifSpeed);
                     } else {
-                        MutableText text;
-                        switch (frame.getError()) {
-                            case FILE_NOT_FOUND -> {
-                                if (view.isSendFromSelf()) {
-                                    text = Text.literal(view.getChatImageUrl().getUrl())
-                                            .append("\n↑")
-                                            .append(Text.translatable("filenotfound.chatimage.exception"));
-                                } else {
-                                    text = Text.translatable(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
-                                }
-                            }
-                            case FILE_LOAD_ERROR -> text = Text.translatable("error.chatimage.message");
-                            case SERVER_FILE_LOAD_ERROR -> text = Text.translatable("error.server.chatimage.message");
-                            default ->
-                                    text = Text.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
-                        }
+                        MutableText text = (MutableText) frame.getErrorMessage(
+                                (str) -> Text.literal((String) str),
+                                (str) -> Text.translatable((String) str),
+                                (obj, s) -> ((MutableText) obj).append((Text) s), code);
                         this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(text, Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
                     }
                 } else {
