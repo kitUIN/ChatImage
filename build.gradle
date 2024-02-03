@@ -9,6 +9,9 @@ group = project.maven_group
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
     maven {
         name = 'TerraformersMC'
         url = "https://maven.terraformersmc.com/releases"

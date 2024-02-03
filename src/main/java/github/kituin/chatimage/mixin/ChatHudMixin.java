@@ -39,8 +39,8 @@ public class ChatHudMixin {
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
-        if (text.getContent() instanceof LiteralTextContent) {
-            checkedText = ((LiteralTextContent) text.getContent()).string();
+        if (text.getContent() instanceof PlainTextContent) {
+            checkedText = ((PlainTextContent) text.getContent()).string();
         } else if (text.getContent() instanceof TranslatableTextContent ttc) {
             key = ttc.getKey();
             Object[] args = ttc.getArgs();
@@ -48,8 +48,8 @@ public class ChatHudMixin {
                 player = (MutableText) args[0];
                 isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
                 MutableText contents = (MutableText) args[1];
-                if (contents.getContent() instanceof LiteralTextContent) {
-                    checkedText = ((LiteralTextContent) contents.getContent()).string();
+                if (contents.getContent() instanceof PlainTextContent) {
+                    checkedText = ((PlainTextContent) contents.getContent()).string();
                 } else {
                     checkedText = contents.getContent().toString();
                 }

@@ -1,5 +1,9 @@
 package github.kituin.chatimage.tool;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
@@ -14,11 +18,24 @@ import net.minecraft.util.Formatting;
  * @author kitUIN
  */
 public class ChatImageStyle {
-    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE =
-            new HoverEvent.Action<>("show_chatimage", true,
-                    ChatImageCode::fromJson,
-                    ChatImageCode::toJson,
-                    ChatImageStyle::fromJson);
+    public static final MapCodec<ChatImageCode> MAP_CODEC = RecordCodecBuilder.mapCodec(obj -> obj.group(
+            Codec.STRING.fieldOf("url").forGetter(ChatImageCode::getUrl),
+            Codec.BOOL.fieldOf("nsfw").forGetter(ChatImageCode::isNsfw)
+    ).apply(obj, (url, nsfw) ->  new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
+    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
+    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE  = new HoverEvent.Action<>(
+            "show_chatimage",
+            true,
+            CODEC,
+            ChatImageStyle::legacySerializer);
+
+    private static DataResult<ChatImageCode> legacySerializer(Text text) {
+        try {
+            return DataResult.success(  new ChatImageCode.Builder().fromCode(text.toString()).build());
+        } catch (InvalidChatImageCodeException e) {
+            return DataResult.error(() -> "Failed to parse ChatImageCode: " + e.getMessage());
+        }
+    }
 
     /**
      * 文本 悬浮图片样式
@@ -57,12 +74,4 @@ public class ChatImageStyle {
         return t.fillStyle(style);
     }
 
-
-    public static ChatImageCode fromJson(Text text) {
-        try {
-            return ChatImageCodeInstance.createBuilder().fromCode(text.toString()).build();
-        } catch (InvalidChatImageCodeException e) {
-            return ChatImageCodeInstance.createBuilder().build();
-        }
-    }
 }
