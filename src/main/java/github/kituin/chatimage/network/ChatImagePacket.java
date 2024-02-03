@@ -15,7 +15,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +22,11 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 import static github.kituin.chatimage.ChatImage.LOGGER;
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
+import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
+import static io.github.kituin.ChatImageCode.ClientStorage.CLIENT_CACHE_MAP;
+import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
+import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
 public class ChatImagePacket {
 
@@ -51,7 +53,7 @@ public class ChatImagePacket {
      */
     public static PacketByteBuf createStringPacket(String str) {
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(str);
+        buf.writeString(str,MAX_STRING);
         return buf;
     }
 
@@ -106,7 +108,7 @@ public class ChatImagePacket {
             sendPacketAsync(GET_FILE_CHANNEL, createStringPacket(url));
             LOGGER.info("[GetFileChannel-Try]" + url);
         } else {
-            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         }
     }
 
@@ -117,7 +119,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
-        String res = buf.readString();
+        String res = buf.readString(MAX_STRING);
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
         blocks.put(title.index, res);
@@ -146,7 +148,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
-        String url = buf.readString();
+        String url = buf.readString(MAX_STRING);
         if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
             HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
             Integer total = FILE_COUNT_MAP.get(url);
@@ -176,12 +178,12 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientGetFileChannelReceived(PacketByteBuf buf) {
-        String data = buf.readString();
+        String data = buf.readString(MAX_STRING);
         String url = data.substring(6);
         LOGGER.info(url);
         if (data.startsWith("null")) {
             LOGGER.info("[GetFileChannel-NULL]" + url);
-            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         } else if (data.startsWith("true")) {
             loadFromServer(url);
         }
@@ -194,19 +196,15 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
-        String res = buf.readString();
+        String res = buf.readString(MAX_STRING);
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
         CLIENT_CACHE_MAP.put(title.url, blocks);
         LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
         if (blocks.size() == title.total) {
-            try {
-                mergeFileBlocks(title.url, blocks);
-                LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
-            } catch (IOException e) {
-                LOGGER.error("[DownloadFileChannel-Error]" + title.url);
-            }
+            mergeFileBlocks(title.url, blocks);
+            LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
         }
     }
 }

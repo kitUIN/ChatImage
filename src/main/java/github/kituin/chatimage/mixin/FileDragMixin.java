@@ -1,5 +1,6 @@
 package github.kituin.chatimage.mixin;
 
+import github.kituin.chatimage.client.ChatImageClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -25,7 +26,11 @@ public class FileDragMixin {
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
-                   sb.append("[[CICode,url=file:///").append(o).append("]]");
+                if(ChatImageClient.CONFIG.dragUseCicode){
+                    sb.append("[[CICode,url=file:///").append(o).append("]]");
+                }else{
+                    sb.append("file:///").append(o);
+                }
             }
             this.client.setScreen(new ChatScreen(sb.toString()));
         }
