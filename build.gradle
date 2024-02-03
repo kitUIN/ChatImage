@@ -48,7 +48,8 @@ processResources {
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand "version": project.version
+        expand "version": project.version,
+        "require_version":project.require_version
     }
 }
 
