@@ -9,13 +9,15 @@ import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
+import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
+import static io.github.kituin.ChatImageCode.ClientStorage.CLIENT_CACHE_MAP;
+import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
+import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
 public class ChatImagePacket {
 
@@ -46,7 +48,7 @@ public class ChatImagePacket {
             LOGGER.info("[try get from server]" + url);
 
         } else {
-            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         }
     }
 
@@ -90,12 +92,8 @@ public class ChatImagePacket {
         CLIENT_CACHE_MAP.put(title.url, blocks);
         LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
         if (blocks.size() == title.total) {
-            try {
-                mergeFileBlocks(title.url,blocks);
-                LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
-            } catch (IOException e) {
-                LOGGER.error("[DownloadFileChannel-Error]" + title.url);
-            }
+            mergeFileBlocks(title.url,blocks);
+            LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
         }
     }
 }

@@ -3,14 +3,12 @@ package github.kituin.chatimage.mixin;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ClientStorage;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.Renderable;
-import net.minecraft.client.gui.components.events.AbstractContainerEventHandler;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.BookViewScreen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.Style;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,14 +16,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-@Mixin(Screen.class)
-public abstract class ScreenMixin extends AbstractContainerEventHandler implements Renderable {
+
+@Mixin(BookViewScreen.class)
+public abstract class BookViewScreenMixin extends Screen {
 
 
-    @Shadow
-    protected Minecraft minecraft;
     @Unique
     private String chatimage$nsfwUrl;
+
+    protected BookViewScreenMixin(Component title) {
+        super(title);
+    }
 
     @Unique
     private void chatimage$confirmNsfw(boolean open) {
@@ -38,7 +39,7 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
 
     @Inject(at = @At("RETURN"),
             method = "handleComponentClicked", cancellable = true)
-    private void handleComponentClicked(Style style, CallbackInfoReturnable<Boolean> cir) {
+    private void handleTextClick(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);

@@ -7,7 +7,10 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import github.kituin.chatimage.command.Help;
 import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
-import github.kituin.chatimage.config.ChatImageConfig;
+import github.kituin.chatimage.integration.ChatImageClientAdapter;
+import github.kituin.chatimage.integration.ChatImageLogger;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
 import github.kituin.chatimage.network.DownloadFileChannel;
 import github.kituin.chatimage.network.FileBackChannel;
@@ -15,7 +18,6 @@ import github.kituin.chatimage.network.FileChannel;
 import github.kituin.chatimage.network.FileInfoChannel;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
-import io.github.kituin.ChatImageCode.ChatImageUrl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.commands.CommandSourceStack;
@@ -35,6 +37,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,7 +47,6 @@ import java.util.List;
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 import static github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.createFilePacket;
 
 @Mod(ChatImage.MOD_ID)
 public class ChatImage {
@@ -52,8 +54,11 @@ public class ChatImage {
 
     public static final String MOD_ID = "chatimage";
 
-    public static ChatImageConfig CONFIG = ChatImageConfig.loadConfig();
+    public static ChatImageConfig CONFIG;
 
+    static {
+        ChatImageCodeInstance.LOGGER = new ChatImageLogger();
+    }
     public ChatImage() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
@@ -76,11 +81,13 @@ public class ChatImage {
     }
 
 
-
-
-
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
+        static{
+            ChatImageConfig.configFile = new File(FMLPaths.CONFIGDIR.get().toFile(), "chatimageconfig.json");
+            CONFIG = ChatImageConfig.loadConfig();
+            ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
+        }
         @SubscribeEvent
         public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
             KeyBindings.init(event);
@@ -88,30 +95,7 @@ public class ChatImage {
         }
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            ChatImageFrame.textureHelper = image -> {
-                NativeImage nativeImage = NativeImage.read(image);
-                return new ChatImageFrame.TextureReader<>(
-                        Minecraft.getInstance().getTextureManager().register(MOD_ID + "/chatimage",
-                                new DynamicTexture(nativeImage)),
-                        nativeImage.getWidth(),
-                        nativeImage.getHeight()
-                );
-            };
-            ChatImageUrl.networkHelper = (url, file, exist) -> {
-                if (exist) {
-                    List<String> bufs = createFilePacket(url, file);
-                    sendFilePackets(bufs);
-                } else {
-                    loadFromServer(url);
-                }
-            };
-            ChatImageUrl.cachePathHelper = () -> {
-                File folder = new File(CONFIG.cachePath);
-                if (!folder.exists()) {
-                    folder.mkdirs();
-                }
-            };
-            ChatImageCode.timeoutHelper = () -> CONFIG.timeout;
+
             LOGGER.info("[ChatImage]Client start");
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
