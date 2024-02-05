@@ -3,6 +3,7 @@ package github.kituin.chatimage.mixin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ClientStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -25,8 +26,6 @@ import java.util.List;
 
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 
 
 /**
@@ -64,10 +63,10 @@ public abstract class GuiGraphicsMixin implements net.minecraftforge.client.exte
     protected void renderComponentHoverEffect(Font p_282584_, @Nullable Style p_282156_, int p_283623_, int p_282114_, CallbackInfo ci) {
         if (p_282156_ != null && p_282156_.getHoverEvent() != null) {
             HoverEvent hoverEvent = p_282156_.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null) {
-                if (CONFIG.nsfw || !view.getNsfw() || NSFW_MAP.containsKey(view.getOriginalUrl())) {
-                    ChatImageFrame frame = view.getFrame();
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null) {
+                if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
+                    ChatImageFrame frame = code.getFrame();
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
@@ -93,34 +92,13 @@ public abstract class GuiGraphicsMixin implements net.minecraftforge.client.exte
 
                         blit((ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         pose.popPose();
-                        if (frame.getSiblings().size() != 0) {
-                            if (frame.getButter() == CONFIG.gifSpeed) {
-                                frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                AddChatImage(frame, view.getChatImageUrl().getUrl());
-                                frame.setButter(0);
-                            } else {
-                                frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
-                            }
-                        }
+
+                        frame.gifLoop(CONFIG.gifSpeed);
                     } else {
-                        MutableComponent text;
-                        switch (frame.getError()) {
-                            case FILE_NOT_FOUND -> {
-                                if (view.isSendFromSelf()) {
-                                    text = Component.literal(view.getChatImageUrl().getUrl())
-                                            .append("\n↑")
-                                            .append(Component.translatable("filenotfound.chatimage.exception"));
-                                } else {
-                                    text = Component.translatable(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
-                                }
-                            }
-                            case FILE_LOAD_ERROR -> text = Component.translatable("error.chatimage.message");
-                            case SERVER_FILE_LOAD_ERROR ->
-                                    text = Component.translatable("error.server.chatimage.message");
-                            case ILLEGAL_CICODE_ERROR -> text = Component.translatable("illegalcode.chatimage.exception");
-                            default ->
-                                    text = Component.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
-                        }
+                        MutableComponent text = (MutableComponent) frame.getErrorMessage(
+                                (str) -> Component.literal((String) str),
+                                (str) -> Component.translatable((String) str),
+                                (obj, s) -> ((MutableComponent) obj).append((Component) s), code);
                         this.renderTooltip(p_282584_, this.minecraft.font.split(text, Math.max(guiWidth() / 2, 200)), p_283623_, p_282114_);
                     }
                 } else {

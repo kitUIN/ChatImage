@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        mavenLocal()
         gradlePluginPortal()
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         maven { url = 'https://maven.parchmentmc.org' }
@@ -13,30 +12,31 @@ buildscript {
 }
 
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'net.minecraftforge.gradle' version '6.+'
 
 }
 
 apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = "${project.mod_version}+${project.minecraft_version}+forge"
 
+version = project.mod_version + "+" + project.minecraft_version + "+forge"
 
 java {
     archivesBaseName = 'ChatImage'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
+
 }
-configurations {
-    compileClasspath.extendsFrom(shadow)
-    runtimeClasspath.extendsFrom(shadow)
+
+jarJar.enable()
+tasks.named ('jarJar') {
+    archiveClassifier.set('')
+    destinationDirectory = file("./../ChatImage-jar/${project.mod_version}")
 }
+
 
 minecraft {
     mappings channel: "${mapping_channel}", version: "${mapping_version}"
-
 
     runs {
         client {
@@ -122,7 +122,9 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
-
+        flatDir{
+            dirs 'libs'
+        }
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
 }
 mixin {
@@ -132,11 +134,15 @@ mixin {
 }
 
 // Workaround for SpongePowered/MixinGradle#38
-
+afterEvaluate {
+    tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
+    tasks.configureReobfTaskForReobfJarJar.mustRunAfter(tasks.compileJava)
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     // Real mod deobf dependency examples - these get remapped to your current mappings
@@ -145,17 +151,18 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
-    shadow(implementation "io.github.kituin:ChatImageCode:${project.code_version}")
-    annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
-}
-shadowJar {
-    configurations = [project.configurations.shadow]
-    archiveClassifier.set('')
-    dependencies {
-        include(dependency("io.github.kituin:ChatImageCode:${project.code_version}"))
+    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${project.code_version}"){
+        jarJar.ranged(it, '[0.9.2,1.0)')
     }
-    destinationDirectory = file("./../ChatImage-jar/${project.mod_version}")
-    relocate "net.sf.image4j", "chatimage.net.sf.image4j"
+    jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
+        jarJar.ranged(it, '[0.9,1.0)')
+    }
+    implementation "io.github.kituin:ChatImageCode:${project.code_version}"
+    implementation("io.github.kituin:ActionLib:${project.action_version}-forge")
+    {
+        exclude group: 'net.minecraftforge', module: 'forge'
+    }
+    annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
 
 
@@ -171,11 +178,9 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
         ])
     }
-}
-reobf {
-    shadowJar {}
 
 }
+
 jar.finalizedBy('reobfJar')
-tasks.build.dependsOn shadowJar
-tasks.build.dependsOn reobfShadowJar
+tasks.jarJar.finalizedBy('reobfJarJar')
+
