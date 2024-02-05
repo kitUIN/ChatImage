@@ -2,21 +2,25 @@ buildscript {
     repositories {
         gradlePluginPortal()
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
+
     }
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 
 plugins {
-    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'net.minecraftforge.gradle' version '6.+'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+
 }
 
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 version = project.mod_version + "+1.18.x+forge"
 
@@ -25,13 +29,15 @@ java {
     archivesBaseName = 'ChatImage'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
-configurations {
-    compileClasspath.extendsFrom(shadow)
-    runtimeClasspath.extendsFrom(shadow)
+tasks.named ('jarJar') {
+    archiveClassifier.set('')
+    destinationDirectory = file("./../ChatImage-jar/${project.mod_version}")
 }
 
+jarJar.enable()
+
 minecraft {
-    mappings channel: 'official', version: "${minecraft_version}"
+    mappings channel: 'parchment', version: "${parchment_version}"
 
     runs {
         client {
@@ -114,6 +120,7 @@ repositories {
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
+
 }
 mixin {
     add sourceSets.main, "chatimage.refmap.json"
@@ -122,11 +129,15 @@ mixin {
 }
 
 // Workaround for SpongePowered/MixinGradle#38
-
+afterEvaluate {
+    tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
+    tasks.configureReobfTaskForReobfJarJar.mustRunAfter(tasks.compileJava)
+}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
 dependencies {
     minecraft("net.minecraftforge:forge:${minecraftforge_version}")
 
@@ -135,20 +146,17 @@ dependencies {
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
-    shadow(implementation "io.github.kituin:ChatImageCode:${project.code_version}")
-
-
+    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${project.code_version}"){
+        jarJar.ranged(it, '[0.9.2,1.0)')
+    }
+    jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
+        jarJar.ranged(it, '[0.9,1.0)')
+    }
+    implementation("io.github.kituin:ChatImageCode:${project.code_version}")
+    implementation("io.github.kituin:ActionLib:${project.action_version}-forge")
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
-shadowJar {
-    configurations = [project.configurations.shadow]
-    archiveClassifier.set('')
-    dependencies {
-        include(dependency("io.github.kituin:ChatImageCode:${project.code_version}"))
-    }
-    destinationDirectory=file("./../ChatImage-jar/${project.mod_version}")
-    relocate "net.sf.image4j", "chatimage.shadow.net.sf.image4j"
-}
+
 
 
 // Example for how to get properties into the manifest for reading at runtime.
@@ -164,11 +172,5 @@ jar {
         ])
     }
 }
-reobf {
-    shadowJar {}
-
-}
-
-tasks.build.dependsOn shadowJar
-tasks.build.dependsOn reobfShadowJar
 jar.finalizedBy('reobfJar')
+tasks.jarJar.finalizedBy('reobfJarJar')

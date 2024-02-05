@@ -1,24 +1,21 @@
 package github.kituin.chatimage.mixin;
 
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import github.kituin.chatimage.tool.ChatImageStyle;
+import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
-import net.minecraft.ChatFormatting;
+import io.github.kituin.ChatImageCode.ChatImageCodeTool;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.*;
+import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static github.kituin.chatimage.ChatImage.CONFIG;
 
@@ -29,124 +26,83 @@ import static github.kituin.chatimage.ChatImage.CONFIG;
  * @author kitUIN
  */
 @Mixin(ChatComponent.class)
-public class ChatComponentMixin extends GuiComponent {
+public class ChatComponentMixin  {
     @Shadow
     @Final
     private Minecraft minecraft;
-    private static final Pattern pattern = Pattern.compile("(\\[\\[CICode,(.*?)\\]\\])");
-    private static final Pattern cqPattern = Pattern.compile("\\[CQ:image,(.*?)\\]");
+    @Shadow @Final private static Logger LOGGER;
 
     @ModifyVariable(at = @At("HEAD"),
             method = "addMessage(Lnet/minecraft/network/chat/Component;IIZ)V",
             argsOnly = true)
     public Component addMessage(Component p_241484_) {
-        return replaceMessage(p_241484_);
+        return chatimage$replaceMessage(p_241484_);
     }
 
 
-    private Component replaceCode(Component text) {
+    @Unique
+    private Component chatimage$replaceCode(Component text) {
         String checkedText = "";
         String key = "";
-        TextComponent player = null;
+        MutableComponent player = null;
         boolean isSelf = false;
-        boolean isIncoming = false;
         if (text instanceof TextComponent lc) {
             checkedText = lc.getContents();
         } else if (text instanceof TranslatableComponent ttc) {
             key = ttc.getKey();
-            if ("chat.type.text".equals(key) || "chat.type.announcement".equals(key) || "commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
-                Object[] args = ttc.getArgs();
-                player = (TextComponent) args[0];
+            Object[] args = ttc.getArgs();
+            if (ChatImageCodeTool.checkKey(key)) {
+                player = (MutableComponent) args[0];
                 isSelf = player.getContents().equals(this.minecraft.player.getName().getContents());
                 if (args[1] instanceof TextComponent lc) {
                     checkedText = lc.getContents();
                 } else {
-                    checkedText = (String) args[1];
-                }
-                if ("commands.message.display.incoming".equals(key) || "commands.message.display.outgoing".equals(key)) {
-                    isIncoming = true;
+                    checkedText = args[1].toString();
                 }
             }
         } else {
             checkedText = text.getContents();
         }
+        LOGGER.info(checkedText);
+        // 尝试解析CQ码
+        if (CONFIG.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
 
-        if(CONFIG.cqCode){
-            Matcher cqm = cqPattern.matcher(checkedText);
-            while (cqm.find()) {
-                String[] cqArgs = cqm.group(1).split(",");
-                String cq_Url = "";
-                for(int i=0;i<cqArgs.length;i++){
-                    String[] cqParams = cqArgs[i].split("=");
-                    if("url".equals(cqParams[0])){
-                        cq_Url = cqParams[1];
-                        break;
-                    }
-                }
-                if(!cq_Url.isEmpty()){
-                    checkedText = checkedText.replace(cqm.group(0), String.format("[[CICode,url=%s]]", cq_Url));
-                }
-            }
-        }
         Style style = text.getStyle();
-        List<ChatImageCode> chatImageCodeList = Lists.newArrayList();
-        Matcher m = pattern.matcher(checkedText);
-        List<Integer> nums = Lists.newArrayList();
-        boolean flag = true;
-        while (m.find()) {
-            try {
-                ChatImageCode image = ChatImageCode.of(m.group(), isSelf);
-                flag = false;
-                nums.add(m.start());
-                nums.add(m.end());
-                chatImageCodeList.add(image);
-            } catch (InvalidChatImageCodeException e) {
-                LogUtils.getLogger().error(e.getMessage());
+        ChatImageBoolean allString = new ChatImageBoolean(false);
+
+        // 尝试解析CICode
+        List<Object> texts = ChatImageCodeTool.sliceMsg(checkedText, isSelf, allString, (e) -> LOGGER.error(e.getMessage()));
+        // 尝试解析URL
+        if (CONFIG.checkImageUri) ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
+
+        // 无识别则返回原样
+        if (allString.isValue()) {
+            if (style.getHoverEvent() != null) {
+                ChatImageCode action = style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE);
+                if (action != null) action.retry();
             }
-        }
-        if (flag) {
             MutableComponent res = text.copy();
             res.getSiblings().clear();
             return res;
         }
-        int lastPosition = 0;
-        int j = 0;
-        MutableComponent res;
-        res = new TextComponent(checkedText.substring(lastPosition, nums.get(0))).setStyle(style);
-        if (nums.get(0) == 0) {
-            res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(0)));
-            j = 2;
-        }
-        for (int i = j; i < nums.size(); i += 2) {
-            if (i == j && j == 2) {
-                res.append(new TextComponent(checkedText.substring(nums.get(1), nums.get(2))));
-            }
-            res.append(ChatImageStyle.messageFromCode(chatImageCodeList.get(i / 2)));
-            lastPosition = nums.get(i + 1);
-            if (i + 2 < nums.size() && lastPosition + 1 != nums.get(i + 2)) {
-                String s = checkedText.substring(lastPosition, nums.get(i + 2));
-                res.append(new TextComponent(s).setStyle(style));
-            } else if (lastPosition == nums.get(nums.size() - 1)) {
-                res.append(new TextComponent(checkedText.substring(lastPosition)));
-            }
-        }
+        MutableComponent res = new TextComponent("");
+        ChatImageCodeTool.buildMsg(texts,
+                (obj) -> res.append(new TextComponent(obj).setStyle(style)),
+                (obj) -> res.append(ChatImageStyle.messageFromCode(obj))
+        );
         if (player == null) {
             return res;
         } else {
-            TranslatableComponent resp = new TranslatableComponent(key, player, res);
-            if (isIncoming) {
-                return resp.setStyle(Style.EMPTY.withColor(ChatFormatting.GRAY).withItalic(true));
-            } else {
-                return resp;
-            }
+            return new TranslatableComponent(key, player, res).setStyle(style);
         }
     }
 
-    private Component replaceMessage(Component message) {
+    @Unique
+    private Component chatimage$replaceMessage(Component message) {
         try {
-            MutableComponent res = (MutableComponent) replaceCode(message);
+            MutableComponent res = (MutableComponent) chatimage$replaceCode(message);
             for (Component t : message.getSiblings()) {
-                res.append(replaceMessage(t));
+                res.append(chatimage$replaceMessage(t));
             }
             return res;
         } catch (Exception e) {

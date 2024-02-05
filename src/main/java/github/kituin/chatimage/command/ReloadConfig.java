@@ -2,7 +2,7 @@ package github.kituin.chatimage.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
-import github.kituin.chatimage.config.ChatImageConfig;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Style;

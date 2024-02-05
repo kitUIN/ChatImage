@@ -3,37 +3,28 @@ package github.kituin.chatimage.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.logging.LogUtils;
 import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.exception.InvalidChatImageUrlException;
-import net.minecraft.ChatFormatting;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
+
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 
 public class SendChatImage implements Command<CommandSourceStack> {
     public final static SendChatImage instance = new SendChatImage();
 
     @Override
     public int run(CommandContext<CommandSourceStack> context) {
-        String name = null;
         String url = StringArgumentType.getString(context, "url");
+        ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {
-            name = StringArgumentType.getString(context, "name");
+            String name = StringArgumentType.getString(context, "name");
+            builder.setName(name);
         } catch (IllegalArgumentException e) {
-            LogUtils.getLogger().info("arg: `name` is omitted, use the default string");
+            LOGGER.info("arg: `name` is omitted, use the default string");
         }
-        try {
-            ChatImageCode code = new ChatImageCode(url, name);
-            if (Minecraft.getInstance().player != null) {
-                //{@link ChatScreen#handleChatInput}
-                Minecraft.getInstance().player.chat(code.toString());
-            }
-        } catch (InvalidChatImageUrlException e) {
-            MutableComponent text = new TextComponent(e.getMode().toString() + ": " + e.getMessage());
-            context.getSource().sendFailure(text.setStyle(Style.EMPTY.withColor(ChatFormatting.RED)));
+        if (Minecraft.getInstance().player != null) {
+            Minecraft.getInstance().player.chat(builder.build().toString());
         }
         return Command.SINGLE_SUCCESS;
     }
