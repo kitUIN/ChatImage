@@ -2,7 +2,7 @@ package github.kituin.chatimage.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
-import github.kituin.chatimage.config.ChatImageConfig;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.command.CommandSource;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -15,7 +15,7 @@ public class ReloadConfig implements Command<CommandSource> {
     @Override
     public int run(CommandContext<CommandSource> context) {
         CONFIG = ChatImageConfig.loadConfig();
-        context.getSource().sendFeedback(new TranslationTextComponent("success.reload.chatimage.command").mergeStyle(TextFormatting.GREEN),false);
+        context.getSource().sendSuccess(new TranslationTextComponent("success.reload.chatimage.command").withStyle(TextFormatting.GREEN),false);
         return Command.SINGLE_SUCCESS;
     }
 

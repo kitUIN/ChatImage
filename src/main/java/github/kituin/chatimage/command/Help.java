@@ -11,11 +11,11 @@ public class Help implements Command<CommandSource> {
 
     @Override
     public int run(CommandContext<CommandSource> context) {
-        context.getSource().sendFeedback(
+        context.getSource().sendSuccess(
                 getHelpText("/chatimage help", "", "help.chatimage.command")
-                        .appendSibling(getHelpText("/chatimage send ", "<name> <url>", "send.chatimage.command"))
-                        .appendSibling(getHelpText("/chatimage url ", "<url>", "url.chatimage.command"))
-                        .appendSibling(getHelpText("/chatimage reload ", "", "reload.chatimage.command"))
+                        .append(getHelpText("/chatimage send ", "<name> <url>", "send.chatimage.command"))
+                        .append(getHelpText("/chatimage url ", "<url>", "url.chatimage.command"))
+                        .append(getHelpText("/chatimage reload ", "", "reload.chatimage.command"))
         ,false);
         return Command.SINGLE_SUCCESS;
     }
@@ -23,7 +23,7 @@ public class Help implements Command<CommandSource> {
         String all = help + arg;
         StringTextComponent text =  new StringTextComponent(all);
         TranslationTextComponent info = new TranslationTextComponent(usage);
-        return (StringTextComponent) text.setStyle(Style.EMPTY.setFormatting(TextFormatting.GOLD).setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).appendSibling(info).appendSibling(new StringTextComponent("\n"));
+        return (StringTextComponent) text.setStyle(Style.EMPTY.withColor(TextFormatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).append(info).append(new StringTextComponent("\n"));
     }
 
 }

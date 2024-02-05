@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
+import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
 
 public class FileChannelPacket {
 
@@ -15,8 +16,8 @@ public class FileChannelPacket {
     private final String message;
 
     private static final Logger LOGGER = LogManager.getLogger();
-    public FileChannelPacket(PacketBuffer  buffer) {
-        message = buffer.readString();
+    public FileChannelPacket(PacketBuffer buffer) {
+        message = buffer.readUtf(MAX_STRING);
     }
 
     public FileChannelPacket(String message) {
@@ -24,7 +25,7 @@ public class FileChannelPacket {
     }
 
     public void toBytes(PacketBuffer buf) {
-        buf.writeString(this.message);
+        buf.writeUtf(this.message,MAX_STRING);
     }
 
     /**

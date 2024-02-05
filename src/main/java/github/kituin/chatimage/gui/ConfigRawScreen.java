@@ -26,14 +26,14 @@ public abstract class ConfigRawScreen extends Screen {
     protected SettingSliderWidget.OnTooltip createSliderTooltip(ITextComponent text) {
         return (p_93753_, p_93754_, p_93755_, p_93756_) -> {
             if (text != null) {
-                ConfigRawScreen.this.renderTooltip(p_93754_, ConfigRawScreen.this.font.trimStringToWidth(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_93755_, p_93756_);
+                ConfigRawScreen.this.renderTooltip(p_93754_, ConfigRawScreen.this.font.split(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_93755_, p_93756_);
             }
         };
     }
     protected Button.ITooltip createButtonTooltip(ITextComponent text) {
         return (Button p_onTooltip_1_, MatrixStack p_onTooltip_2_, int p_onTooltip_3_, int p_onTooltip_4_) ->{
             if (text != null) {
-                ConfigRawScreen.this.renderTooltip(p_onTooltip_2_, ConfigRawScreen.this.font.trimStringToWidth(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_onTooltip_3_, p_onTooltip_4_);
+                ConfigRawScreen.this.renderTooltip(p_onTooltip_2_, ConfigRawScreen.this.font.split(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_onTooltip_3_, p_onTooltip_4_);
             }
         };
     }

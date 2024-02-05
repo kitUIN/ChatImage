@@ -1,7 +1,7 @@
 package github.kituin.chatimage.command;
 
 import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.exception.InvalidChatImageUrlException;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -17,20 +17,16 @@ public class SendChatImage implements Command<CommandSource> {
 
     @Override
     public int run(CommandContext<CommandSource> context) {
-        String name = null;
         String url = StringArgumentType.getString(context, "url");
+        ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {
-            name = StringArgumentType.getString(context, "name");
+            String name = StringArgumentType.getString(context, "name");
+            builder.setName(name);
         } catch (IllegalArgumentException e) {
             LOGGER.info("arg: `name` is omitted, use the default string");
         }
-        try {
-            ChatImageCode code = new ChatImageCode(url, name);
-            if (Minecraft.getInstance().player != null) {
-                Minecraft.getInstance().player.sendChatMessage(code.toString());
-            }
-        } catch (InvalidChatImageUrlException e) {
-            context.getSource().sendErrorMessage(new StringTextComponent(e.getMode().toString() + ": " + e.getMessage()));
+        if (Minecraft.getInstance().player != null) {
+            Minecraft.getInstance().player.chat(builder.build().toString());
         }
         return Command.SINGLE_SUCCESS;
     }

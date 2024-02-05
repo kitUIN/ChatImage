@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.Overwrite;
 public abstract class ForgeHooksMixin {
 
     /**
-     * @author
-     * @reason
+     * @author kitUIN
+     * @reason 禁止forge的url解析
      */
     @Overwrite
     public static ITextComponent newChatWithLinks(String string){

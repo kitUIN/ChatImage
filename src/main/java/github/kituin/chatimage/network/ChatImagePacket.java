@@ -1,22 +1,22 @@
 package github.kituin.chatimage.network;
 
-import io.github.kituin.ChatImageCode.ChatImageFrame;
-import io.github.kituin.ChatImageCode.ChatImageIndex;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ChatImageIndex;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.CLIENT_CACHE_MAP;
+import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
+import static io.github.kituin.ChatImageCode.ClientStorage.CLIENT_CACHE_MAP;
+import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
+import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
 public class ChatImagePacket {
 
@@ -47,7 +47,7 @@ public class ChatImagePacket {
             LOGGER.info("[try get from server]" + url);
 
         } else {
-            AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         }
     }
 
@@ -70,7 +70,7 @@ public class ChatImagePacket {
                 // 通知之前请求但是没图片的客户端
                 List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
-                    ServerPlayerEntity serverPlayer = player.server.getPlayerList().getPlayerByUUID(UUID.fromString(uuid));
+                    ServerPlayerEntity serverPlayer = player.server.getPlayerList().getPlayer(UUID.fromString(uuid));
                     FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), serverPlayer);
                     LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
                 }
@@ -91,12 +91,8 @@ public class ChatImagePacket {
         CLIENT_CACHE_MAP.put(title.url, blocks);
         LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
         if (blocks.size() == title.total) {
-            try {
-                mergeFileBlocks(title.url,blocks);
-                LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
-            } catch (IOException e) {
-                LOGGER.error("[DownloadFileChannel-Error]" + title.url);
-            }
+            mergeFileBlocks(title.url,blocks);
+            LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
         }
     }
 }

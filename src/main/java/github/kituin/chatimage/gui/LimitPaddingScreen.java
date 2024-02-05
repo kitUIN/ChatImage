@@ -49,7 +49,7 @@ public class LimitPaddingScreen extends ConfigRawScreen {
                 new TranslationTextComponent("gui.back"),
                 (button) -> {
                     if (this.minecraft != null) {
-                        this.minecraft.displayGuiScreen(this.parent);
+                        this.minecraft.setScreen(this.parent);
                     }
                 }));
 

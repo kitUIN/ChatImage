@@ -1,6 +1,6 @@
 package github.kituin.chatimage.gui;
 
-import github.kituin.chatimage.config.ChatImageConfig;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.TimeOutSlider;
 import net.minecraft.client.gui.screen.Screen;
@@ -33,7 +33,7 @@ public class ConfigScreen extends ConfigRawScreen {
                 new TranslationTextComponent("padding.chatimage.gui"),
                 (button) -> {
                     if (this.minecraft != null) {
-                        this.minecraft.displayGuiScreen(new LimitPaddingScreen(this));
+                        this.minecraft.setScreen(new LimitPaddingScreen(this));
                     }
                 },createButtonTooltip(new TranslationTextComponent("padding.chatimage.tooltip"))));
         this.addButton(new Button(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
@@ -41,21 +41,46 @@ public class ConfigScreen extends ConfigRawScreen {
             button.setMessage(getCq(CONFIG.cqCode));
             ChatImageConfig.saveConfig(CONFIG);
         }, createButtonTooltip(new TranslationTextComponent("cq.chatimage.tooltip"))));
-        this.addButton(new Button(this.width / 2 - 77, this.height / 4 + 96 - 16, 150, 20,
+        this.addButton(new Button(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20,getDrag(CONFIG.dragUseCicode), (button) -> {
+            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+            button.setMessage(getDrag(CONFIG.dragUseCicode));
+            ChatImageConfig.saveConfig(CONFIG);
+        },createButtonTooltip(new TranslationTextComponent("drag.chatimage.tooltip"))));
+        this.addButton(new Button(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20,getUri(CONFIG.checkImageUri), (button) -> {
+            CONFIG.checkImageUri = !CONFIG.checkImageUri;
+            button.setMessage(getUri(CONFIG.checkImageUri));
+            ChatImageConfig.saveConfig(CONFIG);
+        }));
+
+        this.addButton(new Button(this.width / 2 - 77, this.height / 4 + 120 - 16, 150, 20,
                 new TranslationTextComponent("gui.back"),
                 (button) -> {
                     if (this.minecraft != null) {
-                        this.minecraft.displayGuiScreen(this.parent);
+                        this.minecraft.setScreen(this.parent);
                     }
                 }));
     }
 
-    private TextComponent getCq(boolean enable) {
-        return new TranslationTextComponent(enable ? "open.cq.chatimage.gui" : "close.cq.chatimage.gui");
+
+    private ITextComponent getCq(boolean enable) {
+        return getEnable( "cq.chatimage.gui", enable);
     }
-    private TextComponent getNsfw(boolean enable) {
-        return new TranslationTextComponent(enable ? "close.nsfw.chatimage.gui" : "open.nsfw.chatimage.gui");
+    private ITextComponent getNsfw(boolean enable) {
+        return getEnable( "nsfw.chatimage.gui", !enable);
+    }
+    private ITextComponent getDrag(boolean enable) {
+        return getEnable("drag.chatimage.gui", enable);
+    }
+    private ITextComponent getUri(boolean enable) {
+        return getEnable("uri.chatimage.gui", enable);
+    }
+    public static ITextComponent getEnable(String key,boolean enable)
+    {
+        return optionNameValue(new TranslationTextComponent(key),new TranslationTextComponent((enable ? "open" : "close") + ".chatimage.common"));
     }
 
+    public static ITextComponent optionNameValue(ITextComponent pCaption, ITextComponent pValueMessage) {
+        return new TranslationTextComponent("options.generic_value", pCaption, pValueMessage);
+    }
 
 }

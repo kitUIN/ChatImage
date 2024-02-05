@@ -1,7 +1,7 @@
 package github.kituin.chatimage.network;
 
-import io.github.kituin.ChatImageCode.ChatImageFrame;
 import com.google.common.collect.Lists;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
@@ -13,16 +13,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
+import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
+import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
 public class FileInfoChannelPacket {
-    private final String message;
+    public final String message;
     private static final Logger LOGGER = LogManager.getLogger();
 
     public FileInfoChannelPacket(PacketBuffer buffer) {
-        message = buffer.readString();
+        message = buffer.readUtf(MAX_STRING);
     }
 
     public FileInfoChannelPacket(String message) {
@@ -30,7 +31,7 @@ public class FileInfoChannelPacket {
     }
 
     public void toBytes(PacketBuffer buf) {
-        buf.writeString(this.message);
+        buf.writeUtf(this.message,MAX_STRING);
     }
 
     public void handler(Supplier<NetworkEvent.Context> ctx) {
@@ -57,10 +58,10 @@ public class FileInfoChannelPacket {
             // 记录uuid,后续有文件了推送
             List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
             if (player != null) {
-                names.add(player.getUniqueID().toString());
+                names.add(player.getStringUUID());
             }
             USER_CACHE_MAP.put(url, names);
-            LOGGER.info("[GetFileChannel]记录uuid:" + player.getUniqueID().toString());
+            LOGGER.info("[GetFileChannel]记录uuid:" + player.getStringUUID());
             LOGGER.info("[not found in server]" + url);
         });
         ctx.get().setPacketHandled(true);
@@ -73,7 +74,7 @@ public class FileInfoChannelPacket {
             LOGGER.info(url);
             if (data.startsWith("null")) {
                 LOGGER.info("[GetFileChannel-NULL]" + url);
-                AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+                AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
             } else if (data.startsWith("true")) {
                 LOGGER.info("[GetFileChannel-Retry]" + url);
                 loadFromServer(url);
