@@ -6,6 +6,7 @@ import com.mojang.math.Matrix4f;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
+import io.github.kituin.ChatImageCode.ClientStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
@@ -23,6 +24,7 @@ import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -32,8 +34,6 @@ import java.util.List;
 
 import static github.kituin.chatimage.ChatImage.CONFIG;
 import static github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static io.github.kituin.ChatImageCode.ChatImageCode.NSFW_MAP;
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImage;
 
 
 /**
@@ -72,10 +72,10 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
     protected void renderComponentHoverEffect(PoseStack p_96571_, @javax.annotation.Nullable Style p_96572_, int p_96573_, int p_96574_, CallbackInfo ci) {
         if (p_96572_ != null && p_96572_.getHoverEvent() != null) {
             HoverEvent hoverEvent = p_96572_.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null) {
-                if (CONFIG.nsfw || !view.getNsfw() || NSFW_MAP.containsKey(view.getOriginalUrl())) {
-                    ChatImageFrame frame = view.getFrame();
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null) {
+                if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
+                    ChatImageFrame frame = code.getFrame();
                     if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
@@ -122,34 +122,12 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
 
                         GuiComponent.blit(p_96571_, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         p_96571_.popPose();
-                        if (frame.getSiblings().size() != 0) {
-                            if (frame.getButter() == CONFIG.gifSpeed) {
-                                frame.setIndex((frame.getIndex() + 1) % (frame.getSiblings().size() + 1));
-                                AddChatImage(frame, view.getChatImageUrl().getUrl());
-                                frame.setButter(0);
-                            } else {
-                                frame.setButter((frame.getButter() + 1) % (CONFIG.gifSpeed + 1));
-                            }
-                        }
+                        frame.gifLoop(CONFIG.gifSpeed);
                     } else {
-                        MutableComponent text;
-                        switch (frame.getError()) {
-                            case FILE_NOT_FOUND -> {
-                                if (view.isSendFromSelf()) {
-                                    text = Component.literal(view.getChatImageUrl().getUrl())
-                                            .append("\n↑")
-                                            .append(Component.translatable("filenotfound.chatimage.exception"));
-                                } else {
-                                    text = Component.translatable(view.isTimeout() ? "error.server.chatimage.message" : "loading.server.chatimage.message");
-                                }
-                            }
-                            case FILE_LOAD_ERROR -> text = Component.translatable("error.chatimage.message");
-                            case SERVER_FILE_LOAD_ERROR ->
-                                    text = Component.translatable("error.server.chatimage.message");
-                            case ILLEGAL_CICODE_ERROR -> text = Component.translatable("illegalcode.chatimage.exception");
-                            default ->
-                                    text = Component.translatable(view.isTimeout() ? "error.chatimage.message" : "loading.chatimage.message");
-                        }
+                        MutableComponent text = (MutableComponent) frame.getErrorMessage(
+                                (str) -> Component.literal((String) str),
+                                (str) -> Component.translatable((String) str),
+                                (obj, s) -> ((MutableComponent) obj).append((Component) s), code);
                         this.renderTooltip(p_96571_, this.minecraft.font.split(text, Math.max(this.width / 2, 200)), p_96573_, p_96574_);
                     }
                 } else {
@@ -162,25 +140,28 @@ public abstract class ScreenMixin extends AbstractContainerEventHandler implemen
 
     }
 
-    private String nsfwUrl;
+    @Unique
+    private String chatimage$nsfwUrl;
 
-    private void confirmNsfw(boolean open) {
+    @Unique
+    private void chatimage$confirmNsfw(boolean open) {
         if (open) {
-            NSFW_MAP.put(nsfwUrl, 1);
+            ClientStorage.AddNsfw(chatimage$nsfwUrl, 1);
         }
-        this.nsfwUrl = null;
+        this.chatimage$nsfwUrl = null;
         this.minecraft.setScreen((Screen) (Object) this);
     }
 
     @Inject(at = @At("RETURN"),
-            method = "handleComponentClicked")
+            method = "handleComponentClicked", cancellable = true)
     private void handleComponentClicked(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode view = hoverEvent.getValue(SHOW_IMAGE);
-            if (view != null && view.getNsfw() && !NSFW_MAP.containsKey(view.getOriginalUrl()) && !CONFIG.nsfw) {
-                this.nsfwUrl = view.getOriginalUrl();
-                this.minecraft.setScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+            if (code != null && code.isNsfw() && !ClientStorage.ContainNsfw(code.getUrl()) && !CONFIG.nsfw) {
+                this.chatimage$nsfwUrl = code.getUrl();
+                this.minecraft.setScreen(new ConfirmNsfwScreen(this::chatimage$confirmNsfw, chatimage$nsfwUrl));
+                cir.setReturnValue(true);
             }
         }
     }

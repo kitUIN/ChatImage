@@ -14,15 +14,16 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
-import static io.github.kituin.ChatImageCode.ChatImageHandler.AddChatImageError;
-import static io.github.kituin.ChatImageCode.ChatImagePacketHelper.*;
+import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
+import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
 public class FileInfoChannelPacket {
-    private final String message;
+    public final String message;
     private static final Logger LOGGER = LogManager.getLogger();
 
     public FileInfoChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readUtf();
+        message = buffer.readUtf(MAX_STRING);
     }
 
     public FileInfoChannelPacket(String message) {
@@ -30,7 +31,7 @@ public class FileInfoChannelPacket {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUtf(this.message);
+        buf.writeUtf(this.message,MAX_STRING);
     }
 
     public void handler(Supplier<NetworkEvent.Context> ctx) {
@@ -73,7 +74,7 @@ public class FileInfoChannelPacket {
             LOGGER.info(url);
             if (data.startsWith("null")) {
                 LOGGER.info("[GetFileChannel-NULL]" + url);
-                AddChatImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+                AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
             } else if (data.startsWith("true")) {
                 LOGGER.info("[GetFileChannel-Retry]" + url);
                 loadFromServer(url);

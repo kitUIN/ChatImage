@@ -3,36 +3,30 @@ package github.kituin.chatimage.command;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.logging.LogUtils;
 import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.exception.InvalidChatImageUrlException;
-import net.minecraft.ChatFormatting;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
+
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 
 public class SendChatImage implements Command<CommandSourceStack> {
     public final static SendChatImage instance = new SendChatImage();
 
     @Override
     public int run(CommandContext<CommandSourceStack> context) {
-        String name = null;
         String url = StringArgumentType.getString(context, "url");
+        ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {
-            name = StringArgumentType.getString(context, "name");
+            String name = StringArgumentType.getString(context, "name");
+            builder.setName(name);
         } catch (IllegalArgumentException e) {
-            LogUtils.getLogger().info("arg: `name` is omitted, use the default string");
+            LOGGER.info("arg: `name` is omitted, use the default string");
         }
-        try {
-            ChatImageCode code = new ChatImageCode(url, name);
-            if (Minecraft.getInstance().player != null) {
-                Minecraft.getInstance().player.chatSigned(code.toString(),Component.literal(code.toString()));
-            }
-        } catch (InvalidChatImageUrlException e) {
-            MutableComponent text = Component.literal(e.getMode().toString() + ": " + e.getMessage());
-            context.getSource().sendSystemMessage(text.setStyle(Style.EMPTY.withColor(ChatFormatting.RED)));
+        if (Minecraft.getInstance().player != null) {
+            String str = builder.build().toString();
+            Minecraft.getInstance().player.chatSigned(str, Component.literal(str));
         }
         return Command.SINGLE_SUCCESS;
     }
