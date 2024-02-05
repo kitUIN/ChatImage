@@ -157,8 +157,8 @@ dependencies {
     jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
         jarJar.ranged(it, '[0.9,1.0)')
     }
-    implementation fg.deobf("io.github.kituin:ChatImageCode:${project.code_version}")
-    implementation fg.deobf("io.github.kituin:ActionLib:${project.action_version}-forge")
+    implementation("io.github.kituin:ChatImageCode:${project.code_version}")
+    implementation("io.github.kituin:ActionLib:${project.action_version}-forge")
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
 
