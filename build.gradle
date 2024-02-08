@@ -23,6 +23,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 version = project.mod_version + "+1.16.5+forge"
 
 java {
+    toolchain.languageVersion =  JavaLanguageVersion.of(8)
     archivesBaseName = 'ChatImage'
 }
 
@@ -120,7 +121,7 @@ repositories {
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
      flatDir {
-         dir 'lib'
+         dir 'libs'
      }
 }
 

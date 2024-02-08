@@ -4,10 +4,7 @@ import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
 import net.minecraft.util.text.*;
-import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.event.HoverEvent;
-
-import java.awt.*;
 
 
 /**

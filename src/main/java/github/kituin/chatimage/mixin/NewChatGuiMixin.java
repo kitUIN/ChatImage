@@ -1,9 +1,9 @@
 package github.kituin.chatimage.mixin;
 
+import github.kituin.chatimage.tool.ChatImageStyle;
 import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
-import github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.gui.NewChatGui;

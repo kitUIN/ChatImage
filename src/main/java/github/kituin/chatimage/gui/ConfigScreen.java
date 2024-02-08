@@ -1,12 +1,11 @@
 package github.kituin.chatimage.gui;
 
-import io.github.kituin.ChatImageCode.ChatImageConfig;
 import github.kituin.chatimage.widget.GifSlider;
 import github.kituin.chatimage.widget.TimeOutSlider;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

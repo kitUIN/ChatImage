@@ -1,13 +1,12 @@
 package github.kituin.chatimage.command;
 
-import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandSource;
-import net.minecraft.util.text.StringTextComponent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

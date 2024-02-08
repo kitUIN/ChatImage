@@ -1,10 +1,10 @@
 package github.kituin.chatimage.mixin;
 
-import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.ChatImageFrame;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import github.kituin.chatimage.gui.ConfirmNsfwScreen;
+import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ClientStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
@@ -12,7 +12,9 @@ import net.minecraft.client.gui.FocusableGui;
 import net.minecraft.client.gui.IRenderable;
 import net.minecraft.client.gui.screen.IScreen;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldVertexBufferUploader;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.IReorderingProcessor;
 import net.minecraft.util.ResourceLocation;
@@ -27,9 +29,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-
 import javax.annotation.Nullable;
-
 import java.util.List;
 import java.util.Objects;
 

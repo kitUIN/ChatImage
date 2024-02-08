@@ -7,8 +7,6 @@ import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponent;
 
-import java.util.function.Consumer;
-
 
 public abstract class ConfigRawScreen extends Screen {
     protected Screen parent;

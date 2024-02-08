@@ -1,12 +1,10 @@
 package github.kituin.chatimage.widget;
 
-import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.client.gui.widget.Slider;
 
 import static github.kituin.chatimage.ChatImage.CONFIG;
 

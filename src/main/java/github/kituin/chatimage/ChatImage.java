@@ -1,22 +1,21 @@
 package github.kituin.chatimage;
 
-import github.kituin.chatimage.integration.ChatImageClientAdapter;
-import github.kituin.chatimage.integration.ChatImageLogger;
-import io.github.kituin.ChatImageCode.ChatImageCode;
-import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
-import io.github.kituin.ChatImageCode.ChatImageFrame;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import github.kituin.chatimage.command.Help;
 import github.kituin.chatimage.command.ReloadConfig;
 import github.kituin.chatimage.command.SendChatImage;
-import io.github.kituin.ChatImageCode.ChatImageConfig;
 import github.kituin.chatimage.gui.ConfigScreen;
-import github.kituin.chatimage.network.*;
+import github.kituin.chatimage.integration.ChatImageClientAdapter;
+import github.kituin.chatimage.integration.ChatImageLogger;
+import github.kituin.chatimage.network.DownloadFileChannel;
+import github.kituin.chatimage.network.FileBackChannel;
+import github.kituin.chatimage.network.FileChannel;
+import github.kituin.chatimage.network.FileInfoChannel;
+import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
+import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.NativeImage;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,10 +35,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
-import java.util.List;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
-import static github.kituin.chatimage.network.ChatImagePacket.*;
 
 
 @Mod(ChatImage.MOD_ID)
