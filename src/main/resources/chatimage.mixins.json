@@ -5,10 +5,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "chatimage.refmap.json",
   "mixins": [
+    "ForgeHooksMixin"
   ],
   "client": [
     "FileDragMixin",
-    "ForgeHooksMixin",
     "NewChatGuiMixin",
     "ReadBookScreenMixin",
     "ScreenMixin"

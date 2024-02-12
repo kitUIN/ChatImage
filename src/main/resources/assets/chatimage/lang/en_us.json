@@ -1,6 +1,7 @@
 {
   "codename.chatimage.default": "Image",
   "process.chatimage.message": "Image Loading...%s%%",
+  "loading.chatimage.exception": "Image Loading.....",
   "file_not_found.chatimage.exception":"File Not Found",
   "id_not_found.chatimage.exception":"Image Id Not Found",
   "file_load_error.chatimage.exception":"Image Loading Error",

@@ -15,6 +15,7 @@ import github.kituin.chatimage.network.FileChannel;
 import github.kituin.chatimage.network.FileInfoChannel;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
+import io.github.kituin.ChatImageCode.NetworkHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
@@ -48,6 +49,8 @@ public class ChatImage {
     public static ChatImageConfig CONFIG;
     static {
         ChatImageCodeInstance.LOGGER = new ChatImageLogger();
+        NetworkHelper.MAX_STRING = 32767;
+        NetworkHelper.PacketLimit = 30000;
     }
 
     public ChatImage() {
