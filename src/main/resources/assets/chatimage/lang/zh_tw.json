@@ -1,7 +1,7 @@
 {
   "codename.chatimage.default": "圖片",
   "process.chatimage.message": "圖片載入中...%s%%",
-  "loading.chatimage.exception": "圖片載入中.....",
+  "loading.chatimage.exception": "圖片載入中...",
   "file_not_found.chatimage.exception":"圖片檔案不存在",
   "id_not_found.chatimage.exception":"圖片ID不存在",
   "file_load_error.chatimage.exception":"圖片載入失敗",
