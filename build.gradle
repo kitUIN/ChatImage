@@ -120,7 +120,7 @@ dependencies {
     }
     implementation "io.github.kituin:ActionLib:${project.action_version}"
     jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}"){
-        jarJar.ranged(it, '[1.6.1,2.0)')
+        jarJar.ranged(it, '[1.9.1,2.0)')
     }
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")

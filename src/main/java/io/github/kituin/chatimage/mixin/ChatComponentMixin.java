@@ -9,7 +9,7 @@ import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.contents.LiteralContents;
+import net.minecraft.network.chat.contents.PlainTextContents;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
@@ -44,12 +44,13 @@ public class ChatComponentMixin  {
     }
 
 
+    @Unique
     private Component chatimage$replaceCode(Component text) {
         String checkedText = "";
         String key = "";
         MutableComponent player = null;
         boolean isSelf = false;
-        if (text.getContents() instanceof LiteralContents lc) {
+        if (text.getContents() instanceof PlainTextContents.LiteralContents lc) {
             checkedText = lc.text();
         } else if (text.getContents() instanceof TranslatableContents ttc) {
             key = ttc.getKey();
@@ -58,7 +59,7 @@ public class ChatComponentMixin  {
                 player = (MutableComponent) args[0];
                 isSelf = player.getContents().toString().equals(this.minecraft.player.getName().getContents().toString());
                 MutableComponent contents = (MutableComponent) args[1];
-                if (contents.getContents() instanceof LiteralContents lc) {
+                if (contents.getContents() instanceof PlainTextContents.LiteralContents lc) {
                     checkedText = lc.text();
                 } else {
                     checkedText = contents.getContents().toString();
