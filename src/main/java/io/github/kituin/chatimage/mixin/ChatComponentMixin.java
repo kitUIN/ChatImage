@@ -44,6 +44,7 @@ public class ChatComponentMixin  {
     }
 
 
+    @Unique
     private Component chatimage$replaceCode(Component text) {
         String checkedText = "";
         String key = "";
