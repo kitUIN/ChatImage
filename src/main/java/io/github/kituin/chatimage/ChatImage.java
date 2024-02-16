@@ -9,10 +9,7 @@ import io.github.kituin.chatimage.command.SendChatImage;
 import io.github.kituin.chatimage.gui.ConfigScreen;
 import io.github.kituin.chatimage.integration.ChatImageClientAdapter;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
-import io.github.kituin.chatimage.network.DownloadFileChannel;
-import io.github.kituin.chatimage.network.FileBackChannel;
-import io.github.kituin.chatimage.network.FileChannel;
-import io.github.kituin.chatimage.network.FileInfoChannel;
+import io.github.kituin.chatimage.network.*;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
@@ -33,6 +30,8 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -53,23 +52,23 @@ public class ChatImage {
     }
     public ChatImage(IEventBus modEventBus) {
         NeoForge.EVENT_BUS.register(this);
-        modEventBus.addListener(ChatImage::init);
+        modEventBus.addListener(ChatImage::register);
     }
 
-
-    public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(FileChannel::register);
-        event.enqueueWork(FileInfoChannel::registerMessage);
-        event.enqueueWork(FileBackChannel::register);
-        event.enqueueWork(DownloadFileChannel::register);
-        LOGGER.info("[ChatImage]Channel Register");
+    public static void register(final RegisterPayloadHandlerEvent event) {
+        final IPayloadRegistrar registrar = event.registrar(MOD_ID).optional();
+        registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
+                .client(DownloadFileChannelHandler.getInstance()::clientHandle));
+        registrar.play(FileChannelPacket.FILE_CHANNEL,FileChannelPacket::new, handler -> handler
+                .server(FileChannelHandler.getInstance()::serverHandle));
+        registrar.play(FileInfoChannelPacket.FILE_INFO,FileInfoChannelPacket::new, handler -> handler
+                .client(FileInfoChannelHandler.getInstance()::clientHandle)
+                .server(FileInfoChannelHandler.getInstance()::serverHandle));
     }
-
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("[ChatImage]Server starting");
-
     }
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
@@ -32,7 +33,7 @@ public class ChatImagePacket {
      */
     public static void sendFilePackets(List<String> bufs) {
         for (String buf : bufs) {
-            FileChannel.sendToServer(new FileChannelPacket(buf));
+            NetworkUtil.sendToServer(new FileChannelPacket(buf));
         }
     }
 
@@ -43,7 +44,7 @@ public class ChatImagePacket {
      */
     public static void loadFromServer(String url) {
         if (Minecraft.getInstance().player != null) {
-            FileInfoChannel.sendToServer(new FileInfoChannelPacket(url));
+            NetworkUtil.sendToServer(new FileInfoChannelPacket(url));
             LOGGER.info("[try get from server]" + url);
 
         } else {
@@ -71,7 +72,7 @@ public class ChatImagePacket {
                 List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
                     ServerPlayer serverPlayer = player.server.getPlayerList().getPlayer(UUID.fromString(uuid));
-                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), serverPlayer);
+                    NetworkUtil.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), serverPlayer);
                     LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
                 }
                 USER_CACHE_MAP.put(title.url, Lists.newArrayList());
@@ -79,6 +80,33 @@ public class ChatImagePacket {
             LOGGER.info("[FileChannel->Server]" + title.url);
         }
     }
+
+    public static void serverFileInfoChannelReceived(ServerPlayer player, String url)
+    {
+        if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
+            HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
+            Integer total = FILE_COUNT_MAP.get(url);
+            if (total == list.size()) {
+                // 服务器存在缓存图片,直接发送给客户端
+                for (Map.Entry<Integer, String> entry : list.entrySet()) {
+                    LOGGER.debug("[GetFileChannel->Client:" + entry.getKey() + "/" + (list.size() - 1) + "]" + url);
+                    NetworkUtil.sendToPlayer(new DownloadFileChannelPacket(entry.getValue()), player);
+                }
+                LOGGER.info("[GetFileChannel->Client]" + url);
+                return;
+            }
+        }
+        //通知客户端无文件
+        NetworkUtil.sendToPlayer(new FileInfoChannelPacket("null->" + url), player);
+        LOGGER.error("[GetFileChannel]not found in server:" + url);
+        // 记录uuid,后续有文件了推送
+        List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
+        names.add(player.getStringUUID());
+        USER_CACHE_MAP.put(url, names);
+        LOGGER.info("[GetFileChannel]记录uuid:" + player.getStringUUID());
+        LOGGER.info("[not found in server]" + url);
+    }
+
     /**
      * 客户端接收 下载文件分块 处理
      *
