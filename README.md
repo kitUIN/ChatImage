@@ -1,3 +1,6 @@
+<div align="right">
+🌍<a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">English</a> / 中文
+</div>
 <div align="center">
 
 # ChatImage
@@ -27,8 +30,6 @@
   ·
   <a href="https://github.com/kitUIN/ChatImage/issues/new/choose">🐛提交建议</a>
   ·
-  <a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">📃English</a>
-  ·
   <a href="https://www.curseforge.com/minecraft/mc-mods/chatimage">⬇️CurseForge</a>
   ·
   <a href="https://www.mcmod.cn/class/9111.html">⬇️MC百科</a>
@@ -55,8 +56,8 @@
 | [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是   | String  | 图片地址(本地文件请使用file:///) |
 | [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否   | boolean | 是否为nsfw图像             |
 | [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否   | String  | 在消息栏显示的名称             |
-| pre | 否   | String  | 前缀(默认`[`)             |
-| suf | 否   | String  | 后缀(默认`]`)             |
+| pre | 否   | String  | 前缀(默认`[`)(不能为,)             |
+| suf | 否   | String  | 后缀(默认`]`)(不能为,)             |
 
 - 网络图片 `[[CICode,url=<网络地址>,name=Image]]`
     - 示例: `[[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]`
