@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -41,10 +42,20 @@ public abstract class GuiGraphicsMixin implements net.minecraftforge.client.exte
     @Final
     private Minecraft minecraft;
 
-
     @Shadow
-    public abstract void drawManaged(Runnable p_286277_);
+    private boolean managed;
 
+    @Unique
+    public void chatimage$drawManaged(Runnable p_286277_)
+    {
+        this.flush();
+        this.managed = true;
+        p_286277_.run();
+        this.managed = false;
+        this.flush();
+    }
+    @Shadow
+    public abstract void flush();
     @Shadow
     public abstract void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
     @Shadow
@@ -85,7 +96,7 @@ public abstract class GuiGraphicsMixin implements net.minecraftforge.client.exte
                         this.pose.pushPose();
                         int finalL = left;
                         int finalM = top;
-                        this.drawManaged(() -> {
+                        this.chatimage$drawManaged(() -> {
                             TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
                         });
                         this.pose.translate(0.0F, 0.0F, 400.0F);

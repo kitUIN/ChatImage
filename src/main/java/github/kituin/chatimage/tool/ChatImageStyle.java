@@ -19,7 +19,7 @@ import net.minecraft.network.chat.Style;
 public class ChatImageStyle {
     public static final MapCodec<ChatImageCode> MAP_CODEC = RecordCodecBuilder.mapCodec(obj -> obj.group(
             Codec.STRING.fieldOf("url").forGetter(ChatImageCode::getUrl),
-            Codec.BOOL.fieldOf("nsfw").forGetter(ChatImageCode::isNsfw)
+            Codec.BOOL.optionalFieldOf("nsfw",false).forGetter(ChatImageCode::isNsfw)
     ).apply(obj, (url, nsfw) ->  new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
     public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
     public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE  = new HoverEvent.Action<>(

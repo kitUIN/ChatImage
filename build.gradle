@@ -33,8 +33,15 @@ tasks.named ('jarJar') {
     archiveClassifier.set('')
     destinationDirectory = file("./../ChatImage-jar/${project.mod_version}")
 }
-
-
+//configurations{
+//    library
+//    implementation.extendsFrom library
+//}
+//minecraft.runs.configureEach {
+//    lazyToken('minecraft_classpath') {
+//        configurations.library.copyRecursive().resolve().collect { it.absolutePath }.join(File.pathSeparator)
+//    }
+//}
 minecraft {
     mappings channel: "${mapping_channel}", version: "${mapping_version}"
 
