@@ -55,7 +55,8 @@
 | [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是   | String  | 图片地址(本地文件请使用file:///) |
 | [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否   | boolean | 是否为nsfw图像             |
 | [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否   | String  | 在消息栏显示的名称             |
-
+| pre | 否   | String  | 前缀(默认`[`)             |
+| suf | 否   | String  | 后缀(默认`]`)             |
 
 - 网络图片 `[[CICode,url=<网络地址>,name=Image]]`
     - 示例: `[[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]`
