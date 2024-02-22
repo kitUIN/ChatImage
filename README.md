@@ -1,6 +1,10 @@
 <div align="right">
 🌍<a href="https://github.com/kitUIN/ChatImage/blob/fabric-1.19.3/README_EN.md">English</a> / 中文
 </div>
+
+<p align="center">
+  <img src="https://github.com/kitUIN/ChatImage/assets/68675068/97d44fa0-ce85-4f6e-9ea9-91bbf7240fea" width="350" height="220" alt="ChatImage"></a>
+</p>
 <div align="center">
 
 # ChatImage
