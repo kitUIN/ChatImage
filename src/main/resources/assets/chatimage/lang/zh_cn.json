@@ -1,7 +1,7 @@
 {
   "codename.chatimage.default": "图片",
   "process.chatimage.message": "图片加载中...%s%%",
-  "loading.chatimage.exception": "图片加载中.....",
+  "loading.chatimage.exception": "图片加载中...",
   "file_not_found.chatimage.exception":"图片文件不存在",
   "id_not_found.chatimage.exception":"图片ID不存在",
   "file_load_error.chatimage.exception":"图片加载失败",
@@ -31,7 +31,9 @@
   "uri.chatimage.gui": "识别网络图片链接",
   "drag.chatimage.gui": "拖入使用CICode",
   "drag.chatimage.tooltip": "开启时使用CICode,关闭时使用FileUrl",
-
+  "channel.chatimage.gui": "频道",
+  "online.chatimage.gui": "在线",
+  "offline.chatimage.gui": "离线",
   "cq.chatimage.tooltip": "开启后将识别[CQ:image]",
   "config.chatimage.category": "聊天栏图片显示",
   "config.chatimage.key": "打开配置文件设置",

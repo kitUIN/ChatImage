@@ -1,6 +1,7 @@
 {
   "codename.chatimage.default": "Image",
   "process.chatimage.message": "Image Loading...%s%%",
+  "loading.chatimage.exception": "Image Loading...",
   "file_not_found.chatimage.exception":"File Not Found",
   "id_not_found.chatimage.exception":"Image Id Not Found",
   "file_load_error.chatimage.exception":"Image Loading Error",
@@ -31,7 +32,9 @@
   "uri.chatimage.gui": "Recognize Image Uri",
   "drag.chatimage.gui":"Drag in With CICode",
   "drag.chatimage.tooltip": "open: CICode,close: FileUrl",
-
+  "channel.chatimage.gui": "Channel",
+  "online.chatimage.gui": "Online",
+  "offline.chatimage.gui": "Offline",
   "config.chatimage.category": "Chat Image",
   "config.chatimage.key": "Open Configuration File Settings",
   "gif.chatimage.gui": "GIF rate",
