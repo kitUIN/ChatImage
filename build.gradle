@@ -8,10 +8,15 @@ version = "${project.mod_version}+${project.minecraft_version}+fabric"
 group = project.maven_group
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name = 'TerraformersMC'
         url = "https://maven.terraformersmc.com/releases" }
+    maven {
+        name "kituinMavenReleases"
+        url "https://maven.kituin.fun/releases"
+    }
 }
 
 ext.includeMod = { String localOverrideKey, Object dep ->
