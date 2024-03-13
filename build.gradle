@@ -125,6 +125,10 @@ repositories {
     flatDir{
         dirs 'libs'
     }
+    maven {
+        name "kituinMavenReleases"
+        url "https://maven.kituin.fun/releases"
+    }
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
 }
 mixin {
@@ -151,13 +155,13 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
+    implementation "io.github.kituin:ChatImageCode:${project.code_version}"
     jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${project.code_version}"){
         jarJar.ranged(it, '[0.9.2,1.0)')
     }
     jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
         jarJar.ranged(it, '[0.9,1.0)')
     }
-    implementation "io.github.kituin:ChatImageCode:${project.code_version}"
     implementation "io.github.kituin:ActionLib:${project.action_version}-forge"
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
