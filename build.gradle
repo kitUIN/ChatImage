@@ -123,6 +123,10 @@ repositories {
      flatDir {
          dir 'libs'
      }
+    maven {
+        name "kituinMavenReleases"
+        url "https://maven.kituin.fun/releases"
+    }
 }
 
 dependencies {
