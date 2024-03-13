@@ -120,7 +120,10 @@ repositories {
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
     // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
-
+    maven {
+        name "kituinMavenReleases"
+        url "https://maven.kituin.fun/releases"
+    }
 }
 mixin {
     add sourceSets.main, "chatimage.refmap.json"
