@@ -15,7 +15,7 @@ import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 @Environment(EnvType.CLIENT)
 public class LimitPaddingScreen extends Screen {
-    private Screen parent;
+    private final Screen parent;
     public LimitPaddingScreen(Screen screen) {
         super(Text.translatable("padding.chatimage.gui"));
         this.parent = screen;
