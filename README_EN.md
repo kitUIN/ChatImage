@@ -50,7 +50,7 @@ than it will transfer to image
 
 support display GIF and local image
 
-![quick](https://chatimage.kituin.fun/img/quick.png)
+![quick](https://github.com/kitUIN/ChatImage/assets/68675068/e2007819-850f-4a0d-b0e1-6ea2541c8704)
 
 (image from [甘城なつき](https://www.pixiv.net/users/3036679))
 
