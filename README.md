@@ -47,7 +47,7 @@
 
 支持显示GIF,本地图片
 
-![quick](https://chatimage.kituin.fun/img/quick.png)
+![quick](https://github.com/kitUIN/ChatImage/assets/68675068/e2007819-850f-4a0d-b0e1-6ea2541c8704)
 
 (图片来自画师[甘城なつき](https://www.pixiv.net/users/3036679))
 
@@ -71,10 +71,9 @@
 
 `nsfw`将决定是否直接显示图片,如果设为`true`,则需要点击才能查看(或者配置文件中开启nsfw模式直接查看)
 
+![nsfw](https://github.com/kitUIN/ChatImage/assets/68675068/33a3531a-0b92-48d3-bcc7-a76907a19979)
 
-![nsfw1](https://chatimage.kituin.fun/img/nsfw.png)
-
-![nsfw2](https://chatimage.kituin.fun/img/nsfw2.png)
+![nsfw2](https://github.com/kitUIN/ChatImage/assets/68675068/8f5fd75c-75d5-4550-ab13-e51d361276b6)
 
 
 ## 使用命令发送 [[CICode]]
