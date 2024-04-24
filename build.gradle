@@ -2,7 +2,9 @@ plugins {
     id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
     id 'signing'
+    id 'io.github.CDAGaming.cursegradle' version '1.6.0'
 }
+
 
 
 version = project.mod_version + "+" + project.minecraft_version + "+fabric"
@@ -156,5 +158,41 @@ publishing {
                 basic(BasicAuthentication)
             }
         }
+    }
+}
+
+
+curseforge {
+    apiKey = System.getenv("CURSEFORGE_TOKEN")
+    project {
+        id = project.curseforge_id
+        releaseType = project.curse_release_type
+        project.curseforge_game_versions.split(", ").each {
+            String gameVersion -> addGameVersion gameVersion
+        }
+        changelogType="markdown"
+        changelog = "[Release ${mod_version} · kitUIN/ChatImage (github.com)](https://github.com/kitUIN/ChatImage/releases/tag/${mod_version})"
+        if (!project.curseforge_required_dependencies.isEmpty() || !project.curseforge_optional_dependencies.isEmpty()) {
+            relations {
+                if (!project.curseforge_required_dependencies.isEmpty()) {
+                    project.curseforge_required_dependencies.split(", ").each {
+                        String dep -> requiredDependency dep
+                    }
+                }
+                if (!project.curseforge_optional_dependencies.isEmpty()) {
+                    project.curseforge_optional_dependencies.split(", ").each {
+                        String dep -> optionalDependency dep
+                    }
+                }
+            }
+        }
+        afterEvaluate {
+            mainArtifact(remapJar)
+            uploadTask.dependsOn(remapJar)
+        }
+    }
+    options {
+        debug = true
+        forgeGradleIntegration = false
     }
 }
