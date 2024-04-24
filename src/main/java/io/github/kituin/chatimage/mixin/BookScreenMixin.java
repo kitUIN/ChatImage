@@ -41,7 +41,7 @@ public abstract class BookScreenMixin extends Screen {
     }
 
     @Inject(at = @At("RETURN"),
-            method = "handleTextClick", cancellable = true)
+            method = "handleTextClick(Lnet/minecraft/text/Style;)Z", cancellable = true)
     private void handleTextClick(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
