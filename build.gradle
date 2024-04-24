@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'maven-publish'
+    id 'signing'
 }
 
 
@@ -91,13 +92,68 @@ jar {
 remapJar {
     destinationDir = file("./../ChatImage-jar/${project.mod_version}")
 }
-// configure the maven publication
+javadoc {
+    options.addStringOption("charset", "UTF-8")
+    options.addStringOption("encoding", "UTF-8")
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            from components.java
+            artifactId project.name
+            groupId group
+            version version
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+
+            afterEvaluate {
+                artifact remapJar
+            }
+//            artifact javadocJar
+            pom {
+                name = project.name
+                description = 'A Minecraft Mod Which Could Show Image In Chat Line'
+                url = 'https://github.com/kitUIN/ChatImage'
+                licenses {
+                    license {
+                        name = 'MIT'
+                        url = ''
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'kitUIN'
+                        name = 'kitUIN'
+                        email = 'KIT_UIN@outlook.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/kitUIN/ChatImage.git'
+                    developerConnection = 'scm:git:ssh://github.com/kitUIN/ChatImage.git'
+                    url = 'https://github.com/kitUIN/ChatImage'
+                }
+            }
         }
     }
     repositories {
+        maven {
+            name = project.name
+            if (project.version.toString().endsWith("-SNAPSHOT")) {
+                url = "https://maven.kituin.fun/snapshots"
+            } else {
+                url = "https://maven.kituin.fun/releases"
+            }
+//            credentials(PasswordCredentials)
+            credentials {
+                username = findProperty("user") ?: System.getenv("KITUIN_USERNAME")
+                password = findProperty("pwd") ?: System.getenv("KITUIN_PASSWORD")
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
     }
 }

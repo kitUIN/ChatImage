@@ -18,16 +18,16 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "github.kituin.chatimage.client.ChatImageClient"
+      "io.github.kituin.chatimage.client.ChatImageClient"
     ],
     "main": [
-      "github.kituin.chatimage.ChatImage"
+      "io.github.kituin.chatimage.ChatImage"
     ],
     "modmenu": [
-      "github.kituin.chatimage.integration.ModmenuIntegration"
+      "io.github.kituin.chatimage.integration.ModmenuIntegration"
     ],
     "actionlib": [
-      "github.kituin.chatimage.integration.ActionLibIntegration"
+      "io.github.kituin.chatimage.integration.ActionLibIntegration"
     ]
   },
   "mixins": [
