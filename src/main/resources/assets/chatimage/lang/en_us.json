@@ -1,7 +1,8 @@
 {
   "codename.chatimage.default": "Image",
   "process.chatimage.message": "Image Loading...%s%%",
-  "file_not_found.chatimage.exception":"File Not Found",
+  "loading.chatimage.exception": "Image Loading...",
+  "file_not_found.chatimage.exception":"\n↑File Not Found",
   "id_not_found.chatimage.exception":"Image Id Not Found",
   "file_load_error.chatimage.exception":"Image Loading Error",
   "other_error.chatimage.exception":"Unknown Error",
@@ -10,8 +11,8 @@
   "image_type_not_support.chatimage.exception":"Image Type Not Support",
   "file_too_large.chatimage.exception":"File Size Too Large",
   "timeout.chatimage.exception":"Time Out",
-  "invalid_image_url.chatimage.exception":"Invalid Image Url",
-  "invalid_url.chatimage.exception":"Invalid Url",
+  "invalid_image_url.chatimage.exception":"\n↑Invalid Image Url",
+  "invalid_url.chatimage.exception":"\n↑Invalid Url",
   "loading_from_server.chatimage.exception": "Loading images from server.....",
 
   "nsfw.chatimage.open": "Are you sure you want to open the nsfw image from the link below?",
@@ -31,7 +32,9 @@
   "uri.chatimage.gui": "Recognize Image Uri",
   "drag.chatimage.gui":"Drag in With CICode",
   "drag.chatimage.tooltip": "open: CICode,close: FileUrl",
-
+  "channel.chatimage.gui": "Channel",
+  "online.chatimage.gui": "Online",
+  "offline.chatimage.gui": "Offline",
   "config.chatimage.category": "Chat Image",
   "config.chatimage.key": "Open Configuration File Settings",
   "gif.chatimage.gui": "GIF rate",

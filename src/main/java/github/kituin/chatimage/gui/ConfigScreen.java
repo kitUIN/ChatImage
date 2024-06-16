@@ -5,6 +5,7 @@ import github.kituin.chatimage.widget.TimeOutSlider;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -15,18 +16,21 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
 import static github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static github.kituin.chatimage.network.ChatImagePacket.GET_FILE_CHANNEL;
 import static net.minecraft.screen.ScreenTexts.composeGenericOptionText;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
+//    private final boolean ChannelIsConnect;
     private Screen parent;
+
     public ConfigScreen() {
         super(Text.translatable("config.chatimage.category"));
-
+//        ChannelIsConnect = ClientPlayNetworking.canSend(GET_FILE_CHANNEL);
     }
 
     public ConfigScreen(Screen screen) {
-        super(Text.translatable("config.chatimage.category"));
+        this();
         this.parent = screen;
     }
 
@@ -79,23 +83,34 @@ public class ConfigScreen extends Screen {
         super.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer,
                 title, this.width / 2, this.height / 3 - 32, 16764108);
+//        CheckChannelConnect(matrices);
     }
 
+//    private void CheckChannelConnect(MatrixStack matrices) {
+//        MutableText channelStatus = composeGenericOptionText(Text.translatable("channel.chatimage.gui"), Text.translatable((ChannelIsConnect ? "online" : "offline") + ".chatimage.gui"));
+//        int color = ChannelIsConnect ? 6990707 : 15684440;
+//        drawCenteredText(matrices, this.textRenderer, channelStatus,
+//                this.width / 2 - 154, this.height / 3 - 64, color);
+//    }
+
     private MutableText getCq(boolean enable) {
-        return getEnable( "cq.chatimage.gui", enable);
+        return getEnable("cq.chatimage.gui", enable);
     }
+
     private MutableText getNsfw(boolean enable) {
-        return getEnable( "nsfw.chatimage.gui", !enable);
+        return getEnable("nsfw.chatimage.gui", !enable);
     }
+
     private MutableText getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
     }
+
     private MutableText getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);
     }
-    public static MutableText getEnable(String key,boolean enable)
-    {
-        return composeGenericOptionText(Text.translatable(key),Text.translatable((enable ? "open" : "close") + ".chatimage.common"));
+
+    public static MutableText getEnable(String key, boolean enable) {
+        return composeGenericOptionText(Text.translatable(key), Text.translatable((enable ? "open" : "close") + ".chatimage.common"));
     }
 
 }
