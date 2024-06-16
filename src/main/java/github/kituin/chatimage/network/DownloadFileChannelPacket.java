@@ -6,14 +6,14 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 import static github.kituin.chatimage.network.ChatImagePacket.clientDownloadFileChannelReceived;
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+
 
 public class DownloadFileChannelPacket {
 
     public String message;
 
     public DownloadFileChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readUtf(MAX_STRING);
+        message = buffer.readUtf();
     }
 
     public DownloadFileChannelPacket(String message) {
@@ -21,7 +21,7 @@ public class DownloadFileChannelPacket {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUtf(this.message,MAX_STRING);
+        buf.writeUtf(this.message);
     }
     public boolean clientHandle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context ctx = supplier.get();
