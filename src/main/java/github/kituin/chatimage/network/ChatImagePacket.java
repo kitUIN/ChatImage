@@ -24,7 +24,7 @@ import java.util.concurrent.CompletableFuture;
 import static github.kituin.chatimage.ChatImage.LOGGER;
 import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
 import static io.github.kituin.ChatImageCode.ClientStorage.CLIENT_CACHE_MAP;
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+
 import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
 import static io.github.kituin.ChatImageCode.ServerStorage.*;
 
@@ -54,7 +54,7 @@ public class ChatImagePacket {
      */
     public static PacketByteBuf createStringPacket(String str) {
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(str, MAX_STRING);
+        buf.writeString(str);
         return buf;
     }
 
@@ -120,7 +120,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
-        String res = buf.readString(MAX_STRING);
+        String res = buf.readString();
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
         blocks.put(title.index, res);
@@ -149,7 +149,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
-        String url = buf.readString(MAX_STRING);
+        String url = buf.readString();
         if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
             HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
             Integer total = FILE_COUNT_MAP.get(url);
@@ -179,7 +179,7 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientGetFileChannelReceived(PacketByteBuf buf) {
-        String data = buf.readString(MAX_STRING);
+        String data = buf.readString();
         String url = data.substring(6);
         LOGGER.info(url);
         if (data.startsWith("null")) {
@@ -197,7 +197,7 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
-        String res = buf.readString(MAX_STRING);
+        String res = buf.readString();
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
