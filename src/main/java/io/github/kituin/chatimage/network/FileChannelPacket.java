@@ -5,7 +5,7 @@ import net.neoforged.neoforge.network.NetworkEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+
 import static io.github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
 
 public class FileChannelPacket {
@@ -15,7 +15,7 @@ public class FileChannelPacket {
 
     private static final Logger LOGGER = LogManager.getLogger();
     public FileChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readUtf(MAX_STRING);
+        message = buffer.readUtf();
     }
 
     public FileChannelPacket(String message) {
@@ -23,7 +23,7 @@ public class FileChannelPacket {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUtf(this.message,MAX_STRING);
+        buf.writeUtf(this.message);
     }
 
     /**

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+
 import static io.github.kituin.ChatImageCode.ServerStorage.*;
 import static io.github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 
@@ -22,7 +22,7 @@ public class FileInfoChannelPacket {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public FileInfoChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readUtf(MAX_STRING);
+        message = buffer.readUtf();
     }
 
     public FileInfoChannelPacket(String message) {
@@ -30,7 +30,7 @@ public class FileInfoChannelPacket {
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUtf(this.message,MAX_STRING);
+        buf.writeUtf(this.message);
     }
 
     public static void handler(FileInfoChannelPacket packet,NetworkEvent.Context ctx) {
