@@ -5,7 +5,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
+
 import static io.github.kituin.chatimage.ChatImage.MOD_ID;
 
 public record FileChannelPacket(String message) implements CustomPacketPayload {
@@ -14,10 +14,10 @@ public record FileChannelPacket(String message) implements CustomPacketPayload {
      */
     public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
     public FileChannelPacket(FriendlyByteBuf buffer) {
-        this(buffer.readUtf(MAX_STRING)) ;
+        this(buffer.readUtf()) ;
     }
     public void write(final FriendlyByteBuf buffer) {
-        buffer.writeUtf(message(),MAX_STRING);
+        buffer.writeUtf(message());
     }
 
     @Override
