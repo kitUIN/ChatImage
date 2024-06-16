@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ChatImageIndex;
 import io.github.kituin.ChatImageCode.ClientStorage;
+import io.github.kituin.ChatImageCode.ServerStorage;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -15,7 +16,6 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import io.github.kituin.ChatImageCode.ServerStorage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +25,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static github.kituin.chatimage.ChatImage.LOGGER;
 import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
-import static io.github.kituin.ChatImageCode.NetworkHelper.MAX_STRING;
 import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
 
 public class ChatImagePacket {
@@ -53,7 +52,7 @@ public class ChatImagePacket {
      */
     public static PacketByteBuf createStringPacket(String str) {
         PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(str,MAX_STRING);
+        buf.writeString(str);
         return buf;
     }
 
@@ -119,7 +118,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
-        String res = buf.readString(MAX_STRING);
+        String res = buf.readString();
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, String> blocks = ServerStorage.SERVER_BLOCK_CACHE.containsKey(title.url) ? ServerStorage.SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
         blocks.put(title.index, res);
@@ -148,7 +147,7 @@ public class ChatImagePacket {
      * @param buf    PacketByteBuf
      */
     public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
-        String url = buf.readString(MAX_STRING);
+        String url = buf.readString();
         if (ServerStorage.SERVER_BLOCK_CACHE.containsKey(url) && ServerStorage.FILE_COUNT_MAP.containsKey(url)) {
             HashMap<Integer, String> list = ServerStorage.SERVER_BLOCK_CACHE.get(url);
             Integer total = ServerStorage.FILE_COUNT_MAP.get(url);
@@ -178,7 +177,7 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientGetFileChannelReceived(PacketByteBuf buf) {
-        String data = buf.readString(MAX_STRING);
+        String data = buf.readString();
         String url = data.substring(6);
         LOGGER.info(url);
         if (data.startsWith("null")) {
@@ -196,7 +195,7 @@ public class ChatImagePacket {
      * @param buf PacketByteBuf
      */
     public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
-        String res = buf.readString(MAX_STRING);
+        String res = buf.readString();
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, ChatImageIndex> blocks = ClientStorage.CLIENT_CACHE_MAP.containsKey(title.url) ? ClientStorage.CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
