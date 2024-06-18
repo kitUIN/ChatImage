@@ -2,6 +2,7 @@ package io.github.kituin.chatimage.integration;
 
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
+import io.github.kituin.chatimage.network.FileChannelPacket;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
@@ -39,7 +40,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
     public void sendToServer(String url, File file, boolean isToServer) {
         if (isToServer) {
             List<String> stringList = createFilePacket(url, file);
-            sendPacketAsync(FILE_CHANNEL, stringList);
+            sendPacketAsync(FileChannelPacket::new, stringList);
         } else {
             loadFromServer(url);
         }
