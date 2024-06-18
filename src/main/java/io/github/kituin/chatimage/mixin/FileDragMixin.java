@@ -22,7 +22,7 @@ public class FileDragMixin {
     private MinecraftClient client;
 
     @Inject(at = @At("RETURN"), method = "onFilesDropped")
-    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+    private void onFilesDropped(long window, List<Path> paths, int invalidFilesCount, CallbackInfo ci) {
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {

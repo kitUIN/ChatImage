@@ -12,7 +12,7 @@ public record DownloadFileChannelPacket(String message) implements CustomPayload
      * 发送文件分块到客户端通道(Map)
      */
     public static final Id<DownloadFileChannelPacket> ID =
-            new CustomPayload.Id<>(new Identifier("chatimage", "download_file_channel"));
+            new CustomPayload.Id<>(Identifier.of("chatimage", "download_file_channel"));
 
     public static final PacketCodec<PacketByteBuf, DownloadFileChannelPacket> CODEC =
             PacketCodec.tuple(PacketCodecs.STRING, DownloadFileChannelPacket::message, DownloadFileChannelPacket::new);
