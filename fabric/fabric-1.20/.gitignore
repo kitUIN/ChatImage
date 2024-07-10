@@ -122,3 +122,8 @@ run/
 /LICENSE
 /settings.gradle
 /gradle/wrapper/gradle-wrapper.jar
+/src/main/java/io/github/kituin/chatimage/ChatImage.java
+/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java
+/src/main/java/io/github/kituin/chatimage/network/ChatImagePacket.java
+/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java
+/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java
