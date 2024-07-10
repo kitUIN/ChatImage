@@ -3,6 +3,7 @@ $build_gradle = "fabric\common\build.gradle"
 $license = "LICENSE"
 $gradlew_file = "gradlew"
 $gradlew_bat_file = "gradlew.bat"
+$gradlew_jar_file = "gradle-wrapper.jar"
 $assets_source = "resources\assets"
 $logo_source = "resources\logo.png"
 $targetDir = "fabric"
@@ -19,6 +20,7 @@ function Create-SymbolicLink {
 
 Get-ChildItem -Path "$targetDir\$prefix*" -Directory | ForEach-Object {
     $target = $_.FullName
+    Create-SymbolicLink -target $target -path "gradle\wrapper\$gradlew_jar_file" -source $gradlew_jar_file
     Create-SymbolicLink -target $target -path $license -source $license
     Create-SymbolicLink -target $target -path $gradlew_file -source $gradlew_file
     Create-SymbolicLink -target $target -path $gradlew_bat_file -source $gradlew_bat_file

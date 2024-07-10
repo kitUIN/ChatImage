@@ -18,7 +18,13 @@ jobs:
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3 # v3.1.0
-      - name: build
+      - name: Link File
         shell: pwsh
         run: |
           .\link.ps1
+      - name: build
+        run: |
+          cd fabric/fabric-1.21
+          ./gradlew clean build
+      - name: read mod version
+        run: echo "MY_VARIABLE=Hello, world" >> $GITHUB_ENV

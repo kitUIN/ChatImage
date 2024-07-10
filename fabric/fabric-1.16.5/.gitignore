@@ -121,3 +121,4 @@ run/
 /gradlew.bat
 /LICENSE
 /settings.gradle
+/gradle/wrapper/gradle-wrapper.jar
