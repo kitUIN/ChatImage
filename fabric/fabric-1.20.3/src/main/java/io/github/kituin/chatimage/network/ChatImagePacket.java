@@ -106,7 +106,7 @@ public class ChatImagePacket {
     public static void loadFromServer(String url) {
         if (MinecraftClient.getInstance().player != null) {
             sendPacketAsync(GET_FILE_CHANNEL, createStringPacket(url));
-            LOGGER.info("[GetFileChannel-Try]" + url);
+            LOGGER.info("[GetFileChannel-Try]{}", url);
         } else {
             AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         }
@@ -125,7 +125,7 @@ public class ChatImagePacket {
         blocks.put(title.index, res);
         SERVER_BLOCK_CACHE.put(title.url, blocks);
         FILE_COUNT_MAP.put(title.url, title.total);
-        LOGGER.info("[FileChannel->Server:" + title.index + "/" + title.total + "]" + title.url);
+        LOGGER.info("[FileChannel->Server:{}/{}]{}", title.index, title.total, title.url);
         if (title.total == blocks.size()) {
             if (USER_CACHE_MAP.containsKey(title.url)) {
                 // 通知之前请求但是没图片的客户端
@@ -133,11 +133,11 @@ public class ChatImagePacket {
                 for (String uuid : names) {
                     ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
                     sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + title.url));
-                    LOGGER.info("[FileChannel->Client(" + uuid + ")]" + title.url);
+                    LOGGER.info("[FileChannel->Client({})]{}", uuid, title.url);
                 }
                 USER_CACHE_MAP.put(title.url, Lists.newArrayList());
             }
-            LOGGER.info("[FileChannel->Server]" + title.url);
+            LOGGER.info("[FileChannel->Server]{}", title.url);
         }
     }
 
@@ -156,20 +156,20 @@ public class ChatImagePacket {
                 // 服务器存在缓存图片,直接发送给客户端
                 for (Map.Entry<Integer,String> entry : list.entrySet()) {
                     sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createStringPacket(entry.getValue()));
-                    LOGGER.debug("[GetFileChannel->Client:" + entry.getKey() + "/" + (list.size() - 1) + "]" + url);
+                    LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
                 }
-                LOGGER.info("[GetFileChannel->Client]" + url);
+                LOGGER.info("[GetFileChannel->Client]{}", url);
                 return;
             }
         }
         //通知客户端无文件
         sendPacketAsync(player, GET_FILE_CHANNEL, createStringPacket("null->" + url));
-        LOGGER.error("[GetFileChannel]not found in server:" + url);
+        LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送
         List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
         names.add(player.getUuidAsString());
         USER_CACHE_MAP.put(url, names);
-        LOGGER.info("[GetFileChannel]记录uuid:" + player.getUuidAsString());
+        LOGGER.info("[GetFileChannel]记录uuid:{}", player.getUuidAsString());
     }
 
     /**
@@ -182,7 +182,7 @@ public class ChatImagePacket {
         String url = data.substring(6);
         LOGGER.info(url);
         if (data.startsWith("null")) {
-            LOGGER.info("[GetFileChannel-NULL]" + url);
+            LOGGER.info("[GetFileChannel-NULL]{}", url);
             AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
         } else if (data.startsWith("true")) {
             loadFromServer(url);
@@ -201,11 +201,11 @@ public class ChatImagePacket {
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
         CLIENT_CACHE_MAP.put(title.url, blocks);
-        LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
+        LOGGER.info("[DownloadFile({}/{})]{}", title.index, title.total, title.url);
         if (blocks.size() == title.total) {
             LOGGER.info(String.valueOf(blocks));
             mergeFileBlocks(title.url, blocks);
-            LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
+            LOGGER.info("[DownloadFileChannel-Merge]{}", title.url);
         }
     }
 }

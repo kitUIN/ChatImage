@@ -20,6 +20,9 @@ public class ConfigScreen extends ConfigRawScreen {
         super(new TranslatableText("config.chatimage.category"), screen);
     }
 
+    public ConfigScreen() {
+        this(null);
+    }
 
     protected void init() {
         super.init();
