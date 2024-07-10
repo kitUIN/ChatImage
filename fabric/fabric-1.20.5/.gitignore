@@ -124,4 +124,5 @@ run/
 /gradle/wrapper/gradle-wrapper.jar
 
 /src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java
-
+/src/main/java/io/github/kituin/chatimage/integration/ModmenuIntegration.java
+/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java
