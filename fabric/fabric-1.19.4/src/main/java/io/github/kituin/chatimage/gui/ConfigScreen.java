@@ -20,10 +20,10 @@ import static net.minecraft.screen.ScreenTexts.composeGenericOptionText;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
-    private Screen parent;
-    public ConfigScreen() {
-        super(Text.translatable("config.chatimage.category"));
+    private final Screen parent;
 
+    public ConfigScreen() {
+        this(null);
     }
 
     public ConfigScreen(Screen screen) {

@@ -19,7 +19,9 @@ public class ConfigScreen extends ConfigRawScreen {
     public ConfigScreen(Screen screen) {
         super(Text.translatable("config.chatimage.category"), screen);
     }
-
+    public ConfigScreen() {
+        this(null);
+    }
 
     protected void init() {
         super.init();

@@ -10,5 +10,35 @@
       "fabric-1.19.4",
       "fabric-1.20"
     ]
+  },
+  {
+    "file": "network\\ChatImagePacket.java",
+    "main": "fabric-1.20.3",
+    "others": [
+      "fabric-1.18.2",
+      "fabric-1.19.1",
+      "fabric-1.19.2",
+      "fabric-1.19.3",
+      "fabric-1.19.4",
+      "fabric-1.20"
+    ]
+  },
+  {
+    "file": "client\\ChatImageClient.java",
+    "main": "fabric-1.20.3",
+    "others": [
+      "fabric-1.19.1",
+      "fabric-1.19.2",
+      "fabric-1.19.3",
+      "fabric-1.19.4",
+      "fabric-1.20"
+    ]
+  },
+  {
+    "file": "gui\\ConfigScreen.java",
+    "main": "fabric-1.20.3",
+    "others": [
+      "fabric-1.20"
+    ]
   }
 ]

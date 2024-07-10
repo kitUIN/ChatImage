@@ -20,16 +20,14 @@ import static net.minecraft.screen.ScreenTexts.composeGenericOptionText;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends Screen {
-//    private final boolean ChannelIsConnect;
-    private Screen parent;
+    private final Screen parent;
 
     public ConfigScreen() {
-        super(Text.translatable("config.chatimage.category"));
-//        ChannelIsConnect = ClientPlayNetworking.canSend(GET_FILE_CHANNEL);
+        this(null);
     }
 
     public ConfigScreen(Screen screen) {
-        this();
+        super(Text.translatable("config.chatimage.category"));
         this.parent = screen;
     }
 

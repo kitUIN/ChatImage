@@ -19,8 +19,9 @@ public class ConfigScreen extends ConfigRawScreen {
     public ConfigScreen(Screen screen) {
         super(Text.translatable("config.chatimage.category"), screen);
     }
-
-
+    public ConfigScreen() {
+        this(null);
+    }
     protected void init() {
         super.init();
         this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(ChatImageClient.CONFIG.nsfw), (button) -> {

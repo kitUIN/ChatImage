@@ -44,7 +44,10 @@ Get-ChildItem -Path "$targetDir\$prefix*" -Directory | ForEach-Object {
 $json = Get-Content -Path 'fabric/common/main.json' | ConvertFrom-Json
 $namespace = 'src\main\java\io\github\kituin\chatimage'
 foreach ($obj in $json) {
-    $mainPath = Join-Path -Path "fabric\$obj.main\$namespace" -ChildPath $obj.file
+    $aPath = Join-Path -Path "fabric" -ChildPath $obj.main
+    $bPath = Join-Path -Path $namespace -ChildPath $obj.file
+    $mainPath = Join-Path -Path $aPath -ChildPath $bPath
+
     foreach ($other in $obj.others) {
         Create-SymbolicLink -target "fabric\$other\$namespace" -path $obj.file -source $mainPath
     }
