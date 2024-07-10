@@ -16,8 +16,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3 # v3.1.0
       - name: Link File
         shell: pwsh
         run: |

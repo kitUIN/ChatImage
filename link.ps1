@@ -15,7 +15,10 @@ $prefix = "fabric"
 function Create-Copy {
     param($target, $path, $source)
     $fullPath = Join-Path -Path $target -ChildPath $path
-    Copy-Item $source -Destination $fullPath -Force
+    if (Test-Path $fullPath) {
+        Remove-Item $fullPath -Recurse
+    }
+    Copy-Item $source -Destination $fullPath -Force -Recurse
 }
 
 function Create-SymbolicLink {
