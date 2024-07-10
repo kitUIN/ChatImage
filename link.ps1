@@ -15,15 +15,17 @@ $prefix = "fabric"
 
 function Create-SymbolicLink {
     param($target, $path, $source)
-    $fullPath = Join-Path -Path $target -ChildPath $path
-    if (Test-Path $fullPath) {
-        Remove-Item $fullPath -Recurse
-    }
-    if ($ci) {
-        Copy-Item $source -Destination $fullPath -Force -Recurse
-    }
-    else{
-        New-Item -ItemType SymbolicLink -Path $fullPath -Target $source
+    if (Test-Path $source) {
+        $fullPath = Join-Path -Path $target -ChildPath $path
+        if (Test-Path $fullPath) {
+            Remove-Item $fullPath -Recurse
+        }
+        if ($ci) {
+            Copy-Item $source -Destination $fullPath -Force -Recurse
+        }
+        else{
+            New-Item -ItemType SymbolicLink -Path $fullPath -Target $source
+        }
     }
 }
 
