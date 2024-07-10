@@ -129,3 +129,5 @@ run/
 /src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java
 /src/main/java/io/github/kituin/chatimage/integration/ModmenuIntegration.java
 /src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java
+/src/main/resources/assets/**/*
+/src/main/resources/logo.png

@@ -1,0 +1,1 @@
+C:/Users/15854/IdeaProjects/ChatImage/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/network/ChatImagePacket.java
