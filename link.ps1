@@ -12,25 +12,17 @@ $logo_source = "resources\logo.png"
 $targetDir = "fabric"
 $prefix = "fabric"
 
-function Create-Copy {
+
+function Create-SymbolicLink {
     param($target, $path, $source)
     $fullPath = Join-Path -Path $target -ChildPath $path
     if (Test-Path $fullPath) {
         Remove-Item $fullPath -Recurse
     }
-    Copy-Item $source -Destination $fullPath -Force -Recurse
-}
-
-function Create-SymbolicLink {
-    param($target, $path, $source)
     if ($ci) {
-        Create-Copy -target $target -path $path -source $source
+        Copy-Item $source -Destination $fullPath -Force -Recurse
     }
     else{
-        $fullPath = Join-Path -Path $target -ChildPath $path
-        if (Test-Path $fullPath) {
-            Remove-Item $fullPath -Recurse
-        }
         New-Item -ItemType SymbolicLink -Path $fullPath -Target $source
     }
 }

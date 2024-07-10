@@ -20,10 +20,18 @@ jobs:
         shell: pwsh
         run: |
           .\link.ps1 -ci $true
+      - name: Read version.txt and save to variable
+        shell: pwsh
+        run: |
+          $mod_version = Get-Content version.txt
+          Write-Host "Version: $mod_version"
+           echo "MOD_VERSION=$mod_version" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_ENV
       - name: build
         run: |
           cd fabric/fabric-1.21
-          ls
           ./gradlew clean build
-      - name: read mod version
-        run: echo "MY_VARIABLE=Hello, world" >> $GITHUB_ENV
+          cd ../..
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ChatImage-${{ env.MOD_VERSION }}.jar
+          path: ChatImage-jar/${{ env.MOD_VERSION }}/*
