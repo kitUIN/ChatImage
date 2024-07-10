@@ -6,10 +6,10 @@
   "mixins": [
   ],
   "client": [
-    "BookScreenMixin",
-    "ChatHudMixin",
-    "FileDragMixin",
-    "ScreenMixin"
+    "io.github.kituin.chatimage.chatimage.mixin.BookScreenMixin",
+    "io.github.kituin.chatimage.chatimage.mixin.ChatHudMixin",
+    "io.github.kituin.chatimage.chatimage.mixin.FileDragMixin",
+    "io.github.kituin.chatimage.chatimage.mixin.ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
