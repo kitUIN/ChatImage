@@ -20,10 +20,11 @@ function Create-SymbolicLink {
 
 Get-ChildItem -Path "$targetDir\$prefix*" -Directory | ForEach-Object {
     $target = $_.FullName
-    Create-SymbolicLink -target $target -path "gradle\wrapper\$gradlew_jar_file" -source $gradlew_jar_file
-    Create-SymbolicLink -target $target -path $license -source $license
-    Create-SymbolicLink -target $target -path $gradlew_file -source $gradlew_file
-    Create-SymbolicLink -target $target -path $gradlew_bat_file -source $gradlew_bat_file
+    Copy-Item $gradlew_file -Destination "$target\$gradlew_file" -Force
+    Copy-Item $gradlew_bat_file -Destination "$target\$gradlew_bat_file" -Force
+    Copy-Item $license -Destination "$target\$license" -Force
+    Copy-Item $gradlew_jar_file -Destination "$target\gradle\wrapper\$gradlew_jar_file" -Force
+
     Create-SymbolicLink -target $target -path "settings.gradle" -source $settings_gradle
     Create-SymbolicLink -target $target -path "build.gradle" -source $build_gradle
     Create-SymbolicLink -target $target -path "src\main\$assets_source" -source $assets_source
