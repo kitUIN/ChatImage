@@ -21,10 +21,11 @@ jobs:
       - name: Link File
         shell: pwsh
         run: |
-          .\link.ps1
+          .\link.ps1 -ci $true
       - name: build
         run: |
           cd fabric/fabric-1.21
+          ls
           ./gradlew clean build
       - name: read mod version
         run: echo "MY_VARIABLE=Hello, world" >> $GITHUB_ENV

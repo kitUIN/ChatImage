@@ -1,3 +1,6 @@
+param(
+    [bool]$ci = $false
+)
 $settings_gradle = "fabric\common\settings.gradle"
 $build_gradle = "fabric\common\build.gradle"
 $license = "LICENSE"
@@ -9,14 +12,26 @@ $logo_source = "resources\logo.png"
 $targetDir = "fabric"
 $prefix = "fabric"
 
-function Create-SymbolicLink {
+function Create-Copy {
     param($target, $path, $source)
     $fullPath = Join-Path -Path $target -ChildPath $path
-    if (Test-Path $fullPath) {
-        Remove-Item $fullPath -Recurse
-    }
-    New-Item -ItemType SymbolicLink -Path $fullPath -Target $source
+    Copy-Item $source -Destination $fullPath -Force
 }
+
+function Create-SymbolicLink {
+    param($target, $path, $source)
+    if ($ci) {
+        Create-Copy -target $target -path $path -source $source
+    }
+    else{
+        $fullPath = Join-Path -Path $target -ChildPath $path
+        if (Test-Path $fullPath) {
+            Remove-Item $fullPath -Recurse
+        }
+        New-Item -ItemType SymbolicLink -Path $fullPath -Target $source
+    }
+}
+
 
 Get-ChildItem -Path "$targetDir\$prefix*" -Directory | ForEach-Object {
     $target = $_.FullName
