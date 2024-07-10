@@ -122,3 +122,5 @@ run/
 /LICENSE
 /settings.gradle
 /gradle/wrapper/gradle-wrapper.jar
+/src/main/resources/assets/**/*
+/src/main/resources/logo.png
