@@ -81,9 +81,7 @@ public class ChatImageClient implements ClientModInitializer {
                         )
 
         ));
-        PayloadTypeRegistry.playS2C().register(DownloadFileChannelPacket.ID, DownloadFileChannelPacket.CODEC);
         ClientPlayNetworking.registerGlobalReceiver(DownloadFileChannelPacket.ID, (payload, context) -> ChatImagePacket.clientDownloadFileChannelReceived(payload));
-        PayloadTypeRegistry.playS2C().register(FileInfoChannelPacket.ID, FileInfoChannelPacket.CODEC);
         ClientPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, (payload, context) -> ChatImagePacket.clientGetFileChannelReceived(payload));
     }
 }

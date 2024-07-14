@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
 import io.github.kituin.chatimage.network.ChatImagePacket;
+import io.github.kituin.chatimage.network.DownloadFileChannelPacket;
 import io.github.kituin.chatimage.network.FileChannelPacket;
 import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 import net.fabricmc.api.ModInitializer;
@@ -25,8 +26,10 @@ public class ChatImage implements ModInitializer {
     @Override
     public void onInitialize() {
         PayloadTypeRegistry.playC2S().register(FileChannelPacket.ID, FileChannelPacket.CODEC);
-        ServerPlayNetworking.registerGlobalReceiver(FileChannelPacket.ID, ChatImagePacket::serverFileChannelReceived);
         PayloadTypeRegistry.playC2S().register(FileInfoChannelPacket.ID, FileInfoChannelPacket.CODEC);
+        PayloadTypeRegistry.playS2C().register(DownloadFileChannelPacket.ID, DownloadFileChannelPacket.CODEC);
+        PayloadTypeRegistry.playS2C().register(FileInfoChannelPacket.ID, FileInfoChannelPacket.CODEC);
+        ServerPlayNetworking.registerGlobalReceiver(FileChannelPacket.ID, ChatImagePacket::serverFileChannelReceived);
         ServerPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, ChatImagePacket::serverGetFileChannelReceived);
     }
 }

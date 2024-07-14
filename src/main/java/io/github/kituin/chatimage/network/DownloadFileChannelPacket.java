@@ -1,6 +1,6 @@
 package io.github.kituin.chatimage.network;
 
-import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
@@ -14,7 +14,7 @@ public record DownloadFileChannelPacket(String message) implements CustomPayload
     public static final Id<DownloadFileChannelPacket> ID =
             new CustomPayload.Id<>(Identifier.of("chatimage", "download_file_channel"));
 
-    public static final PacketCodec<PacketByteBuf, DownloadFileChannelPacket> CODEC =
+    public static final PacketCodec<RegistryByteBuf, DownloadFileChannelPacket> CODEC =
             PacketCodec.tuple(PacketCodecs.STRING, DownloadFileChannelPacket::message, DownloadFileChannelPacket::new);
 
     @Override
