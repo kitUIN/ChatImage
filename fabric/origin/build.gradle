@@ -4,5 +4,3 @@ plugins {
 }
 
 apply from: '../../fabric.gradle'
-
-

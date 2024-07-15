@@ -1,7 +1,7 @@
 package io.github.kituin.chatimage.integration;
 
-import io.github.kituin.ChatImageCode.IChatImageCodeLogger;
 import io.github.kituin.chatimage.ChatImage;
+import io.github.kituin.ChatImageCode.IChatImageCodeLogger;
 
 public class ChatImageLogger implements IChatImageCodeLogger {
 

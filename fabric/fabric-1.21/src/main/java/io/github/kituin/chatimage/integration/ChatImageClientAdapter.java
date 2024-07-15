@@ -2,7 +2,9 @@ package io.github.kituin.chatimage.integration;
 
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
+// IF fabric-1.21 || fabric 1.20.5
 import io.github.kituin.chatimage.network.FileChannelPacket;
+// END IF
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.client.texture.NativeImageBackedTexture;
@@ -40,7 +42,11 @@ public class ChatImageClientAdapter implements IClientAdapter {
     public void sendToServer(String url, File file, boolean isToServer) {
         if (isToServer) {
             List<String> stringList = createFilePacket(url, file);
+// IF fabric-1.21 || fabric 1.20.5
             sendPacketAsync(FileChannelPacket::new, stringList);
+// ELSE
+//            sendPacketAsync(FILE_CHANNEL, stringList);
+// END IF
         } else {
             loadFromServer(url);
         }

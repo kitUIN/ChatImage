@@ -11,14 +11,7 @@ repositories {
         url "https://maven.kituin.fun/releases"
     }
 }
-def getVersionFromFile() {
-    def versionFile = file('../../version.txt')
-    if (versionFile.exists()) {
-        return versionFile.text.trim()
-    } else {
-        throw new GradleException("Version file not found: ${versionFile.absolutePath}") as Throwable
-    }
-}
+
 ext.includeMod = { String localOverrideKey, Object dep ->
     File file = file("../.${localOverrideKey}-local");
     if (file.exists()) {
@@ -28,8 +21,7 @@ ext.includeMod = { String localOverrideKey, Object dep ->
     }
     dependencies.include(dep)
 }
-def mod_version = getVersionFromFile()
-version = mod_version + "+" + project.minecraft_version + "+fabric"
+version = project.mod_version + "+" + project.minecraft_version + "+fabric"
 group = project.maven_group
 
 def targetJavaVersion = project.targetJavaVersion.toInteger()

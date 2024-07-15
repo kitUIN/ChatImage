@@ -14,7 +14,6 @@
   "invalid_image_url.chatimage.exception":"\n↑Invalid Image Url",
   "invalid_url.chatimage.exception":"\n↑Invalid Url",
   "loading_from_server.chatimage.exception": "Loading images from server.....",
-
   "nsfw.chatimage.open": "Are you sure you want to open the NSFW image from the link below?",
   "nsfw.chatimage.warning": "The NSFW image may cause discomfort, please open it with caution",
   "nsfw.chatimage.message": "This is a NSFW image, click to remove NSFW to view, or turn off the NSFW warning in the configuration file",

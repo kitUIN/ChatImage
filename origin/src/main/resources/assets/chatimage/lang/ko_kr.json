@@ -14,7 +14,6 @@
   "invalid_image_url.chatimage.exception":"\n↑잘못된 이미지 URL",
   "invalid_url.chatimage.exception":"\n↑잘못된 URL",
   "loading_from_server.chatimage.exception": "서버에서 이미지 불러오는 중.....",
-
   "nsfw.chatimage.open": "아래 링크에서 NSFW 이미지를 여시겠습니까?",
   "nsfw.chatimage.warning": "NSFW 이미지는 불편함을 줄 수 있으니 주의해서 열어주세요.",
   "nsfw.chatimage.message": "NSFW 이미지입니다. 클릭하여 NSFW를 제거하고 보거나 구성 파일에서 NSFW 경고를 끄세요.",
