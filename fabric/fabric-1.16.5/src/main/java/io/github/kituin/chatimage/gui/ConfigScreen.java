@@ -15,7 +15,9 @@ import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 @Environment(EnvType.CLIENT)
 public class ConfigScreen extends ConfigRawScreen {
-
+    public ConfigScreen() {
+        this(null);
+    }
     public ConfigScreen(Screen screen) {
         super(new TranslatableText("config.chatimage.category"), screen);
     }

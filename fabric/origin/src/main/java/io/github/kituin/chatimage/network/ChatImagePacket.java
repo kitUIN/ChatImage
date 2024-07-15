@@ -25,9 +25,9 @@ import java.util.concurrent.CompletableFuture;
 //
 //import java.util.function.Function;
 // ELSE
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.util.Identifier;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+//import net.minecraft.network.PacketByteBuf;
+//import net.minecraft.util.Identifier;
+//import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 // END IF
 
 import static io.github.kituin.ChatImageCode.NetworkHelper.mergeFileBlocks;
@@ -39,35 +39,35 @@ public class ChatImagePacket {
 
 // IF fabric-1.21 || fabric-1.20.5
 // ELSE
-    /**
-     * 客户端发送文件分块到服务器通道(Map)
-     */
-    public static Identifier FILE_CHANNEL = new Identifier("chatimage", "file_channel");
-    /**
-     * 尝试获取图片请求通道(String)
-     */
-    public static Identifier GET_FILE_CHANNEL = new Identifier("chatimage", "get_file_channel");
-    /**
-     * 发送文件分块到客户端通道(Map)
-     */
-    public static Identifier DOWNLOAD_FILE_CHANNEL = new Identifier("chatimage", "download_file_channel");
+//    /**
+//     * 客户端发送文件分块到服务器通道(Map)
+//     */
+//    public static Identifier FILE_CHANNEL = new Identifier("chatimage", "file_channel");
+//    /**
+//     * 尝试获取图片请求通道(String)
+//     */
+//    public static Identifier GET_FILE_CHANNEL = new Identifier("chatimage", "get_file_channel");
+//    /**
+//     * 发送文件分块到客户端通道(Map)
+//     */
+//    public static Identifier DOWNLOAD_FILE_CHANNEL = new Identifier("chatimage", "download_file_channel");
 // END IF
 
     public static Gson gson = new Gson();
 
 // IF fabric-1.21 || fabric-1.20.5
 // ELSE
-    /**
-     * 创建一个String网络包
-     *
-     * @param str 字符串
-     * @return {@link PacketByteBuf}
-     */
-    public static PacketByteBuf createStringPacket(String str) {
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(str);
-        return buf;
-    }
+//    /**
+//     * 创建一个String网络包
+//     *
+//     * @param str 字符串
+//     * @return {@link PacketByteBuf}
+//     */
+//    public static PacketByteBuf createStringPacket(String str) {
+//        PacketByteBuf buf = PacketByteBufs.create();
+//        buf.writeString(str);
+//        return buf;
+//    }
 // END IF
 
 // IF fabric-1.21 || fabric-1.20.5
@@ -123,60 +123,60 @@ public class ChatImagePacket {
 //        }
 //    }
 // ELSE
-    /**
-     * 发送给客户端一个网络包(异步)
-     *
-     * @param player  发送者(ClientPlayerEntity状态为发送给服务器,反之则发送给玩家)
-     * @param channel 发送频道
-     * @param buf     网络包数据
-     */
-    public static void sendPacketAsync(ServerPlayerEntity player, Identifier channel, PacketByteBuf buf) {
-        CompletableFuture.supplyAsync(() -> {
-            ServerPlayNetworking.send(player, channel, buf);
-            return null;
-        });
-    }
-
-    /**
-     * 发送给服务器一个网络包(异步)
-     *
-     * @param channel 发送频道
-     * @param buf     网络包数据
-     */
-    @Environment(EnvType.CLIENT)
-    public static void sendPacketAsync(Identifier channel, PacketByteBuf buf) {
-        CompletableFuture.supplyAsync(() -> {
-            ClientPlayNetworking.send(channel, buf);
-            return null;
-        });
-    }
-
-    /**
-     * 发送给服务器一连串网络包(异步)
-     *
-     * @param channel 发送频道
-     * @param bufs    网络包数据列表
-     */
-    public static void sendPacketAsync(Identifier channel, List<String> bufs) {
-        for (String buf : bufs) {
-            sendPacketAsync(channel, createStringPacket(buf));
-        }
-    }
-
-
-    /**
-     * 尝试从服务器获取图片
-     *
-     * @param url 图片url
-     */
-    public static void loadFromServer(String url) {
-        if (MinecraftClient.getInstance().player != null) {
-            sendPacketAsync(GET_FILE_CHANNEL, createStringPacket(url));
-            LOGGER.info("[GetFileChannel-Try]" + url);
-        } else {
-            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
-        }
-    }
+//    /**
+//     * 发送给客户端一个网络包(异步)
+//     *
+//     * @param player  发送者(ClientPlayerEntity状态为发送给服务器,反之则发送给玩家)
+//     * @param channel 发送频道
+//     * @param buf     网络包数据
+//     */
+//    public static void sendPacketAsync(ServerPlayerEntity player, Identifier channel, PacketByteBuf buf) {
+//        CompletableFuture.supplyAsync(() -> {
+//            ServerPlayNetworking.send(player, channel, buf);
+//            return null;
+//        });
+//    }
+//
+//    /**
+//     * 发送给服务器一个网络包(异步)
+//     *
+//     * @param channel 发送频道
+//     * @param buf     网络包数据
+//     */
+//    @Environment(EnvType.CLIENT)
+//    public static void sendPacketAsync(Identifier channel, PacketByteBuf buf) {
+//        CompletableFuture.supplyAsync(() -> {
+//            ClientPlayNetworking.send(channel, buf);
+//            return null;
+//        });
+//    }
+//
+//    /**
+//     * 发送给服务器一连串网络包(异步)
+//     *
+//     * @param channel 发送频道
+//     * @param bufs    网络包数据列表
+//     */
+//    public static void sendPacketAsync(Identifier channel, List<String> bufs) {
+//        for (String buf : bufs) {
+//            sendPacketAsync(channel, createStringPacket(buf));
+//        }
+//    }
+//
+//
+//    /**
+//     * 尝试从服务器获取图片
+//     *
+//     * @param url 图片url
+//     */
+//    public static void loadFromServer(String url) {
+//        if (MinecraftClient.getInstance().player != null) {
+//            sendPacketAsync(GET_FILE_CHANNEL, createStringPacket(url));
+//            LOGGER.info("[GetFileChannel-Try]" + url);
+//        } else {
+//            AddImageError(url, ChatImageFrame.FrameError.FILE_NOT_FOUND);
+//        }
+//    }
 // END IF
 
 
@@ -189,8 +189,8 @@ public class ChatImagePacket {
 //        MinecraftServer server = content.player().server;
 //        String res = packet.message();
 // ELSE
-    public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
-        String res = buf.readString();
+//    public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {
+//        String res = buf.readString();
 // END IF
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
@@ -207,7 +207,7 @@ public class ChatImagePacket {
 // IF fabric-1.21 || fabric-1.20.5
 //                    sendPacketAsync(serverPlayer, new FileInfoChannelPacket("true->" + title.url));
 // ELSE
-                    sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + title.url));
+//                    sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + title.url));
 // END IF
                     LOGGER.info("[FileChannel->Client({})]{}", uuid, title.url);
                 }
@@ -226,8 +226,8 @@ public class ChatImagePacket {
 //        ServerPlayerEntity player = content.player();
 //        String url = packet.message();
 // ELSE
-    public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
-        String url = buf.readString();
+//    public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
+//        String url = buf.readString();
 // END IF
         if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
             HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
@@ -238,7 +238,7 @@ public class ChatImagePacket {
 // IF fabric-1.21 || fabric-1.20.5
 //                    sendPacketAsync(player, new DownloadFileChannelPacket(entry.getValue()));
 // ELSE
-                    sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createStringPacket(entry.getValue()));
+//                    sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createStringPacket(entry.getValue()));
 // END IF
                     LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
                 }
@@ -250,7 +250,7 @@ public class ChatImagePacket {
 // IF fabric-1.21 || fabric-1.20.5
 //                    sendPacketAsync(player, new FileInfoChannelPacket("null->" + url));
 // ELSE
-        sendPacketAsync(player, GET_FILE_CHANNEL, createStringPacket("null->" + url));
+//        sendPacketAsync(player, GET_FILE_CHANNEL, createStringPacket("null->" + url));
 // END IF
         LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送
@@ -268,8 +268,8 @@ public class ChatImagePacket {
 //    public static void clientGetFileChannelReceived(FileInfoChannelPacket packet) {
 //        String data = packet.message();
 // ELSE
-    public static void clientGetFileChannelReceived(PacketByteBuf buf) {
-        String data = buf.readString();
+//    public static void clientGetFileChannelReceived(PacketByteBuf buf) {
+//        String data = buf.readString();
 // END IF
 
         String url = data.substring(6);
@@ -291,8 +291,8 @@ public class ChatImagePacket {
 //    public static void clientDownloadFileChannelReceived(DownloadFileChannelPacket packet) {
 //        String res = packet.message();
 // ELSE
-    public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
-        String res = buf.readString();
+//    public static void clientDownloadFileChannelReceived(PacketByteBuf buf) {
+//        String res = buf.readString();
 // END IF
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();

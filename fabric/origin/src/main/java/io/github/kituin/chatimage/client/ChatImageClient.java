@@ -16,8 +16,8 @@ import net.fabricmc.api.Environment;
 //import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
 //import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 // ELSE
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+//import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+//import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 // END IF
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -32,7 +32,7 @@ import java.io.File;
 //import io.github.kituin.chatimage.network.DownloadFileChannelPacket;
 //import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 // ELSE
-import static io.github.kituin.chatimage.network.ChatImagePacket.*;
+//import static io.github.kituin.chatimage.network.ChatImagePacket.*;
 // END IF
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -68,7 +68,7 @@ public class ChatImageClient implements ClientModInitializer {
 // IF fabric-1.16.5 || fabric-1.18.2
 //                client.openScreen(
 // ELSE
-                client.setScreen(
+//                client.setScreen(
 // END IF
                         new ConfigScreen()
                 );
@@ -77,7 +77,7 @@ public class ChatImageClient implements ClientModInitializer {
 // IF fabric-1.16.5 || fabric-1.18.2
 //        ClientCommandManager.DISPATCHER
 // ELSE
-        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher
+//        ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher
 // END IF
                 .register(
                         LiteralArgumentBuilder.<FabricClientCommandSource>literal("chatimage").executes(ChatImageCommand::help)
@@ -104,9 +104,9 @@ public class ChatImageClient implements ClientModInitializer {
 //        ClientPlayNetworking.registerGlobalReceiver(DownloadFileChannelPacket.ID, (payload, context) -> ChatImagePacket.clientDownloadFileChannelReceived(payload));
 //        ClientPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, (payload, context) -> ChatImagePacket.clientGetFileChannelReceived(payload));
 // ELSE
-                );
-        ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientDownloadFileChannelReceived(buf));
-        ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientGetFileChannelReceived(buf));
+//                );
+//        ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientDownloadFileChannelReceived(buf));
+//        ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientGetFileChannelReceived(buf));
 // END IF
 
     }
