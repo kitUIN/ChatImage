@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="update .idea">
+      <change afterPath="$PROJECT_DIR$/.idea/ChatImage.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.16.5">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.18.2">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.19.1">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.19.2">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.19.3">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.19.4">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.20">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.20.3">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.20.5">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/fabric/fabric-1.21">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/fabric/fabric-1.19.3">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/fabric/fabric-1.21">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/fabric/fabric-1.16.5">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="PowerShell File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kitUIN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kitUIN/ChatImage&quot;,
+    &quot;accountId&quot;: &quot;0346b3e7-48eb-4c95-a6ea-b8fcde76be4a&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2j3DtfUeWO2Q4lkD2UyXDhV4Kpf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.fabric-1.16.5 [build].executor": "Run",
+    "Gradle.fabric-1.19.3 [build].executor": "Run",
+    "Gradle.fabric-1.21 [build].executor": "Run",
+    "Gradle.加载 Gradle 依赖项.executor": "Run",
+    "PowerShell.init.ps1.executor": "Run",
+    "PowerShell.link.ps1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "two.files.diff.last.used.file": "C:/Users/15854/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\fabric-1.19.2\src\main\java\io\github\kituin\chatimage\client" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\network" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\gradle\wrapper" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\src\main" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\common" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.fabric-1.16.5 [build]">
+    <configuration name="fabric-1.16.5 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.16.5" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="fabric-1.19.3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.19.3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="fabric-1.21 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.21" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="init.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/init.ps1" executablePath="$PROJECT_DIR$/../../../../WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="link.ps1" type="PowerShellRunType" factoryName="PowerShell" temporary="true" scriptUrl="$PROJECT_DIR$/link.ps1" executablePath="$PROJECT_DIR$/../../../../WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.fabric-1.16.5 [build]" />
+        <item itemvalue="Gradle.fabric-1.21 [build]" />
+        <item itemvalue="Gradle.fabric-1.19.3 [build]" />
+        <item itemvalue="PowerShell.init.ps1" />
+        <item itemvalue="PowerShell.link.ps1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="" />
+      <created>1720607085145</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720607085145</updated>
+      <workItem from="1720607086681" duration="247000" />
+      <workItem from="1720619513861" duration="2411000" />
+      <workItem from="1720621962894" duration="21375000" />
+      <workItem from="1720801200011" duration="294000" />
+      <workItem from="1720801507967" duration="73000" />
+      <workItem from="1721070216578" duration="43000" />
+      <workItem from="1721070427124" duration="596000" />
+      <workItem from="1721071052571" duration="199000" />
+      <workItem from="1721071287400" duration="308000" />
+      <workItem from="1721071619250" duration="115000" />
+      <workItem from="1721072136563" duration="874000" />
+      <workItem from="1721074074681" duration="1427000" />
+      <workItem from="1721075557502" duration="127000" />
+      <workItem from="1721076035457" duration="216000" />
+      <workItem from="1721076573769" duration="264000" />
+      <workItem from="1721077099819" duration="167000" />
+      <workItem from="1721077413796" duration="589000" />
+      <workItem from="1721078174071" duration="4780000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1720628861075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1720628861075</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720629971003</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720629971003</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720630030453</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720630030453</updated>
+    </task>
+    <task id="LOCAL-00004" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720631212956</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720631212956</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720631950789</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720631950789</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720632689707</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720632689707</updated>
+    </task>
+    <task id="LOCAL-00007" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720632942987</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720632942987</updated>
+    </task>
+    <task id="LOCAL-00008" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720633855058</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720633855058</updated>
+    </task>
+    <task id="LOCAL-00009" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720634216858</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1720634216858</updated>
+    </task>
+    <task id="LOCAL-00010" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720635778770</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1720635778770</updated>
+    </task>
+    <task id="LOCAL-00011" summary="修改命名空间">
+      <option name="closed" value="true" />
+      <created>1720637167111</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720637167111</updated>
+    </task>
+    <task id="LOCAL-00012" summary="尝试软连接版本">
+      <option name="closed" value="true" />
+      <created>1720638865831</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1720638865831</updated>
+    </task>
+    <task id="LOCAL-00013" summary="尝试软连接部分代码">
+      <option name="closed" value="true" />
+      <created>1720640338468</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1720640338468</updated>
+    </task>
+    <task id="LOCAL-00014" summary="尝试软连接部分代码">
+      <option name="closed" value="true" />
+      <created>1720640598028</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1720640598028</updated>
+    </task>
+    <task id="LOCAL-00015" summary="更新actionlib 版本">
+      <option name="closed" value="true" />
+      <created>1720641442584</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1720641442584</updated>
+    </task>
+    <task id="LOCAL-00016" summary="删除同步文件">
+      <option name="closed" value="true" />
+      <created>1720641554160</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1720641554160</updated>
+    </task>
+    <task id="LOCAL-00017" summary="删除同步文件">
+      <option name="closed" value="true" />
+      <created>1720641943476</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1720641943476</updated>
+    </task>
+    <task id="LOCAL-00018" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720641987871</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1720641987871</updated>
+    </task>
+    <task id="LOCAL-00019" summary="test ci">
+      <option name="closed" value="true" />
+      <created>1720642444884</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1720642444884</updated>
+    </task>
+    <task id="LOCAL-00020" summary="删除软链接">
+      <option name="closed" value="true" />
+      <created>1720642855366</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1720642855366</updated>
+    </task>
+    <task id="LOCAL-00021" summary="修正">
+      <option name="closed" value="true" />
+      <created>1720643092876</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1720643092876</updated>
+    </task>
+    <task id="LOCAL-00022" summary="修正">
+      <option name="closed" value="true" />
+      <created>1720643152815</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1720643152815</updated>
+    </task>
+    <task id="LOCAL-00023" summary="修正">
+      <option name="closed" value="true" />
+      <created>1720643304233</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1720643304233</updated>
+    </task>
+    <task id="LOCAL-00024" summary="使用插件同步">
+      <option name="closed" value="true" />
+      <created>1721079174942</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1721079174942</updated>
+    </task>
+    <task id="LOCAL-00025" summary="使用插件同步 step2">
+      <option name="closed" value="true" />
+      <created>1721082512116</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1721082512116</updated>
+    </task>
+    <task id="LOCAL-00026" summary="使用插件同步 step3">
+      <option name="closed" value="true" />
+      <created>1721082692138</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1721082692138</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update gitignore">
+      <option name="closed" value="true" />
+      <created>1721082799712</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1721082799712</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="init" />
+    <MESSAGE value="修改命名空间" />
+    <MESSAGE value="尝试软连接版本" />
+    <MESSAGE value="尝试软连接部分代码" />
+    <MESSAGE value="更新actionlib 版本" />
+    <MESSAGE value="删除同步文件" />
+    <MESSAGE value="test ci" />
+    <MESSAGE value="删除软链接" />
+    <MESSAGE value="修正" />
+    <MESSAGE value="使用插件同步" />
+    <MESSAGE value="使用插件同步 step2" />
+    <MESSAGE value="使用插件同步 step3" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="update .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="update .idea" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

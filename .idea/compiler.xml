@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="fabric-1.16.5.main" target="11" />
+      <module name="fabric-1.16.5.test" target="11" />
+      <module name="fabric-1.18.2.main" target="17" />
+      <module name="fabric-1.18.2.test" target="17" />
+      <module name="fabric-1.19.1.main" target="17" />
+      <module name="fabric-1.19.1.test" target="17" />
+      <module name="fabric-1.19.2.main" target="17" />
+      <module name="fabric-1.19.2.test" target="17" />
+      <module name="fabric-1.19.3.main" target="17" />
+      <module name="fabric-1.19.3.test" target="17" />
+      <module name="fabric-1.19.4.main" target="17" />
+      <module name="fabric-1.19.4.test" target="17" />
+      <module name="fabric-1.20.3.main" target="17" />
+      <module name="fabric-1.20.3.test" target="17" />
+      <module name="fabric-1.20.5.main" target="21" />
+      <module name="fabric-1.20.5.test" target="21" />
+      <module name="fabric-1.20.main" target="17" />
+      <module name="fabric-1.20.test" target="17" />
+      <module name="fabric-1.21.main" target="21" />
+      <module name="fabric-1.21.test" target="21" />
+      <module name="github.kituin.ChatImage" target="17" />
+      <module name="github.kituin.ChatImage.main" target="17" />
+      <module name="github.kituin.ChatImage.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
