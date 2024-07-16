@@ -24,7 +24,7 @@ public class FileDragMixin {
     @Final
     private MinecraftClient client;
 // IF fabric-1.16.5
-    @Inject(at = @At("RETURN"), method = "method_29616")
+//    @Inject(at = @At("RETURN"), method = "method_29616")
 // ELSE
 //    @Inject(at = @At("RETURN"), method = "onFilesDropped")
 // END IF
@@ -32,7 +32,7 @@ public class FileDragMixin {
 // IF fabric-1.21
 //    private void onFilesDropped(long window, List<Path> paths, int invalidFilesCount, CallbackInfo ci) {
 // ELSE
-    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+//    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
 // END IF
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
@@ -44,7 +44,7 @@ public class FileDragMixin {
                 }
             }
 // IF fabric-1.16.5
-            this.client.openScreen(new ChatScreen(sb.toString()));
+//            this.client.openScreen(new ChatScreen(sb.toString()));
 // ELSE
 //            this.client.setScreen(new ChatScreen(sb.toString()));
 // END IF

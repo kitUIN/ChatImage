@@ -4,17 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="update .idea">
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="sync step5">
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +125,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/network",
+    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -138,11 +141,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\mixin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\network" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\fabric-1.19.2\src\main\java\io\github\kituin\chatimage\client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
@@ -275,7 +278,7 @@
       <workItem from="1721090226354" duration="135000" />
       <workItem from="1721090380746" duration="68000" />
       <workItem from="1721090577079" duration="23000" />
-      <workItem from="1721090631130" duration="41000" />
+      <workItem from="1721090631130" duration="640000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -501,7 +504,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721083026210</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="sync step5">
+      <option name="closed" value="true" />
+      <created>1721090725791</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1721090725791</updated>
+    </task>
+    <task id="LOCAL-00030" summary="sync step5">
+      <option name="closed" value="true" />
+      <created>1721090745354</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1721090745354</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,7 +543,8 @@
     <MESSAGE value="使用插件同步 step3" />
     <MESSAGE value="update gitignore" />
     <MESSAGE value="update .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="update .idea" />
+    <MESSAGE value="sync step5" />
+    <option name="LAST_COMMIT_MESSAGE" value="sync step5" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

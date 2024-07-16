@@ -1,6 +1,8 @@
 package io.github.kituin.chatimage.mixin;
 
 import io.github.kituin.chatimage.client.ChatImageClient;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
 import net.minecraft.client.gui.screen.ChatScreen;
@@ -14,15 +16,24 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.nio.file.Path;
 import java.util.List;
 
+@Environment(EnvType.CLIENT)
 @Mixin(Mouse.class)
 public class FileDragMixin {
 
     @Shadow
     @Final
     private MinecraftClient client;
-
+// IF fabric-1.16.5
+//    @Inject(at = @At("RETURN"), method = "method_29616")
+// ELSE
     @Inject(at = @At("RETURN"), method = "onFilesDropped")
+// END IF
+
+// IF fabric-1.21
+//    private void onFilesDropped(long window, List<Path> paths, int invalidFilesCount, CallbackInfo ci) {
+// ELSE
     private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+// END IF
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
@@ -32,7 +43,11 @@ public class FileDragMixin {
                     sb.append("file:///").append(o);
                 }
             }
+// IF fabric-1.16.5
+//            this.client.openScreen(new ChatScreen(sb.toString()));
+// ELSE
             this.client.setScreen(new ChatScreen(sb.toString()));
+// END IF
         }
     }
 }
