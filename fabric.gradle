@@ -16,7 +16,7 @@ def getVersionFromFile() {
     if (versionFile.exists()) {
         return versionFile.text.trim()
     } else {
-        throw new GradleException("Version file not found: ${versionFile.absolutePath}") as Throwable
+        throw new Exception("Version file not found: ${versionFile.absolutePath}") as Throwable
     }
 }
 ext.includeMod = { String localOverrideKey, Object dep ->

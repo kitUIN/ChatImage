@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="build test">
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="update fabric.gradle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +273,7 @@
       <workItem from="1721096376457" duration="370000" />
       <workItem from="1721096878196" duration="300000" />
       <workItem from="1721097301923" duration="616000" />
-      <workItem from="1721097962102" duration="511000" />
+      <workItem from="1721097962102" duration="634000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -548,7 +547,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721098346608</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="update fabric.gradle">
+      <option name="closed" value="true" />
+      <created>1721098572367</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1721098572367</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +594,8 @@
     <MESSAGE value="issue" />
     <MESSAGE value="mixins.json" />
     <MESSAGE value="build test" />
-    <option name="LAST_COMMIT_MESSAGE" value="build test" />
+    <MESSAGE value="update fabric.gradle" />
+    <option name="LAST_COMMIT_MESSAGE" value="update fabric.gradle" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
