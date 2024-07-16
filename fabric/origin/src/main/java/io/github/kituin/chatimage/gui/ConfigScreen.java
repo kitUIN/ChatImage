@@ -21,10 +21,10 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 @Environment(EnvType.CLIENT)
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
-public class ConfigScreen extends ConfigRawScreen {
-    public ConfigScreen(Screen screen) {
-        super(createTranslatableText("config.chatimage.category"), screen);
-    }
+//public class ConfigScreen extends ConfigRawScreen {
+//    public ConfigScreen(Screen screen) {
+//        super(createTranslatableText("config.chatimage.category"), screen);
+//    }
 // ELSE
 //public class ConfigScreen extends Screen {
 //    private final Screen parent;
@@ -79,40 +79,40 @@ public class ConfigScreen extends ConfigRawScreen {
 //        }).build(), 2);
 //        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
 // ELSE
-    protected void init() {
-        super.init();
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
-            CONFIG.nsfw = !CONFIG.nsfw;
-            button.setMessage(getNsfw(CONFIG.nsfw));
-            ChatImageConfig.saveConfig(CONFIG);
-        }, getButtonTooltip(createTranslatableText("nsfw.chatimage.tooltip"))));
-        this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(createTranslatableText("gif.chatimage.tooltip"))));
-        this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(createTranslatableText("timeout.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, createTranslatableText("padding.chatimage.gui"), (button) -> {
-            if (this.client != null) {
-                setScreen(this.client, new LimitPaddingScreen(this));
-            }
-        }, getButtonTooltip(createTranslatableText("padding.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
-            CONFIG.cqCode = !CONFIG.cqCode;
-            button.setMessage(getCq(CONFIG.cqCode));
-            ChatImageConfig.saveConfig(CONFIG);
-        }, getButtonTooltip(createTranslatableText("cq.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
-            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
-            button.setMessage(getDrag(CONFIG.dragUseCicode));
-            ChatImageConfig.saveConfig(CONFIG);
-        }, getButtonTooltip(createTranslatableText("drag.chatimage.tooltip"))));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
-            CONFIG.checkImageUri = !CONFIG.checkImageUri;
-            button.setMessage(getUri(CONFIG.checkImageUri));
-            ChatImageConfig.saveConfig(CONFIG);
-        }));
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableText("gui.back"), (button) -> {
-            if (this.client != null) {
-                setScreen(this.client, this.parent);
-            }
-        }));
+//    protected void init() {
+//        super.init();
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
+//            CONFIG.nsfw = !CONFIG.nsfw;
+//            button.setMessage(getNsfw(CONFIG.nsfw));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableText("nsfw.chatimage.tooltip"))));
+//        this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(createTranslatableText("gif.chatimage.tooltip"))));
+//        this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(createTranslatableText("timeout.chatimage.tooltip"))));
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, createTranslatableText("padding.chatimage.gui"), (button) -> {
+//            if (this.client != null) {
+//                setScreen(this.client, new LimitPaddingScreen(this));
+//            }
+//        }, getButtonTooltip(createTranslatableText("padding.chatimage.tooltip"))));
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
+//            CONFIG.cqCode = !CONFIG.cqCode;
+//            button.setMessage(getCq(CONFIG.cqCode));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableText("cq.chatimage.tooltip"))));
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
+//            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+//            button.setMessage(getDrag(CONFIG.dragUseCicode));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableText("drag.chatimage.tooltip"))));
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
+//            CONFIG.checkImageUri = !CONFIG.checkImageUri;
+//            button.setMessage(getUri(CONFIG.checkImageUri));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }));
+//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableText("gui.back"), (button) -> {
+//            if (this.client != null) {
+//                setScreen(this.client, this.parent);
+//            }
+//        }));
 // END IF
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
 // ELSE IF fabric-1.19.3
