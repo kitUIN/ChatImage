@@ -17,7 +17,12 @@ import net.minecraft.client.gui.Selectable;
 // ELSE
 import net.minecraft.client.util.math.MatrixStack;
 // END IF
-import net.minecraft.screen.ScreenTexts;
+// IF fabric-1.16.5 || fabric-1.18.2
+import net.minecraft.client.gui.screen.ScreenTexts;
+// ELSE
+//import net.minecraft.screen.ScreenTexts;
+// END IF
+
 import net.minecraft.text.Text;
 
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;

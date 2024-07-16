@@ -82,8 +82,10 @@
       <module name="io.github.kituin.fabric-1.20.5.test~2" target="21" />
       <module name="io.github.kituin.fabric-1.20.main~1" target="17" />
       <module name="io.github.kituin.fabric-1.20.main~2" target="17" />
+      <module name="io.github.kituin.fabric-1.20.main~3" target="17" />
       <module name="io.github.kituin.fabric-1.20.test~1" target="17" />
       <module name="io.github.kituin.fabric-1.20.test~2" target="17" />
+      <module name="io.github.kituin.fabric-1.20.test~3" target="17" />
       <module name="io.github.kituin.fabric-1.21" target="21" />
       <module name="io.github.kituin.fabric-1.21.main~1" target="21" />
       <module name="io.github.kituin.fabric-1.21.main~2" target="21" />
