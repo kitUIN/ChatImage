@@ -4,30 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="issue">
-      <change beforePath="$PROJECT_DIR$/.idea/syncSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/syncSetting.xml" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="mixins.json">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +275,7 @@
       <workItem from="1721096376457" duration="370000" />
       <workItem from="1721096878196" duration="300000" />
       <workItem from="1721097301923" duration="616000" />
-      <workItem from="1721097962102" duration="152000" />
+      <workItem from="1721097962102" duration="340000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -553,11 +533,30 @@
       <option name="project" value="LOCAL" />
       <updated>1721098061625</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="mixins.json">
+      <option name="closed" value="true" />
+      <created>1721098175547</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1721098175547</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -579,7 +578,8 @@
     <MESSAGE value="sync step5" />
     <MESSAGE value="sync FileDragMixin" />
     <MESSAGE value="issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="issue" />
+    <MESSAGE value="mixins.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="mixins.json" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

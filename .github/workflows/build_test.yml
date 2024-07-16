@@ -29,10 +29,6 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Link File
-        shell: pwsh
-        run: |
-          .\link.ps1 -ci $true
       - name: Read version.txt and save to variable
         shell: pwsh
         run: |
