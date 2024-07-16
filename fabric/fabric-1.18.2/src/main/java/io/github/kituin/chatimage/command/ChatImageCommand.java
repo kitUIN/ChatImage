@@ -6,16 +6,18 @@ import com.mojang.brigadier.context.CommandContext;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
+// IF fabric-1.16.5 || fabric-1.18.2
 import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
+// ELSE
+//import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+// END IF
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
+import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 public class ChatImageCommand {
-
-
     public static int sendChatImage(CommandContext<FabricClientCommandSource> context) {
         String url = StringArgumentType.getString(context, "url");
         ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
@@ -25,7 +27,11 @@ public class ChatImageCommand {
         } catch (java.lang.IllegalArgumentException e) {
             LOGGER.info("arg: `name` is omitted, use the default string");
         }
+// IF fabric-1.16.5 || fabric-1.18.2
         context.getSource().getPlayer().sendChatMessage(builder.build().toString());
+// ELSE
+//        context.getSource().getPlayer().networkHandler.sendChatMessage(builder.build().toString());
+// END IF
         return Command.SINGLE_SUCCESS;
     }
 
@@ -42,7 +48,11 @@ public class ChatImageCommand {
 
     public static int reloadConfig(CommandContext<FabricClientCommandSource> context) {
         CONFIG = ChatImageConfig.loadConfig();
+// IF fabric-1.16.5 || fabric-1.18.2
         context.getSource().sendFeedback(new TranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
+// ELSE
+//        context.getSource().sendFeedback(Text.translatable("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
+// END IF
         return Command.SINGLE_SUCCESS;
     }
 
@@ -55,7 +65,11 @@ public class ChatImageCommand {
             }
         }
         MutableText text = (MutableText) Text.of(sb.toString());
+// IF fabric-1.16.5 || fabric-1.18.2
         MutableText info = new TranslatableText(usage);
+// ELSE
+//        MutableText info = Text.translatable(usage);
+// END IF
         return text.setStyle(Style.EMPTY.withColor(Formatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).append(info).append(Text.of("\n"));
     }
 

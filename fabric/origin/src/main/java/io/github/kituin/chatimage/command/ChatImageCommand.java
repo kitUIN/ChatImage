@@ -7,7 +7,7 @@ import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 // IF fabric-1.16.5 || fabric-1.18.2
-import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
+//import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
 // ELSE
 //import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 // END IF
@@ -28,7 +28,7 @@ public class ChatImageCommand {
             LOGGER.info("arg: `name` is omitted, use the default string");
         }
 // IF fabric-1.16.5 || fabric-1.18.2
-        context.getSource().getPlayer().sendChatMessage(builder.build().toString());
+//        context.getSource().getPlayer().sendChatMessage(builder.build().toString());
 // ELSE
 //        context.getSource().getPlayer().networkHandler.sendChatMessage(builder.build().toString());
 // END IF
@@ -49,7 +49,7 @@ public class ChatImageCommand {
     public static int reloadConfig(CommandContext<FabricClientCommandSource> context) {
         CONFIG = ChatImageConfig.loadConfig();
 // IF fabric-1.16.5 || fabric-1.18.2
-        context.getSource().sendFeedback(new TranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
+//        context.getSource().sendFeedback(new TranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
 // ELSE
 //        context.getSource().sendFeedback(Text.translatable("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
 // END IF
@@ -66,7 +66,7 @@ public class ChatImageCommand {
         }
         MutableText text = (MutableText) Text.of(sb.toString());
 // IF fabric-1.16.5 || fabric-1.18.2
-        MutableText info = new TranslatableText(usage);
+//        MutableText info = new TranslatableText(usage);
 // ELSE
 //        MutableText info = Text.translatable(usage);
 // END IF
