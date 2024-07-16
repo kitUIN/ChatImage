@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="update .idea">
-      <change afterPath="$PROJECT_DIR$/.idea/ChatImage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +97,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -118,7 +122,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage",
+    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/network",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -134,11 +138,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\network" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\fabric-1.19.2\src\main\java\io\github\kituin\chatimage\client" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\network" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
@@ -266,7 +270,12 @@
       <workItem from="1721076573769" duration="264000" />
       <workItem from="1721077099819" duration="167000" />
       <workItem from="1721077413796" duration="589000" />
-      <workItem from="1721078174071" duration="4780000" />
+      <workItem from="1721078174071" duration="7822000" />
+      <workItem from="1721089364273" duration="656000" />
+      <workItem from="1721090226354" duration="135000" />
+      <workItem from="1721090380746" duration="68000" />
+      <workItem from="1721090577079" duration="23000" />
+      <workItem from="1721090631130" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -484,7 +493,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721082799712</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="update .idea">
+      <option name="closed" value="true" />
+      <created>1721083026210</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1721083026210</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

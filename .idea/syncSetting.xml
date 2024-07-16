@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="syncSetting">
+    <option name="white">
+      <map>
+        <entry key="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java">
+          <value>
+            <list>
+              <option value="fabric/fabric-1.21" />
+              <option value="fabric/fabric-1.20.5" />
+            </list>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java">
+          <value>
+            <list>
+              <option value="fabric/fabric-1.21" />
+              <option value="fabric/fabric-1.20.5" />
+            </list>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java">
+          <value>
+            <list>
+              <option value="fabric/fabric-1.21" />
+              <option value="fabric/fabric-1.20.5" />
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
