@@ -16,6 +16,7 @@ import net.minecraft.util.Formatting;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
 
 public class ChatImageCommand {
     public static int sendChatImage(CommandContext<FabricClientCommandSource> context) {
@@ -48,11 +49,7 @@ public class ChatImageCommand {
 
     public static int reloadConfig(CommandContext<FabricClientCommandSource> context) {
         CONFIG = ChatImageConfig.loadConfig();
-// IF fabric-1.16.5 || fabric-1.18.2
-        context.getSource().sendFeedback(new TranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
-// ELSE
-//        context.getSource().sendFeedback(Text.translatable("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
-// END IF
+        context.getSource().sendFeedback(createTranslatableText("success.reload.chatimage.command").setStyle(Style.EMPTY.withColor(Formatting.GREEN)));
         return Command.SINGLE_SUCCESS;
     }
 
