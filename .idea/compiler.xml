@@ -48,7 +48,9 @@
       <module name="io.github.kituin.fabric-1.18.2.main~2" target="17" />
       <module name="io.github.kituin.fabric-1.18.2.test~2" target="17" />
       <module name="io.github.kituin.fabric-1.19.1" target="17" />
+      <module name="io.github.kituin.fabric-1.19.1.main~1" target="17" />
       <module name="io.github.kituin.fabric-1.19.1.main~2" target="17" />
+      <module name="io.github.kituin.fabric-1.19.1.test~1" target="17" />
       <module name="io.github.kituin.fabric-1.19.1.test~2" target="17" />
       <module name="io.github.kituin.fabric-1.19.2" target="17" />
       <module name="io.github.kituin.fabric-1.19.2.main~2" target="17" />
@@ -61,16 +63,22 @@
       <module name="io.github.kituin.fabric-1.19.4.test~2" target="17" />
       <module name="io.github.kituin.fabric-1.20" target="17" />
       <module name="io.github.kituin.fabric-1.20.3" target="17" />
+      <module name="io.github.kituin.fabric-1.20.3.main~1" target="17" />
       <module name="io.github.kituin.fabric-1.20.3.main~2" target="17" />
+      <module name="io.github.kituin.fabric-1.20.3.test~1" target="17" />
       <module name="io.github.kituin.fabric-1.20.3.test~2" target="17" />
       <module name="io.github.kituin.fabric-1.20.5" target="21" />
       <module name="io.github.kituin.fabric-1.20.5.main~1" target="21" />
+      <module name="io.github.kituin.fabric-1.20.5.main~2" target="21" />
       <module name="io.github.kituin.fabric-1.20.5.test~1" target="21" />
+      <module name="io.github.kituin.fabric-1.20.5.test~2" target="21" />
       <module name="io.github.kituin.fabric-1.20.main~2" target="17" />
       <module name="io.github.kituin.fabric-1.20.test~2" target="17" />
       <module name="io.github.kituin.fabric-1.21" target="21" />
       <module name="io.github.kituin.fabric-1.21.main~1" target="21" />
+      <module name="io.github.kituin.fabric-1.21.main~2" target="21" />
       <module name="io.github.kituin.fabric-1.21.test~1" target="21" />
+      <module name="io.github.kituin.fabric-1.21.test~2" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
