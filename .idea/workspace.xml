@@ -6,7 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -551,7 +571,7 @@
       <workItem from="1721098731539" duration="526000" />
       <workItem from="1721099371935" duration="1405000" />
       <workItem from="1721100999399" duration="2499000" />
-      <workItem from="1721103730029" duration="8060000" />
+      <workItem from="1721103730029" duration="8312000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -905,7 +925,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721111690923</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="fix">
+      <option name="closed" value="true" />
+      <created>1721111896385</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1721111896385</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

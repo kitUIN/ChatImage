@@ -33,7 +33,6 @@ import io.github.kituin.chatimage.network.DownloadFileChannelPacket;
 import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 // ELSE
 //import static io.github.kituin.chatimage.network.ChatImagePacket.*;
-//import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 // END IF
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
