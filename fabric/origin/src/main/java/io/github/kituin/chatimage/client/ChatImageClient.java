@@ -33,6 +33,7 @@ import java.io.File;
 //import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 // ELSE
 //import static io.github.kituin.chatimage.network.ChatImagePacket.*;
+//import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 // END IF
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -65,13 +66,7 @@ public class ChatImageClient implements ClientModInitializer {
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
-// IF fabric-1.16.5 || fabric-1.18.2
-//                client.openScreen(
-// ELSE
-//                client.setScreen(
-// END IF
-                        new ConfigScreen()
-                );
+                setScreen(client,new ConfigScreen());
             }
         });
 // IF fabric-1.16.5 || fabric-1.18.2

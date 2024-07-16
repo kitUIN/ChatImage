@@ -4,9 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="ConfigScreen sync">
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="ChatImageCommand sync">
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -500,7 +532,7 @@
       <workItem from="1721098731539" duration="526000" />
       <workItem from="1721099371935" duration="1405000" />
       <workItem from="1721100999399" duration="2499000" />
-      <workItem from="1721103730029" duration="2571000" />
+      <workItem from="1721103730029" duration="5091000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -814,7 +846,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721106259047</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="ChatImageCommand sync">
+      <option name="closed" value="true" />
+      <created>1721106367951</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1721106367951</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -855,10 +895,10 @@
     <MESSAGE value="build test" />
     <MESSAGE value="update fabric.gradle" />
     <MESSAGE value="ChatImageStyle sync" />
-    <MESSAGE value="ChatImageCommand sync" />
     <MESSAGE value="wrapper.jar" />
     <MESSAGE value="ConfigScreen sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConfigScreen sync" />
+    <MESSAGE value="ChatImageCommand sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChatImageCommand sync" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

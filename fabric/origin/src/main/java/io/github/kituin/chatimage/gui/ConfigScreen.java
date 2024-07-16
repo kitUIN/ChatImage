@@ -5,6 +5,12 @@ import io.github.kituin.chatimage.widget.GifSlider;
 import io.github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+// IF fabric-1.16.5
+// ELSE
+//import net.minecraft.client.gui.Drawable;
+//import net.minecraft.client.gui.Element;
+//import net.minecraft.client.gui.Selectable;
+// END IF
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.*;
@@ -81,34 +87,34 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 // ELSE
 //    protected void init() {
 //        super.init();
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20, getNsfw(CONFIG.nsfw), (button) -> {
 //            CONFIG.nsfw = !CONFIG.nsfw;
 //            button.setMessage(getNsfw(CONFIG.nsfw));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }, getButtonTooltip(createTranslatableText("nsfw.chatimage.tooltip"))));
-//        this.addDrawableChild(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(createTranslatableText("gif.chatimage.tooltip"))));
-//        this.addDrawableChild(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(createTranslatableText("timeout.chatimage.tooltip"))));
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, createTranslatableText("padding.chatimage.gui"), (button) -> {
+//        addDrawableWeight(new GifSlider(this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20, getSliderTooltip(createTranslatableText("gif.chatimage.tooltip"))));
+//        addDrawableWeight(new TimeOutSlider(this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20, getSliderTooltip(createTranslatableText("timeout.chatimage.tooltip"))));
+//        addDrawableWeight(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20, createTranslatableText("padding.chatimage.gui"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, new LimitPaddingScreen(this));
 //            }
 //        }, getButtonTooltip(createTranslatableText("padding.chatimage.tooltip"))));
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20, getCq(CONFIG.cqCode), (button) -> {
 //            CONFIG.cqCode = !CONFIG.cqCode;
 //            button.setMessage(getCq(CONFIG.cqCode));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }, getButtonTooltip(createTranslatableText("cq.chatimage.tooltip"))));
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
 //            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
 //            button.setMessage(getDrag(CONFIG.dragUseCicode));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }, getButtonTooltip(createTranslatableText("drag.chatimage.tooltip"))));
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
 //            CONFIG.checkImageUri = !CONFIG.checkImageUri;
 //            button.setMessage(getUri(CONFIG.checkImageUri));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }));
-//        this.addDrawableChild(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableText("gui.back"), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableText("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
 //            }
@@ -145,8 +151,13 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
     }
 
 // IF fabric-1.16.5
-//    protected <T extends ClickableWidget> T addDrawableChild(T button) {
-//        return this.addButton(button);
-//    }
+//    public <T extends ClickableWidget> T addDrawableWeight(T element)
+//    {
+//        return this.addButton(element);
+// ELSE
+//    public <T extends Element & Drawable & Selectable> T addDrawableWeight(T element)
+//    {
+//        return this.addDrawableChild(element);
 // END IF
+    }
 }
