@@ -94,12 +94,15 @@ public class ChatImageClient implements ClientModInitializer {
                                 .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
                                         .executes(ChatImageCommand::reloadConfig)
                                 )
-// IF fabric-1.21 || fabric-1.20.5
+// IF fabric-1.16.5 || fabric-1.18.2
+//                );
+// ELSE
 //                ));
+// END IF
+// IF fabric-1.21 || fabric-1.20.5
 //        ClientPlayNetworking.registerGlobalReceiver(DownloadFileChannelPacket.ID, (payload, context) -> ChatImagePacket.clientDownloadFileChannelReceived(payload));
 //        ClientPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, (payload, context) -> ChatImagePacket.clientGetFileChannelReceived(payload));
 // ELSE
-//                );
 //        ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientDownloadFileChannelReceived(buf));
 //        ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientGetFileChannelReceived(buf));
 // END IF

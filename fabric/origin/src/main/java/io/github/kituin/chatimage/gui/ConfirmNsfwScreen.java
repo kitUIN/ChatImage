@@ -81,5 +81,5 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 //    {
 //        return this.addDrawableChild(element);
 // END IF
-}
+    }
 }

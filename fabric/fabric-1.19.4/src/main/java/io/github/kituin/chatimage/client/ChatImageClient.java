@@ -33,6 +33,7 @@ import java.io.File;
 //import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 // ELSE
 import static io.github.kituin.chatimage.network.ChatImagePacket.*;
+import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 // END IF
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
@@ -65,13 +66,7 @@ public class ChatImageClient implements ClientModInitializer {
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
-// IF fabric-1.16.5 || fabric-1.18.2
-//                client.openScreen(
-// ELSE
-                client.setScreen(
-// END IF
-                        new ConfigScreen()
-                );
+                setScreen(client,new ConfigScreen());
             }
         });
 // IF fabric-1.16.5 || fabric-1.18.2
@@ -99,12 +94,15 @@ public class ChatImageClient implements ClientModInitializer {
                                 .then(LiteralArgumentBuilder.<FabricClientCommandSource>literal("reload")
                                         .executes(ChatImageCommand::reloadConfig)
                                 )
+// IF fabric-1.16.5 || fabric-1.18.2
+//                );
+// ELSE
+                ));
+// END IF
 // IF fabric-1.21 || fabric-1.20.5
-//                ));
 //        ClientPlayNetworking.registerGlobalReceiver(DownloadFileChannelPacket.ID, (payload, context) -> ChatImagePacket.clientDownloadFileChannelReceived(payload));
 //        ClientPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, (payload, context) -> ChatImagePacket.clientGetFileChannelReceived(payload));
 // ELSE
-                );
         ClientPlayNetworking.registerGlobalReceiver(DOWNLOAD_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientDownloadFileChannelReceived(buf));
         ClientPlayNetworking.registerGlobalReceiver(GET_FILE_CHANNEL, (client, handler, buf, responseSender) -> ChatImagePacket.clientGetFileChannelReceived(buf));
 // END IF

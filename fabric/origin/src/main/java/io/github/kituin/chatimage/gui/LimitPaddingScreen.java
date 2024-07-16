@@ -10,18 +10,18 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 // IF fabric-1.16.5
 //import net.minecraft.client.gui.widget.ClickableWidget;
 // ELSE
-import net.minecraft.client.gui.Drawable;
-import net.minecraft.client.gui.Element;
-import net.minecraft.client.gui.Selectable;
+//import net.minecraft.client.gui.Drawable;
+//import net.minecraft.client.gui.Element;
+//import net.minecraft.client.gui.Selectable;
 // END IF
 // IF fabric-1.16.5
 // ELSE IF fabric-1.19.3 || fabric-1.19.4 || fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
-import net.minecraft.client.gui.tooltip.Tooltip;
-import net.minecraft.client.gui.widget.GridWidget;
-import net.minecraft.client.gui.widget.SimplePositioningWidget;
+//import net.minecraft.client.gui.tooltip.Tooltip;
+//import net.minecraft.client.gui.widget.GridWidget;
+//import net.minecraft.client.gui.widget.SimplePositioningWidget;
 // END IF
 // IF fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
-import net.minecraft.client.gui.DrawContext;
+//import net.minecraft.client.gui.DrawContext;
 // ELSE
 //import net.minecraft.client.gui.widget.ClickableWidget;
 //import net.minecraft.client.util.math.MatrixStack;
@@ -39,12 +39,12 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 //        super(createTranslatableText("padding.chatimage.gui"), screen);
 //    }
 // ELSE
-public class LimitPaddingScreen extends Screen {
-    private final Screen parent;
-    public LimitPaddingScreen(Screen screen) {
-        super(createTranslatableText("padding.chatimage.gui"));
-        this.parent = screen;
-    }
+//public class LimitPaddingScreen extends Screen {
+//    private final Screen parent;
+//    public LimitPaddingScreen(Screen screen) {
+//        super(createTranslatableText("padding.chatimage.gui"));
+//        this.parent = screen;
+//    }
 // END IF
 
     protected void init() {
@@ -82,36 +82,36 @@ public class LimitPaddingScreen extends Screen {
 //            }
 //        }));
 // ELSE
-        GridWidget gridWidget = new GridWidget();
-        gridWidget.getMainPositioner().marginX(5).marginBottom(4).alignHorizontalCenter();
-        GridWidget.Adder adder = gridWidget.createAdder(2);
-        adder.add(new PaddingSlider(createTranslatableText("left.padding.chatimage.gui"),
-                ChatImageClient.CONFIG.paddingLeft, 0F, (float) this.width / 2, PaddingSlider.PaddingType.LEFT));
-        adder.add(new PaddingSlider(createTranslatableText("right.padding.chatimage.gui"),
-                ChatImageClient.CONFIG.paddingRight, 0F, (float) this.width / 2, PaddingSlider.PaddingType.RIGHT));
-        adder.add(new PaddingSlider(createTranslatableText("top.padding.chatimage.gui"),
-                ChatImageClient.CONFIG.paddingTop, 0F, (float) this.height / 2, PaddingSlider.PaddingType.TOP));
-        adder.add(new PaddingSlider(createTranslatableText("bottom.padding.chatimage.gui"),
-                ChatImageClient.CONFIG.paddingBottom, 0F, (float) this.height / 2, PaddingSlider.PaddingType.BOTTOM));
-        adder.add(new LimitSlider(createTranslatableText("width.limit.chatimage.gui"),
-                ChatImageClient.CONFIG.limitWidth, 1F, this.width, LimitSlider.LimitType.WIDTH));
-        adder.add(new LimitSlider(createTranslatableText("height.limit.chatimage.gui"),
-                ChatImageClient.CONFIG.limitHeight, 1F, this.height, LimitSlider.LimitType.HEIGHT));
-        adder.add(ButtonWidget.builder(createTranslatableText("gui.back"), (button) -> {
-            if (this.client != null) {
-                this.client.setScreen(this.parent);
-            }
-        }).build(), 2);
-
-        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
+//        GridWidget gridWidget = new GridWidget();
+//        gridWidget.getMainPositioner().marginX(5).marginBottom(4).alignHorizontalCenter();
+//        GridWidget.Adder adder = gridWidget.createAdder(2);
+//        adder.add(new PaddingSlider(createTranslatableText("left.padding.chatimage.gui"),
+//                ChatImageClient.CONFIG.paddingLeft, 0F, (float) this.width / 2, PaddingSlider.PaddingType.LEFT));
+//        adder.add(new PaddingSlider(createTranslatableText("right.padding.chatimage.gui"),
+//                ChatImageClient.CONFIG.paddingRight, 0F, (float) this.width / 2, PaddingSlider.PaddingType.RIGHT));
+//        adder.add(new PaddingSlider(createTranslatableText("top.padding.chatimage.gui"),
+//                ChatImageClient.CONFIG.paddingTop, 0F, (float) this.height / 2, PaddingSlider.PaddingType.TOP));
+//        adder.add(new PaddingSlider(createTranslatableText("bottom.padding.chatimage.gui"),
+//                ChatImageClient.CONFIG.paddingBottom, 0F, (float) this.height / 2, PaddingSlider.PaddingType.BOTTOM));
+//        adder.add(new LimitSlider(createTranslatableText("width.limit.chatimage.gui"),
+//                ChatImageClient.CONFIG.limitWidth, 1F, this.width, LimitSlider.LimitType.WIDTH));
+//        adder.add(new LimitSlider(createTranslatableText("height.limit.chatimage.gui"),
+//                ChatImageClient.CONFIG.limitHeight, 1F, this.height, LimitSlider.LimitType.HEIGHT));
+//        adder.add(ButtonWidget.builder(createTranslatableText("gui.back"), (button) -> {
+//            if (this.client != null) {
+//                this.client.setScreen(this.parent);
+//            }
+//        }).build(), 2);
+//
+//        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
 // END IF
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
 // ELSE IF fabric-1.19.3
 //        gridWidget.recalculateDimensions();
 //        addDrawableWeight(gridWidget);
 // ELSE
-        gridWidget.refreshPositions();
-        gridWidget.forEachChild(this::addDrawableChild);
+//        gridWidget.refreshPositions();
+//        gridWidget.forEachChild(this::addDrawableChild);
 // END IF
     }
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2 || fabric-1.19.3
@@ -125,10 +125,10 @@ public class LimitPaddingScreen extends Screen {
 //        drawCenteredTextWithShadow(matrices, this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
 //    }
 // ELSE
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
-        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
-    }
+//    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+//        super.render(context, mouseX, mouseY, delta);
+//        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
+//    }
 // END IF
 
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
@@ -165,9 +165,9 @@ public class LimitPaddingScreen extends Screen {
 //    {
 //        return this.addButton(element);
 // ELSE
-    public <T extends Element & Drawable & Selectable> T addDrawableWeight(T element)
-    {
-        return addDrawableWeight(element);
+//    public <T extends Element & Drawable & Selectable> T addDrawableWeight(T element)
+//    {
+//        return addDrawableWeight(element);
 // END IF
     }
 }
