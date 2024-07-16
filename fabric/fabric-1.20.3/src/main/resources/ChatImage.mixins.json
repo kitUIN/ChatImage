@@ -8,8 +8,8 @@
   "client": [
     "BookScreenMixin",
     "ChatHudMixin",
-    "DrawContextMixin",
     "FileDragMixin",
+    "DrawContextMixin",
     "ScreenMixin"
   ],
   "injectors": {

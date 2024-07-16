@@ -1,15 +1,15 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "github.kituin.chatimage.mixin",
+  "package": "io.github.kituin.chatimage.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [
-    "io.github.kituin.chatimage.chatimage.mixin.BookScreenMixin",
-    "io.github.kituin.chatimage.chatimage.mixin.ChatHudMixin",
-    "io.github.kituin.chatimage.chatimage.mixin.FileDragMixin",
-    "io.github.kituin.chatimage.chatimage.mixin.ScreenMixin"
+    "BookScreenMixin",
+    "ChatHudMixin",
+    "FileDragMixin",
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

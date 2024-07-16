@@ -2,14 +2,20 @@
   "required": true,
   "minVersion": "0.8",
   "package": "io.github.kituin.chatimage.mixin",
-  "compatibilityLevel": "JAVA_17",
+// IF fabric-1.16.5
+//  "compatibilityLevel": "JAVA_8",
+// ELSE
+//  "compatibilityLevel": "JAVA_17",
+// END IF
   "mixins": [
   ],
   "client": [
     "BookScreenMixin",
     "ChatHudMixin",
-    "DrawContextMixin",
     "FileDragMixin",
+// IF fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+//    "DrawContextMixin",
+// END IF
     "ScreenMixin"
   ],
   "injectors": {

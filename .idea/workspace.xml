@@ -4,20 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="sync step5">
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="issue">
+      <change beforePath="$PROJECT_DIR$/.idea/syncSetting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/syncSetting.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,45 +124,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.fabric-1.16.5 [build].executor": "Run",
-    "Gradle.fabric-1.19.3 [build].executor": "Run",
-    "Gradle.fabric-1.21 [build].executor": "Run",
-    "Gradle.加载 Gradle 依赖项.executor": "Run",
-    "PowerShell.init.ps1.executor": "Run",
-    "PowerShell.link.ps1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/15854/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "模块",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "two.files.diff.last.used.file": "C:/Users/15854/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.fabric-1.16.5 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.3 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.21 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.加载 Gradle 依赖项.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.init.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.link.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/15854/IdeaProjects/ModMutilVersion/build/libs/ModMutilVersion-0.9.22.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/15854/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\.github" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\mixin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\network" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\gradle\wrapper" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\src\main" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\common" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.fabric-1.16.5 [build]">
@@ -278,7 +288,14 @@
       <workItem from="1721090226354" duration="135000" />
       <workItem from="1721090380746" duration="68000" />
       <workItem from="1721090577079" duration="23000" />
-      <workItem from="1721090631130" duration="640000" />
+      <workItem from="1721090631130" duration="1869000" />
+      <workItem from="1721094970176" duration="385000" />
+      <workItem from="1721095387427" duration="325000" />
+      <workItem from="1721095732429" duration="609000" />
+      <workItem from="1721096376457" duration="370000" />
+      <workItem from="1721096878196" duration="300000" />
+      <workItem from="1721097301923" duration="616000" />
+      <workItem from="1721097962102" duration="152000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -520,7 +537,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721090745354</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="sync FileDragMixin">
+      <option name="closed" value="true" />
+      <created>1721091307180</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1721091307180</updated>
+    </task>
+    <task id="LOCAL-00032" summary="issue">
+      <option name="closed" value="true" />
+      <created>1721098061624</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1721098061625</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +577,9 @@
     <MESSAGE value="update gitignore" />
     <MESSAGE value="update .idea" />
     <MESSAGE value="sync step5" />
-    <option name="LAST_COMMIT_MESSAGE" value="sync step5" />
+    <MESSAGE value="sync FileDragMixin" />
+    <MESSAGE value="issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="issue" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

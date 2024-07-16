@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="syncSetting">
+    <option name="oneWay">
+      <list>
+        <option value="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" />
+      </list>
+    </option>
     <option name="white">
       <map>
         <entry key="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java">
