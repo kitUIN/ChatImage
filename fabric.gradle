@@ -30,7 +30,6 @@ ext.includeMod = { String localOverrideKey, Object dep ->
 }
 def mod_version = getVersionFromFile()
 version = mod_version + "+" + project.minecraft_version + "+fabric"
-version = project.mod_version + "+" + project.minecraft_version + "+fabric"
 group = project.maven_group
 
 def targetJavaVersion = project.targetJavaVersion.toInteger()
