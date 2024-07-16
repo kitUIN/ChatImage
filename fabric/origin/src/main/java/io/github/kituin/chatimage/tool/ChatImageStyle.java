@@ -12,7 +12,7 @@ import net.minecraft.util.Formatting;
 //import org.jetbrains.annotations.Nullable;
 //import net.minecraft.registry.RegistryOps;
 // ELSE
-import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
+//import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 // END IF
 /**
  * @author kitUIN
@@ -52,11 +52,11 @@ public class ChatImageStyle {
 //        }
 //    }
 // ELSE
-    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE =
-        new HoverEvent.Action<>("show_chatimage", true,
-                ChatImageCode::fromJson,
-                ChatImageCode::toJson,
-                ChatImageStyle::fromJson);
+//    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE =
+//        new HoverEvent.Action<>("show_chatimage", true,
+//                ChatImageCode::fromJson,
+//                ChatImageCode::toJson,
+//                ChatImageStyle::fromJson);
 // END IF
 
 
@@ -91,9 +91,9 @@ public class ChatImageStyle {
     public static MutableText messageFromCode(ChatImageCode code) {
         MutableText t = code.messageFromCode(
 // IF fabric-1.16.5 || fabric-1.18.2
-                LiteralText::new,
-                TranslatableText::new,
-                (obj, s)-> (BaseText) obj.append(s));
+//                LiteralText::new,
+//                TranslatableText::new,
+//                (obj, s)-> (BaseText) obj.append(s));
 // ELSE
 //                Text::literal,
 //                Text::translatable,
@@ -105,12 +105,12 @@ public class ChatImageStyle {
 
 // IF fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
 // ELSE
-    public static ChatImageCode fromJson(Text text) {
-        try {
-            return ChatImageCodeInstance.createBuilder().fromCode(text.toString()).build();
-        } catch (InvalidChatImageCodeException e) {
-            return ChatImageCodeInstance.createBuilder().build();
-        }
-    }
+//    public static ChatImageCode fromJson(Text text) {
+//        try {
+//            return ChatImageCodeInstance.createBuilder().fromCode(text.toString()).build();
+//        } catch (InvalidChatImageCodeException e) {
+//            return ChatImageCodeInstance.createBuilder().build();
+//        }
+//    }
 // END IF
 }
