@@ -23,6 +23,7 @@ import net.minecraft.client.gui.screen.ScreenTexts;
 //import net.minecraft.screen.ScreenTexts;
 // END IF
 
+import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
@@ -53,13 +54,22 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 //        Text yesT =  this.yesText;
 //        Text noT =  this.noText;
 // END IF
-
-        addDrawableWeight(createButtonWidget(this.width / 2 - 50 - 52, y, 100, 20, yesT, (button) -> {
+// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+        addDrawableWeight(new ButtonWidget(this.width / 2 - 50 - 52, y, 100, 20, yesT, (button) -> {
             this.callback.accept(true);
         }));
-        addDrawableWeight(createButtonWidget(this.width / 2 - 50 + 52, y, 100, 20, noT, (button) -> {
+        addDrawableWeight(new ButtonWidget(this.width / 2 - 50 + 52, y, 100, 20, noT, (button) -> {
             this.callback.accept(false);
         }));
+// ELSE
+//        addDrawableWeight(new ButtonWidget.Builder(yesT, (button) -> {
+//            this.callback.accept(true);
+//        }).dimensions(this.width / 2 - 50 - 52, y, 100, 20).build());
+//        addDrawableWeight(new ButtonWidget.Builder( noT, (button) -> {
+//            this.callback.accept(false);
+//        }).dimensions(this.width / 2 - 50 + 52, y, 100, 20).build());
+//
+// END IF
     }
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2 || fabric-1.19.3
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {

@@ -30,6 +30,8 @@ public class ChatImageCommand {
         }
 // IF fabric-1.16.5 || fabric-1.18.2
 //        context.getSource().getPlayer().sendChatMessage(builder.build().toString());
+// ELSE IF fabric-1.19.1
+//        context.getSource().getPlayer().sendChatMessage(builder.build().toString(),null);
 // ELSE
 //        context.getSource().getPlayer().networkHandler.sendChatMessage(builder.build().toString());
 // END IF

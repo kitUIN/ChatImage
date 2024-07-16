@@ -7,9 +7,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 // IF fabric-1.16.5
 // ELSE
-import net.minecraft.client.gui.Drawable;
-import net.minecraft.client.gui.Element;
-import net.minecraft.client.gui.Selectable;
+//import net.minecraft.client.gui.Drawable;
+//import net.minecraft.client.gui.Element;
+//import net.minecraft.client.gui.Selectable;
 // END IF
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;

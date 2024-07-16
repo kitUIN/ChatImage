@@ -37,6 +37,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 // END IF
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static com.mojang.brigadier.arguments.StringArgumentType.string;
+import static io.github.kituin.chatimage.tool.SimpleUtil.setScreen;
 
 /**
  * @author kitUIN
