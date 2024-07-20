@@ -5,29 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="fix">
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/client/ChatImageClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/command/ChatImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,178 +125,6 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.16.5" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.18.2" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.18.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.18.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.18.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.1" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.1" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.2" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.2" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.4" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.4" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.4" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.4" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.5" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.5" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.5" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.5" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="fabric-1.21" type="f1a62948:ProjectNode" />
               </path>
               <path>
@@ -293,7 +142,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="fabric-1.21" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -343,55 +192,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.fabric-1.16.5 [build].executor": "Run",
-    "Gradle.fabric-1.16.5 [wrapper].executor": "Run",
-    "Gradle.fabric-1.18.2 [build].executor": "Run",
-    "Gradle.fabric-1.18.2 [wrapper].executor": "Run",
-    "Gradle.fabric-1.19.1 [build].executor": "Run",
-    "Gradle.fabric-1.19.1 [wrapper].executor": "Run",
-    "Gradle.fabric-1.19.2 [build].executor": "Run",
-    "Gradle.fabric-1.19.2 [wrapper].executor": "Run",
-    "Gradle.fabric-1.19.3 [build].executor": "Run",
-    "Gradle.fabric-1.19.3 [wrapper].executor": "Run",
-    "Gradle.fabric-1.19.4 [build].executor": "Run",
-    "Gradle.fabric-1.19.4 [wrapper].executor": "Run",
-    "Gradle.fabric-1.20 [build].executor": "Run",
-    "Gradle.fabric-1.20 [wrapper].executor": "Run",
-    "Gradle.fabric-1.20.3 [build].executor": "Run",
-    "Gradle.fabric-1.20.3 [wrapper].executor": "Run",
-    "Gradle.fabric-1.20.5 [build].executor": "Run",
-    "Gradle.fabric-1.20.5 [wrapper].executor": "Run",
-    "Gradle.fabric-1.21 [build].executor": "Run",
-    "Gradle.fabric-1.21 [wrapper].executor": "Run",
-    "Gradle.加载 Gradle 依赖项.executor": "Run",
-    "PowerShell.init.ps1.executor": "Run",
-    "PowerShell.link.ps1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/gui",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "two.files.diff.last.used.file": "D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.fabric-1.16.5 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.16.5 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.18.2 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.18.2 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.1 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.1 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.2 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.2 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.3 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.3 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.4 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.19.4 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20.3 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20.3 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20.5 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.20.5 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.21 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.21 [hello].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.fabric-1.21 [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.加载 Gradle 依赖项.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.init.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;PowerShell.link.ps1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/widget&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\widget" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\fabric-1.21\gradle\wrapper" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\.github" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\mixin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
@@ -406,28 +256,6 @@
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.19.4" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="fabric-1.20 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.20" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -512,13 +340,35 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="fabric-1.21 [hello]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.21" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="hello" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.fabric-1.21 [build]" />
+        <item itemvalue="Gradle.fabric-1.21 [hello]" />
         <item itemvalue="Gradle.fabric-1.20.5 [build]" />
         <item itemvalue="Gradle.fabric-1.20.3 [build]" />
         <item itemvalue="Gradle.fabric-1.19.4 [build]" />
-        <item itemvalue="Gradle.fabric-1.20 [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -572,6 +422,25 @@
       <workItem from="1721099371935" duration="1405000" />
       <workItem from="1721100999399" duration="2499000" />
       <workItem from="1721103730029" duration="8312000" />
+      <workItem from="1721134216449" duration="4553000" />
+      <workItem from="1721222180529" duration="2705000" />
+      <workItem from="1721243817680" duration="27000" />
+      <workItem from="1721245086105" duration="107000" />
+      <workItem from="1721246473023" duration="692000" />
+      <workItem from="1721253410064" duration="11000" />
+      <workItem from="1721257824049" duration="1179000" />
+      <workItem from="1721279178774" duration="603000" />
+      <workItem from="1721279807507" duration="505000" />
+      <workItem from="1721280564145" duration="170000" />
+      <workItem from="1721315225023" duration="391000" />
+      <workItem from="1721394432156" duration="84000" />
+      <workItem from="1721395656711" duration="788000" />
+      <workItem from="1721397449973" duration="674000" />
+      <workItem from="1721398570537" duration="48000" />
+      <workItem from="1721399669053" duration="119000" />
+      <workItem from="1721479643661" duration="1104000" />
+      <workItem from="1721484867042" duration="384000" />
+      <workItem from="1721491457043" duration="156000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -933,7 +802,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721111896385</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fix">
+      <option name="closed" value="true" />
+      <created>1721134913367</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1721134913367</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -3,6 +3,8 @@
   "minVersion": "0.8",
   "package": "io.github.kituin.chatimage.mixin",
   "compatibilityLevel": "JAVA_8",
+ ELSE
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "client": [

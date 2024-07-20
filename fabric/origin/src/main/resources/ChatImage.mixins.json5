@@ -1,3 +1,5 @@
+// ONEWAY
+// RENAME ChatImage.mixins.json
 {
   "required": true,
   "minVersion": "0.8",

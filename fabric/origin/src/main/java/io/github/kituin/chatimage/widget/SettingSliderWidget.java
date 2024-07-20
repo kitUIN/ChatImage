@@ -42,14 +42,14 @@ public abstract class SettingSliderWidget extends SliderWidget {
 //        this.tooltipSupplier.onTooltip(this, matrices, mouseX, mouseY);
 //    }
 // ELSE
-    protected Tooltip tip;
-    public SettingSliderWidget(int x, int y, int width, int height, int value, float min, float max) {
-        super(x, y, width, height, createLiteralText(""), 0.0);
-        this.min = min;
-        this.max = max;
-        this.value = ((MathHelper.clamp((float) value, min, max) - min) / (max - min));
-        this.applyValue();
-    }
+//    protected Tooltip tip;
+//    public SettingSliderWidget(int x, int y, int width, int height, int value, float min, float max) {
+//        super(x, y, width, height, createLiteralText(""), 0.0);
+//        this.min = min;
+//        this.max = max;
+//        this.value = ((MathHelper.clamp((float) value, min, max) - min) / (max - min));
+//        this.applyValue();
+//    }
 // END IF
 
     public void applyValue() {
@@ -78,7 +78,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
 // IF < fabric-1.20
 //        this.isClick = false;
 // ELSE
-        this.setTooltip(null);
+//        this.setTooltip(null);
 // END IF
     }
 
@@ -88,7 +88,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
 // IF < fabric-1.20
 //        this.isClick = true;
 // ELSE
-        this.setTooltip(tip);
+//        this.setTooltip(tip);
 // END IF
     }
 }
