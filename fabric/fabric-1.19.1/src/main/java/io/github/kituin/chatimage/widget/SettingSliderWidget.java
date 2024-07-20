@@ -2,15 +2,16 @@ package io.github.kituin.chatimage.widget;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.SliderWidget;
 
 import net.minecraft.util.math.MathHelper;
-// IF < fabric-1.20
+// IF < fabric-1.19.4
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import java.util.function.Consumer;
+// ELSE
+//import net.minecraft.client.gui.tooltip.Tooltip;
 // END IF
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
 
@@ -21,7 +22,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
     protected final double max;
     protected int position;
 
-// IF < fabric-1.20
+// IF < fabric-1.19.4
     public static final TooltipSupplier EMPTY = (button, matrices, mouseX, mouseY) -> {
     };
     protected final TooltipSupplier tooltipSupplier;
@@ -56,7 +57,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
         this.position = (int) MathHelper.lerp(MathHelper.clamp(this.value, 0.0, 1.0), this.min, this.max);
     }
 
-// IF < fabric-1.20
+// IF < fabric-1.19.4
     @Override
     protected void renderBackground(MatrixStack matrices, MinecraftClient client, int mouseX, int mouseY) {
         super.renderBackground(matrices, client, mouseX, mouseY);
@@ -75,7 +76,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
     @Override
     public void onClick(double mouseX, double mouseY) {
         super.onClick(mouseX, mouseY);
-// IF < fabric-1.20
+// IF < fabric-1.19.4
         this.isClick = false;
 // ELSE
 //        this.setTooltip(null);
@@ -85,7 +86,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
     @Override
     public void onRelease(double mouseX, double mouseY) {
         super.onRelease(mouseX, mouseY);
-// IF < fabric-1.20
+// IF < fabric-1.19.4
         this.isClick = true;
 // ELSE
 //        this.setTooltip(tip);
