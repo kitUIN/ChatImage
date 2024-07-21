@@ -21,12 +21,12 @@ public class LimitSlider extends SettingSliderWidget {
 //        this.tooltip();
 //    }
 // ELSE
-    public LimitSlider(int x, int y, int width, int height, Text title, int value, float max, LimitType limitType, TooltipSupplier tooltipSupplier) {
-        super(x, y, width, height, value, 1F, max, tooltipSupplier);
-        this.title = title;
-        this.limitType = limitType;
-        this.updateMessage();
-    }
+//    public LimitSlider(int x, int y, int width, int height, Text title, int value, float max, LimitType limitType, TooltipSupplier tooltipSupplier) {
+//        super(x, y, width, height, value, 1F, max, tooltipSupplier);
+//        this.title = title;
+//        this.limitType = limitType;
+//        this.updateMessage();
+//    }
 // END IF
     @Override
     protected void updateMessage() {

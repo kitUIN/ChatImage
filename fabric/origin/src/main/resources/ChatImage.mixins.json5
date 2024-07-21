@@ -15,7 +15,7 @@
     "BookScreenMixin",
     "ChatHudMixin",
     "FileDragMixin",
-// IF fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.20
 //    "DrawContextMixin",
 // END IF
     "ScreenMixin"
