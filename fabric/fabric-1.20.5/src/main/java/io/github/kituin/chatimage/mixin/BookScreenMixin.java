@@ -1,8 +1,8 @@
 package io.github.kituin.chatimage.mixin;
 
+import io.github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ClientStorage;
-import io.github.kituin.chatimage.gui.ConfirmNsfwScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -18,11 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.chatimage.tool.SimpleUtil.setScreen;
 
 @Environment(EnvType.CLIENT)
 @Mixin(BookScreen.class)
 public abstract class BookScreenMixin extends Screen {
-
 
     @Unique
     private String nsfwUrl;
@@ -37,18 +37,22 @@ public abstract class BookScreenMixin extends Screen {
             ClientStorage.AddNsfw(nsfwUrl, 1);
         }
         this.nsfwUrl = null;
-        this.client.setScreen((Screen) (Object) this);
+        if (this.client != null) {
+            setScreen(this.client, (Screen) (Object) this);
+        }
     }
 
     @Inject(at = @At("RETURN"),
-            method = "handleTextClick(Lnet/minecraft/text/Style;)Z", cancellable = true)
+            method = "handleTextClick", cancellable = true)
     private void handleTextClick(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
             if (code != null && code.isNsfw() && !ClientStorage.ContainNsfw(code.getUrl()) && !CONFIG.nsfw) {
                 this.nsfwUrl = code.getUrl();
-                this.client.setScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                if (this.client != null) {
+                    setScreen(this.client, new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                }
                 cir.setReturnValue(true);
             }
         }

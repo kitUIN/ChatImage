@@ -18,11 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.chatimage.tool.SimpleUtil.setScreen;
 
 @Environment(EnvType.CLIENT)
 @Mixin(BookScreen.class)
 public abstract class BookScreenMixin extends Screen {
-
 
     @Unique
     private String nsfwUrl;
@@ -37,7 +37,9 @@ public abstract class BookScreenMixin extends Screen {
             ClientStorage.AddNsfw(nsfwUrl, 1);
         }
         this.nsfwUrl = null;
-        this.client.setScreen((Screen) (Object) this);
+        if (this.client != null) {
+            setScreen(this.client, (Screen) (Object) this);
+        }
     }
 
     @Inject(at = @At("RETURN"),
@@ -48,7 +50,9 @@ public abstract class BookScreenMixin extends Screen {
             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
             if (code != null && code.isNsfw() && !ClientStorage.ContainNsfw(code.getUrl()) && !CONFIG.nsfw) {
                 this.nsfwUrl = code.getUrl();
-                this.client.setScreen(new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                if (this.client != null) {
+                    setScreen(this.client, new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
+                }
                 cir.setReturnValue(true);
             }
         }
