@@ -1,3 +1,4 @@
+// ONLY >= fabric-1.20.5
 package io.github.kituin.chatimage.network;
 
 import net.minecraft.network.RegistryByteBuf;
