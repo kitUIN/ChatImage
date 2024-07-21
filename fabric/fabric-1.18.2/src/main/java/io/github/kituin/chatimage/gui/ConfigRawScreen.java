@@ -1,3 +1,4 @@
+// ONLY <= fabric-1.19.2
 package io.github.kituin.chatimage.gui;
 
 import io.github.kituin.chatimage.widget.SettingSliderWidget;
@@ -15,17 +16,19 @@ public abstract class ConfigRawScreen extends Screen {
         super(title);
         this.parent = screen;
     }
+
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         renderBackground(matrices);
         super.render(matrices, mouseX, mouseY, delta);
         drawCenteredText(matrices, this.textRenderer,
                 title, this.width / 2, this.height / 4 - 16, 16764108);
     }
-    protected ButtonWidget.TooltipSupplier getButtonTooltip(Text text){
+
+    protected ButtonWidget.TooltipSupplier getButtonTooltip(Text text) {
         return new ButtonWidget.TooltipSupplier() {
             public void onTooltip(ButtonWidget buttonWidget, MatrixStack matrixStack, int i, int j) {
                 if (ConfigRawScreen.this.client != null) {
-                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack, ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
                 }
             }
 
@@ -34,11 +37,12 @@ public abstract class ConfigRawScreen extends Screen {
             }
         };
     }
-    protected SettingSliderWidget.TooltipSupplier getSliderTooltip(Text text){
+
+    protected SettingSliderWidget.TooltipSupplier getSliderTooltip(Text text) {
         return new SettingSliderWidget.TooltipSupplier() {
             public void onTooltip(SettingSliderWidget buttonWidget, MatrixStack matrixStack, int i, int j) {
                 if (ConfigRawScreen.this.client != null) {
-                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack,  ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
+                    ConfigRawScreen.this.renderOrderedTooltip(matrixStack, ConfigRawScreen.this.client.textRenderer.wrapLines(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), i, j);
                 }
             }
 
