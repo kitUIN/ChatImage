@@ -45,7 +45,7 @@ public class ConfigScreen extends Screen {
         this(null);
     }
 
-// IF fabric-1.19.3 || fabric-1.19.4 || fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.19.3
     protected void init() {
         super.init();
         GridWidget gridWidget = new GridWidget();
@@ -120,13 +120,12 @@ public class ConfigScreen extends Screen {
 //            }
 //        }));
 // END IF
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+// IF > fabric-1.19.3
+//        gridWidget.refreshPositions();
+//        gridWidget.forEachChild(this::addDrawableChild);
 // ELSE IF fabric-1.19.3
         gridWidget.recalculateDimensions();
         this.addDrawableChild(gridWidget);
-// ELSE
-//        gridWidget.refreshPositions();
-//        gridWidget.forEachChild(this::addDrawableChild);
 // END IF
     }
 

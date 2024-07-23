@@ -1,7 +1,7 @@
 package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
 import net.minecraft.client.gui.tooltip.Tooltip;
 // END IF
 
@@ -17,7 +17,7 @@ public class PaddingSlider extends SettingSliderWidget {
     protected final PaddingType paddingType;
 
 
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
     public PaddingSlider(Text title, int value, float min, float max, PaddingType paddingType) {
         super(100, 100, 150, 20, value, min, max);
         this.title = title;
@@ -55,7 +55,7 @@ public class PaddingSlider extends SettingSliderWidget {
         }
         ChatImageConfig.saveConfig(CONFIG);
     }
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
     private void tooltip() {
         Text text;
         switch (paddingType) {

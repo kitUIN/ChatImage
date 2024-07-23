@@ -2,7 +2,7 @@ package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.text.Text;
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
 import net.minecraft.client.gui.tooltip.Tooltip;
 // END IF
 
@@ -12,7 +12,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 public class LimitSlider extends SettingSliderWidget {
     protected final Text title;
     protected final LimitType limitType;
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
     public LimitSlider(Text title, int value, float min, float max, LimitType limitType) {
         super(100, 100, 150, 20, value, min, max);
         this.title = title;
@@ -44,7 +44,7 @@ public class LimitSlider extends SettingSliderWidget {
         }
         ChatImageConfig.saveConfig(CONFIG);
     }
-// IF >= fabric-1.19.4
+// IF >= fabric-1.19.3
     private void tooltip() {
         Text text;
         switch (limitType) {
