@@ -6,10 +6,10 @@ import net.minecraft.client.gui.widget.SliderWidget;
 
 import net.minecraft.util.math.MathHelper;
 // IF < fabric-1.19.3
-//import net.minecraft.client.MinecraftClient;
-//import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.text.Text;
-//import java.util.function.Consumer;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.text.Text;
+import java.util.function.Consumer;
 // ELSE
 //import net.minecraft.client.gui.tooltip.Tooltip;
 // END IF
