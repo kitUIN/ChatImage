@@ -21,6 +21,13 @@ public class SimpleUtil {
 //        return Text.translatable(text);
 // END IF
     }
+    public static MutableText createTranslatableText(String key, Object... args){
+// IF fabric-1.16.5 || fabric-1.18.2
+//        return new TranslatableText(key, args);
+// ELSE
+//        return Text.translatable(key, args);
+// END IF
+    }
     
 
     public static MutableText createLiteralText(String text){

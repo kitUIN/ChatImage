@@ -30,13 +30,13 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
  */
 @Mixin(ChatHud.class)
 // IF >= fabric-1.20
-public class ChatHudMixin {
+//public class ChatHudMixin {
 // ELSE
 //public class ChatHudMixin extends DrawableHelper {
 // END IF
     @ModifyVariable(at = @At("HEAD"),
 // IF > fabric-1.18.2
-            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
+//            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
 // ELSE
 //            method = "addMessage(Lnet/minecraft/text/Text;IIZ)V",
 // END IF
@@ -58,26 +58,26 @@ public class ChatHudMixin {
         Style style = text.getStyle();
         t = t.setStyle(style);
 // IF > fabric-1.20
-        if (text.getContent() instanceof PlainTextContent) {
-            checkedText = ((PlainTextContent) text.getContent()).string();
-        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
-            key = ttc.getKey();
-            Object[] args = ttc.getArgs();
-            if (ChatImageCodeTool.checkKey(key)) {
-                player = (MutableText) args[0];
-                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
-                MutableText contents = (MutableText) args[1];
-                if (contents.getContent() instanceof PlainTextContent) {
-                    checkedText = ((PlainTextContent) contents.getContent()).string();
-                } else {
-                    checkedText = contents.getContent().toString();
-                }
-            } else {
-                return t;
-            }
-        } else {
-            checkedText = text.getContent().toString();
-        }
+//        if (text.getContent() instanceof PlainTextContent) {
+//            checkedText = ((PlainTextContent) text.getContent()).string();
+//        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
+//            key = ttc.getKey();
+//            Object[] args = ttc.getArgs();
+//            if (ChatImageCodeTool.checkKey(key)) {
+//                player = (MutableText) args[0];
+//                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
+//                MutableText contents = (MutableText) args[1];
+//                if (contents.getContent() instanceof PlainTextContent) {
+//                    checkedText = ((PlainTextContent) contents.getContent()).string();
+//                } else {
+//                    checkedText = contents.getContent().toString();
+//                }
+//            } else {
+//                return t;
+//            }
+//        } else {
+//            checkedText = text.getContent().toString();
+//        }
 // ELSE IF > fabric-1.18.2
 //        if (text.getContent() instanceof LiteralTextContent) {
 //            checkedText = ((LiteralTextContent) text.getContent()).string();

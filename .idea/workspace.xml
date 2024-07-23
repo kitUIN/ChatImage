@@ -4,64 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment="fix">
-      <change afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":memo: BookScreenMixin">
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/resources/ChatImage.mixins.json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/mixin/ChatHudMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +147,9 @@
     &quot;accountId&quot;: &quot;0346b3e7-48eb-4c95-a6ea-b8fcde76be4a&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -228,7 +198,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/ModMultiVersion/build/distributions/ModMutilVersion-0.12.4.zip&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -244,18 +214,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\mixin" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\widget" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\fabric-1.21\gradle\wrapper" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\.github" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\gradle\wrapper" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\src\main" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.fabric-1.16.5 [build]">
@@ -451,22 +421,10 @@
       <workItem from="1721554227810" duration="70000" />
       <workItem from="1721555309275" duration="239000" />
       <workItem from="1721555568969" duration="35000" />
-    </task>
-    <task id="LOCAL-00001" summary="init">
-      <option name="closed" value="true" />
-      <created>1720628861075</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1720628861075</updated>
-    </task>
-    <task id="LOCAL-00002" summary="test ci">
-      <option name="closed" value="true" />
-      <created>1720629971003</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1720629971003</updated>
+      <workItem from="1721557963084" duration="1637000" />
+      <workItem from="1721559858331" duration="997000" />
+      <workItem from="1721704532400" duration="265000" />
+      <workItem from="1721705000046" duration="2219000" />
     </task>
     <task id="LOCAL-00003" summary="test ci">
       <option name="closed" value="true" />
@@ -836,7 +794,31 @@
       <option name="project" value="LOCAL" />
       <updated>1721492253918</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="fix">
+      <option name="closed" value="true" />
+      <created>1721558356196</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1721558356196</updated>
+    </task>
+    <task id="LOCAL-00050" summary=":memo: ConfigRawScreen">
+      <option name="closed" value="true" />
+      <created>1721558698970</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1721558698971</updated>
+    </task>
+    <task id="LOCAL-00051" summary=":memo: BookScreenMixin">
+      <option name="closed" value="true" />
+      <created>1721558920442</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1721558920442</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -867,8 +849,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="尝试软连接部分代码" />
-    <MESSAGE value="更新actionlib 版本" />
     <MESSAGE value="删除同步文件" />
     <MESSAGE value="test ci" />
     <MESSAGE value="删除软链接" />
@@ -892,7 +872,9 @@
     <MESSAGE value="LimitPaddingScreen sync" />
     <MESSAGE value="ConfirmNsfwScreen fix" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value=":memo: ConfigRawScreen" />
+    <MESSAGE value=":memo: BookScreenMixin" />
+    <option name="LAST_COMMIT_MESSAGE" value=":memo: BookScreenMixin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
