@@ -178,7 +178,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 //                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
 //                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 //                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
-// ELSE IF > fabric-1.19.2
+// ELSE IF fabric-1.19.3 || fabric-1.19.4
                         HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
                         Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
                         int l = vector2ic.x();

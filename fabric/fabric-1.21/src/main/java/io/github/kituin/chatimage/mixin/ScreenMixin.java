@@ -178,27 +178,27 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 //                        RenderSystem.setShader(GameRenderer::getPositionColorShader);
 //                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 //                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
-// ELSE IF > fabric-1.19.2
-                        HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
-                        Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
-                        int l = vector2ic.x();
-                        int m = vector2ic.y();
-                        matrices.push();
-                        Tessellator tessellator = Tessellator.getInstance();
-                        BufferBuilder bufferBuilder = tessellator.getBuffer();
-                        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
-                        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
-                        Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-                        TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
-                        RenderSystem.enableDepthTest();
-                        RenderSystem.enableBlend();
-                        RenderSystem.defaultBlendFunc();
-                        BufferRenderer.draw(bufferBuilder.end());
-                        RenderSystem.disableBlend();
-                        matrices.translate(0.0F, 0.0F, 400.0F);
-                        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
+// ELSE IF fabric-1.19.3 || fabric-1.19.4
+//                        HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
+//                        Vector2ic vector2ic = positioner.getPosition((Screen) (Object) this, x, y, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom);
+//                        int l = vector2ic.x();
+//                        int m = vector2ic.y();
+//                        matrices.push();
+//                        Tessellator tessellator = Tessellator.getInstance();
+//                        BufferBuilder bufferBuilder = tessellator.getBuffer();
+//                        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
+//                        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
+//                        Matrix4f matrix4f = matrices.peek().getPositionMatrix();
+//                        TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
+//                        RenderSystem.enableDepthTest();
+//                        RenderSystem.enableBlend();
+//                        RenderSystem.defaultBlendFunc();
+//                        BufferRenderer.draw(bufferBuilder.end());
+//                        RenderSystem.disableBlend();
+//                        matrices.translate(0.0F, 0.0F, 400.0F);
+//                        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
+//                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+//                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
 // END IF
 // IF < fabric-1.20
 //                        drawTexture(matrices, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
