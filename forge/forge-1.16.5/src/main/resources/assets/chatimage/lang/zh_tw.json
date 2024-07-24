@@ -14,7 +14,6 @@
   "invalid_image_url.chatimage.exception": "\n↑無效的圖片連結",
   "invalid_url.chatimage.exception": "\n↑無效的連結",
   "loading_from_server.chatimage.exception": "從伺服器載入圖片中.....",
-
   "nsfw.chatimage.open": "你確定要查看來自以下連結的nsfw圖片?",
   "nsfw.chatimage.warning": "nsfw圖片可能會引起不適,請謹慎查看",
   "nsfw.chatimage.message": "這是一張nsfw圖片,點擊解除nsfw查看,或者在設定檔關閉NSFW警告",
@@ -59,5 +58,4 @@
   "height.limit.chatimage.tooltip": "圖片橫向長度限制\n範圍:1-視窗橫向長度",
   "width.limit.chatimage.tooltip": "圖片縱向長度限制\n範圍:1-視窗縱向長度",
   "modmenu.descriptionTranslation.chatimage": "在聊天欄中顯示圖片"
-
 }

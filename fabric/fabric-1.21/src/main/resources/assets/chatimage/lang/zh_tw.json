@@ -58,5 +58,4 @@
   "height.limit.chatimage.tooltip": "圖片橫向長度限制\n範圍:1-視窗橫向長度",
   "width.limit.chatimage.tooltip": "圖片縱向長度限制\n範圍:1-視窗縱向長度",
   "modmenu.descriptionTranslation.chatimage": "在聊天欄中顯示圖片"
-
 }
