@@ -9,11 +9,11 @@ import com.mojang.brigadier.context.CommandContext;
 //import net.minecraft.util.text.TextFormatting;
 //import net.minecraft.util.text.event.ClickEvent;
 // ELSE
-import net.minecraft.ChatFormatting;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
+//import net.minecraft.ChatFormatting;
+//import net.minecraft.commands.CommandSourceStack;
+//import net.minecraft.network.chat.ClickEvent;
+//import net.minecraft.network.chat.MutableComponent;
+//import net.minecraft.network.chat.Style;
 // END IF
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
@@ -22,12 +22,12 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableCompo
 //    @Override
 //    public int run(CommandContext<CommandSource> context) {
 // ELSE
-public class Help implements Command<CommandSourceStack> {
-    @Override
-    public int run(CommandContext<CommandSourceStack> context) {
+//public class Help implements Command<CommandSourceStack> {
+//    @Override
+//    public int run(CommandContext<CommandSourceStack> context) {
 // END IF
 // IF forge-1.16.5 || forge-1.18.2
-        context.getSource().sendSuccess(
+//        context.getSource().sendSuccess(
 // ELSE
 //          context.getSource().sendSystemMessage(
 // END IF
@@ -36,7 +36,7 @@ public class Help implements Command<CommandSourceStack> {
                         .append(getHelpText("/chatimage url ", "<url>", "url.chatimage.command"))
                         .append(getHelpText("/chatimage reload ", "", "reload.chatimage.command"))
 // IF forge-1.16.5 || forge-1.18.2
-                , false
+//                , false
 // END IF
         );
         return Command.SINGLE_SUCCESS;
@@ -47,7 +47,7 @@ public class Help implements Command<CommandSourceStack> {
 // IF forge-1.16.5
 //    private static IFormattableTextComponent getHelpText(String help, String arg, String usage) {
 // ELSE
-    private static MutableComponent getHelpText(String help, String arg, String usage) {
+//    private static MutableComponent getHelpText(String help, String arg, String usage) {
 // END IF
         String all = help + arg;
         StringBuilder sb = new StringBuilder(all);
@@ -61,7 +61,7 @@ public class Help implements Command<CommandSourceStack> {
 // IF forge-1.16.5
 //                        TextFormatting.GOLD
 // ELSE
-                        ChatFormatting.GOLD
+//                        ChatFormatting.GOLD
 // END IF
                 ).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))
         ).append(createTranslatableComponent(usage)).append(createLiteralComponent("\n"));

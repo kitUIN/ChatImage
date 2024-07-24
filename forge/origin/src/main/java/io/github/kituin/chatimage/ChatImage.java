@@ -36,12 +36,12 @@ import java.io.File;
 // IF forge-1.16.5
 //import net.minecraftforge.fml.ExtensionPoint;
 // ELSE
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
-import net.minecraftforge.client.event.RegisterClientCommandsEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
+//import net.minecraft.commands.CommandSourceStack;
+//import net.minecraft.commands.Commands;
+//import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
+//import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+//import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+//import net.minecraftforge.event.server.ServerStartingEvent;
 // END IF
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
@@ -76,7 +76,7 @@ public class ChatImage {
 // IF forge-1.16.5
 //    public void onServerStarting(RegisterCommandsEvent event) {
 // ELSE
-        public void onServerStarting(ServerStartingEvent event) {
+//        public void onServerStarting(ServerStartingEvent event) {
 // END IF
         LOGGER.info("[ChatImage]Server starting");
 
@@ -91,11 +91,11 @@ public class ChatImage {
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
 // IF > forge-1.16.5
-    @SubscribeEvent
-    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
-        KeyBindings.init(event);
-        LOGGER.info("KeyBindings Register");
-    }
+//    @SubscribeEvent
+//    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
+//        KeyBindings.init(event);
+//        LOGGER.info("KeyBindings Register");
+//    }
 // END IF
 
         @SubscribeEvent
@@ -109,44 +109,44 @@ public class ChatImage {
 //            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
 //            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
 // ELSE
-            ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
-            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
-            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
-            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
+//            ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
 // END IF
         }
 // IF > forge-1.16.5
-        public static void onClientCommand(RegisterClientCommandsEvent event) {
-            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
-            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
-                    Commands.literal(MOD_ID)
-                            .then(Commands.literal("send")
-                                    .then(Commands.argument("name", StringArgumentType.string())
-                                            .then(Commands.argument("url", greedyString())
-                                                    .executes(SendChatImage.instance)
-                                            )
-                                    )
-                            )
-                            .then(Commands.literal("url")
-                                    .then(Commands.argument("url", greedyString())
-                                            .executes(SendChatImage.instance)
-                                    )
-                            )
-                            .then(Commands.literal("help")
-                                    .executes(Help.instance)
-                            )
-                            .then(Commands.literal("reload")
-                                    .executes(ReloadConfig.instance)
-                            )
-
-            );
-        }
+//        public static void onClientCommand(RegisterClientCommandsEvent event) {
+//            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+//            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+//                    Commands.literal(MOD_ID)
+//                            .then(Commands.literal("send")
+//                                    .then(Commands.argument("name", StringArgumentType.string())
+//                                            .then(Commands.argument("url", greedyString())
+//                                                    .executes(SendChatImage.instance)
+//                                            )
+//                                    )
+//                            )
+//                            .then(Commands.literal("url")
+//                                    .then(Commands.argument("url", greedyString())
+//                                            .executes(SendChatImage.instance)
+//                                    )
+//                            )
+//                            .then(Commands.literal("help")
+//                                    .executes(Help.instance)
+//                            )
+//                            .then(Commands.literal("reload")
+//                                    .executes(ReloadConfig.instance)
+//                            )
+//
+//            );
+//        }
 // END IF
 
 // IF forge-1.16.5
 //    public static void onKeyInput(InputEvent.KeyInputEvent event) {
 // ELSE
-        public static void onKeyInput(InputEvent.Key event) {
+//        public static void onKeyInput(InputEvent.Key event) {
 // END IF
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));

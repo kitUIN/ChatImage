@@ -15,17 +15,14 @@ import io.github.kituin.chatimage.network.FileChannel;
 import io.github.kituin.chatimage.network.FileInfoChannel;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-import io.github.kituin.ChatImageCode.NetworkHelper;
 import net.minecraft.client.Minecraft;
-import net.minecraft.command.CommandSource;
-import net.minecraft.command.Commands;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ExtensionPoint;
+
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -36,9 +33,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+// IF forge-1.16.5
+import net.minecraftforge.fml.ExtensionPoint;
+// ELSE
+//import net.minecraft.commands.CommandSourceStack;
+//import net.minecraft.commands.Commands;
+//import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
+//import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+//import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+//import net.minecraftforge.event.server.ServerStartingEvent;
+// END IF
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
-
 
 @Mod(ChatImage.MOD_ID)
 public class ChatImage {
@@ -47,12 +53,10 @@ public class ChatImage {
     public static final String MOD_ID = "chatimage";
 
     public static ChatImageConfig CONFIG;
+
     static {
         ChatImageCodeInstance.LOGGER = new ChatImageLogger();
-        NetworkHelper.MAX_STRING = 32767;
-        NetworkHelper.PacketLimit = 30000;
     }
-
     public ChatImage() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
@@ -60,43 +64,22 @@ public class ChatImage {
     }
 
     public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            FileChannel.register();
-            FileInfoChannel.registerMessage();
-            FileBackChannel.register();
-            DownloadFileChannel.register();
-        });
-        LOGGER.info("Cannel Register");
+        event.enqueueWork(FileChannel::register);
+        event.enqueueWork(FileInfoChannel::registerMessage);
+        event.enqueueWork(FileBackChannel::register);
+        event.enqueueWork(DownloadFileChannel::register);
+        LOGGER.info("[ChatImage]Channel Register");
     }
 
 
     @SubscribeEvent
-    public void onServerStarting(RegisterCommandsEvent  event) {
-        CommandDispatcher<CommandSource> dispatcher = event.getDispatcher();
-        LiteralCommandNode<CommandSource> cmd = dispatcher.register(
-                Commands.literal(MOD_ID)
-                        .then(Commands.literal("send")
-                                .then(Commands.argument("name", StringArgumentType.string())
-                                        .then(Commands.argument("url", greedyString())
-                                                .executes(SendChatImage.instance)
-                                        )
-                                )
-                        )
-                        .then(Commands.literal("url")
-                                .then(Commands.argument("url", greedyString())
-                                        .executes(SendChatImage.instance)
-                                )
-                        )
-                        .then(Commands.literal("help")
-                                .executes(Help.instance)
-                        )
-                        .then(Commands.literal("reload")
-                                .executes(ReloadConfig.instance)
-                        )
+// IF forge-1.16.5
+    public void onServerStarting(RegisterCommandsEvent event) {
+// ELSE
+//        public void onServerStarting(ServerStartingEvent event) {
+// END IF
+        LOGGER.info("[ChatImage]Server starting");
 
-        );
-
-        LOGGER.info("Server starting");
     }
 
 
@@ -107,19 +90,64 @@ public class ChatImage {
             CONFIG = ChatImageConfig.loadConfig();
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
+// IF > forge-1.16.5
+//    @SubscribeEvent
+//    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
+//        KeyBindings.init(event);
+//        LOGGER.info("KeyBindings Register");
+//    }
+// END IF
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
             LOGGER.info("[ChatImage]Client start");
+// IF forge-1.16.5
             KeyBindings.init();
             LOGGER.info("KeyBindings Register");
             ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY,
                     () -> (mc, screen) -> new ConfigScreen(screen));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+// ELSE
+//            ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
+// END IF
         }
+// IF > forge-1.16.5
+//        public static void onClientCommand(RegisterClientCommandsEvent event) {
+//            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
+//            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+//                    Commands.literal(MOD_ID)
+//                            .then(Commands.literal("send")
+//                                    .then(Commands.argument("name", StringArgumentType.string())
+//                                            .then(Commands.argument("url", greedyString())
+//                                                    .executes(SendChatImage.instance)
+//                                            )
+//                                    )
+//                            )
+//                            .then(Commands.literal("url")
+//                                    .then(Commands.argument("url", greedyString())
+//                                            .executes(SendChatImage.instance)
+//                                    )
+//                            )
+//                            .then(Commands.literal("help")
+//                                    .executes(Help.instance)
+//                            )
+//                            .then(Commands.literal("reload")
+//                                    .executes(ReloadConfig.instance)
+//                            )
+//
+//            );
+//        }
+// END IF
 
-        public static void onKeyInput(InputEvent.KeyInputEvent event) {
+// IF forge-1.16.5
+    public static void onKeyInput(InputEvent.KeyInputEvent event) {
+// ELSE
+//        public static void onKeyInput(InputEvent.Key event) {
+// END IF
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));
             }
@@ -128,6 +156,7 @@ public class ChatImage {
         public static void onClientStaring(RegisterCommandsEvent event) {
 
         }
+
     }
 
 }

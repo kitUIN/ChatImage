@@ -16,18 +16,13 @@ import io.github.kituin.chatimage.network.FileInfoChannel;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.Minecraft;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterClientCommandsEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -38,6 +33,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+// IF forge-1.16.5
+//import net.minecraftforge.fml.ExtensionPoint;
+// ELSE
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
+import net.minecraftforge.client.event.RegisterClientCommandsEvent;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+// END IF
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 
@@ -68,7 +73,11 @@ public class ChatImage {
 
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+// IF forge-1.16.5
+//    public void onServerStarting(RegisterCommandsEvent event) {
+// ELSE
+        public void onServerStarting(ServerStartingEvent event) {
+// END IF
         LOGGER.info("[ChatImage]Server starting");
 
     }
@@ -81,21 +90,32 @@ public class ChatImage {
             CONFIG = ChatImageConfig.loadConfig();
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
-        @SubscribeEvent
-        public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
-            KeyBindings.init(event);
-            LOGGER.info("KeyBindings Register");
-        }
+// IF > forge-1.16.5
+    @SubscribeEvent
+    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
+        KeyBindings.init(event);
+        LOGGER.info("KeyBindings Register");
+    }
+// END IF
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
             LOGGER.info("[ChatImage]Client start");
+// IF forge-1.16.5
+//            KeyBindings.init();
+//            LOGGER.info("KeyBindings Register");
+//            ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY,
+//                    () -> (mc, screen) -> new ConfigScreen(screen));
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
+//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+// ELSE
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
             MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
-
+// END IF
         }
+// IF > forge-1.16.5
         public static void onClientCommand(RegisterClientCommandsEvent event) {
             CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
             LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
@@ -121,7 +141,13 @@ public class ChatImage {
 
             );
         }
+// END IF
+
+// IF forge-1.16.5
+//    public static void onKeyInput(InputEvent.KeyInputEvent event) {
+// ELSE
         public static void onKeyInput(InputEvent.Key event) {
+// END IF
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));
             }
@@ -130,6 +156,7 @@ public class ChatImage {
         public static void onClientStaring(RegisterCommandsEvent event) {
 
         }
+
     }
 
 }

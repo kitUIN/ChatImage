@@ -1,14 +1,19 @@
 package io.github.kituin.chatimage.integration;
 
-import com.mojang.blaze3d.platform.NativeImage;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.network.chat.Component;
+
+// IF forge-1.16.5
+//import net.minecraft.client.renderer.texture.NativeImage;
+//import net.minecraft.util.ResourceLocation;
+//import net.minecraft.util.text.TextComponent;
+// ELSE
+import net.minecraft.network.chat.MutableComponent;
+import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.resources.ResourceLocation;
-
-
+// END IF
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,6 +24,7 @@ import static io.github.kituin.chatimage.ChatImage.MOD_ID;
 import static io.github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 import static io.github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;
 import static io.github.kituin.ChatImageCode.NetworkHelper.createFilePacket;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 
 public class ChatImageClientAdapter implements IClientAdapter {
     @Override
@@ -61,9 +67,11 @@ public class ChatImageClientAdapter implements IClientAdapter {
     }
 
     @Override
-    public Component getProcessMessage(int i) {
-        return Component.translatable("process.chatimage.message", i);
+// IF forge-1.16.5
+//    public TextComponent getProcessMessage(int i)  {
+// ELSE
+    public MutableComponent getProcessMessage(int i)  {
+// END IF
+        return createTranslatableComponent("process.chatimage.message", i);
     }
-
-
 }
