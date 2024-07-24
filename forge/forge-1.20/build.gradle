@@ -29,16 +29,25 @@ def getVersionFromFile() {
 def mod_version = getVersionFromFile()
 version = mod_version + "+" + project.minecraft_version  + "+forge"
 
+def targetJavaVersion = project.targetJavaVersion.toInteger()
+def javaVersion = JavaVersion.toVersion(targetJavaVersion)
 java {
-    archivesBaseName = 'ChatImage'
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+    archivesBaseName = project.archives_base_name
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+    // if it is present.
+    // If you remove this line, sources will not be generated.
+    withSourcesJar()
 }
 
 jarJar.enable()
 tasks.named ('jarJar') {
     archiveClassifier.set('')
-    destinationDirectory = file("./../ChatImage-jar/${mod_version}")
+    destinationDirectory = file("../../ChatImage-jar/${mod_version}")
 }
 
 
@@ -129,9 +138,6 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
-    flatDir{
-        dirs 'libs'
-    }
     maven {
         name "kituinMavenReleases"
         url "https://maven.kituin.fun/releases"
@@ -186,7 +192,9 @@ jar {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
         ])
     }
-
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
 }
 
 jar.finalizedBy('reobfJar')

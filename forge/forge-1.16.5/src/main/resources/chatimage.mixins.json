@@ -5,13 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "chatimage.refmap.json",
   "mixins": [
-    "ForgeHooksMixin"
+    "io.github.kituin.chatimage.mixin.ForgeHooksMixin"
   ],
   "client": [
-    "FileDragMixin",
-    "NewChatGuiMixin",
-    "ReadBookScreenMixin",
-    "ScreenMixin"
+    "io.github.kituin.chatimage.mixin.FileDragMixin",
+    "io.github.kituin.chatimage.mixin.NewChatGuiMixin",
+    "io.github.kituin.chatimage.mixin.ReadBookScreenMixin",
+    "io.github.kituin.chatimage.mixin.ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

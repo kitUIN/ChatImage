@@ -7,11 +7,11 @@
   "mixins": [
   ],
   "client": [
-    "BookViewScreenMixin",
-    "ChatComponentMixin",
-    "FileDragMixin",
-    "GuiGraphicsMixin",
-    "ScreenMixin"
+    "io.github.kituin.chatimage.mixin.BookViewScreenMixin",
+    "io.github.kituin.chatimage.mixin.ChatComponentMixin",
+    "io.github.kituin.chatimage.mixin.FileDragMixin",
+    "io.github.kituin.chatimage.mixin.GuiGraphicsMixin",
+    "io.github.kituin.chatimage.mixin.ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
