@@ -39,10 +39,10 @@
       <module name="github.kituin.ChatImage" target="17" />
       <module name="github.kituin.ChatImage.main" target="17" />
       <module name="github.kituin.ChatImage.test" target="17" />
-      <module name="io.github.kituin.fabric-1.16.5" target="11" />
-      <module name="io.github.kituin.fabric-1.16.5.main~1" target="11" />
+      <module name="io.github.kituin.fabric-1.16.5" target="17" />
+      <module name="io.github.kituin.fabric-1.16.5.main~1" target="17" />
       <module name="io.github.kituin.fabric-1.16.5.main~2" target="11" />
-      <module name="io.github.kituin.fabric-1.16.5.test~1" target="11" />
+      <module name="io.github.kituin.fabric-1.16.5.test~1" target="17" />
       <module name="io.github.kituin.fabric-1.16.5.test~2" target="11" />
       <module name="io.github.kituin.fabric-1.18.2" target="17" />
       <module name="io.github.kituin.fabric-1.18.2.main~1" target="17" />
