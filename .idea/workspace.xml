@@ -4,11 +4,421 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: ScreenMixin">
-      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":memo: DrawContextMixin">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/build_forge.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/mixin/ForgeHooksMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/mixin/NewChatGuiMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/mixin/ReadBookScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/GifSliderUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/LimitSliderUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/PaddingSliderUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/github/kituin/chatimage/widget/TimeOutSliderUpdate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/origin/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/origin/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/origin/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/origin/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge/origin/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.2/ChatImage-neo-1.20.2/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/FileBackChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/FileChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/FileInfoChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.3/ChatImage-neo-1.20.3/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/gui/ConfigRawScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/gui/ConfirmNsfwScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/gui/LimitPaddingScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/mixin/BookViewScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/mixin/ChatComponentMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/mixin/FileDragMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/mixin/GuiGraphicsMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/ChatImagePacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/DownloadFileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/FileChannelHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/FileChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/FileInfoChannelPacket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/network/NetworkUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/tool/ChatImageStyle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/widget/GifSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/widget/LimitSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/widget/PaddingSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/widget/SettingSliderWidget.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/java/io/github/kituin/chatimage/widget/TimeOutSlider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/assets/chatimage/lang/en_us.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/assets/chatimage/lang/zh_cn.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/assets/chatimage/lang/zh_tw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/chatimage.mixins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neoforge/neoforge-1.20.4/ChatImage-neo-1.20.4/src/main/resources/pack.mcmeta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +456,24 @@
     <projectState path="$PROJECT_DIR$/fabric/fabric-1.21">
       <ProjectState />
     </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.16.5">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.18.2">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.19">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.20">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.20.2">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/forge/forge-1.20.3">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -80,47 +508,53 @@
         <task path="$PROJECT_DIR$/fabric/fabric-1.18.2">
           <activation />
         </task>
+        <task path="$PROJECT_DIR$/forge/forge-1.20.3">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/forge/forge-1.18.2">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/forge/forge-1.19">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/forge/forge-1.20">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/forge/forge-1.20.2">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.16.5" type="f1a62948:ProjectNode" />
+                <item name="forge-1.20.2" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.16.5" type="f1a62948:ProjectNode" />
+                <item name="forge-1.20.2" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="forge-1.20.2" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="forge-1.20.3" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="forge-1.20.3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="forge-1.20.3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -173,56 +607,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.fabric-1.16.5 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.16.5 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.18.2 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.18.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.1 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.1 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.2 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.3 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.3 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.4 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.4 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.3 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.3 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.5 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.5 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [hello].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.加载 Gradle 依赖项.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.init.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.link.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.fabric-1.16.5 [build].executor": "Run",
+    "Gradle.fabric-1.16.5 [wrapper].executor": "Run",
+    "Gradle.fabric-1.18.2 [build].executor": "Run",
+    "Gradle.fabric-1.18.2 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.1 [build].executor": "Run",
+    "Gradle.fabric-1.19.1 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.2 [build].executor": "Run",
+    "Gradle.fabric-1.19.2 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.3 [build].executor": "Run",
+    "Gradle.fabric-1.19.3 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.4 [build].executor": "Run",
+    "Gradle.fabric-1.19.4 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20 [build].executor": "Run",
+    "Gradle.fabric-1.20 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20.3 [build].executor": "Run",
+    "Gradle.fabric-1.20.3 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20.5 [build].executor": "Run",
+    "Gradle.fabric-1.20.5 [wrapper].executor": "Run",
+    "Gradle.fabric-1.21 [build].executor": "Run",
+    "Gradle.fabric-1.21 [hello].executor": "Run",
+    "Gradle.fabric-1.21 [wrapper].executor": "Run",
+    "Gradle.forge-1.16.5 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.18.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.18.2 [wrapper].executor": "Run",
+    "Gradle.forge-1.19 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.19 [wrapper].executor": "Run",
+    "Gradle.forge-1.20 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20 [wrapper].executor": "Run",
+    "Gradle.forge-1.20.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20.2 [wrapper].executor": "Run",
+    "Gradle.forge-1.20.3 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20.3 [wrapper].executor": "Run",
+    "Gradle.加载 Gradle 依赖项.executor": "Run",
+    "PowerShell.init.ps1.executor": "Run",
+    "PowerShell.link.ps1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/IdeaProjects/ChatImage/forge/origin",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "two.files.diff.last.used.file": "D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\forge\origin" />
+      <recent name="D:\IdeaProjects\ChatImage\neoforge" />
+      <recent name="D:\IdeaProjects\ChatImage\forge" />
+      <recent name="D:\IdeaProjects\ChatImage\.github\workflows" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\mixin" />
-      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\widget" />
-      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
-      <recent name="D:\IdeaProjects\ChatImage\fabric\fabric-1.21\gradle\wrapper" />
-      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
@@ -232,11 +677,11 @@
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.fabric-1.20.3 [build]">
-    <configuration name="fabric-1.16.5 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.forge-1.20.2 [wrapper]">
+    <configuration name="forge-1.18.2 [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.16.5" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.18.2" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -244,7 +689,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="wrapper" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -255,10 +700,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="fabric-1.19.3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="forge-1.19 [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.19.3" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.19" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -266,7 +711,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="wrapper" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -277,10 +722,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="fabric-1.20.3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="forge-1.20 [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.20.3" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -288,7 +733,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="wrapper" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -299,10 +744,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="fabric-1.20.5 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="forge-1.20.2 [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.20.5" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20.2" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -310,7 +755,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="wrapper" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -321,10 +766,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="fabric-1.21 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="forge-1.20.3 [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.21" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20.3" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -332,7 +777,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="wrapper" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -345,11 +790,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.fabric-1.20.3 [build]" />
-        <item itemvalue="Gradle.fabric-1.19.3 [build]" />
-        <item itemvalue="Gradle.fabric-1.21 [build]" />
-        <item itemvalue="Gradle.fabric-1.20.5 [build]" />
-        <item itemvalue="Gradle.fabric-1.16.5 [build]" />
+        <item itemvalue="Gradle.forge-1.20.2 [wrapper]" />
+        <item itemvalue="Gradle.forge-1.20 [wrapper]" />
+        <item itemvalue="Gradle.forge-1.19 [wrapper]" />
+        <item itemvalue="Gradle.forge-1.18.2 [wrapper]" />
+        <item itemvalue="Gradle.forge-1.20.3 [wrapper]" />
       </list>
     </recent_temporary>
   </component>
@@ -430,15 +875,10 @@
       <workItem from="1721704532400" duration="265000" />
       <workItem from="1721705000046" duration="2266000" />
       <workItem from="1721743338024" duration="2475000" />
-      <workItem from="1721779292922" duration="1162000" />
-    </task>
-    <task id="LOCAL-00009" summary="test ci">
-      <option name="closed" value="true" />
-      <created>1720634216858</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1720634216858</updated>
+      <workItem from="1721779292922" duration="2145000" />
+      <workItem from="1721781484835" duration="51000" />
+      <workItem from="1721781549259" duration="95000" />
+      <workItem from="1721782270305" duration="1464000" />
     </task>
     <task id="LOCAL-00010" summary="test ci">
       <option name="closed" value="true" />
@@ -824,7 +1264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721780231712</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary=":memo: DrawContextMixin">
+      <option name="closed" value="true" />
+      <created>1721780592592</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1721780592592</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -855,7 +1303,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="使用插件同步" />
     <MESSAGE value="使用插件同步 step2" />
     <MESSAGE value="使用插件同步 step3" />
     <MESSAGE value="update gitignore" />
@@ -880,7 +1327,8 @@
     <MESSAGE value=":bug: GifSlider" />
     <MESSAGE value=":bug: fix" />
     <MESSAGE value=":bug: ScreenMixin" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: ScreenMixin" />
+    <MESSAGE value=":memo: DrawContextMixin" />
+    <option name="LAST_COMMIT_MESSAGE" value=":memo: DrawContextMixin" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

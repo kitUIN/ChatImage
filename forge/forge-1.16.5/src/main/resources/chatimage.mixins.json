@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "github.kituin.chatimage.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "chatimage.refmap.json",
+  "mixins": [
+    "ForgeHooksMixin"
+  ],
+  "client": [
+    "FileDragMixin",
+    "NewChatGuiMixin",
+    "ReadBookScreenMixin",
+    "ScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

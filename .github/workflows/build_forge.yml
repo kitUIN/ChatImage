@@ -1,4 +1,4 @@
-name: 測試可行性
+name: 测试Forge
 
 on:
   workflow_dispatch:
@@ -12,16 +12,12 @@ jobs:
     strategy:
       matrix:
         config:
-          - { mc-version: '1.21', mc-loader: 'fabric', jdk-version: '21' }
-          - { mc-version: '1.20.5', mc-loader: 'fabric', jdk-version: '21' }
-          - { mc-version: '1.20.3', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.20', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.19.1', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.19.2', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.19.3', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.19.4', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.18.2', mc-loader: 'fabric', jdk-version: '17' }
-          - { mc-version: '1.16.5', mc-loader: 'fabric', jdk-version: '11' }
+          - { mc-version: '1.20.3', mc-loader: 'forge', jdk-version: '17' }
+          - { mc-version: '1.20.2', mc-loader: 'forge', jdk-version: '17' }
+          - { mc-version: '1.20', mc-loader: 'forge', jdk-version: '17' }
+          - { mc-version: '1.19', mc-loader: 'forge', jdk-version: '17' }
+          - { mc-version: '1.18.2', mc-loader: 'forge', jdk-version: '17' }
+          - { mc-version: '1.16.5', mc-loader: 'forge', jdk-version: '17' }
     steps:
       - uses: actions/checkout@v4
       - name: Chose JDK ${{ matrix.config.jdk-version }}

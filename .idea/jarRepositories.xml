@@ -146,5 +146,15 @@
       <option name="name" value="LoomLocalMinecraft" />
       <option name="url" value="file:/$PROJECT_DIR$/fabric/fabric-1.16.5/.gradle/loom-cache/minecraftMaven" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="ParchmentMC" />
+      <option name="name" value="ParchmentMC" />
+      <option name="url" value="https://maven.parchmentmc.org/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://maven.minecraftforge.net/" />
+    </remote-repository>
   </component>
 </project>
