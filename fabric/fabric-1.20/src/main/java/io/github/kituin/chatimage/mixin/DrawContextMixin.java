@@ -1,10 +1,10 @@
+// ONLY >= fabric-1.20
 package io.github.kituin.chatimage.mixin;
 
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ClientStorage;
-import io.github.kituin.chatimage.client.ChatImageClient;
-import io.github.kituin.chatimage.tool.ChatImageStyle;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -24,6 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
+import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 /**
  * 注入修改悬浮显示图片
  *
@@ -49,19 +53,20 @@ public abstract class DrawContextMixin {
     public abstract void drawTexture(Identifier texture, int x, int y, int z, float u, float v, int width, int height, int textureWidth, int textureHeight);
     @Shadow
     public abstract void draw(Runnable drawCallback);
+    @SuppressWarnings("t")
     @Inject(at = @At("RETURN"), method = "drawHoverEvent")
     public void drawHoverEvent(TextRenderer textRenderer, Style style, int x, int y, CallbackInfo ci) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode code = hoverEvent.getValue(ChatImageStyle.SHOW_IMAGE);
+            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
             if (code != null) {
-                if (ChatImageClient.CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
+                if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
                     ChatImageFrame frame = code.getFrame();
-                    if (frame.loadImage(ChatImageClient.CONFIG.limitWidth, ChatImageClient.CONFIG.limitHeight)) {
+                    if (frame.loadImage(CONFIG.limitWidth, CONFIG.limitHeight)) {
                         int viewWidth = frame.getWidth();
                         int viewHeight = frame.getHeight();
-                        int allWidth = viewWidth + ChatImageClient.CONFIG.paddingLeft + ChatImageClient.CONFIG.paddingRight;
-                        int allHeight = viewHeight + ChatImageClient.CONFIG.paddingTop + ChatImageClient.CONFIG.paddingBottom;
+                        int allWidth = viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight;
+                        int allHeight = viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom;
                         HoveredTooltipPositioner positioner = (HoveredTooltipPositioner) HoveredTooltipPositioner.INSTANCE;
                         Vector2ic vector2ic = positioner.getPosition(this.getScaledWindowWidth(),this.getScaledWindowHeight(),x, y,allWidth,allHeight );
                         int l = vector2ic.x();
@@ -76,18 +81,18 @@ public abstract class DrawContextMixin {
 
                         // 图片
                         this.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        this.drawTexture((Identifier) frame.getId(), l + ChatImageClient.CONFIG.paddingLeft, m + ChatImageClient.CONFIG.paddingTop, 400,0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
+                        this.drawTexture((Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 400,0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
 
-                        frame.gifLoop(ChatImageClient.CONFIG.gifSpeed);
+                        frame.gifLoop(CONFIG.gifSpeed);
                     } else {
                         MutableText text = (MutableText) frame.getErrorMessage(
-                                (str) -> Text.literal((String) str),
-                                (str) -> Text.translatable((String) str),
+                                (str) -> createLiteralText((String) str),
+                                (str) -> createTranslatableText((String) str),
                                 (obj, s) -> ((MutableText) obj).append((Text) s), code);
                         this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(text, Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
                     }
                 } else {
-                    this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(Text.translatable("nsfw.chatimage.message"), Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
+                    this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(createTranslatableText("nsfw.chatimage.message"), Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
                 }
 
             }

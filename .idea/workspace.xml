@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: ScreenMixin">
+      <change afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/java/io/github/kituin/chatimage/mixin/ScreenMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/java/io/github/kituin/chatimage/mixin/DrawContextMixin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,22 +94,31 @@
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.16.5" type="f1a62948:ProjectNode" />
+                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="fabric-1.19.3" type="f1a62948:ProjectNode" />
+                <item name="fabric-1.20.3" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
@@ -222,7 +232,7 @@
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.fabric-1.19.3 [build]">
+  <component name="RunManager" selected="Gradle.fabric-1.20.3 [build]">
     <configuration name="fabric-1.16.5 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -249,6 +259,28 @@
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.19.3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="fabric-1.20.3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.20.3" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -311,35 +343,13 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="fabric-1.21 [hello]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fabric/fabric-1.21" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="hello" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.fabric-1.20.3 [build]" />
         <item itemvalue="Gradle.fabric-1.19.3 [build]" />
         <item itemvalue="Gradle.fabric-1.21 [build]" />
         <item itemvalue="Gradle.fabric-1.20.5 [build]" />
         <item itemvalue="Gradle.fabric-1.16.5 [build]" />
-        <item itemvalue="Gradle.fabric-1.21 [hello]" />
       </list>
     </recent_temporary>
   </component>
@@ -420,15 +430,7 @@
       <workItem from="1721704532400" duration="265000" />
       <workItem from="1721705000046" duration="2266000" />
       <workItem from="1721743338024" duration="2475000" />
-      <workItem from="1721779292922" duration="903000" />
-    </task>
-    <task id="LOCAL-00008" summary="test ci">
-      <option name="closed" value="true" />
-      <created>1720633855058</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1720633855058</updated>
+      <workItem from="1721779292922" duration="1162000" />
     </task>
     <task id="LOCAL-00009" summary="test ci">
       <option name="closed" value="true" />
@@ -814,7 +816,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721779934445</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary=":bug: ScreenMixin">
+      <option name="closed" value="true" />
+      <created>1721780231712</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1721780231712</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
