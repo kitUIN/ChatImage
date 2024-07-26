@@ -4,60 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":memo: 统一目录">
-      <change afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/tool/SimpleUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/ChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/ChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/Help.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/ReloadConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/command/SendChatImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ActionLibIntegration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ChatImageClientAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/integration/ChatImageLogger.java" afterDir="false" />
-    </list>
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":memo: update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -510,15 +457,7 @@
       <workItem from="1721782270305" duration="1540000" />
       <workItem from="1721785760006" duration="145000" />
       <workItem from="1721820424369" duration="3306000" />
-      <workItem from="1721833415856" duration="5919000" />
-    </task>
-    <task id="LOCAL-00013" summary="尝试软连接部分代码">
-      <option name="closed" value="true" />
-      <created>1720640338468</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1720640338468</updated>
+      <workItem from="1721833415856" duration="6597000" />
     </task>
     <task id="LOCAL-00014" summary="尝试软连接部分代码">
       <option name="closed" value="true" />
@@ -904,7 +843,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721822932472</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary=":memo: update">
+      <option name="closed" value="true" />
+      <created>1721839557108</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1721839557109</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -935,7 +882,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update .idea" />
     <MESSAGE value="sync step5" />
     <MESSAGE value="sync FileDragMixin" />
     <MESSAGE value="issue" />
@@ -960,7 +906,8 @@
     <MESSAGE value=":memo: init" />
     <MESSAGE value=":memo: update lang" />
     <MESSAGE value=":memo: 统一目录" />
-    <option name="LAST_COMMIT_MESSAGE" value=":memo: 统一目录" />
+    <MESSAGE value=":memo: update" />
+    <option name="LAST_COMMIT_MESSAGE" value=":memo: update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
