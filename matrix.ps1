@@ -22,4 +22,4 @@ $json = [PSCustomObject]@{
     "config" = $allFolderObjects
 } | ConvertTo-Json -Compress
 
-Write-Output "::set-output name=matrix::$json"
+Write-Output "matrix=$json" >> "$GITHUB_OUTPUT"
