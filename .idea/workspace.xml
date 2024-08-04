@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":fire: del fabric auto files">
-      <change afterPath="$PROJECT_DIR$/init.ps1" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: add integration">
       <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModMultiVersionTool-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/tool/ModMultiVersionTool-1.0.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README_EN.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_EN.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forge/origin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/forge/origin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/fabric.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,11 +242,11 @@
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\fabric\origin" />
       <recent name="D:\IdeaProjects\ChatImage\tool" />
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage\gui" />
       <recent name="C:\Users\15854\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
-      <recent name="C:\Users\15854\IdeaProjects\ChatImage\origin" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.forge-1.16.5 [wrapper]">
@@ -364,6 +360,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="PowerShellRunType" factoryName="PowerShell" executablePath="C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.forge-1.16.5 [wrapper]" />
@@ -459,23 +459,7 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="3431000" />
-    </task>
-    <task id="LOCAL-00019" summary="test ci">
-      <option name="closed" value="true" />
-      <created>1720642444884</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1720642444884</updated>
-    </task>
-    <task id="LOCAL-00020" summary="删除软链接">
-      <option name="closed" value="true" />
-      <created>1720642855366</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1720642855366</updated>
+      <workItem from="1722794755158" duration="4245000" />
     </task>
     <task id="LOCAL-00021" summary="修正">
       <option name="closed" value="true" />
@@ -853,7 +837,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722796543551</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary=":bug: add integration">
+      <option name="closed" value="true" />
+      <created>1722798257262</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1722798257262</updated>
+    </task>
+    <task id="LOCAL-00069" summary=":bug: add integration">
+      <option name="closed" value="true" />
+      <created>1722798510633</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1722798510633</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -884,7 +884,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="update fabric.gradle" />
     <MESSAGE value="ChatImageStyle sync" />
     <MESSAGE value="wrapper.jar" />
     <MESSAGE value="ConfigScreen sync" />
@@ -909,7 +908,8 @@
     <MESSAGE value=":green_heart: fix ci" />
     <MESSAGE value=":memo: fabric.mod.json5" />
     <MESSAGE value=":fire: del fabric auto files" />
-    <option name="LAST_COMMIT_MESSAGE" value=":fire: del fabric auto files" />
+    <MESSAGE value=":bug: add integration" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: add integration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

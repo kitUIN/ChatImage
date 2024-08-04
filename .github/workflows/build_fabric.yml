@@ -2,7 +2,12 @@ name: 测试Fabric
 
 on:
   workflow_dispatch:
-
+  push:
+    branches:
+      - master
+    paths:
+      - 'fabric/**'
+      - 'origin/**'
 permissions:
   contents: write
 

@@ -12,7 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
+// IF >= fabric-1.20.5
+//import io.github.kituin.chatimage.network.FileChannelPacket;
+// END IF
 import static io.github.kituin.ChatImageCode.NetworkHelper.createFilePacket;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.client.ChatImageClient.MOD_ID;
@@ -40,7 +42,11 @@ public class ChatImageClientAdapter implements IClientAdapter {
     public void sendToServer(String url, File file, boolean isToServer) {
         if (isToServer) {
             List<String> stringList = createFilePacket(url, file);
-            sendPacketAsync(FILE_CHANNEL, stringList);
+// IF >= fabric-1.20.5
+//            sendPacketAsync(FileChannelPacket::new, stringList);
+// ELSE
+//            sendPacketAsync(FILE_CHANNEL, stringList);
+// END IF
         } else {
             loadFromServer(url);
         }

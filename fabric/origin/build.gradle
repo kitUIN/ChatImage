@@ -3,4 +3,4 @@ plugins {
     id 'maven-publish'
 }
 
-apply from: '../../fabric.gradle'
+apply from: './fabric.gradle'
