@@ -133,5 +133,5 @@ Send CICode with url (use default display name)
   - JDK 21
 - Init
   ```bash
-    java -jar ModMultiVersionTool-1.0.0.jar
+    ./init.ps1
   ```

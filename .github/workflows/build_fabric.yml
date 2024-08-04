@@ -38,7 +38,7 @@ jobs:
       - name: Init Files
         shell: pwsh
         run: |
-          java -jar ModMultiVersionTool-1.0.0.jar
+          ./init.ps1
       - name: Build
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}

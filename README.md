@@ -126,5 +126,5 @@
   - JDK 21
 - 初始化项目
   ```bash
-    java -jar ModMultiVersionTool-1.0.0.jar
+    ./init.ps1
   ```
