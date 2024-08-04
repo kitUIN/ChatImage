@@ -13,6 +13,6 @@ $folderObjects = $filteredFolders | ForEach-Object {
     }
 }
 
-$json = $folderObjects | ConvertTo-Json
+$json = $folderObjects | ConvertTo-Json -Compress
 
-Write-Output "::set-output name=matrix::$json"
+Write-Output "matrix=$json" >> $GITHUB_OUTPUT
