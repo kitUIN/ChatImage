@@ -4,7 +4,138 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":memo: update" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: fix ci">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.16.5/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/fabric.mod.json" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/src/main/resources/fabric.mod.json5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.18.2/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.1/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.2/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.3/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.19.4/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.3/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20.5/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.20/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/ChatImage.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/assets/chatimage/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/assets/chatimage/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/assets/chatimage/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/assets/chatimage/lang/zh_tw.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/fabric.mod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/fabric-1.21/src/main/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fabric/origin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/origin/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/origin/LICENSE" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -223,7 +354,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/IdeaProjects/ChatImage/forge/origin/src/main/java/io/github/kituin",
+    "last_opened_file_path": "D:/IdeaProjects/ChatImage/fabric/origin/src/main/resources",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -239,11 +370,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
+      <recent name="D:\IdeaProjects\ChatImage" />
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin" />
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin\chatimage\tool" />
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin\chatimage" />
-      <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\io\github\kituin\chatimage" />
-      <recent name="D:\IdeaProjects\ChatImage\forge\origin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java" />
@@ -458,30 +589,8 @@
       <workItem from="1721785760006" duration="145000" />
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
-    </task>
-    <task id="LOCAL-00014" summary="尝试软连接部分代码">
-      <option name="closed" value="true" />
-      <created>1720640598028</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1720640598028</updated>
-    </task>
-    <task id="LOCAL-00015" summary="更新actionlib 版本">
-      <option name="closed" value="true" />
-      <created>1720641442584</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1720641442584</updated>
-    </task>
-    <task id="LOCAL-00016" summary="删除同步文件">
-      <option name="closed" value="true" />
-      <created>1720641554160</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1720641554160</updated>
+      <workItem from="1721986473813" duration="873000" />
+      <workItem from="1722794755158" duration="1669000" />
     </task>
     <task id="LOCAL-00017" summary="删除同步文件">
       <option name="closed" value="true" />
@@ -851,7 +960,31 @@
       <option name="project" value="LOCAL" />
       <updated>1721839557109</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary=":memo: del">
+      <option name="closed" value="true" />
+      <created>1721986572119</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1721986572121</updated>
+    </task>
+    <task id="LOCAL-00064" summary=":memo: readme">
+      <option name="closed" value="true" />
+      <created>1722795240375</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1722795240375</updated>
+    </task>
+    <task id="LOCAL-00065" summary=":green_heart: fix ci">
+      <option name="closed" value="true" />
+      <created>1722795407113</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1722795407113</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -882,9 +1015,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="sync step5" />
-    <MESSAGE value="sync FileDragMixin" />
-    <MESSAGE value="issue" />
     <MESSAGE value="mixins.json" />
     <MESSAGE value="build test" />
     <MESSAGE value="update fabric.gradle" />
@@ -907,7 +1037,10 @@
     <MESSAGE value=":memo: update lang" />
     <MESSAGE value=":memo: 统一目录" />
     <MESSAGE value=":memo: update" />
-    <option name="LAST_COMMIT_MESSAGE" value=":memo: update" />
+    <MESSAGE value=":memo: del" />
+    <MESSAGE value=":memo: readme" />
+    <MESSAGE value=":green_heart: fix ci" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: fix ci" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
