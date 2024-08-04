@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: update CI">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_forge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_forge.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matrix.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -459,15 +454,7 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="5954000" />
-    </task>
-    <task id="LOCAL-00025" summary="使用插件同步 step2">
-      <option name="closed" value="true" />
-      <created>1721082512116</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1721082512116</updated>
+      <workItem from="1722794755158" duration="6176000" />
     </task>
     <task id="LOCAL-00026" summary="使用插件同步 step3">
       <option name="closed" value="true" />
@@ -853,7 +840,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722800474568</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722800777406</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1722800777406</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
