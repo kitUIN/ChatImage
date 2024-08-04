@@ -19,7 +19,7 @@ jobs:
         run: |
           .\matrix.ps1 -path "fabric","forge","neoforge"
 
-  test:
+  build:
     runs-on: windows-latest
     needs: generate-matrix
     strategy:
