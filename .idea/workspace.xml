@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: add integration">
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: fix ChatImageClientAdapter">
+      <change afterPath="$PROJECT_DIR$/matrix.ps1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/fabric.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fabric/origin/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/fabric/origin/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/init.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/init.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -459,15 +457,7 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="4245000" />
-    </task>
-    <task id="LOCAL-00021" summary="修正">
-      <option name="closed" value="true" />
-      <created>1720643092876</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1720643092876</updated>
+      <workItem from="1722794755158" duration="5046000" />
     </task>
     <task id="LOCAL-00022" summary="修正">
       <option name="closed" value="true" />
@@ -853,7 +843,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722798510633</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary=":bug: fix ChatImageClientAdapter">
+      <option name="closed" value="true" />
+      <created>1722799079707</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1722799079707</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -884,7 +882,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ChatImageStyle sync" />
     <MESSAGE value="wrapper.jar" />
     <MESSAGE value="ConfigScreen sync" />
     <MESSAGE value="ChatImageCommand sync" />
@@ -909,7 +906,8 @@
     <MESSAGE value=":memo: fabric.mod.json5" />
     <MESSAGE value=":fire: del fabric auto files" />
     <MESSAGE value=":bug: add integration" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: add integration" />
+    <MESSAGE value=":bug: fix ChatImageClientAdapter" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix ChatImageClientAdapter" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
