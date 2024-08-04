@@ -124,3 +124,7 @@
   - IntelliJ IDEA Ultimate(建议2023.2.7及以上)
   - [ModMultiVersion-0.14.0](https://plugins.jetbrains.com/plugin/24872-modmultiversion)及以上
   - JDK 21
+- 初始化项目
+  ```bash
+    java -jar ModMultiVersionTool-1.0.0.jar
+  ```
