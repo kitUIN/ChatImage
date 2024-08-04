@@ -10,7 +10,7 @@ foreach ($path in $paths) {
 
     $folderObjects = $filteredFolders | ForEach-Object {
         [PSCustomObject]@{
-            "mc-version" = $_.Name
+            "mc-version" = $_.Name.Replace("$path-", "")
             "mc-loader"  = $path
         }
     }
