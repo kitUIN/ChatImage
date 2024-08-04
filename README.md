@@ -41,6 +41,17 @@
   <a href="https://modrinth.com/mod/chatimage">⬇️Modrinth</a>
 </p>
 
+<!-- TOC -->
+* [ChatImage](#chatimage)
+  * [快速开始](#快速开始)
+  * [规范](#规范)
+  * [使用命令发送 [[CICode]]](#使用命令发送-cicode)
+  * [配置文件设置](#配置文件设置)
+  * [支持方法](#支持方法)
+  * [支持格式](#支持格式)
+  * [参与项目](#参与项目)
+<!-- TOC -->
+
 ## 快速开始
 
 聊天框输入 `[[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]` 或者图片链接  即可自动转换为图片  
@@ -55,13 +66,13 @@
 
 本项目使用 [ChatImageCode](https://chatimage.kituin.fun/wiki/chatimage/code) (`[[CICode,<arg>=<value>]]`)
 
-| 参数                                                             | 必须  | 类型      | 备注                    |
-|----------------------------------------------------------------|-----|---------|-----------------------|
-| [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是   | String  | 图片地址(本地文件请使用file:///) |
-| [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否   | boolean | 是否为nsfw图像             |
-| [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否   | String  | 在消息栏显示的名称             |
-| pre | 否   | String  | 前缀(默认`[`)(不能为,)             |
-| suf | 否   | String  | 后缀(默认`]`)(不能为,)             |
+| 参数                                                             | 必须 | 类型      | 备注                    |
+|----------------------------------------------------------------|----|---------|-----------------------|
+| [url](https://chatimage.kituin.fun/wiki/chatimage/code/#url)   | 是  | String  | 图片地址(本地文件请使用file:///) |
+| [nsfw](https://chatimage.kituin.fun/wiki/chatimage/code/#nsfw) | 否  | boolean | 是否为nsfw图像             |
+| [name](https://chatimage.kituin.fun/wiki/chatimage/code/#name) | 否  | String  | 在消息栏显示的名称             |
+| pre                                                            | 否  | String  | 前缀(默认`[`)(不能为,)       |
+| suf                                                            | 否  | String  | 后缀(默认`]`)(不能为,)       |
 
 - 网络图片 `[[CICode,url=<网络地址>,name=Image]]`
     - 示例: `[[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]`
@@ -106,3 +117,10 @@
 - [X] gif
 - [X] ico
 - [X] bmp
+
+## 参与项目
+
+- 环境要求
+  - IntelliJ IDEA Ultimate(建议2023.2.7及以上)
+  - [ModMultiVersion-0.14.0](https://plugins.jetbrains.com/plugin/24872-modmultiversion)及以上
+  - JDK 21

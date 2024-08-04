@@ -41,6 +41,17 @@
   <a href="https://modrinth.com/mod/chatimage">⬇️Modrinth</a>
 </p>
 
+<!-- TOC -->
+* [ChatImage](#chatimage)
+  * [Quick Start](#quick-start)
+  * [Specification](#specification)
+    * [Example:](#example-)
+  * [Use Command to send [[CICode]]](#use-command-to-send-cicode)
+  * [Config Settings](#config-settings)
+  * [Support input method](#support-input-method)
+  * [Support Image Type](#support-image-type)
+  * [Participating projects](#participating-projects)
+<!-- TOC -->
 
 ## Quick Start
 
@@ -67,8 +78,8 @@ ps2: `1.1.9`and above could use [CQCode](https://docs.go-cqhttp.org/cqcode/#%E5%
 | url  | true    | String  | Image address (please use `file:///` for local files) |
 | nsfw | false   | boolean | Is it an nsfw image                                   |
 | name | false   | String  | The name displayed in the chat                        |
-| pre | false   | String  | prefix(default:`[`)(can't be`,`)  |
-| suf | false   | String  | suffix(default:`]`)(can't be`,`) |
+| pre  | false   | String  | prefix(default:`[`)(can't be`,`)                      |
+| suf  | false   | String  | suffix(default:`]`)(can't be`,`)                      |
 
 `nsfw` will determine whether to display the image directly
 
@@ -113,3 +124,10 @@ Send CICode with url (use default display name)
 - [X] gif
 - [X] ico
 - [X] bmp
+
+## Participating projects
+
+- Environment Requirements
+  - IntelliJ IDEA Ultimate (recommended 2023.2.7 and above)
+  - [ModMultiVersion-0.14.0](https://plugins.jetbrains.com/plugin/24872-modmultiversion) and above
+  - JDK 21
