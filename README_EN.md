@@ -131,3 +131,7 @@ Send CICode with url (use default display name)
   - IntelliJ IDEA Ultimate (recommended 2023.2.7 and above)
   - [ModMultiVersion-0.14.0](https://plugins.jetbrains.com/plugin/24872-modmultiversion) and above
   - JDK 21
+- Init
+  ```bash
+    java -jar ModMultiVersionTool-1.0.0.jar
+  ```
