@@ -2,23 +2,37 @@ name: 测试NeoForge
 
 on:
   workflow_dispatch:
-
+  push:
+    branches:
+      - master
+    paths:
+      - 'neoforge/**'
+      - 'origin/**'
 permissions:
   contents: write
 
 jobs:
-  build:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        config:
-          - { mc-version: '1.20.4', mc-loader: 'neoforge', jdk-version: '17' }
-          - { mc-version: '1.20.3', mc-loader: 'neoforge', jdk-version: '17' }
-          - { mc-version: '1.20.2', mc-loader: 'neoforge', jdk-version: '17' }
 
+  generate-matrix:
+    runs-on: windows-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
-      - name: Chose JDK ${{ matrix.config.jdk-version }}
+      - name: Generate Matrix
+        id: set-matrix
+        shell: pwsh
+        run: |
+          .\matrix.ps1 -path "neoforge"
+
+  test:
+    runs-on: windows-latest
+    needs: generate-matrix
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Chose JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
@@ -29,8 +43,12 @@ jobs:
           $mod_version = Get-Content version.txt
           Write-Host "Version: $mod_version"
           echo "MOD_VERSION=$mod_version" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_ENV
-      - name: build
+      - name: Init Files
+        shell: pwsh
         run: |
-          cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
+          ./init.ps1
+      - name: Build
+        run: |
+          cd ${{ matrix.mc-loader }}/${{ matrix.mc-loader }}-${{ matrix.mc-version }}
           ./gradlew clean build
           cd ../..

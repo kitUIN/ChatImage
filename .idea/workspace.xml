@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":bug: fix ChatImageClientAdapter">
-      <change afterPath="$PROJECT_DIR$/matrix.ps1" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: update CI">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_forge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_forge.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/init.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,70 +176,70 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.fabric-1.16.5 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.16.5 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.18.2 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.18.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.1 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.1 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.2 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.3 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.3 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.4 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.19.4 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.3 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.3 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.5 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.20.5 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [hello].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.fabric-1.21 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.16.5 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.16.5 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.18.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.18.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.19 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.19 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20.2 [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20.2 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20.3 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.forge-1.20.3 [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.下载源代码.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.加载 Gradle 依赖项.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.init.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;PowerShell.link.ps1.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/origin/src/main/java/io/github/kituin/chatimage&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.fabric-1.16.5 [build].executor": "Run",
+    "Gradle.fabric-1.16.5 [wrapper].executor": "Run",
+    "Gradle.fabric-1.18.2 [build].executor": "Run",
+    "Gradle.fabric-1.18.2 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.1 [build].executor": "Run",
+    "Gradle.fabric-1.19.1 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.2 [build].executor": "Run",
+    "Gradle.fabric-1.19.2 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.3 [build].executor": "Run",
+    "Gradle.fabric-1.19.3 [wrapper].executor": "Run",
+    "Gradle.fabric-1.19.4 [build].executor": "Run",
+    "Gradle.fabric-1.19.4 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20 [build].executor": "Run",
+    "Gradle.fabric-1.20 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20.3 [build].executor": "Run",
+    "Gradle.fabric-1.20.3 [wrapper].executor": "Run",
+    "Gradle.fabric-1.20.5 [build].executor": "Run",
+    "Gradle.fabric-1.20.5 [wrapper].executor": "Run",
+    "Gradle.fabric-1.21 [build].executor": "Run",
+    "Gradle.fabric-1.21 [hello].executor": "Run",
+    "Gradle.fabric-1.21 [wrapper].executor": "Run",
+    "Gradle.forge-1.16.5 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.16.5 [wrapper].executor": "Run",
+    "Gradle.forge-1.18.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.18.2 [wrapper].executor": "Run",
+    "Gradle.forge-1.19 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.19 [wrapper].executor": "Run",
+    "Gradle.forge-1.20 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20 [wrapper].executor": "Run",
+    "Gradle.forge-1.20.2 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20.2 [build].executor": "Run",
+    "Gradle.forge-1.20.2 [wrapper].executor": "Run",
+    "Gradle.forge-1.20.3 [:createMcpToSrg :createMcpToSrg :createMcpToSrg].executor": "Run",
+    "Gradle.forge-1.20.3 [wrapper].executor": "Run",
+    "Gradle.下载源代码.executor": "Run",
+    "Gradle.加载 Gradle 依赖项.executor": "Run",
+    "PowerShell.init.ps1.executor": "Run",
+    "PowerShell.link.ps1.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/IdeaProjects/ChatImage/.github/workflows",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "项目",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "two.files.diff.last.used.file": "D:/IdeaProjects/ChatImage/fabric/fabric-1.21/src/main/java/io/github/kituin/chatimage/gui/ConfigScreen.java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\.github\workflows" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\src\main\java\io\github\kituin\chatimage" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
       <recent name="D:\IdeaProjects\ChatImage" />
-      <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin" />
@@ -457,31 +459,7 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="5046000" />
-    </task>
-    <task id="LOCAL-00022" summary="修正">
-      <option name="closed" value="true" />
-      <created>1720643152815</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1720643152815</updated>
-    </task>
-    <task id="LOCAL-00023" summary="修正">
-      <option name="closed" value="true" />
-      <created>1720643304233</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1720643304233</updated>
-    </task>
-    <task id="LOCAL-00024" summary="使用插件同步">
-      <option name="closed" value="true" />
-      <created>1721079174942</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1721079174942</updated>
+      <workItem from="1722794755158" duration="5954000" />
     </task>
     <task id="LOCAL-00025" summary="使用插件同步 step2">
       <option name="closed" value="true" />
@@ -851,7 +829,31 @@
       <option name="project" value="LOCAL" />
       <updated>1722799079707</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722800099255</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1722800099255</updated>
+    </task>
+    <task id="LOCAL-00072" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722800199107</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1722800199107</updated>
+    </task>
+    <task id="LOCAL-00073" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722800474568</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1722800474568</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -882,7 +884,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="wrapper.jar" />
     <MESSAGE value="ConfigScreen sync" />
     <MESSAGE value="ChatImageCommand sync" />
     <MESSAGE value="ConfirmNsfwScreen sync" />
@@ -907,7 +908,8 @@
     <MESSAGE value=":fire: del fabric auto files" />
     <MESSAGE value=":bug: add integration" />
     <MESSAGE value=":bug: fix ChatImageClientAdapter" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix ChatImageClientAdapter" />
+    <MESSAGE value=":green_heart: update CI" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: update CI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

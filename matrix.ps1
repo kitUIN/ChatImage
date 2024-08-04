@@ -4,7 +4,8 @@ param (
 
 $folders = Get-ChildItem -Path $path -Directory
 
-$filteredFolders = $folders | Where-Object { $_.Name -ne "origin" }
+$filteredFolders = $folders | Where-Object { $_.Name -ne "origin" -and $_.Name -ne "tool" }
+
 
 $folderObjects = $filteredFolders | ForEach-Object {
     [PSCustomObject]@{
@@ -15,4 +16,5 @@ $folderObjects = $filteredFolders | ForEach-Object {
 
 $json = $folderObjects | ConvertTo-Json -Compress
 
-Write-Output "matrix=$json" >> $GITHUB_OUTPUT
+#Write-Output "matrix=$json" >> $GITHUB_OUTPUT
+Write-Output "::set-output name=matrix::$json"
