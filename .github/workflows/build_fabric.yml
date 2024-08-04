@@ -24,10 +24,7 @@ jobs:
         shell: pwsh
         run: |
           .\matrix.ps1 -path "fabric"
-      - name: Get Matrix
-        env:
-          MATRIX: ${{ steps.generate-matrix.outputs.matrix }}
-        run: echo "matrix config is $MATRIX"
+
   test:
     runs-on: windows-latest
     needs: generate-matrix

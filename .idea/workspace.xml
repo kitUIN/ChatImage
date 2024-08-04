@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: update CI">
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: fix bug">
       <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_forge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_forge.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matrix.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.ps1" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -458,39 +455,7 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="6573000" />
-    </task>
-    <task id="LOCAL-00027" summary="update gitignore">
-      <option name="closed" value="true" />
-      <created>1721082799712</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1721082799712</updated>
-    </task>
-    <task id="LOCAL-00028" summary="update .idea">
-      <option name="closed" value="true" />
-      <created>1721083026210</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1721083026210</updated>
-    </task>
-    <task id="LOCAL-00029" summary="sync step5">
-      <option name="closed" value="true" />
-      <created>1721090725791</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1721090725791</updated>
-    </task>
-    <task id="LOCAL-00030" summary="sync step5">
-      <option name="closed" value="true" />
-      <created>1721090745354</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1721090745354</updated>
+      <workItem from="1722794755158" duration="7350000" />
     </task>
     <task id="LOCAL-00031" summary="sync FileDragMixin">
       <option name="closed" value="true" />
@@ -852,7 +817,39 @@
       <option name="project" value="LOCAL" />
       <updated>1722801007146</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722801440578</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1722801440578</updated>
+    </task>
+    <task id="LOCAL-00077" summary=":green_heart: update CI">
+      <option name="closed" value="true" />
+      <created>1722801552107</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1722801552107</updated>
+    </task>
+    <task id="LOCAL-00078" summary=":green_heart: fix bug">
+      <option name="closed" value="true" />
+      <created>1722801688387</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1722801688387</updated>
+    </task>
+    <task id="LOCAL-00079" summary=":green_heart: fix bug">
+      <option name="closed" value="true" />
+      <created>1722802014344</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1722802014344</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -883,7 +880,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ConfigScreen sync" />
     <MESSAGE value="ChatImageCommand sync" />
     <MESSAGE value="ConfirmNsfwScreen sync" />
     <MESSAGE value="LimitPaddingScreen sync" />
@@ -908,7 +904,8 @@
     <MESSAGE value=":bug: add integration" />
     <MESSAGE value=":bug: fix ChatImageClientAdapter" />
     <MESSAGE value=":green_heart: update CI" />
-    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: update CI" />
+    <MESSAGE value=":green_heart: fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: fix bug" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
