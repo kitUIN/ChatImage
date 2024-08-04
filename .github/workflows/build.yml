@@ -17,7 +17,7 @@ jobs:
         id: set-matrix
         shell: pwsh
         run: |
-          .\matrix.ps1 -path "."
+          .\matrix.ps1 -path "fabric","forge","neoforge"
 
   test:
     runs-on: windows-latest
@@ -43,7 +43,7 @@ jobs:
           ./init.ps1
       - name: Build
         run: |
-          cd ${{ matrix.mc-loader }}/${{ matrix.mc-loader }}-${{ matrix.mc-version }}
+          cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
           ./gradlew clean build
           cd ../..
       - uses: actions/upload-artifact@v4

@@ -1,22 +1,25 @@
 param (
-    [string]$path
+    [string[]]$paths
 )
 
-$folders = Get-ChildItem -Path $path -Directory
+$allFolderObjects = @()
 
-$filteredFolders = $folders | Where-Object { $_.Name -ne "origin" -and $_.Name -ne "tool" }
+foreach ($path in $paths) {
+    $folders = Get-ChildItem -Path $path -Directory
+    $filteredFolders = $folders | Where-Object { $_.Name -ne "origin" }
 
-
-$folderObjects = $filteredFolders | ForEach-Object {
-    [PSCustomObject]@{
-        "mc-version" = $_.Name
-        "mc-loader"  = $path
+    $folderObjects = $filteredFolders | ForEach-Object {
+        [PSCustomObject]@{
+            "mc-version" = $_.Name
+            "mc-loader"  = $path
+        }
     }
+
+    $allFolderObjects += $folderObjects
 }
 
 $json = [PSCustomObject]@{
-    "config" = $folderObjects
+    "config" = $allFolderObjects
 } | ConvertTo-Json -Compress
 
-#Write-Output "matrix=$json" >> $GITHUB_OUTPUT
 Write-Output "::set-output name=matrix::$json"
