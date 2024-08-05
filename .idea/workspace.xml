@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: fix bug">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build_fabric.yml" afterDir="false" />
+    <list default="true" id="abc5436c-901b-42b1-9337-4ce1192bde9d" name="更改" comment=":green_heart: rollback">
+      <change afterPath="$PROJECT_DIR$/forge/origin/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_forge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/test_forge.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build_neoforge.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/test_neoforge.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.16.5/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.18.2/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.19/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.2/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20.3/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/KeyBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/forge/forge-1.20/src/main/java/io/github/kituin/chatimage/KeyBindings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +223,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/IdeaProjects/ChatImage/.github/workflows",
+    "last_opened_file_path": "D:/IdeaProjects/ChatImage/forge/origin/src/main/java/io/github/kituin/chatimage",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -231,11 +239,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\ChatImage\forge\origin\src\main\java\io\github\kituin\chatimage" />
       <recent name="D:\IdeaProjects\ChatImage\.github\workflows" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\java\io\github\kituin\chatimage" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\src\main\java\io\github\kituin\chatimage" />
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin\src\main\resources" />
-      <recent name="D:\IdeaProjects\ChatImage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\ChatImage\fabric\origin" />
@@ -356,10 +364,6 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="PowerShellRunType" factoryName="PowerShell" executablePath="C:/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe">
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.forge-1.16.5 [wrapper]" />
@@ -455,23 +459,8 @@
       <workItem from="1721820424369" duration="3306000" />
       <workItem from="1721833415856" duration="6597000" />
       <workItem from="1721986473813" duration="873000" />
-      <workItem from="1722794755158" duration="7350000" />
-    </task>
-    <task id="LOCAL-00031" summary="sync FileDragMixin">
-      <option name="closed" value="true" />
-      <created>1721091307180</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1721091307180</updated>
-    </task>
-    <task id="LOCAL-00032" summary="issue">
-      <option name="closed" value="true" />
-      <created>1721098061624</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1721098061625</updated>
+      <workItem from="1722794755158" duration="8043000" />
+      <workItem from="1722862114871" duration="2178000" />
     </task>
     <task id="LOCAL-00033" summary="mixins.json">
       <option name="closed" value="true" />
@@ -849,7 +838,23 @@
       <option name="project" value="LOCAL" />
       <updated>1722802014344</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary=":green_heart: test">
+      <option name="closed" value="true" />
+      <created>1722802192120</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1722802192120</updated>
+    </task>
+    <task id="LOCAL-00081" summary=":green_heart: rollback">
+      <option name="closed" value="true" />
+      <created>1722802275641</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1722802275641</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -880,8 +885,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="ChatImageCommand sync" />
-    <MESSAGE value="ConfirmNsfwScreen sync" />
     <MESSAGE value="LimitPaddingScreen sync" />
     <MESSAGE value="ConfirmNsfwScreen fix" />
     <MESSAGE value="fix" />
@@ -905,7 +908,9 @@
     <MESSAGE value=":bug: fix ChatImageClientAdapter" />
     <MESSAGE value=":green_heart: update CI" />
     <MESSAGE value=":green_heart: fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: fix bug" />
+    <MESSAGE value=":green_heart: test" />
+    <MESSAGE value=":green_heart: rollback" />
+    <option name="LAST_COMMIT_MESSAGE" value=":green_heart: rollback" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
