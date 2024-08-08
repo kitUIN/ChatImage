@@ -37,6 +37,11 @@ jobs:
         with:
           java-version: '8'
           distribution: 'temurin'
+      - name: Chose JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
       - name: Chose JDK 21
         uses: actions/setup-java@v4
         with:
