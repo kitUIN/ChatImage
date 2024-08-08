@@ -58,7 +58,7 @@ public class SimpleUtil {
 // IF forge-1.16.5
 //    public static TextComponent composeGenericOptionComponent(TextComponent text, TextComponent value) {
 // ELSE
-//    public static MutableComponent composeGenericOptionComponent(TextComponent text, TextComponent value) {
+//    public static MutableComponent composeGenericOptionComponent(Component text, Component value) {
 // END IF
 // IF forge-1.16.5
 //        return new TranslationTextComponent("options.generic_value", text, value);

@@ -1,10 +1,11 @@
 package io.github.kituin.chatimage;
 
-import com.mojang.blaze3d.platform.InputConstants;
+
 // IF forge-1.16.5
 //import net.minecraft.client.settings.KeyBinding;
 // ELSE
 //import net.minecraft.client.KeyMapping;
+//import com.mojang.blaze3d.platform.InputConstants;
 // END IF
 // IF forge-1.16.5
 //import net.minecraftforge.fml.client.registry.ClientRegistry;
