@@ -1,10 +1,13 @@
 package io.github.kituin.chatimage.network;
-
-import net.minecraft.network.FriendlyByteBuf;
+// IF forge-1.16.5
+//import net.minecraft.network.PacketBuffer;
+// ELSE
+//import net.minecraft.network.FriendlyByteBuf;
+// END IF
 // IF forge-1.16.5
 //import net.minecraftforge.fml.network.NetworkEvent;
 //import java.util.function.Supplier;
-// ELSE IF forge-1.18.2
+// ELSE IF <= forge-1.20
 //import java.util.function.Supplier;
 //import net.minecraftforge.network.NetworkEvent;
 // ELSE
@@ -14,22 +17,20 @@ import net.minecraft.network.FriendlyByteBuf;
 import static io.github.kituin.chatimage.network.ChatImagePacket.clientDownloadFileChannelReceived;
 
 
-public class DownloadFileChannelPacket {
-
-    public String message;
-
-    public DownloadFileChannelPacket(FriendlyByteBuf buffer) {
-        message = buffer.readUtf();
-    }
-
+public class DownloadFileChannelPacket extends BChannelPacket {
     public DownloadFileChannelPacket(String message) {
-        this.message = message;
+        super(message);
     }
-
-    public void toBytes(FriendlyByteBuf buf) {
-        buf.writeUtf(this.message);
-    }
-// IF <= forge-1.18.2
+// IF forge-1.16.5
+//    public DownloadFileChannelPacket(PacketBuffer buffer) {
+//        super(buffer);
+//    }
+// ELSE
+//    public DownloadFileChannelPacket(FriendlyByteBuf buffer) {
+//        super(buffer);
+//    }
+// END IF
+// IF <= forge-1.20
 //    public boolean clientHandle(Supplier<NetworkEvent.Context> supplier) {
 //        NetworkEvent.Context ctx = supplier.get();
 //        ctx.enqueueWork(() -> clientDownloadFileChannelReceived(this.message));

@@ -69,7 +69,7 @@ public class ChatImagePacket {
                 // 通知之前请求但是没图片的客户端
                 List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
-                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
+                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), (ServerPlayer) player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
                     LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
                 }
                 USER_CACHE_MAP.put(title.url, Lists.newArrayList());
