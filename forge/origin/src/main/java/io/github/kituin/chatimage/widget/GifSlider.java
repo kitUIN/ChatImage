@@ -20,14 +20,8 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 public class GifSlider extends SettingSliderWidget {
 
     public GifSlider(int x, int y, int width, int height, SettingSliderWidget.OnTooltip tooltip) {
-// IF forge-1.16.5
-//        super(x, y, width, height, createTranslatableComponent("gif.chatimage.gui"),
-//                createLiteralComponent(""),
-//                CONFIG.gifSpeed, 1, 20, tooltip, new GifSliderUpdate());
-// ELSE
-//        super(x, y, width, height, CONFIG.gifSpeed, 1, 20, tooltip);
-//        this.updateMessage();
-// END IF
+        super(x, y, width, height, CONFIG.gifSpeed, 1, 20, tooltip);
+        this.updateMessage();
     }
     
 // IF forge-1.16.5
@@ -39,14 +33,14 @@ public class GifSlider extends SettingSliderWidget {
 //    }
 //}
 // ELSE
-//    @Override
-//    protected void updateMessage() {
-//        this.setMessage(composeGenericOptionComponent(createTranslatableComponent("gif.chatimage.gui"),
-//                createLiteralComponent(String.valueOf(this.position))));
-//        CONFIG.gifSpeed = this.position;
-//        ChatImageConfig.saveConfig(CONFIG);
-//    }
 // END IF
+    @Override
+    protected void updateMessage() {
+        this.setMessage(composeGenericOptionComponent(createTranslatableComponent("gif.chatimage.gui"),
+                createLiteralComponent(String.valueOf(this.position))));
+        CONFIG.gifSpeed = this.position;
+        ChatImageConfig.saveConfig(CONFIG);
+    }
 
 
 

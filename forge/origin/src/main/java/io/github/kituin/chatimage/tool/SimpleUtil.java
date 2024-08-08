@@ -15,7 +15,7 @@ public class SimpleUtil {
     }
 
 // IF forge-1.16.5
-//    public static TextComponent createTranslatableComponent(String text) {
+//    public static IFormattableTextComponent createTranslatableComponent(String text) {
 // ELSE
 //    public static MutableComponent createTranslatableComponent(String text) {
 // END IF
@@ -29,7 +29,7 @@ public class SimpleUtil {
 }
 
 // IF forge-1.16.5
-//    public static TextComponent createTranslatableComponent(String key, Object... args) {
+//    public static IFormattableTextComponent createTranslatableComponent(String key, Object... args) {
 // ELSE
 //    public static MutableComponent createTranslatableComponent(String key, Object... args) {
 // END IF
@@ -43,7 +43,7 @@ public class SimpleUtil {
     }
 
 // IF forge-1.16.5
-//    public static TextComponent createLiteralComponent(String text) {
+//    public static IFormattableTextComponent createLiteralComponent(String text) {
 // ELSE
 //    public static MutableComponent createLiteralComponent(String text) {
 // END IF
@@ -56,7 +56,7 @@ public class SimpleUtil {
 // END IF
             }
 // IF forge-1.16.5
-//    public static TextComponent composeGenericOptionComponent(TextComponent text, TextComponent value) {
+//    public static IFormattableTextComponent composeGenericOptionComponent(ITextComponent text, ITextComponent value) {
 // ELSE
 //    public static MutableComponent composeGenericOptionComponent(Component text, Component value) {
 // END IF

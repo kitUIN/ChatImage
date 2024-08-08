@@ -2,7 +2,11 @@ package io.github.kituin.chatimage.integration;
 
 import io.github.kituin.actionlib.AlPlugin;
 import io.github.kituin.actionlib.IActionRegisterApi;
-import net.minecraft.network.chat.HoverEvent;
+// IF forge-1.16.5
+//import net.minecraft.util.text.event.HoverEvent;
+// ELSE
+//import net.minecraft.network.chat.HoverEvent;
+// END IF
 
 import java.util.List;
 

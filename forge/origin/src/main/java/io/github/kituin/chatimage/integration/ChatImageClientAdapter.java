@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.texture.DynamicTexture;
 // IF forge-1.16.5
 //import net.minecraft.client.renderer.texture.NativeImage;
 //import net.minecraft.util.ResourceLocation;
-//import net.minecraft.util.text.TextComponent;
+//import net.minecraft.util.text.IFormattableTextComponent;
 // ELSE
 //import net.minecraft.network.chat.MutableComponent;
 //import com.mojang.blaze3d.platform.NativeImage;
@@ -68,7 +68,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 
     @Override
 // IF forge-1.16.5
-//    public TextComponent getProcessMessage(int i)  {
+//    public IFormattableTextComponent getProcessMessage(int i)  {
 // ELSE
 //    public MutableComponent getProcessMessage(int i)  {
 // END IF
