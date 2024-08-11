@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ChatImageIndex;
 import net.minecraft.client.Minecraft;
-import net.minecraft.server.level.ServerPlayer;
 
 
 import java.util.HashMap;
@@ -54,10 +53,10 @@ public class ChatImagePacket {
     /**
      * 服务端接收 图片文件分块 的处理
      *
-     * @param player ServerPlayer
+     * @param player #ServerPlayer#
      * @param res    String
      */
-    public static void serverFileChannelReceived(ServerPlayer player, String res) {
+    public static void serverFileChannelReceived(#ServerPlayer# player, String res) {
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
         HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
         blocks.put(title.index, res);
@@ -69,7 +68,7 @@ public class ChatImagePacket {
                 // 通知之前请求但是没图片的客户端
                 List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
-                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), (ServerPlayer) player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
+                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
                     LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
                 }
                 USER_CACHE_MAP.put(title.url, Lists.newArrayList());
@@ -108,7 +107,7 @@ public class ChatImagePacket {
         }
     }
 
-    public static void serverFileInfoChannelReceived(ServerPlayer player, String url) {
+    public static void serverFileInfoChannelReceived(#ServerPlayer# player, String url) {
         if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
             HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
             Integer total = FILE_COUNT_MAP.get(url);

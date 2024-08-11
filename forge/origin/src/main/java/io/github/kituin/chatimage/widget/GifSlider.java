@@ -2,7 +2,7 @@ package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 // IF forge-1.16.5
-//import net.minecraft.util.text.ITextComponent;
+//import #Component#;
 //import net.minecraftforge.fml.client.gui.widget.Slider;
 // ELSE
 //import net.minecraft.network.chat.Component;
@@ -46,9 +46,9 @@ public class GifSlider extends SettingSliderWidget {
 
     
 // IF forge-1.16.5
-//public static ITextComponent tooltip() {
+//public static #Component# tooltip() {
 // ELSE
-//    public static Component tooltip() {
+//    public static #Component# tooltip() {
 // END IF
         return createTranslatableComponent("gif.chatimage.tooltip");
     }
