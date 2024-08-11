@@ -1,13 +1,6 @@
 package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-// IF forge-1.16.5
-//import net.minecraft.util.text.IFormattableTextComponent;
-//import net.minecraft.util.text.ITextComponent;
-//import net.minecraftforge.fml.client.gui.widget.Slider;
-// ELSE
-//import net.minecraft.network.chat.Component;
-// END IF
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -19,13 +12,8 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 public class LimitSlider extends SettingSliderWidget {
     protected final LimitType limitType;
 
-// IF forge-1.16.5
-//    protected final ITextComponent title;
-//    public LimitSlider(int x, int y, int width, int height, ITextComponent title, int value, float max, LimitType limitType, SettingSliderWidget.OnTooltip tooltip) {
-// ELSE
-//    protected final Component title;
-//    public LimitSlider(int x, int y, int width, int height, Component title, int value, float max, LimitType limitType, SettingSliderWidget.OnTooltip tooltip) {
-// END IF
+    protected final #Component# title;
+    public LimitSlider(int x, int y, int width, int height, #Component# title, int value, float max, LimitType limitType, SettingSliderWidget.OnTooltip tooltip) {
         super(x, y, width, height, value, 1F, max, tooltip);
         this.title = title;
         this.limitType = limitType;
@@ -47,10 +35,7 @@ public class LimitSlider extends SettingSliderWidget {
         }
         ChatImageConfig.saveConfig(CONFIG);
     }
-    public static ITextComponent tooltip(LimitType limitType) {
-// ELSE
-    //public static Component tooltip(LimitType limitType) {
-// END IF
+    public static #Component# tooltip(LimitType limitType) {
         switch (limitType) {
             case WIDTH:
                 return createTranslatableComponent("width.limit.chatimage.tooltip");

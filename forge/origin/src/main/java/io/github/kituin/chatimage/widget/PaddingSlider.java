@@ -1,12 +1,7 @@
 package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-// IF forge-1.16.5
-//import net.minecraft.util.text.ITextComponent;
-//import net.minecraftforge.fml.client.gui.widget.Slider;
-// ELSE
-//import net.minecraft.network.chat.Component;
-// END IF
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -17,13 +12,9 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 public class PaddingSlider extends SettingSliderWidget {
     protected final PaddingType paddingType;
 
-// IF forge-1.16.5
-//    protected final ITextComponent title;
-//    public PaddingSlider(int x, int y, int width, int height, ITextComponent title, int value, float max, PaddingType paddingType, SettingSliderWidget.OnTooltip tooltip) {
-// ELSE
-//    protected final Component title;
-//    public PaddingSlider(int x, int y, int width, int height, Component title, int value, float max, PaddingType paddingType, SettingSliderWidget.OnTooltip tooltip) {
-// END IF
+    protected final #Component# title;
+    public PaddingSlider(int x, int y, int width, int height, #Component# title, int value, float max, PaddingType paddingType, SettingSliderWidget.OnTooltip tooltip) {
+
         super(x, y, width, height, value, 0F, max, tooltip);
         this.title = title;
         this.paddingType = paddingType;
@@ -52,11 +43,7 @@ public class PaddingSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-// IF forge-1.16.5
-//    public static ITextComponent tooltip(PaddingType paddingType) {
-// ELSE
-//    public static Component tooltip(PaddingType paddingType) {
-// END IF
+    public static #Component# tooltip(PaddingType paddingType) {
         switch (paddingType) {
             case TOP:
                 return createTranslatableComponent("top.padding.chatimage.tooltip");

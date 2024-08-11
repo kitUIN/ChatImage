@@ -1,12 +1,6 @@
 package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-// IF forge-1.16.5
-//import #Component#;
-//import net.minecraftforge.fml.client.gui.widget.Slider;
-// ELSE
-//import net.minecraft.network.chat.Component;
-// END IF
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -23,17 +17,7 @@ public class GifSlider extends SettingSliderWidget {
         super(x, y, width, height, CONFIG.gifSpeed, 1, 20, tooltip);
         this.updateMessage();
     }
-    
-// IF forge-1.16.5
-//public static class GifSliderUpdate implements Slider.ISlider {
-//    @Override
-//    public void onChangeSliderValue(Slider slider) {
-//        CONFIG.gifSpeed = (int) (slider.sliderValue * (slider.maxValue - slider.minValue) + slider.minValue);
-//        ChatImageConfig.saveConfig(CONFIG);
-//    }
-//}
-// ELSE
-// END IF
+
     @Override
     protected void updateMessage() {
         this.setMessage(composeGenericOptionComponent(createTranslatableComponent("gif.chatimage.gui"),
@@ -43,13 +27,7 @@ public class GifSlider extends SettingSliderWidget {
     }
 
 
-
-    
-// IF forge-1.16.5
-//public static #Component# tooltip() {
-// ELSE
-//    public static #Component# tooltip() {
-// END IF
+    public static #Component# tooltip() {
         return createTranslatableComponent("gif.chatimage.tooltip");
     }
 }

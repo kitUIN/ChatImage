@@ -1,16 +1,7 @@
 package io.github.kituin.chatimage.widget;
 
 // IF forge-1.16.5
-//import net.minecraft.util.text.ITextComponent;
 //import net.minecraft.client.Minecraft;
-//import net.minecraft.util.math.MathHelper;
-//import net.minecraft.client.gui.widget.AbstractSlider;
-// ELSE
-//import net.minecraft.util.Mth;
-//import net.minecraft.network.chat.Component;
-//import net.minecraft.client.gui.components.AbstractSliderButton;
-// END IF
-// IF forge-1.16.5
 //import com.mojang.blaze3d.matrix.MatrixStack;
 // ELSE IF forge-1.18.2
 //import com.mojang.blaze3d.vertex.PoseStack;
@@ -25,11 +16,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 
 
 @OnlyIn(Dist.CLIENT)
-// IF forge-1.16.5
-//public abstract class SettingSliderWidget extends AbstractSlider {
-// ELSE
-//public abstract class SettingSliderWidget extends AbstractSliderButton {
-// END IF
+public abstract class SettingSliderWidget extends #AbstractSliderButton# {
     public static final SettingSliderWidget.OnTooltip NO_TOOLTIP = (p_93740_, p_93741_, p_93742_, p_93743_) -> {
     };
     protected final SettingSliderWidget.OnTooltip onTooltip;
@@ -46,21 +33,13 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
         super(x, y, width, height, createLiteralComponent(""), 0.0);
         this.min = min;
         this.max = max;
-// IF forge-1.16.5
-//        this.value = ((MathHelper.clamp((float) value, min, max) - min) / (max - min));
-// ELSE
-//        this.value = ((Mth.clamp((float) value, min, max) - min) / (max - min));
-// END IF
+        this.value = ((#Mth#.clamp((float) value, min, max) - min) / (max - min));
         this.applyValue();
         this.onTooltip = tooltip;
     }
 
     public void applyValue() {
-// IF forge-1.16.5
-//        this.position = (int) MathHelper.lerp(MathHelper.clamp(this.value, 0.0, 1.0), this.min, this.max);
-// ELSE
-//        this.position = (int) Mth.lerp(Mth.clamp(this.value, 0.0, 1.0), this.min, this.max);
-// END IF
+        this.position = (int) #Mth#.lerp(#Mth#.clamp(this.value, 0.0, 1.0), this.min, this.max);
     }
 // IF forge-1.16.5
 //    public void renderToolTip(MatrixStack p_283427_, int p_281447_, int p_282852_) {
@@ -83,12 +62,8 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 //    public void renderWidget(GuiGraphics p_283427_, int pMouseX, int pMouseY, float p_282409_) {
 //        super.renderWidget(p_283427_, pMouseX, pMouseY, p_282409_);
 // END IF
-// IF forge-1.16.5
-//        if (this.isHovered()) {
-// ELSE
-//            if (this.isHoveredOrFocused()) {
-// END IF
-                this.renderToolTip(p_283427_, pMouseX, pMouseY);
+        if (this.#isHoveredOrFocused#()) {
+            this.renderToolTip(p_283427_, pMouseX, pMouseY);
         }
     }
     public void onClick(double p_93588_, double p_93589_) {
@@ -110,11 +85,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 //        void onTooltip(SettingSliderWidget p_93753_, GuiGraphics p_283427_, int p_281447_, int p_282852_);
 // END IF
 
-// IF forge-1.16.5
-//        default void narrateTooltip(Consumer<ITextComponent> p_168842_) {
-// ELSE
-//            default void narrateTooltip(Consumer<Component> p_168842_) {
-// END IF
+        default void narrateTooltip(Consumer<#Component#> p_168842_) {
         }
     }
 }

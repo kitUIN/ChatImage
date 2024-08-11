@@ -1,12 +1,7 @@
 package io.github.kituin.chatimage.widget;
 
 import io.github.kituin.ChatImageCode.ChatImageConfig;
-// IF forge-1.16.5
-//import net.minecraft.util.text.ITextComponent;
-//import net.minecraftforge.fml.client.gui.widget.Slider;
-// ELSE
-//import net.minecraft.network.chat.Component;
-// END IF
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -31,12 +26,7 @@ public class TimeOutSlider extends SettingSliderWidget {
         ChatImageConfig.saveConfig(CONFIG);
     }
 
-// IF forge-1.16.5
-//    public static ITextComponent tooltip() {
-// ELSE
-//    public static Component tooltip() {
-// END IF
-
+    public static #Component# tooltip() {
         return createTranslatableComponent("timeout.chatimage.tooltip");
     }
 }
