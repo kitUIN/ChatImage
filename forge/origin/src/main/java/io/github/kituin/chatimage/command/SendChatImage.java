@@ -11,9 +11,9 @@ import net.minecraft.client.Minecraft;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 
-public class SendChatImage implements Command<CommandSourceStack> {
+public class SendChatImage implements Command<#CommandSourceStack#> {
     @Override
-    public int run(CommandContext<CommandSourceStack> context) {
+    public int run(CommandContext<#CommandSourceStack#> context) {
         String url = StringArgumentType.getString(context, "url");
         ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {

@@ -17,7 +17,6 @@ import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,14 +32,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+// IF > forge-1.18.2
+//import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+// END IF
 // IF forge-1.16.5
 //import net.minecraftforge.fml.ExtensionPoint;
 // ELSE
-//import net.minecraft.commands.CommandSourceStack;
 //import net.minecraft.commands.Commands;
-//import net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory;
 //import net.minecraftforge.client.event.RegisterClientCommandsEvent;
-//import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 //import net.minecraftforge.event.server.ServerStartingEvent;
 // END IF
 
@@ -71,18 +70,6 @@ public class ChatImage {
         LOGGER.info("[ChatImage]Channel Register");
     }
 
-
-    @SubscribeEvent
-// IF forge-1.16.5
-//    public void onServerStarting(RegisterCommandsEvent event) {
-// ELSE
-//        public void onServerStarting(ServerStartingEvent event) {
-// END IF
-        LOGGER.info("[ChatImage]Server starting");
-
-    }
-
-
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         static{
@@ -90,7 +77,7 @@ public class ChatImage {
             CONFIG = ChatImageConfig.loadConfig();
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
-// IF > forge-1.16.5
+// IF > forge-1.18.2
 //    @SubscribeEvent
 //    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
 //        KeyBindings.init(event);
@@ -106,19 +93,17 @@ public class ChatImage {
 //            LOGGER.info("KeyBindings Register");
 //            ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY,
 //                    () -> (mc, screen) -> new ConfigScreen(screen));
-//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
-//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
 // ELSE
-//            ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
-//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
-//            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
+//            ModLoadingContext.get().registerExtensionPoint(#ConfigScreenFactory#.class, () -> new #ConfigScreenFactory#((minecraft, screen) -> new ConfigScreen(screen)));
 //            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
 // END IF
+            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
+            MinecraftForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
         }
 // IF > forge-1.16.5
 //        public static void onClientCommand(RegisterClientCommandsEvent event) {
-//            CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
-//            LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
+//            CommandDispatcher<#CommandSourceStack#> dispatcher = event.getDispatcher();
+//            LiteralCommandNode<#CommandSourceStack#> cmd = dispatcher.register(
 //                    Commands.literal(MOD_ID)
 //                            .then(Commands.literal("send")
 //                                    .then(Commands.argument("name", StringArgumentType.string())
@@ -143,11 +128,7 @@ public class ChatImage {
 //        }
 // END IF
 
-// IF forge-1.16.5
-//    public static void onKeyInput(InputEvent.KeyInputEvent event) {
-// ELSE
-//        public static void onKeyInput(InputEvent.Key event) {
-// END IF
+        public static void onKeyInput(#InputEvent.Key# event) {
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));
             }
@@ -158,5 +139,8 @@ public class ChatImage {
         }
 
     }
+
+
+
 
 }
