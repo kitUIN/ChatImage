@@ -6,24 +6,14 @@ import com.mojang.brigadier.context.CommandContext;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import net.minecraft.client.Minecraft;
-// IF forge-1.16.5
-//import net.minecraft.command.CommandSource;
-// ELSE
-//import net.minecraft.commands.CommandSourceStack;
-// END IF
+
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 
-// IF forge-1.16.5
-//public class SendChatImage implements Command<CommandSource> {
-//    @Override
-//    public int run(CommandContext<CommandSource> context) {
-// ELSE
-//public class SendChatImage implements Command<CommandSourceStack> {
-//    @Override
-//    public int run(CommandContext<CommandSourceStack> context) {
-// END IF
+public class SendChatImage implements Command<CommandSourceStack> {
+    @Override
+    public int run(CommandContext<CommandSourceStack> context) {
         String url = StringArgumentType.getString(context, "url");
         ChatImageCode.Builder builder = ChatImageCodeInstance.createBuilder().setUrlForce(url);
         try {
