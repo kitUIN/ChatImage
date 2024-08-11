@@ -5,15 +5,6 @@ import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 
-// IF forge-1.16.5
-//import net.minecraft.client.renderer.texture.NativeImage;
-//import net.minecraft.util.ResourceLocation;
-//import net.minecraft.util.text.IFormattableTextComponent;
-// ELSE
-//import net.minecraft.network.chat.MutableComponent;
-//import com.mojang.blaze3d.platform.NativeImage;
-//import net.minecraft.resources.ResourceLocation;
-// END IF
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,8 +24,8 @@ public class ChatImageClientAdapter implements IClientAdapter {
     }
 
     @Override
-    public ChatImageFrame.TextureReader<ResourceLocation> loadTexture(InputStream image) throws IOException {
-        NativeImage nativeImage = NativeImage.read(image);
+    public ChatImageFrame.TextureReader<#ResourceLocation#> loadTexture(InputStream image) throws IOException {
+        #NativeImage# nativeImage = #NativeImage#.read(image);
         return new ChatImageFrame.TextureReader<>(
                 Minecraft.getInstance().getTextureManager().register(MOD_ID + "/chatimage",
                         new DynamicTexture(nativeImage)),
@@ -67,11 +58,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
     }
 
     @Override
-// IF forge-1.16.5
-//    public IFormattableTextComponent getProcessMessage(int i)  {
-// ELSE
-//    public MutableComponent getProcessMessage(int i)  {
-// END IF
+    public #MutableComponent# getProcessMessage(int i)  {
         return createTranslatableComponent("process.chatimage.message", i);
     }
 }
