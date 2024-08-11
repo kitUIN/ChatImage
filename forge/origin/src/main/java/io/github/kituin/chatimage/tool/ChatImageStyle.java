@@ -4,11 +4,7 @@ package io.github.kituin.chatimage.tool;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
+
 // IF > forge-1.20.2
 //import com.mojang.serialization.Codec;
 //import com.mojang.serialization.DataResult;
@@ -23,12 +19,12 @@ import net.minecraft.network.chat.Style;
 public class ChatImageStyle {
 
 // IF <= forge-1.20.2
-//    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE =
-//            new HoverEvent.Action<>("show_chatimage", true,
+//    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE =
+//            new #HoverEvent#.Action<>("show_chatimage", true,
 //                    ChatImageCode::fromJson,
 //                    ChatImageCode::toJson,
 //                    ChatImageStyle::fromJson);
-//    public static ChatImageCode fromJson(Component text) {
+//    public static ChatImageCode fromJson(#Component# text) {
 //        try {
 //            return ChatImageCodeInstance.createBuilder().fromCode(text.toString()).build();
 //        } catch (InvalidChatImageCodeException e) {
@@ -41,7 +37,7 @@ public class ChatImageStyle {
 //        Codec.BOOL.optionalFieldOf("nsfw",false).forGetter(ChatImageCode::isNsfw)
 //).apply(obj, (url, nsfw) ->  new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
 //    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
-//    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE  = new HoverEvent.Action<>(
+//    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE  = new #HoverEvent#.Action<>(
 //            "show_chatimage",
 //            true,
 //            CODEC,ChatImageStyle::legacySerializer);
@@ -60,8 +56,8 @@ public class ChatImageStyle {
      * @param code {@link ChatImageCode}
      * @return 悬浮图片样式
      */
-    public static Style getStyleFromCode(ChatImageCode code) {
-        return getStyleFromCode(code, ChatFormatting.GREEN);
+    public static #Style# getStyleFromCode(ChatImageCode code) {
+        return getStyleFromCode(code, #ChatFormatting#.GREEN);
     }
 
     /**
@@ -71,22 +67,22 @@ public class ChatImageStyle {
      * @param color 颜色
      * @return 悬浮图片样式
      */
-    public static Style getStyleFromCode(ChatImageCode code, ChatFormatting color) {
-        Style style = Style.EMPTY.withHoverEvent(new HoverEvent(SHOW_IMAGE, code));
+    public static #Style# getStyleFromCode(ChatImageCode code, #ChatFormatting# color) {
+        #Style# style = #Style#.EMPTY.withHoverEvent(new #HoverEvent#(SHOW_IMAGE, code));
         return style.withColor(color);
     }
     /**
      * 获取悬浮图片样式的Text消息
      *
      * @param code {@link ChatImageCode}
-     * @return {@link MutableComponent}
+     * @return {@link #MutableComponent#}
      */
-    public static MutableComponent messageFromCode(ChatImageCode code) {
-        MutableComponent t = code.messageFromCode(
+    public static #MutableComponent# messageFromCode(ChatImageCode code) {
+        #MutableComponent# t = code.messageFromCode(
                 SimpleUtil::createLiteralComponent,
                 SimpleUtil::createTranslatableComponent,
-                MutableComponent::append);
-        Style style = ChatImageStyle.getStyleFromCode(code);
+                #MutableComponent#::append);
+        #Style# style = ChatImageStyle.getStyleFromCode(code);
         return t.setStyle(style);
     }
 
