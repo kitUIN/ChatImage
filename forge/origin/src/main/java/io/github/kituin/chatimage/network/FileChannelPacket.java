@@ -4,7 +4,6 @@ package io.github.kituin.chatimage.network;
 // ELSE
 //import net.minecraftforge.event.network.CustomPayloadEvent;
 // END IF
-import net.minecraft.server.level.ServerPlayer;
 
 import static io.github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
 
