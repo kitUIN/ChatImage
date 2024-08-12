@@ -19,6 +19,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#Button.OnPress#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.widget.button.Button.OnPress" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.gui.widget.button.Button.IPressable" />
+            </map>
+          </value>
+        </entry>
         <entry key="#Button.OnTooltip#">
           <value>
             <map>

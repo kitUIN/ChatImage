@@ -17,7 +17,7 @@ import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
  * @author kitUIN
  */
 public class ChatImageStyle {
-
+    
 // IF <= forge-1.20.2
 //    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE =
 //            new #HoverEvent#.Action<>("show_chatimage", true,

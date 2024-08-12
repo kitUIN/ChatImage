@@ -45,7 +45,7 @@ public class SimpleUtil {
 // END IF
     }
 
-    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button#.OnPress pOnPress, #Button.OnTooltip# pOnTooltip){
+    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button.OnPress# pOnPress, #Button.OnTooltip# pOnTooltip){
 // IF >= forge-1.20
 //        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).tooltip(pOnTooltip).build();
 // ELSE
@@ -53,7 +53,7 @@ public class SimpleUtil {
 // END IF
     }
 
-    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button#.OnPress pOnPress){
+    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button.OnPress# pOnPress){
 // IF >= forge-1.20
 //        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).build();
 // ELSE
