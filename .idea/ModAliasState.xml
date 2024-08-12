@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AliasState">
+    <option name="alias">
+      <map>
+        <entry key="#AbstractSliderButton#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.components.AbstractSliderButton" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.gui.widget.AbstractSlider" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ChannelBuilder#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5 &amp;&amp; &lt;= forge-1.20" value="net.minecraftforge.network.NetworkRegistry.ChannelBuilder" />
+              <entry key="&gt; forge-1.20" value="net.minecraftforge.network.ChannelBuilder" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.network.NetworkRegistry.ChannelBuilder" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ChatFormatting#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.ChatFormatting" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.TextFormatting" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ClickEvent#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.ClickEvent" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.event.ClickEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#CommandSourceStack#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.commands.CommandSourceStack" />
+              <entry key="forge-1.16.5" value="net.minecraft.command.CommandSource" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Component#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Component" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.ITextComponent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ConfigScreenFactory#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.18.2" value="net.minecraftforge.client.ConfigScreenHandler.ConfigScreenFactory" />
+              <entry key="forge-1.18.2" value="net.minecraftforge.client.ConfigGuiHandler.ConfigGuiFactory" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#FriendlyByteBuf#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.FriendlyByteBuf" />
+              <entry key="forge-1.16.5" value="net.minecraft.network.PacketBuffer" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#HoverEvent#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.HoverEvent" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.event.HoverEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#InputEvent.Key#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.Key" />
+              <entry key="forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Mth#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.util.Mth" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.math.MathHelper" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#MutableComponent#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.MutableComponent" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.IFormattableTextComponent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#NativeImage#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="com.mojang.blaze3d.platform.NativeImage" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.renderer.texture.NativeImage" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#NetworkDirection#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraftforge.network.NetworkDirection" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.network.NetworkDirection" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#NetworkEvent#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5 &amp;&amp; &lt;= forge-1.20" value="net.minecraftforge.network.NetworkEvent" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.network.NetworkEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#PacketDistributor#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraftforge.network.PacketDistributor" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.network.PacketDistributor" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ResourceLocation#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.resources.ResourceLocation" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.ResourceLocation" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#ServerPlayer#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.server.level.ServerPlayer" />
+              <entry key="forge-1.16.5" value="net.minecraft.entity.player.ServerPlayerEntity" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#SimpleChannel#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5 &amp;&amp; &lt;= forge-1.20" value="net.minecraftforge.network.simple.SimpleChannel" />
+              <entry key="&gt; forge-1.20" value="net.minecraftforge.network.SimpleChannel" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.network.simple.SimpleChannel" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Style#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Style" />
+              <entry key="forge-1.16.5" value="net.minecraft.util.text.Style" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#isHoveredOrFocused#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="isHoveredOrFocused" />
+              <entry key="forge-1.16.5" value="isHovered" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#sendSystemMessage#">
+          <value>
+            <map>
+              <entry key="&lt;= forge-1.18.2" value="sendSuccess" />
+              <entry key="&gt; forge-1.18.2" value="sendSystemMessage" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
