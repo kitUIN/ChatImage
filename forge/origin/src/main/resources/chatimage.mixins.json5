@@ -1,0 +1,21 @@
+// ONEWAY
+// RENAME chatimage.mixins.json
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.kituin.chatimage.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "chatimage.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "BookViewScreenMixin",
+    "ChatComponentMixin",
+    "FileDragMixin",
+    "GuiGraphicsMixin",
+    "ScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
