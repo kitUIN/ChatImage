@@ -28,7 +28,7 @@ import static io.github.kituin.chatimage.ChatImage.CONFIG;
  * @author kitUIN
  */
 @Mixin(NewChatGui.class)
-public class NewChatGuiMixin extends AbstractGui {
+public class ChatComponentMixin extends AbstractGui {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
