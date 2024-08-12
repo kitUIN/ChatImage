@@ -11,6 +11,23 @@
             </map>
           </value>
         </entry>
+        <entry key="#Button#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.components.Button" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.gui.widget.button.Button" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Button.OnTooltip#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5 &amp;&amp; &lt; forge-1.20" value="net.minecraft.client.gui.components.Button.OnTooltip" />
+              <entry key="&gt;= forge-1.20" value="net.minecraft.client.gui.components.Tooltip" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.gui.widget.button.Button.ITooltip" />
+            </map>
+          </value>
+        </entry>
         <entry key="#ChannelBuilder#">
           <value>
             <map>
@@ -65,6 +82,15 @@
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.FriendlyByteBuf" />
               <entry key="forge-1.16.5" value="net.minecraft.network.PacketBuffer" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#GuiGraphics#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5 &amp;&amp; &lt;= forge-1.19" value="com.mojang.blaze3d.vertex.PoseStack" />
+              <entry key="&gt; forge-1.19" value="net.minecraft.client.gui.GuiGraphics" />
+              <entry key="forge-1.16.5" value="com.mojang.blaze3d.matrix.MatrixStack" />
             </map>
           </value>
         </entry>
@@ -140,6 +166,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#Screen#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.screens.Screen" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.gui.screen.Screen" />
+            </map>
+          </value>
+        </entry>
         <entry key="#ServerPlayer#">
           <value>
             <map>
@@ -170,6 +204,22 @@
             <map>
               <entry key="&gt; forge-1.16.5" value="isHoveredOrFocused" />
               <entry key="forge-1.16.5" value="isHovered" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#kituin$addRenderableWidget#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="addRenderableWidget" />
+              <entry key="forge-1.16.5" value="addButton" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#kituin$createButtonTooltip#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.20" value="createButtonTooltip" />
+              <entry key="&gt;= forge-1.20" value="net.minecraft.client.gui.components.Tooltip.create" />
             </map>
           </value>
         </entry>

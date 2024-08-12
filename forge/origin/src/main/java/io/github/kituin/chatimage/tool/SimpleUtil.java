@@ -2,8 +2,8 @@ package io.github.kituin.chatimage.tool;
 
 // IF forge-1.16.5
 //import net.minecraft.util.text.*;
-// ELSE IF forge-1.18.2
-import net.minecraft.network.chat.*;
+// ELSE
+//import net.minecraft.network.chat.*;
 // END IF
 
 public class SimpleUtil {
@@ -42,6 +42,22 @@ public class SimpleUtil {
 //        return new TranslationTextComponent("options.generic_value", text, value);
 // ELSE
 //        return net.minecraft.network.chat.CommonComponents.optionNameValue(text, value);
+// END IF
+    }
+
+    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button#.OnPress pOnPress, #Button.OnTooltip# pOnTooltip){
+// IF >= forge-1.20
+//        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).tooltip(pOnTooltip).build();
+// ELSE
+//        return #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress, pOnTooltip);
+// END IF
+    }
+
+    public static #Button# createButton(int pX, int pY, int pWidth, int pHeight, #Component# pMessage, #Button#.OnPress pOnPress){
+// IF >= forge-1.20
+//        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).build();
+// ELSE
+//        return #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress);
 // END IF
     }
 }
