@@ -139,6 +139,7 @@
             <map>
               <entry key="&lt;= forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
               <entry key="&gt; forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.Key" />
+              <entry key="forge-1.16.5" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
             </map>
           </value>
         </entry>

@@ -40,9 +40,9 @@ public class FileBackChannel {
     public static <MSG> void sendToPlayer(MSG message, #ServerPlayer# player) {
 
 // IF <= forge-1.20
-//        INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
+//        INSTANCE.send(#PacketDistributor#.PLAYER.with(() -> player), message);
 // ELSE
-//                INSTANCE.send(message,PacketDistributor.PLAYER.with(player));
+//                INSTANCE.send(message, #PacketDistributor#.PLAYER.with(player));
 // END IF
     }
 }

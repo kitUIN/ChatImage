@@ -48,7 +48,7 @@ public class FileChannel {
 // IF <= forge-1.20
 //        INSTANCE.sendToServer(message);
 // ELSE
-//        INSTANCE.send(message, PacketDistributor.SERVER.noArg());
+//        INSTANCE.send(message, #PacketDistributor#.SERVER.noArg());
 // END IF
     }
 }
