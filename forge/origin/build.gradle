@@ -34,7 +34,7 @@ def javaVersion = JavaVersion.toVersion(targetJavaVersion)
 java {
     sourceCompatibility = '21'
     targetCompatibility = '21'
-    toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
     archivesBaseName = project.archives_base_name
     withSourcesJar()
 }
@@ -152,6 +152,7 @@ afterEvaluate {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.release.set(targetJavaVersion)
 }
 
 
