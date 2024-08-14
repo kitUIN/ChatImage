@@ -33,14 +33,9 @@ def targetJavaVersion = project.targetJavaVersion.toInteger()
 def javaVersion = JavaVersion.toVersion(targetJavaVersion)
 java {
     sourceCompatibility = '21'
-    targetCompatibility = javaVersion
-    if (JavaVersion.current() < javaVersion) {
-        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-    }
+    targetCompatibility = '21'
+    toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     archivesBaseName = project.archives_base_name
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
 
@@ -142,7 +137,6 @@ repositories {
         name "kituinMavenReleases"
         url "https://maven.kituin.fun/releases"
     }
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so:
 }
 mixin {
     add sourceSets.main, "chatimage.refmap.json"
@@ -158,7 +152,9 @@ afterEvaluate {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.release.set(targetJavaVersion)
 }
+
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
