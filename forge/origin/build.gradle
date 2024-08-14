@@ -32,7 +32,7 @@ version = mod_version + "+" + project.minecraft_version  + "+forge"
 def targetJavaVersion = project.targetJavaVersion.toInteger()
 def javaVersion = JavaVersion.toVersion(targetJavaVersion)
 java {
-    sourceCompatibility = javaVersion
+    sourceCompatibility = '21'
     targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
