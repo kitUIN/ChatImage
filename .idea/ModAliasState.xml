@@ -85,6 +85,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#ChatScreen#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.gui.screen.ChatScreen" />
+              <entry key="&gt;= forge-1.18.2" value="net.minecraft.client.gui.screens.ChatScreen" />
+            </map>
+          </value>
+        </entry>
         <entry key="#ClickEvent#">
           <value>
             <map>
@@ -188,6 +196,14 @@
             <map>
               <entry key="&lt; forge-1.18.2" value="net.minecraft.util.math.vector.Matrix4f" />
               <entry key="&gt;= forge-1.18.2" value="com.mojang.math.Matrix4f" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#MouseHandler#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.MouseHelper" />
+              <entry key="&gt;= forge-1.18.2" value="net.minecraft.client.MouseHandler" />
             </map>
           </value>
         </entry>
