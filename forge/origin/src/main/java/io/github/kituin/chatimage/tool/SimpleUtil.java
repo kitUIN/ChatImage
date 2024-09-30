@@ -29,7 +29,7 @@ public class SimpleUtil {
     }
 
     public static #MutableComponent# createLiteralComponent(String text) {
-// IF forge-1.16.5 || forge-1.18.2
+// IF forge-1.16.5
 //        return new StringTextComponent(text);
 // ELSE IF forge-1.18.2
 //        return new TextComponent(text);
@@ -49,7 +49,7 @@ public class SimpleUtil {
 // IF >= forge-1.20
 //        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).tooltip(pOnTooltip).build();
 // ELSE
-//        return #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress, pOnTooltip);
+//        return new #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress, pOnTooltip);
 // END IF
     }
 
@@ -57,7 +57,7 @@ public class SimpleUtil {
 // IF >= forge-1.20
 //        return #Button#.builder(pMessage, pOnPress).bounds(pX, pY, pWidth, pHeight).build();
 // ELSE
-//        return #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress);
+//        return new #Button#(pX, pY, pWidth, pHeight, pMessage, pOnPress);
 // END IF
     }
 }

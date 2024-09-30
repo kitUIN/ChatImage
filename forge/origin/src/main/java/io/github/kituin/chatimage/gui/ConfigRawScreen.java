@@ -19,7 +19,11 @@ public abstract class ConfigRawScreen extends #Screen# {
 //        drawCenteredString(matrixStack, this.font,
 //                title, this.width / 2, this.height / 4 - 16, 16764108);
 // ELSE
-//        renderBackground(matrixStack, mouseX, mouseY, partialTicks);
+// IF forge-1.20
+//        renderBackground(matrixStack);
+// ELSE
+//         renderBackground(matrixStack, mouseX, mouseY, partialTicks);
+// END IF
 //        matrixStack.drawCenteredString(this.font,
 //                title, this.width / 2, this.height / 4 - 16, 16764108);
 // END IF

@@ -35,7 +35,7 @@ public class FileChannel {
         INSTANCE.messageBuilder(FileChannelPacket.class, nextID(), #NetworkDirection#.PLAY_TO_SERVER)
                 .encoder(FileChannelPacket::toBytes)
                 .decoder(FileChannelPacket::new)
-// IF <= forge-1.20
+// IF < forge-1.19
 //                .consumer(FileChannelPacket::serverHandle)
 // ELSE
 //                .consumerNetworkThread(FileChannelPacket::serverHandle)

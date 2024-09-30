@@ -5,7 +5,6 @@ import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
 import net.minecraft.client.Minecraft;
-import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
 
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.chatimage.ChatImage.CONFIG;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
@@ -30,7 +30,6 @@ public class #kituin$ChatComponentMixinClass#  {
     @Shadow
     @Final
     private Minecraft minecraft;
-    @Shadow @Final private static Logger LOGGER;
     
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",
@@ -130,7 +129,7 @@ public class #kituin$ChatComponentMixinClass#  {
             }
             return res;
         } catch (Exception e) {
-            LOGGER.warn("识别失败:{}", e.getMessage());
+            LOGGER.error("识别失败:{}", e.getMessage());
             return message;
         }
     }

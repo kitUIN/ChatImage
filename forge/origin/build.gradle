@@ -32,9 +32,11 @@ version = mod_version + "+" + project.minecraft_version  + "+forge"
 def targetJavaVersion = project.targetJavaVersion.toInteger()
 def javaVersion = JavaVersion.toVersion(targetJavaVersion)
 java {
-    sourceCompatibility = '21'
-    targetCompatibility = '21'
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
     archivesBaseName = project.archives_base_name
     withSourcesJar()
 }

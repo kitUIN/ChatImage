@@ -30,7 +30,7 @@ public class FileBackChannel {
         INSTANCE.messageBuilder(FileInfoChannelPacket.class, nextID(), #NetworkDirection#.PLAY_TO_CLIENT)
                 .encoder(FileInfoChannelPacket::toBytes)
                 .decoder(FileInfoChannelPacket::new)
-// IF <= forge-1.20
+// IF < forge-1.19
 //                .consumer(FileInfoChannelPacket::clientHandle)
 // ELSE
 //                .consumerNetworkThread(FileInfoChannelPacket::clientHandle)

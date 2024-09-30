@@ -3,6 +3,14 @@
   <component name="AliasState">
     <option name="alias">
       <map>
+        <entry key="#AbstractContainerEventHandler#">
+          <value>
+            <map>
+              <entry key="&lt;= forge-1.16.5" value="net.minecraft.client.gui.FocusableGui" />
+              <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.components.events.AbstractContainerEventHandler" />
+            </map>
+          </value>
+        </entry>
         <entry key="#AbstractSliderButton#">
           <value>
             <map>
@@ -16,6 +24,14 @@
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.screens.inventory.BookViewScreen" />
               <entry key="forge-1.16.5" value="net.minecraft.client.gui.screen.ReadBookScreen" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#BufferBuilder#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.renderer.BufferBuilder" />
+              <entry key="&gt;= forge-1.18.2" value="com.mojang.blaze3d.vertex.BufferBuilder" />
             </map>
           </value>
         </entry>
@@ -109,11 +125,35 @@
             </map>
           </value>
         </entry>
+        <entry key="#DefaultVertexFormat#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.renderer.vertex.DefaultVertexFormats" />
+              <entry key="&gt;= forge-1.18.2" value="com.mojang.blaze3d.vertex.DefaultVertexFormat" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#FormattedCharSequence#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.util.IReorderingProcessor" />
+              <entry key="&gt;= forge-1.18.2" value="net.minecraft.util.FormattedCharSequence" />
+            </map>
+          </value>
+        </entry>
         <entry key="#FriendlyByteBuf#">
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.FriendlyByteBuf" />
               <entry key="forge-1.16.5" value="net.minecraft.network.PacketBuffer" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#GuiComponent#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.gui.AbstractGui" />
+              <entry key="&gt;= forge-1.18.2" value="net.minecraft.client.gui.GuiComponent" />
             </map>
           </value>
         </entry>
@@ -140,6 +180,14 @@
               <entry key="&lt;= forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
               <entry key="&gt; forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.Key" />
               <entry key="forge-1.16.5" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Matrix4f#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.util.math.vector.Matrix4f" />
+              <entry key="&gt;= forge-1.18.2" value="com.mojang.math.Matrix4f" />
             </map>
           </value>
         </entry>
@@ -201,6 +249,15 @@
             </map>
           </value>
         </entry>
+        <entry key="#Renderable#">
+          <value>
+            <map>
+              <entry key="&lt;= forge-1.16.5" value="net.minecraft.client.gui.screen.IScreen, net.minecraft.client.gui.IRenderable" />
+              <entry key="&lt;= forge-1.19 &amp;&amp; &gt; forge-1.16.5" value="net.minecraft.client.gui.components.Widget" />
+              <entry key="&gt; forge-1.19" value="net.minecraft.client.gui.components.Renderable" />
+            </map>
+          </value>
+        </entry>
         <entry key="#ResourceLocation#">
           <value>
             <map>
@@ -239,6 +296,14 @@
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Style" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.Style" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#Tesselator#">
+          <value>
+            <map>
+              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.renderer.Tessellator" />
+              <entry key="&gt;= forge-1.18.2" value="com.mojang.blaze3d.vertex.Tesselator" />
             </map>
           </value>
         </entry>

@@ -32,7 +32,7 @@ public class DownloadFileChannel {
         INSTANCE.messageBuilder(DownloadFileChannelPacket.class, nextID(), #NetworkDirection#.PLAY_TO_CLIENT)
                 .decoder(DownloadFileChannelPacket::new)
                 .encoder(DownloadFileChannelPacket::toBytes)
-// IF <= forge-1.20
+// IF < forge-1.19
 //                .consumer(DownloadFileChannelPacket::clientHandle)
 // ELSE
 //                .consumerNetworkThread(DownloadFileChannelPacket::clientHandle)
