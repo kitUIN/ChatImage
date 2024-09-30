@@ -17,7 +17,7 @@ import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
  * @author kitUIN
  */
 public class ChatImageStyle {
-    
+
 // IF <= forge-1.20.2
 //    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE =
 //            new #HoverEvent#.Action<>("show_chatimage", true,
@@ -32,24 +32,25 @@ public class ChatImageStyle {
 //        }
 //    }
 // ELSE
-//public static final MapCodec<ChatImageCode> MAP_CODEC = RecordCodecBuilder.mapCodec(obj -> obj.group(
-//        Codec.STRING.fieldOf("url").forGetter(ChatImageCode::getUrl),
-//        Codec.BOOL.optionalFieldOf("nsfw",false).forGetter(ChatImageCode::isNsfw)
-//).apply(obj, (url, nsfw) ->  new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
+//    public static final MapCodec<ChatImageCode> MAP_CODEC = RecordCodecBuilder.mapCodec(obj -> obj.group(
+//            Codec.STRING.fieldOf("url").forGetter(ChatImageCode::getUrl),
+//            Codec.BOOL.optionalFieldOf("nsfw", false).forGetter(ChatImageCode::isNsfw)
+//    ).apply(obj, (url, nsfw) -> new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
 //    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
-//    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE  = new #HoverEvent#.Action<>(
+//    public static final #HoverEvent#.Action<ChatImageCode> SHOW_IMAGE = new #HoverEvent#.Action<>(
 //            "show_chatimage",
 //            true,
-//            CODEC,ChatImageStyle::legacySerializer);
+//            CODEC, ChatImageStyle::legacySerializer);
 //
-//    private static DataResult<ChatImageCode> legacySerializer(Component text) {
+//    private static DataResult<ChatImageCode> legacySerializer(#Component# text) {
 //        try {
-//            return DataResult.success(  new ChatImageCode.Builder().fromCode(text.toString()).build());
+//            return DataResult.success(new ChatImageCode.Builder().fromCode(text.toString()).build());
 //        } catch (InvalidChatImageCodeException e) {
 //            return DataResult.error(() -> "Failed to parse ChatImageCode: " + e.getMessage());
 //        }
 //    }
 // END IF
+
     /**
      * 文本 悬浮图片样式
      *
@@ -63,7 +64,7 @@ public class ChatImageStyle {
     /**
      * 文本 悬浮图片样式
      *
-     * @param code {@link ChatImageCode}
+     * @param code  {@link ChatImageCode}
      * @param color 颜色
      * @return 悬浮图片样式
      */
@@ -71,6 +72,7 @@ public class ChatImageStyle {
         #Style# style = #Style#.EMPTY.withHoverEvent(new #HoverEvent#(SHOW_IMAGE, code));
         return style.withColor(color);
     }
+
     /**
      * 获取悬浮图片样式的Text消息
      *
