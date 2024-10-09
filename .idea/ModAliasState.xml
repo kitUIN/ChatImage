@@ -191,6 +191,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#LiteralContents#">
+          <value>
+            <map>
+              <entry key="&gt;= neoforge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents.LiteralContents" />
+              <entry key="neoforge-1.20.2" value="net.minecraft.network.chat.contents.LiteralContents" />
+            </map>
+          </value>
+        </entry>
         <entry key="#Matrix4f#">
           <value>
             <map>
