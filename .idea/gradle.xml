@@ -87,7 +87,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.16.5" />
-        <option name="gradleJvm" value="azul-21" />
+        <option name="gradleJvm" value="temurin-1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.16.5" />
@@ -96,7 +96,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.18.2" />
-        <option name="gradleJvm" value="azul-21" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.18.2" />
@@ -105,7 +105,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.19" />
-        <option name="gradleJvm" value="azul-21" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.19" />
@@ -114,7 +114,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20" />
-        <option name="gradleJvm" value="azul-21" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.20" />
@@ -123,7 +123,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20.2" />
-        <option name="gradleJvm" value="azul-21" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.20.2" />
@@ -132,10 +132,28 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/forge/forge-1.20.3" />
-        <option name="gradleJvm" value="zulu-21" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/forge/forge-1.20.3" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/neoforge/neoforge-1.20.2" />
+        <option name="gradleJvm" value="zulu-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/neoforge/neoforge-1.20.2" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/neoforge/neoforge-1.20.3" />
+        <option name="gradleJvm" value="zulu-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/neoforge/neoforge-1.20.3" />
           </set>
         </option>
       </GradleProjectSettings>
