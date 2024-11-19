@@ -9,10 +9,7 @@ import io.github.kituin.chatimage.command.SendChatImage;
 import io.github.kituin.chatimage.gui.ConfigScreen;
 import io.github.kituin.chatimage.integration.ChatImageClientAdapter;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
-import io.github.kituin.chatimage.network.DownloadFileChannel;
-import io.github.kituin.chatimage.network.FileBackChannel;
-import io.github.kituin.chatimage.network.FileChannel;
-import io.github.kituin.chatimage.network.FileInfoChannel;
+import io.github.kituin.chatimage.network.*;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
@@ -25,7 +22,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.neoforge.client.ConfigScreenHandler;
 import net.neoforged.neoforge.client.event.InputEvent;
@@ -33,9 +29,15 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+// IF > neoforge-1.20.3
+//// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+// ELSE
+//import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+// END IF
 import java.io.File;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
@@ -51,20 +53,37 @@ public class ChatImage {
     static {
         ChatImageCodeInstance.LOGGER = new ChatImageLogger();
     }
+
     public ChatImage(IEventBus modEventBus) {
         NeoForge.EVENT_BUS.register(this);
-        modEventBus.addListener(ChatImage::init);
+// IF <= neoforge-1.20.3
+//        modEventBus.addListener(ChatImage::init);
+// ELSE
+//
+//        modEventBus.addListener(ChatImage::register);
+// END IF
     }
 
-
-    public static void init(FMLCommonSetupEvent event) {
-        event.enqueueWork(FileChannel::register);
-        event.enqueueWork(FileInfoChannel::registerMessage);
-        event.enqueueWork(FileBackChannel::register);
-        event.enqueueWork(DownloadFileChannel::register);
-        LOGGER.info("[ChatImage]Channel Register");
-    }
-
+// IF <= neoforge-1.20.3
+//     public static void init(FMLCommonSetupEvent event) {
+//         event.enqueueWork(FileChannel::register);
+//         event.enqueueWork(FileInfoChannel::registerMessage);
+//         event.enqueueWork(FileBackChannel::register);
+//         event.enqueueWork(DownloadFileChannel::register);
+//         LOGGER.info("[ChatImage]Channel Register");
+//     }
+// ELSE
+//    public static void register(final RegisterPayloadHandlerEvent event) {
+//        final IPayloadRegistrar registrar = event.registrar(MOD_ID).optional();
+//        registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
+//                .client(DownloadFileChannelHandler.getInstance()::clientHandle));
+//        registrar.play(FileChannelPacket.FILE_CHANNEL, FileChannelPacket::new, handler -> handler
+//                .server(FileChannelHandler.getInstance()::serverHandle));
+//        registrar.play(FileInfoChannelPacket.FILE_INFO, FileInfoChannelPacket::new, handler -> handler
+//                .client(FileInfoChannelHandler.getInstance()::clientHandle)
+//                .server(FileInfoChannelHandler.getInstance()::serverHandle));
+//    }
+// END IF
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
@@ -74,16 +93,18 @@ public class ChatImage {
 
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
-        static{
+        static {
             ChatImageConfig.configFile = new File(FMLPaths.CONFIGDIR.get().toFile(), "chatimageconfig.json");
             CONFIG = ChatImageConfig.loadConfig();
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
+
         @SubscribeEvent
         public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
             KeyBindings.init(event);
             LOGGER.info("KeyBindings Register");
         }
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
@@ -94,6 +115,7 @@ public class ChatImage {
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
 
         }
+
         public static void onClientCommand(RegisterClientCommandsEvent event) {
             CommandDispatcher<CommandSourceStack> dispatcher = event.getDispatcher();
             LiteralCommandNode<CommandSourceStack> cmd = dispatcher.register(
@@ -119,6 +141,7 @@ public class ChatImage {
 
             );
         }
+
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBindings.gatherManaKeyMapping.consumeClick()) {
                 Minecraft.getInstance().setScreen(new ConfigScreen(Minecraft.getInstance().screen));

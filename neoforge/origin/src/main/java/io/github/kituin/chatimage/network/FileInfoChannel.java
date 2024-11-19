@@ -1,3 +1,4 @@
+// ONLY <= neoforge-1.20.3
 package io.github.kituin.chatimage.network;
 
 import net.minecraft.resources.ResourceLocation;
@@ -37,4 +38,3 @@ public class FileInfoChannel {
     }
 
 }
-
