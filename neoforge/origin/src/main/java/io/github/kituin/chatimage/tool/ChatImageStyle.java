@@ -33,12 +33,15 @@ public class ChatImageStyle {
 //        Codec.BOOL.optionalFieldOf("nsfw",false).forGetter(ChatImageCode::isNsfw)
 //).apply(obj, (url, nsfw) ->  new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
 //    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
-//    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE  = new HoverEvent.Action<>(
+//    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE  = new HoverEvent.Action<ChatImageCode>(
 //            "show_chatimage",
 //            true,
 //            CODEC,
-//            ChatImageStyle::legacySerializer);
-//
+// IF >= neoforge-1.21.0
+//            (text, p_329862_) -> legacySerializer(text));
+// ELSE
+//             ChatImageStyle::legacySerializer);
+// END IF
 //    private static DataResult<ChatImageCode> legacySerializer(Component text) {
 //        try {
 //            return DataResult.success(  new ChatImageCode.Builder().fromCode(text.toString()).build());

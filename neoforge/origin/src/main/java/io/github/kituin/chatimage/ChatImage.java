@@ -11,7 +11,6 @@ import io.github.kituin.chatimage.integration.ChatImageClientAdapter;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
 import io.github.kituin.chatimage.network.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
@@ -41,6 +40,7 @@ import org.apache.logging.log4j.Logger;
 // ELSE IF >= neoforge-1.21.0
 //import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 //import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+//import net.neoforged.fml.common.EventBusSubscriber;
 // ELSE
 //import net.neoforged.neoforge.client.ConfigScreenHandler;
 // END IF
@@ -122,9 +122,9 @@ public class ChatImage {
 
     }
 // IF >= neoforge-1.21.0
-    @MOD.EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+//    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 // ELSE
-    @MOD.EventBusSubscriber(modid = MOD_ID, bus = MOD.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+//    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 // END IF
     public static class ClientModEvents {
         static {
