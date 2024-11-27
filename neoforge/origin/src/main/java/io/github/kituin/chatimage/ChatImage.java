@@ -29,15 +29,17 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-// IF > neoforge-1.20.3
-//// import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+// IF <= neoforge-1.20.3
+//import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 // ELSE
 //import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+//import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 // END IF
+
 import java.io.File;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
