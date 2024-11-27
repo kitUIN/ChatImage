@@ -182,6 +182,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#IPayloadRegistrar#">
+          <value>
+            <map>
+              <entry key="&lt;neoforge-1.21.0 &amp;&amp; &gt;=neoforge-1.20.4" value="net.neoforged.neoforge.network.registration.IPayloadRegistrar" />
+              <entry key="&gt;= neoforge-1.21.0" value="net.neoforged.neoforge.network.registration.PayloadRegistrar" />
+            </map>
+          </value>
+        </entry>
         <entry key="#InputEvent.Key#">
           <value>
             <map>
@@ -270,6 +278,22 @@
               <entry key="&gt;= forge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.StringTextComponent" />
               <entry key="forge-1.18.2" value="net.minecraft.network.chat.TextComponent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#PlayPayloadContext#">
+          <value>
+            <map>
+              <entry key="&gt; neoforge-1.20.3 &amp;&amp; &lt; neoforge-1.21.0" value="net.neoforged.neoforge.network.handling.PlayPayloadContext" />
+              <entry key="&gt;= neoforge-1.21.0" value="net.neoforged.neoforge.network.handling.IPayloadContext" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#RegisterPayloadHandlerEvent#">
+          <value>
+            <map>
+              <entry key="&lt;neoforge-1.21.0 &amp;&amp; &gt;=neoforge-1.20.4" value="net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent" />
+              <entry key="&gt;=neoforge-1.21.0" value="net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent" />
             </map>
           </value>
         </entry>
