@@ -2,7 +2,7 @@ package io.github.kituin.chatimage.network;
 
 import net.minecraft.network.FriendlyByteBuf;
 
-// IF <= neoforg-1.20.3
+// IF <= neoforge-1.20.3
 //
 // import net.neoforged.neoforge.network.NetworkEvent;
 // import org.apache.logging.log4j.LogManager;
