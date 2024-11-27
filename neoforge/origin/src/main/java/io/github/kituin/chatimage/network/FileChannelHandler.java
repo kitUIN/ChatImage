@@ -2,7 +2,6 @@
 package io.github.kituin.chatimage.network;
 
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 
 import static io.github.kituin.chatimage.network.ChatImagePacket.serverFileChannelReceived;
 
@@ -20,7 +19,10 @@ public class FileChannelHandler {
     /**
      * 服务端接收 图片文件分块 的处理
      */
-    public void serverHandle(final FileChannelPacket packet, final PlayPayloadContext ctx) {
-        ctx.player().ifPresent(player -> serverFileChannelReceived((ServerPlayer) player, packet.message()));
+    public void serverHandle(final FileChannelPacket packet, final #PlayPayloadContext# ctx) {
+        ServerPlayer player = (ServerPlayer) ctx.player();
+        if (player == null) {
+            serverFileChannelReceived(player, packet.message());
+        }
     }
 }

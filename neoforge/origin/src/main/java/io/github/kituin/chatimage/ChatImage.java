@@ -10,6 +10,7 @@ import io.github.kituin.chatimage.gui.ConfigScreen;
 import io.github.kituin.chatimage.integration.ChatImageClientAdapter;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
 import io.github.kituin.chatimage.network.*;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
@@ -30,14 +31,14 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // IF <= neoforge-1.20.3
 //import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-// ELSE
-//import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
-//import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+// ELSE IF >= neoforge-1.21.0
+// import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 // END IF
 
 import java.io.File;
@@ -75,15 +76,39 @@ public class ChatImage {
 //         LOGGER.info("[ChatImage]Channel Register");
 //     }
 // ELSE
-//    public static void register(final RegisterPayloadHandlerEvent event) {
-//        final IPayloadRegistrar registrar = event.registrar(MOD_ID).optional();
-//        registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
-//                .client(DownloadFileChannelHandler.getInstance()::clientHandle));
-//        registrar.play(FileChannelPacket.FILE_CHANNEL, FileChannelPacket::new, handler -> handler
-//                .server(FileChannelHandler.getInstance()::serverHandle));
-//        registrar.play(FileInfoChannelPacket.FILE_INFO, FileInfoChannelPacket::new, handler -> handler
-//                .client(FileInfoChannelHandler.getInstance()::clientHandle)
-//                .server(FileInfoChannelHandler.getInstance()::serverHandle));
+//    public static void register(final #RegisterPayloadHandlerEvent# event) {
+//        final #IPayloadRegistrar# registrar = event.registrar(MOD_ID).optional();
+        // IF >= neoforge-1.21.0
+//        registrar.playToClient(DownloadFileChannelPacket.TYPE,
+//                DownloadFileChannelPacket.CODEC,
+//                new DirectionalPayloadHandler<>(
+//                        DownloadFileChannelHandler.getInstance()::clientHandle,
+//                        null
+//                )
+//        );
+//        registrar.playToServer(FileChannelPacket.TYPE,
+//                FileChannelPacket.CODEC,
+//                new DirectionalPayloadHandler<>(
+//                        null,
+//                        FileChannelHandler.getInstance()::serverHandle
+//                )
+//        );
+//        registrar.playBidirectional(FileInfoChannelPacket.TYPE,
+//                FileInfoChannelPacket.CODEC,
+//                new DirectionalPayloadHandler<>(
+//                        FileInfoChannelHandler.getInstance()::clientHandle,
+//                        FileInfoChannelHandler.getInstance()::serverHandle
+//                )
+//        );
+// ELSE
+// registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
+//         .client(DownloadFileChannelHandler.getInstance()::clientHandle));
+// registrar.play(FileChannelPacket.FILE_CHANNEL, FileChannelPacket::new, handler -> handler
+//         .server(FileChannelHandler.getInstance()::serverHandle));
+// registrar.play(FileInfoChannelPacket.FILE_INFO, FileInfoChannelPacket::new, handler -> handler
+//         .client(FileInfoChannelHandler.getInstance()::clientHandle)
+//         .server(FileInfoChannelHandler.getInstance()::serverHandle));
+// END IF
 //    }
 // END IF
 
@@ -112,6 +137,7 @@ public class ChatImage {
 
             LOGGER.info("[ChatImage]Client start");
             ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
+
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);

@@ -37,31 +37,45 @@ import net.minecraft.network.FriendlyByteBuf;
 //
 // }
 // ELSE
+//import io.netty.buffer.ByteBuf;
+//import net.minecraft.network.codec.ByteBufCodecs;
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.resources.ResourceLocation;
 //import org.jetbrains.annotations.NotNull;
 //
 //import static io.github.kituin.chatimage.ChatImage.MOD_ID;
-//
+///**
+// * 客户端发送文件分块到服务器通道(Map)
+// */
 //public record FileChannelPacket(String message) implements CustomPacketPayload {
-//    /**
-//     * 客户端发送文件分块到服务器通道(Map)
-//     */
-//    public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
 //
 //    public FileChannelPacket(FriendlyByteBuf buffer) {
 //        this(buffer.readUtf());
 //    }
+// IF >= neoforge-1.21.0
+//   public static ResourceLocation FILE_CHANNEL =  ResourceLocation.fromNamespaceAndPath(MOD_ID, "file_channel");
+//   public static final CustomPacketPayload.Type<FileChannelPacket> TYPE =
+//           new CustomPacketPayload.Type<>(FILE_CHANNEL);
+//   public Type<? extends CustomPacketPayload> type() {
+//       return TYPE;
+//   }
+//    public static final net.minecraft.network.codec.StreamCodec<ByteBuf, FileChannelPacket> CODEC =
+//            net.minecraft.network.codec.StreamCodec.composite(
+//                    ByteBufCodecs.STRING_UTF8,
+//                    FileChannelPacket::message,
+//                    FileChannelPacket::new
+//            );
+// ELSE
+//     public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
+//     public void write(final FriendlyByteBuf buffer) {
+//         buffer.writeUtf(message());
+//     }
 //
-//    public void write(final FriendlyByteBuf buffer) {
-//        buffer.writeUtf(message());
-//    }
-//
-//    @Override
-//    public @NotNull ResourceLocation id() {
-//        return FILE_CHANNEL;
-//    }
-//
+//     @Override
+//     public @NotNull ResourceLocation id() {
+//         return FILE_CHANNEL;
+//     }
+// END IF
 //
 //}
 // END IF

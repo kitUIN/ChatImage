@@ -1,7 +1,6 @@
 // ONLY > neoforge-1.20.3
 package io.github.kituin.chatimage.network;
 
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 
 import static io.github.kituin.chatimage.network.ChatImagePacket.clientDownloadFileChannelReceived;
 
@@ -15,7 +14,7 @@ public class DownloadFileChannelHandler {
         return INSTANCE;
     }
 
-    public void clientHandle(final DownloadFileChannelPacket data, final PlayPayloadContext context) {
+    public void clientHandle(final DownloadFileChannelPacket data, final #PlayPayloadContext# context) {
         clientDownloadFileChannelReceived(data.message());
     }
 }

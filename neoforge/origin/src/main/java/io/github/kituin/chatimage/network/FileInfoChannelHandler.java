@@ -4,7 +4,6 @@ package io.github.kituin.chatimage.network;
 import com.google.common.collect.Lists;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import net.minecraft.server.level.ServerPlayer;
-import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,10 +24,13 @@ public class FileInfoChannelHandler {
         return INSTANCE;
     }
 
-    public void serverHandle(final FileInfoChannelPacket packet, final PlayPayloadContext ctx) {
-        ctx.player().ifPresent(player -> serverFileInfoChannelReceived((ServerPlayer) player, packet.message()));
+    public void serverHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext#  ctx) {
+        ServerPlayer player = (ServerPlayer) ctx.player();
+        if (player == null) {
+            serverFileInfoChannelReceived(player, packet.message());
+        }
     }
-    public void clientHandle(final FileInfoChannelPacket packet, final PlayPayloadContext ctx) {
+    public void clientHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext# ctx) {
         String data = packet.message();
         String url = data.substring(6);
         LOGGER.info(url);
@@ -41,4 +43,3 @@ public class FileInfoChannelHandler {
         }
     }
 }
-
