@@ -11,6 +11,7 @@ import io.github.kituin.chatimage.integration.ChatImageClientAdapter;
 import io.github.kituin.chatimage.integration.ChatImageLogger;
 import io.github.kituin.chatimage.network.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterClientCommandsEvent;
 import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 import io.github.kituin.ChatImageCode.ChatImageConfig;
@@ -24,7 +25,6 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLPaths;
-import net.neoforged.neoforge.client.ConfigScreenHandler;
 import net.neoforged.neoforge.client.event.InputEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -37,8 +37,12 @@ import org.apache.logging.log4j.Logger;
 
 // IF <= neoforge-1.20.3
 //import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+//import net.neoforged.neoforge.client.ConfigScreenHandler;
 // ELSE IF >= neoforge-1.21.0
-// import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
+//import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
+//import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+// ELSE
+//import net.neoforged.neoforge.client.ConfigScreenHandler;
 // END IF
 
 import java.io.File;
@@ -78,7 +82,7 @@ public class ChatImage {
 // ELSE
 //    public static void register(final #RegisterPayloadHandlerEvent# event) {
 //        final #IPayloadRegistrar# registrar = event.registrar(MOD_ID).optional();
-        // IF >= neoforge-1.21.0
+// IF >= neoforge-1.21.0
 //        registrar.playToClient(DownloadFileChannelPacket.TYPE,
 //                DownloadFileChannelPacket.CODEC,
 //                new DirectionalPayloadHandler<>(
@@ -101,13 +105,13 @@ public class ChatImage {
 //                )
 //        );
 // ELSE
-// registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
-//         .client(DownloadFileChannelHandler.getInstance()::clientHandle));
-// registrar.play(FileChannelPacket.FILE_CHANNEL, FileChannelPacket::new, handler -> handler
-//         .server(FileChannelHandler.getInstance()::serverHandle));
-// registrar.play(FileInfoChannelPacket.FILE_INFO, FileInfoChannelPacket::new, handler -> handler
-//         .client(FileInfoChannelHandler.getInstance()::clientHandle)
-//         .server(FileInfoChannelHandler.getInstance()::serverHandle));
+//         registrar.play(DownloadFileChannelPacket.DOWNLOAD_FILE_CHANNEL, DownloadFileChannelPacket::new, handler -> handler
+//                 .client(DownloadFileChannelHandler.getInstance()::clientHandle));
+//         registrar.play(FileChannelPacket.FILE_CHANNEL, FileChannelPacket::new, handler -> handler
+//                 .server(FileChannelHandler.getInstance()::serverHandle));
+//         registrar.play(FileInfoChannelPacket.FILE_INFO, FileInfoChannelPacket::new, handler -> handler
+//                 .client(FileInfoChannelHandler.getInstance()::clientHandle)
+//                 .server(FileInfoChannelHandler.getInstance()::serverHandle));
 // END IF
 //    }
 // END IF
@@ -117,8 +121,11 @@ public class ChatImage {
         LOGGER.info("[ChatImage]Server starting");
 
     }
-
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+// IF >= neoforge-1.21.0
+    @MOD.EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+// ELSE
+    @MOD.EventBusSubscriber(modid = MOD_ID, bus = MOD.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+// END IF
     public static class ClientModEvents {
         static {
             ChatImageConfig.configFile = new File(FMLPaths.CONFIGDIR.get().toFile(), "chatimageconfig.json");
@@ -136,8 +143,11 @@ public class ChatImage {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             LOGGER.info("[ChatImage]Client start");
-            ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
-
+// IF >= neoforge-1.21.0
+//            ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (minecraft, screen) -> new ConfigScreen(screen));
+// ELSE
+//             ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));
+// END IF
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onKeyInput);
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onClientStaring);
             NeoForge.EVENT_BUS.addListener(ClientModEvents::onClientCommand);
