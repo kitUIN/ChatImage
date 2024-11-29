@@ -24,13 +24,13 @@ public class FileInfoChannelHandler {
     }
 
     public void serverHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext#  ctx) {
-// IF <= neoforge-1.21.0
-////         ServerPlayer player = (ServerPlayer) ctx.player();
-////         if (player == null) {
-////             serverFileInfoChannelReceived(player, packet.message());
-////         }
+// IF >= neoforge-1.21.0
+//         ServerPlayer player = (ServerPlayer) ctx.player();
+//         if (player == null) {
+//             serverFileInfoChannelReceived(player, packet.message());
+//         }
 // ELSE
-        ctx.player().ifPresent(player -> serverFileInfoChannelReceived((ServerPlayer) player, packet.message()));
+//         ctx.player().ifPresent(player -> serverFileInfoChannelReceived((ServerPlayer) player, packet.message()));
 // END IF
     }
     public void clientHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext# ctx) {
