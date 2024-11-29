@@ -24,7 +24,7 @@ public class FileInfoChannelHandler {
     }
 
     public void serverHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext#  ctx) {
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //         ServerPlayer player = (ServerPlayer) ctx.player();
 //         if (player == null) {
 //             serverFileInfoChannelReceived(player, packet.message());

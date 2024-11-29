@@ -30,13 +30,14 @@ public class ChatImagePacket {
     /**
      * 发送给服务器一连串网络包(异步)
      * 文件频道
+     *
      * @param bufs 网络包数据列表
      */
     public static void sendFilePackets(List<String> bufs) {
         for (String buf : bufs) {
 // IF <= neoforge-1.20.3
 //             FileChannel.sendToServer(new FileChannelPacket(buf));
-// ELSE IF < neoforge-1.21.0
+// ELSE IF < neoforge-1.20.5
 //            PacketDistributor.SERVER.noArg().send(new FileChannelPacket(buf));
 // ELSE
 //            PacketDistributor.sendToServer(new FileChannelPacket(buf));
@@ -53,7 +54,7 @@ public class ChatImagePacket {
         if (Minecraft.getInstance().player != null) {
 // IF <= neoforge-1.20.3
 //             FileInfoChannel.sendToServer(new FileInfoChannelPacket(url));
-// ELSE IF < neoforge-1.21.0
+// ELSE IF < neoforge-1.20.5
 //            PacketDistributor.SERVER.noArg().send(new FileInfoChannelPacket(url));
 // ELSE
 //            PacketDistributor.sendToServer(new FileInfoChannelPacket(url));
@@ -74,32 +75,28 @@ public class ChatImagePacket {
      */
     public static void serverFileChannelReceived(ServerPlayer player, String res) {
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
-        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
-        blocks.put(title.index, res);
-        SERVER_BLOCK_CACHE.put(title.url, blocks);
-        FILE_COUNT_MAP.put(title.url, title.total);
-        LOGGER.info("[FileChannel->Server:" + title.index + "/" + title.total + "]" + title.url);
+        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.createBlock(title, res);
+        LOGGER.info("[FileChannel->Server:{}/{}]{}", title.index, title.total, title.url);
         if (title.total == blocks.size()) {
-            if (USER_CACHE_MAP.containsKey(title.url)) {
+            List<String> names = SERVER_BLOCK_CACHE.getUsers(title.url);
+            if (names != null) {
                 // 通知之前请求但是没图片的客户端
-                List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
                     ServerPlayer serverPlayer = player.server.getPlayerList().getPlayer(UUID.fromString(uuid));
 // IF <= neoforge-1.20.3
 //             FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), serverPlayer);
-// ELSE IF < neoforge-1.21.0
+// ELSE IF < neoforge-1.20.5
 //            serverPlayer.connection.send(new FileInfoChannelPacket("true->" + title.url));
 // ELSE
 //                    PacketDistributor.sendToPlayer(serverPlayer, new FileInfoChannelPacket("true->" + title.url));
 // END IF
-
                     LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
                 }
-                USER_CACHE_MAP.put(title.url, Lists.newArrayList());
             }
             LOGGER.info("[FileChannel->Server]" + title.url);
         }
     }
+
     /**
      * 客户端接收 下载文件分块 处理
      *
@@ -110,47 +107,44 @@ public class ChatImagePacket {
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
         CLIENT_CACHE_MAP.put(title.url, blocks);
-        LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
+        LOGGER.info("[DownloadFile(" + title.index + "/" + title.total + ")]" + title.url);
         if (blocks.size() == title.total) {
-            mergeFileBlocks(title.url,blocks);
+            mergeFileBlocks(title.url, blocks);
             LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
         }
     }
+
     public static void serverFileInfoChannelReceived(net.minecraft.server.level.ServerPlayer player, String url) {
-        if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
-            HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
-            Integer total = FILE_COUNT_MAP.get(url);
-            if (total == list.size()) {
-                // 服务器存在缓存图片,直接发送给客户端
-                for (Map.Entry<Integer, String> entry : list.entrySet()) {
-                    LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
+        HashMap<Integer, String> list = SERVER_BLOCK_CACHE.getBlock(url);
+        if (list != null) {
+            // 服务器存在缓存图片,直接发送给客户端
+            for (Map.Entry<Integer, String> entry : list.entrySet()) {
+                LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
 // IF <= neoforge-1.20.3
 //             DownloadFileChannel.sendToPlayer(new DownloadFileChannelPacket(entry.getValue()), player);
-// ELSE IF < neoforge-1.21.0
+// ELSE IF < neoforge-1.20.5
 //            player.connection.send(new DownloadFileChannelPacket(entry.getValue()));
 // ELSE
-//                    PacketDistributor.sendToPlayer(player, new DownloadFileChannelPacket(entry.getValue()));
+//                PacketDistributor.sendToPlayer(player, new DownloadFileChannelPacket(entry.getValue()));
 // END IF
-                }
-                LOGGER.info("[GetFileChannel->Client]{}", url);
-                return;
             }
+            LOGGER.info("[GetFileChannel->Client]{}", url);
+            return;
         }
-        //通知客户端无文件
+
+        // 通知客户端无文件
 // IF <= neoforge-1.20.3
 //             FileBackChannel.sendToPlayer(new FileInfoChannelPacket("null->" + url), player);
-// ELSE IF < neoforge-1.21.0
+// ELSE IF < neoforge-1.20.5
 //            player.connection.send(new FileInfoChannelPacket("null->" + url));
 // ELSE
 //        PacketDistributor.sendToPlayer(player, new FileInfoChannelPacket("null->" + url));
 // END IF
         LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送
-        List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
         if (player != null) {
-            names.add(player.getStringUUID());
+            SERVER_BLOCK_CACHE.tryAddUser(url, player.getStringUUID());
         }
-        USER_CACHE_MAP.put(url, names);
         LOGGER.info("[GetFileChannel]记录uuid:{}", player.getStringUUID());
         LOGGER.info("[not found in server]{}", url);
     }

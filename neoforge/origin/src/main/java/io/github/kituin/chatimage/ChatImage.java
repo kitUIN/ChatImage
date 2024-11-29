@@ -37,12 +37,12 @@ import org.apache.logging.log4j.Logger;
 // IF <= neoforge-1.20.3
 //import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 //import net.neoforged.neoforge.client.ConfigScreenHandler;
-// ELSE IF >= neoforge-1.21.0
+// ELSE IF >= neoforge-1.20.5
 //import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
 //import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 //import net.neoforged.fml.common.EventBusSubscriber;
 // ELSE
-//import net.neoforged.neoforge.client.ConfigScreenHandler;
+// import net.neoforged.neoforge.client.ConfigScreenHandler;
 // END IF
 
 import java.io.File;
@@ -82,7 +82,7 @@ public class ChatImage {
 // ELSE
 //    public static void register(final #RegisterPayloadHandlerEvent# event) {
 //        final #IPayloadRegistrar# registrar = event.registrar(MOD_ID).optional();
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //        registrar.playToClient(DownloadFileChannelPacket.TYPE,
 //                DownloadFileChannelPacket.CODEC,
 //                new DirectionalPayloadHandler<>(
@@ -121,7 +121,7 @@ public class ChatImage {
         LOGGER.info("[ChatImage]Server starting");
 
     }
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 // ELSE
 //    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -143,7 +143,7 @@ public class ChatImage {
         public static void onClientSetup(FMLClientSetupEvent event) {
 
             LOGGER.info("[ChatImage]Client start");
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //            ModLoadingContext.get().registerExtensionPoint(IConfigScreenFactory.class, () -> (minecraft, screen) -> new ConfigScreen(screen));
 // ELSE
 //             ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () -> new ConfigScreenHandler.ConfigScreenFactory((minecraft, screen) -> new ConfigScreen(screen)));

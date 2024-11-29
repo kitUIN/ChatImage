@@ -41,7 +41,7 @@ import net.minecraft.network.FriendlyByteBuf;
 //import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 //import net.minecraft.resources.ResourceLocation;
 //import org.jetbrains.annotations.NotNull;
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //import io.netty.buffer.ByteBuf;
 //import net.minecraft.network.codec.ByteBufCodecs;
 // END IF
@@ -54,8 +54,8 @@ import net.minecraft.network.FriendlyByteBuf;
 //    public FileChannelPacket(FriendlyByteBuf buffer) {
 //        this(buffer.readUtf());
 //    }
-// IF >= neoforge-1.21.0
-//   public static ResourceLocation FILE_CHANNEL =  ResourceLocation.fromNamespaceAndPath(MOD_ID, "file_channel");
+//   public static ResourceLocation FILE_CHANNEL =  #ResourceLocationfromNamespaceAndPath#(MOD_ID, "file_channel");
+// IF >= neoforge-1.20.5
 //   public static final CustomPacketPayload.Type<FileChannelPacket> TYPE =
 //           new CustomPacketPayload.Type<>(FILE_CHANNEL);
 //   public Type<? extends CustomPacketPayload> type() {
@@ -68,7 +68,6 @@ import net.minecraft.network.FriendlyByteBuf;
 //                    FileChannelPacket::new
 //            );
 // ELSE
-//     public static ResourceLocation FILE_CHANNEL = new ResourceLocation(MOD_ID, "file_channel");
 //     public void write(final FriendlyByteBuf buffer) {
 //         buffer.writeUtf(message());
 //     }

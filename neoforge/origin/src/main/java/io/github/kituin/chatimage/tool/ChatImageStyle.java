@@ -37,10 +37,10 @@ public class ChatImageStyle {
 //            "show_chatimage",
 //            true,
 //            CODEC,
-// IF >= neoforge-1.21.0
-//            (text, p_329862_) -> legacySerializer(text));
+// IF >= neoforge-1.20.5
+//           (text, p_329862_) -> legacySerializer(text));
 // ELSE
-//             ChatImageStyle::legacySerializer);
+//              ChatImageStyle::legacySerializer);
 // END IF
 //    private static DataResult<ChatImageCode> legacySerializer(Component text) {
 //        try {

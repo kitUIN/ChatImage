@@ -20,7 +20,7 @@ public class FileChannelHandler {
      * 服务端接收 图片文件分块 的处理
      */
     public void serverHandle(final FileChannelPacket packet, final #PlayPayloadContext# ctx) {
-// IF >= neoforge-1.21.0
+// IF >= neoforge-1.20.5
 //         ServerPlayer player = (ServerPlayer) ctx.player();
 //         if (player == null) {
 //             serverFileChannelReceived(player, packet.message());
