@@ -166,6 +166,14 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/neoforge/neoforge-1.21.0" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/neoforge/neoforge-1.21.0" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>

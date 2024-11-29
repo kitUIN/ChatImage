@@ -32,6 +32,67 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.3.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImage.forge-1.20.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.16.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.16.5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.16.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.16.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.18.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.18.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.18.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.18.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.4.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.19.4.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.20.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.21.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.21.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.21.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.fabric-1.21.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.16.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.16.5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.16.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.16.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.18.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.18.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.18.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.18.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.19.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.19.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.19.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.19.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ChatImageNew.forge-1.20.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.16.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.16.5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.16.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.16.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.18.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.18.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.18.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.18.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.4.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.19.4.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.5.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.20.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.21.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.21.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.21.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.fabric-1.21.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.16.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.16.5.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.18.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.18.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.19.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.19.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.19.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.19.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.main.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.test.iml" filepath="$PROJECT_DIR$/.idea/modules/IdeaProjects.ChatImageNew.forge-1.20.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fabric-1.16.5.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fabric-1.16.5.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fabric-1.16.5.test.iml" filepath="$PROJECT_DIR$/.idea/modules/fabric-1.16.5.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fabric-1.18.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fabric-1.18.2.main.iml" />
@@ -106,6 +167,20 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.main~1.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.main~1.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.test~1.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.fabric-1.21.test~1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.4.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.kituin.neoforge-1.20.4.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.2.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.2.test.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.2.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.3.test.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.3.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.4.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.4.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.20.4.test.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.20.4.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.21.0.main.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.21.0.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/neoforge-1.21.0.test.iml" filepath="$PROJECT_DIR$/.idea/modules/neoforge-1.21.0.test.iml" />
     </modules>
   </component>
 </project>
