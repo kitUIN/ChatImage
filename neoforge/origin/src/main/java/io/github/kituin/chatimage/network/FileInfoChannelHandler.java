@@ -13,8 +13,7 @@ import java.util.Map;
 
 import static io.github.kituin.ChatImageCode.ClientStorage.AddImageError;
 import static io.github.kituin.ChatImageCode.ServerStorage.*;
-import static io.github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
-import static io.github.kituin.chatimage.network.ChatImagePacket.serverFileInfoChannelReceived;
+import static io.github.kituin.chatimage.network.ChatImagePacket.*;
 
 public class FileInfoChannelHandler {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -25,10 +24,14 @@ public class FileInfoChannelHandler {
     }
 
     public void serverHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext#  ctx) {
-        ServerPlayer player = (ServerPlayer) ctx.player();
-        if (player == null) {
-            serverFileInfoChannelReceived(player, packet.message());
-        }
+// IF <= neoforge-1.21.0
+////         ServerPlayer player = (ServerPlayer) ctx.player();
+////         if (player == null) {
+////             serverFileInfoChannelReceived(player, packet.message());
+////         }
+// ELSE
+        ctx.player().ifPresent(player -> serverFileInfoChannelReceived((ServerPlayer) player, packet.message()));
+// END IF
     }
     public void clientHandle(final FileInfoChannelPacket packet, final #PlayPayloadContext# ctx) {
         String data = packet.message();
