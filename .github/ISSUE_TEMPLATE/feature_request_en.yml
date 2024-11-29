@@ -1,0 +1,40 @@
+name: ✨Feature Request
+description: Submit a feature request to help us improve the application experience
+title: "[Feature] My Title"
+assignees: kitUIN
+labels:
+  - "enhancement"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Note
+        💡 Please provide a detailed description of the feature you want to be added. This will help us understand your needs better 💡
+
+  - type: textarea
+    id: feature-description
+    validations:
+      required: true
+    attributes:
+      label: Feature Description
+      description: Please briefly describe the feature you are requesting
+      placeholder: |
+        Describe the feature you want to be implemented, including use cases and who would benefit from it.
+
+  - type: textarea
+    id: problem-solved
+    validations:
+      required: true
+    attributes:
+      label: Problem Solved
+      description: Why do you need this feature?
+      placeholder: |
+        Describe what problem this feature will solve or what improvement it will bring.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Add any other relevant information or context
+      placeholder: |
+        For example: related screenshots, designs, usage examples, etc.

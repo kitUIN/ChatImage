@@ -1,0 +1,103 @@
+name: 🐛Bug Report
+description: Submit a bug to help us improve the Mod experience
+title: "[Bug] My Title"
+assignees: kitUIN
+labels:
+  - "bug"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Foreword
+        🚨 Please ensure to fill out the following content completely. If necessary information is missing, the developers might close the issue without investigation 🚨
+
+  - type: textarea
+    id: description
+    validations:
+      required: true
+    attributes:
+      label: Bug Description
+      description: Please briefly describe the issue you encountered
+  - type: textarea
+    id: repro-steps
+    validations:
+      required: true
+    attributes:
+      label: Steps to Reproduce the Issue
+      render: plain text
+      description: Please provide the steps to reproduce the issue, or state the reason if not possible
+      placeholder: |
+        Clear and concise reproduction steps help developers identify the issue faster and assign higher priority.
+
+        Example steps:
+        1. Enter a new world
+        3. Click '....'
+        4. Scroll to '....'
+        5. Observe the issue
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Log Records
+      description: Please open the log folder and upload the log records (such as latest.log) from the day of the issue as an attachment to the issue
+  - type: dropdown
+    id: mod-loader
+    validations:
+      required: true
+    attributes:
+       label: Mod Loader
+       description: Select the type of loader where you found the issue
+       options:
+         - Forge
+         - Fabric
+         - NeoForge
+         - Quilt
+  - type: dropdown
+    id: mc-version
+    validations:
+      required: true
+    attributes:
+       label: Minecraft Version
+       description: Select the Minecraft version where you found the issue
+       options:
+         - 1.21.x
+         - 1.20.5/1.20.6
+         - 1.20.3/1.20.4
+         - 1.20/1.20.1/1.20.2
+         - 1.19.3/1.19.4
+         - 1.19.1/1.19.2
+         - 1.19
+         - 1.18.x
+         - 1.17.x
+         - 1.16.x
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Mod Version
+      description: The version of the Mod where you found the issue
+      placeholder: |
+        Mod version number
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Computer System | JAVA Version
+      description: Your computer system and JAVA version
+  - type: textarea
+    id: serverVersion
+    attributes:
+      label: Server Version
+      description: If the error occurred on a server, please provide the server core version number
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If possible, submitting screenshots will help us analyze the issue
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Notes
+      description: Add any information you think is necessary

@@ -1,0 +1,40 @@
+name: ✨Feature Request
+description: 提交一个新功能请求以帮助我们改善应用体验
+title: "[Feature] 我的标题"
+assignees: kitUIN
+labels:
+  - "enhancement"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 提示
+        💡 请详细描述您希望添加的新功能，这将有助于我们更好地理解您的需求 💡
+
+  - type: textarea
+    id: feature-description
+    validations:
+      required: true
+    attributes:
+      label: 功能描述
+      description: 请简要描述您希望的功能
+      placeholder: |
+        请在此处详细描述您希望实现的功能，包括能够使用的场景和受益的用户。
+
+  - type: textarea
+    id: problem-solved
+    validations:
+      required: true
+    attributes:
+      label: 问题解决
+      description: 您为什么认为需要这个功能？
+      placeholder: |
+        请描述该功能将解决什么问题或改进什么情况。
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 其他信息
+      description: 添加任何其他相关的信息或背景
+      placeholder: |
+        比如：相关的截图、设计图、使用示例等。
