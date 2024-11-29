@@ -1,4 +1,4 @@
-name: 测试NeoForge
+name: 测试NeoForge(jar)
 
 on:
   workflow_dispatch:
