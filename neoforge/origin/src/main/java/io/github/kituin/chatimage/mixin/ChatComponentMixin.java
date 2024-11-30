@@ -36,7 +36,11 @@ public class ChatComponentMixin  {
     @Shadow @Final private static Logger LOGGER;
 
     @ModifyVariable(at = @At("HEAD"),
-            method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V",
+// IF < neoforge-1.20.5
+//             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V",
+// ELSE
+//             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;Lnet/minecraft/client/GuiMessageTag;)V",
+// END IF
             argsOnly = true)
     public Component addMessage(Component p_241484_) {
         return chatimage$replaceMessage(p_241484_);

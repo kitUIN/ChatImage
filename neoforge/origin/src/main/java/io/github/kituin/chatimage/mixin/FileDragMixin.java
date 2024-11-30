@@ -22,7 +22,11 @@ public class FileDragMixin {
     private Minecraft minecraft;
 
     @Inject(at = @At("RETURN"), method = "onDrop")
-    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+    private void onFilesDropped(long window, List<Path> paths,
+// IF >= neoforge-1.21.0
+                                int p_350707_,
+// END IF
+                                CallbackInfo ci) {
         if (this.minecraft.screen != null && this.minecraft.player != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
