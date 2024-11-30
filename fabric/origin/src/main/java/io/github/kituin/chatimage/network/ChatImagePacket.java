@@ -193,15 +193,12 @@ public class ChatImagePacket {
 //        String res = buf.readString();
 // END IF
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
-        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
-        blocks.put(title.index, res);
-        SERVER_BLOCK_CACHE.put(title.url, blocks);
-        FILE_COUNT_MAP.put(title.url, title.total);
+        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.createBlock(title, res);
         LOGGER.info("[FileChannel->Server:{}/{}]{}", title.index, title.total, title.url);
         if (title.total == blocks.size()) {
-            if (USER_CACHE_MAP.containsKey(title.url)) {
+            List<String> names = SERVER_BLOCK_CACHE.getUsers(title.url);
+            if (names != null) {
                 // 通知之前请求但是没图片的客户端
-                List<String> names = USER_CACHE_MAP.get(title.url);
                 for (String uuid : names) {
                     ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
 // IF fabric-1.21 || fabric-1.20.5
@@ -211,7 +208,6 @@ public class ChatImagePacket {
 // END IF
                     LOGGER.info("[FileChannel->Client({})]{}", uuid, title.url);
                 }
-                USER_CACHE_MAP.put(title.url, Lists.newArrayList());
             }
             LOGGER.info("[FileChannel->Server]{}", title.url);
         }
@@ -229,22 +225,20 @@ public class ChatImagePacket {
 //    public static void serverGetFileChannelReceived(ServerPlayerEntity player, PacketByteBuf buf) {
 //        String url = buf.readString();
 // END IF
-        if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
-            HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
-            Integer total = FILE_COUNT_MAP.get(url);
-            if (total == list.size()) {
-                // 服务器存在缓存图片,直接发送给客户端
-                for (Map.Entry<Integer, String> entry : list.entrySet()) {
+        HashMap<Integer, String> list = SERVER_BLOCK_CACHE.getBlock(url);
+        if (list != null) {
+            // 服务器存在缓存图片,直接发送给客户端
+
+            for (Map.Entry<Integer, String> entry : list.entrySet()) {
 // IF fabric-1.21 || fabric-1.20.5
 //                    sendPacketAsync(player, new DownloadFileChannelPacket(entry.getValue()));
 // ELSE
 //                    sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createStringPacket(entry.getValue()));
 // END IF
-                    LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
-                }
-                LOGGER.info("[GetFileChannel->Client]{}", url);
-                return;
+                LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
             }
+            LOGGER.info("[GetFileChannel->Client]{}", url);
+            return;
         }
         // 通知客户端无文件
 // IF fabric-1.21 || fabric-1.20.5
@@ -254,9 +248,7 @@ public class ChatImagePacket {
 // END IF
         LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送
-        List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
-        names.add(player.getUuidAsString());
-        USER_CACHE_MAP.put(url, names);
+        SERVER_BLOCK_CACHE.tryAddUser(url, player.getUuidAsString());
         LOGGER.info("[GetFileChannel]记录uuid:{}", player.getUuidAsString());
     }
 
