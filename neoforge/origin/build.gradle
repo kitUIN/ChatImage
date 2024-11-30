@@ -172,8 +172,11 @@ tasks.withType(ProcessResources).configureEach {
             mod_description        : mod_description
     ]
     inputs.properties replaceProperties
-
-    filesMatching(['META-INF/mods.toml']) {
+// IF < neoforge-1.20.5
+//    filesMatching(['META-INF/mods.toml']) {
+// ELSE
+//    filesMatching(['META-INF/neoforge.mods.toml']) {
+// END IF
         expand replaceProperties
     }
 }
