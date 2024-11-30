@@ -17,7 +17,8 @@ import net.minecraft.text.*;
 
 // IF fabric-1.16.5
 //import net.minecraft.client.gui.widget.ClickableWidget;
-// ELSE IF fabric-1.19.3 || fabric-1.19.4 || fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// ELSE IF >= fabric-1.19.3
+//import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.tooltip.Tooltip;
 //import net.minecraft.client.gui.widget.GridWidget;
 //import net.minecraft.client.gui.widget.SimplePositioningWidget;
@@ -46,6 +47,10 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
     }
 
 // IF >= fabric-1.19.3
+//    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+//        super.render(context, mouseX, mouseY, delta);
+//        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
+//    }
 //    protected void init() {
 //        super.init();
 //        GridWidget gridWidget = new GridWidget();
