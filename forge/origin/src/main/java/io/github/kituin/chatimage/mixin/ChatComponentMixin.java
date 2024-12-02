@@ -75,12 +75,16 @@ public class #kituin$ChatComponentMixinClass#  {
             if (ChatImageCodeTool.checkKey(key)) {
                 player = (#MutableComponent#) args[0];
                 isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(this.minecraft.player.getName()).toString());
-                #MutableComponent# contents = (#MutableComponent#) args[1];
-                if (chatImage$getContents(contents) instanceof #PlainTextContents#) {
-                    #PlainTextContents# lc = (#PlainTextContents#) chatImage$getContents(contents);
-                    checkedText = chatImage$getText(lc);
-                } else {
-                    checkedText = chatImage$getContents(contents).toString();
+                if(args[1] instanceof String){
+                    checkedText = (String) args[1];
+                }else{
+                    #MutableComponent# contents = (#MutableComponent#) args[1];
+                    if (chatImage$getContents(contents) instanceof #PlainTextContents#) {
+                        #PlainTextContents# lc = (#PlainTextContents#) chatImage$getContents(contents);
+                        checkedText = chatImage$getText(lc);
+                    } else {
+                        checkedText = chatImage$getContents(contents).toString();
+                    }
                 }
             }
         } else {

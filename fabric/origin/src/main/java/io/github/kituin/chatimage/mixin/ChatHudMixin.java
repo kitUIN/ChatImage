@@ -66,11 +66,15 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
 //            if (ChatImageCodeTool.checkKey(key)) {
 //                player = (MutableText) args[0];
 //                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
-//                MutableText contents = (MutableText) args[1];
-//                if (contents.getContent() instanceof PlainTextContent) {
-//                    checkedText = ((PlainTextContent) contents.getContent()).string();
-//                } else {
-//                    checkedText = contents.getContent().toString();
+//                if(args[1] instanceof String){
+//                    checkedText = (String) args[1];
+//                }else{
+//                    MutableText contents = (MutableText) args[1];
+//                    if (contents.getContent() instanceof PlainTextContent) {
+//                        checkedText = ((PlainTextContent) contents.getContent()).string();
+//                    } else {
+//                        checkedText = contents.getContent().toString();
+//                    }
 //                }
 //            } else {
 //                return t;
@@ -87,12 +91,16 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
 //            if (ChatImageCodeTool.checkKey(key)) {
 //                player = (MutableText) args[0];
 //                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
+//                if(args[1] instanceof String){
+//                     checkedText = (String) args[1];
+//                }else{
 //                MutableText contents = (MutableText) args[1];
 //                if (contents.getContent() instanceof LiteralTextContent) {
 //                    checkedText = ((LiteralTextContent) contents.getContent()).string();
 //                } else {
 //                    checkedText = contents.getContent().toString();
 //                }
+//                  }
 //            } else {
 //                return t;
 //            }
@@ -152,6 +160,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
             }
             return res;
         } catch (Exception e) {
+            LOGGER.error(e.getMessage());
             return message;
         }
     }

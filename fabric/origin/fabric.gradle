@@ -54,9 +54,6 @@ dependencies {
     includeMod "fabric-api", fabricApi.module("fabric-networking-api-v1", project.fabric_version)
     includeMod "fabric-api", fabricApi.module(project.command_api, project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
-    // IF fabric-1.21
-//    modImplementation "curse.maven:no-chat-reports-634062:5885733"
-    // END IF
     include modImplementation("io.github.kituin:ChatImageCode:${code_version}")
     include modImplementation("io.github.kituin:ActionLib:${project.action_version}-fabric")
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }

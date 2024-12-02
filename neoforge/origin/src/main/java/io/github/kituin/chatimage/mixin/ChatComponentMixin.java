@@ -61,11 +61,15 @@ public class ChatComponentMixin  {
             if (ChatImageCodeTool.checkKey(key)) {
                 player = (MutableComponent) args[0];
                 isSelf = player.getContents().toString().equals(this.minecraft.player.getName().getContents().toString());
-                MutableComponent contents = (MutableComponent) args[1];
-                if (contents.getContents() instanceof #LiteralContents# lc) {
-                    checkedText = lc.text();
-                } else {
-                    checkedText = contents.getContents().toString();
+                if(args[1] instanceof String){
+                    checkedText = (String) args[1];
+                }else {
+                    MutableComponent contents = (MutableComponent) args[1];
+                    if (contents.getContents() instanceof #LiteralContents#lc){
+                        checkedText = lc.text();
+                    } else{
+                        checkedText = contents.getContents().toString();
+                    }
                 }
             }
         } else {
