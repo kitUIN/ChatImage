@@ -20,7 +20,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 //import net.minecraft.client.gui.widget.GridWidget;
 //import net.minecraft.client.gui.widget.SimplePositioningWidget;
 // END IF
-// IF fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.20
 //import net.minecraft.client.gui.DrawContext;
 // ELSE
 //import net.minecraft.client.gui.widget.ClickableWidget;
@@ -114,20 +114,15 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 //        gridWidget.forEachChild(this::addDrawableChild);
 // END IF
     }
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2 || fabric-1.19.3
+//IF <= fabric-1.19.4
 //    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        drawCenteredText(matrices, this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
-//    }
-// ELSE IF fabric-1.19.4
-//    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-//        super.render(matrices, mouseX, mouseY, delta);
-//        drawCenteredTextWithShadow(matrices, this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // ELSE
-//    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-//        super.render(context, mouseX, mouseY, delta);
-//        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
+//    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
+//        super.render(matrices, mouseX, mouseY, delta);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // END IF
 
