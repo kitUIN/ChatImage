@@ -34,4 +34,15 @@ public class ChatImageLogger implements IChatImageCodeLogger {
     public void error(String s, Object... objects) {
         ChatImage.LOGGER.error(s, objects);
     }
+
+
+    @Override
+    public void warn(String s) {
+        ChatImage.LOGGER.warn(s);
+    }
+
+    @Override
+    public void warn(String s, Object... objects) {
+        ChatImage.LOGGER.warn(s, objects);
+    }
 }
