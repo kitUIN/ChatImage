@@ -72,6 +72,9 @@
 // ELSE IF fabric-1.21
 //    "fabric-command-api-v2": "*",
 //    "minecraft": ">=1.21"
+// ELSE IF fabric-1.21.2
+//    "fabric-command-api-v2": "*",
+//    "minecraft": ">=1.21.2"
 // END IF
   }
 }

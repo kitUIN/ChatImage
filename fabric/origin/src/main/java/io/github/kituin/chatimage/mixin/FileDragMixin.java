@@ -23,17 +23,17 @@ public class FileDragMixin {
     @Shadow
     @Final
     private MinecraftClient client;
+
 // IF fabric-1.16.5
 //    @Inject(at = @At("RETURN"), method = "method_29616")
 // ELSE
 //    @Inject(at = @At("RETURN"), method = "onFilesDropped")
 // END IF
-
-// IF fabric-1.21
-//    private void onFilesDropped(long window, List<Path> paths, int invalidFilesCount, CallbackInfo ci) {
-// ELSE
-//    private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
+    private void onFilesDropped(long window, List<Path> paths,
+// IF >= fabric-1.21
+//                                int invalidFilesCount,
 // END IF
+                                CallbackInfo ci) {
         if (this.client.currentScreen != null && this.client.world != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {

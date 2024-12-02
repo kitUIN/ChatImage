@@ -15,7 +15,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 //import net.minecraft.client.gui.Selectable;
 // END IF
 // IF fabric-1.16.5
-// ELSE IF fabric-1.19.3 || fabric-1.19.4 || fabric-1.20 || fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// ELSE IF >= fabric-1.19.3
 //import net.minecraft.client.gui.tooltip.Tooltip;
 //import net.minecraft.client.gui.widget.GridWidget;
 //import net.minecraft.client.gui.widget.SimplePositioningWidget;
@@ -26,14 +26,14 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 //import net.minecraft.client.gui.widget.ClickableWidget;
 //import net.minecraft.client.util.math.MatrixStack;
 // END IF
-import net.minecraft.text.Text;
+import #Component#;
 
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 import static io.github.kituin.chatimage.tool.SimpleUtil.setScreen;
 import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 
 @Environment(EnvType.CLIENT)
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+// IF < fabric-1.19.3
 //public class LimitPaddingScreen extends ConfigRawScreen {
 //    public LimitPaddingScreen(Screen screen) {
 //        super(createTranslatableComponent("padding.chatimage.gui"), screen);
@@ -49,7 +49,7 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 
     protected void init() {
         super.init();
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+// IF < fabric-1.19.3
 //        addDrawableWeight(new PaddingSlider(
 //                this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
 //                createTranslatableComponent("left.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingLeft,
@@ -102,31 +102,33 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 //                this.client.setScreen(this.parent);
 //            }
 //        }).build(), 2);
-//
-//        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
-// END IF
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
-// ELSE IF fabric-1.19.3
+// IF fabric-1.19.3
 //        gridWidget.recalculateDimensions();
+//        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
 //        addDrawableWeight(gridWidget);
-// ELSE
+// ELSE IF > fabric-1.19.3
 //        gridWidget.refreshPositions();
+//        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
 //        gridWidget.forEachChild(this::addDrawableChild);
 // END IF
+//
+// END IF
+
+
     }
 //IF <= fabric-1.19.4
 //    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, title, this.width / 2, this.height / 4 - 16, 16764108);
 //    }
 // ELSE
 //    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, title, this.width / 2, this.height / 4 - 16, 16764108);
 //    }
 // END IF
 
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+// IF < fabric-1.19.3
 //    private Text getLimitTooltipText(LimitSlider.LimitType limitType) {
 //        if (limitType == LimitSlider.LimitType.WIDTH) {
 //            return createTranslatableComponent("width.limit.chatimage.tooltip");

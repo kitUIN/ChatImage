@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //import net.minecraft.network.packet.CustomPayload;
 //import net.minecraft.util.Identifier;
 //
@@ -37,7 +37,7 @@ import static io.github.kituin.chatimage.ChatImage.LOGGER;
 
 public class ChatImagePacket {
 
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 // ELSE
 //    /**
 //     * 客户端发送文件分块到服务器通道(Map)
@@ -55,7 +55,7 @@ public class ChatImagePacket {
 
     public static Gson gson = new Gson();
 
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 // ELSE
 //    /**
 //     * 创建一个String网络包
@@ -70,7 +70,7 @@ public class ChatImagePacket {
 //    }
 // END IF
 
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //    /**
 //     * 发送给客户端一个网络包(异步)
 //     *
@@ -184,7 +184,7 @@ public class ChatImagePacket {
      * 服务端接收 图片文件分块 的处理
      *
      */
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //    public static void serverFileChannelReceived(FileChannelPacket packet, ServerPlayNetworking.Context content) {
 //        MinecraftServer server = content.player().server;
 //        String res = packet.message();
@@ -201,7 +201,7 @@ public class ChatImagePacket {
                 // 通知之前请求但是没图片的客户端
                 for (String uuid : names) {
                     ServerPlayerEntity serverPlayer = server.getPlayerManager().getPlayer(UUID.fromString(uuid));
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //                    sendPacketAsync(serverPlayer, new FileInfoChannelPacket("true->" + title.url));
 // ELSE
 //                    sendPacketAsync(serverPlayer, GET_FILE_CHANNEL, createStringPacket("true->" + title.url));
@@ -217,7 +217,7 @@ public class ChatImagePacket {
      * 服务端接收 客户端试图获取图片文件 的处理
      *
      */
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //    public static void serverGetFileChannelReceived(FileInfoChannelPacket packet, ServerPlayNetworking.Context content) {
 //        ServerPlayerEntity player = content.player();
 //        String url = packet.message();
@@ -230,7 +230,7 @@ public class ChatImagePacket {
             // 服务器存在缓存图片,直接发送给客户端
 
             for (Map.Entry<Integer, String> entry : list.entrySet()) {
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //                    sendPacketAsync(player, new DownloadFileChannelPacket(entry.getValue()));
 // ELSE
 //                    sendPacketAsync(player, DOWNLOAD_FILE_CHANNEL, createStringPacket(entry.getValue()));
@@ -241,7 +241,7 @@ public class ChatImagePacket {
             return;
         }
         // 通知客户端无文件
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //                    sendPacketAsync(player, new FileInfoChannelPacket("null->" + url));
 // ELSE
 //        sendPacketAsync(player, GET_FILE_CHANNEL, createStringPacket("null->" + url));
@@ -256,7 +256,7 @@ public class ChatImagePacket {
      * 客户端接收 无文件 处理
      *
      */
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //    public static void clientGetFileChannelReceived(FileInfoChannelPacket packet) {
 //        String data = packet.message();
 // ELSE
@@ -279,7 +279,7 @@ public class ChatImagePacket {
      * 客户端接收 下载文件分块 处理
      *
      */
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //    public static void clientDownloadFileChannelReceived(DownloadFileChannelPacket packet) {
 //        String res = packet.message();
 // ELSE

@@ -28,7 +28,7 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 
 import java.io.File;
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //import io.github.kituin.chatimage.network.DownloadFileChannelPacket;
 //import io.github.kituin.chatimage.network.FileInfoChannelPacket;
 // ELSE
@@ -99,7 +99,7 @@ public class ChatImageClient implements ClientModInitializer {
 // ELSE
 //                ));
 // END IF
-// IF fabric-1.21 || fabric-1.20.5
+// IF >= fabric-1.20.5
 //        ClientPlayNetworking.registerGlobalReceiver(DownloadFileChannelPacket.ID, (payload, context) -> ChatImagePacket.clientDownloadFileChannelReceived(payload));
 //        ClientPlayNetworking.registerGlobalReceiver(FileInfoChannelPacket.ID, (payload, context) -> ChatImagePacket.clientGetFileChannelReceived(payload));
 // ELSE

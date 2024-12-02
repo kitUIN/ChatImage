@@ -50,12 +50,12 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //IF <= fabric-1.19.4
 //    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, title, this.width / 2, this.height / 4 - 16, 16764108);
 //    }
 // ELSE
 //    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, title, this.width / 2, this.height / 4 - 16, 16764108);
 //    }
 // END IF
 // IF >= fabric-1.19.3
@@ -96,7 +96,15 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //                setScreen(this.client, this.parent);
 //            }
 //        }).build(), 2);
+// IF > fabric-1.19.3
+//        gridWidget.refreshPositions();
 //        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
+//        gridWidget.forEachChild(this::addDrawableChild);
+// ELSE IF fabric-1.19.3
+//        gridWidget.recalculateDimensions();
+//        SimplePositioningWidget.setPos(gridWidget, 0, this.height / 3 - 12, this.width, this.height, 0.5F, 0.0F);
+//        this.addDrawableChild(gridWidget);
+// END IF
 // ELSE
 //    protected void init() {
 //        super.init();
@@ -132,13 +140,6 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //                setScreen(this.client, this.parent);
 //            }
 //        }));
-// END IF
-// IF > fabric-1.19.3
-//        gridWidget.refreshPositions();
-//        gridWidget.forEachChild(this::addDrawableChild);
-// ELSE IF fabric-1.19.3
-//        gridWidget.recalculateDimensions();
-//        this.addDrawableChild(gridWidget);
 // END IF
     }
 

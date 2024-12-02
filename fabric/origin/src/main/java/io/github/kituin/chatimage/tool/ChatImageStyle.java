@@ -4,7 +4,7 @@ import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
-// IF fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.20.3
 //import com.mojang.serialization.Codec;
 //import com.mojang.serialization.DataResult;
 //import com.mojang.serialization.MapCodec;
@@ -18,14 +18,14 @@ import net.minecraft.util.Formatting;
  * @author kitUIN
  */
 public class ChatImageStyle {
-// IF fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.20.3
 //    public static final MapCodec<ChatImageCode> MAP_CODEC = RecordCodecBuilder.mapCodec(obj -> obj.group(
 //            Codec.STRING.fieldOf("url").forGetter(ChatImageCode::getUrl),
 //            Codec.BOOL.optionalFieldOf("nsfw", false).forGetter(ChatImageCode::isNsfw)
 //    ).apply(obj, (url, nsfw) -> new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
 //    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
 // END IF
-// IF fabric-1.20.5 || fabric-1.21
+// IF >= fabric-1.20.5
 //    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE = new HoverEvent.Action<>(
 //        "show_chatimage",
 //        true,
@@ -38,7 +38,7 @@ public class ChatImageStyle {
 //            return DataResult.error(() -> "Failed to parse ChatImageCode: " + e.getMessage());
 //        }
 //    }
-// ELSE IF fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
+// ELSE IF >= fabric-1.20.3
 //    public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE = new HoverEvent.Action<>(
 //            "show_chatimage",
 //            true,
@@ -103,8 +103,7 @@ public class ChatImageStyle {
         return t.fillStyle(style);
     }
 
-// IF fabric-1.20.3 || fabric-1.20.5 || fabric-1.21
-// ELSE
+// IF < fabric-1.20.3
 //    public static ChatImageCode fromJson(Text text) {
 //        try {
 //            return ChatImageCodeInstance.createBuilder().fromCode(text.toString()).build();

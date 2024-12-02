@@ -24,6 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+// IF >= neoforge-1.21.2
+import java.util.function.Function;
+import net.minecraft.client.render.RenderLayer;
+// END IF
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
@@ -47,12 +51,17 @@ public abstract class DrawContextMixin {
     public abstract int getScaledWindowHeight();
     @Shadow
     public abstract void drawOrderedTooltip(TextRenderer textRenderer, List<? extends OrderedText> text, int x, int y);
+
     @Shadow
-    public abstract void setShaderColor(float red, float green, float blue, float alpha);
-    @Shadow
-    public abstract void drawTexture(Identifier texture, int x, int y, int z, float u, float v, int width, int height, int textureWidth, int textureHeight);
-    @Shadow
-    public abstract void draw(Runnable drawCallback);
+    public abstract void drawTexture(
+// IF >= fabric-1.21.2
+//            Function<Identifier, RenderLayer> renderLayers,
+// END IF
+            Identifier texture, int x, int y,  float u, float v, int width, int height, int textureWidth, int textureHeight);
+// IF < fabric-1.21.2
+//     @Shadow
+//     public abstract void draw(Runnable drawCallback);
+// END IF
     @SuppressWarnings("t")
     @Inject(at = @At("RETURN"), method = "drawHoverEvent")
     public void drawHoverEvent(TextRenderer textRenderer, Style style, int x, int y, CallbackInfo ci) {
@@ -73,16 +82,23 @@ public abstract class DrawContextMixin {
                         int m = vector2ic.y();
                         // 背景
                         this.matrices.push();
-                        this.draw(() -> {
-                            TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400);
-                        });
+// IF >= fabric-1.21.2
+//                        TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400,null);
+// ELSE
+//                         this.draw(() -> {
+//                             TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400);
+//                         });
+// END IF
                         this.matrices.translate(0.0F, 0.0F, 400.0F);
-                        this.matrices.pop();
 
                         // 图片
-                        this.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                        this.drawTexture((Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 400,0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
+                        this.drawTexture(
+// IF >= fabric-1.21.2
+//                                RenderLayer::getGuiTextured,
+// END IF
+                                (Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
 
+                        this.matrices.pop();
                         frame.gifLoop(CONFIG.gifSpeed);
                     } else {
                         MutableText text = (MutableText) frame.getErrorMessage(
