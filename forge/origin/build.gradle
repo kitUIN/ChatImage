@@ -17,8 +17,8 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
-def getVersionFromFile() {
-    def versionFile = file('../../version.txt')
+def getVersionFromFile(String f) {
+    def versionFile = file(f)
     if (versionFile.exists()) {
         return versionFile.text.trim()
     } else {
@@ -26,7 +26,8 @@ def getVersionFromFile() {
     }
 }
 
-def mod_version = getVersionFromFile()
+def code_version = getVersionFromFile('../../code_version.txt')
+def mod_version = getVersionFromFile('../../version.txt')
 version = mod_version + "+" + project.minecraft_version  + "+forge"
 
 def targetJavaVersion = project.targetJavaVersion.toInteger()
@@ -166,8 +167,8 @@ dependencies {
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
 
-    implementation "io.github.kituin:ChatImageCode:${project.code_version}"
-    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${project.code_version}"){
+    implementation "io.github.kituin:ChatImageCode:${code_version}"
+    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${code_version}"){
         jarJar.ranged(it, '[0.9.2,1.0)')
     }
     jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){

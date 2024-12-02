@@ -58,20 +58,14 @@ public class ChatImagePacket {
      */
     public static void serverFileChannelReceived(#ServerPlayer# player, String res) {
         ChatImageIndex title = gson.fromJson(res, ChatImageIndex.class);
-        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.containsKey(title.url) ? SERVER_BLOCK_CACHE.get(title.url) : new HashMap<>();
-        blocks.put(title.index, res);
-        SERVER_BLOCK_CACHE.put(title.url, blocks);
-        FILE_COUNT_MAP.put(title.url, title.total);
+        HashMap<Integer, String> blocks = SERVER_BLOCK_CACHE.createBlock(title, res);
         LOGGER.info("[FileChannel->Server:" + title.index + "/" + title.total + "]" + title.url);
         if (title.total == blocks.size()) {
-            if (USER_CACHE_MAP.containsKey(title.url)) {
-                // 通知之前请求但是没图片的客户端
-                List<String> names = USER_CACHE_MAP.get(title.url);
-                for (String uuid : names) {
-                    FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
-                    LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
-                }
-                USER_CACHE_MAP.put(title.url, Lists.newArrayList());
+            List<String> names = SERVER_BLOCK_CACHE.getUsers(title.url);
+            // 通知之前请求但是没图片的客户端
+            for (String uuid : names) {
+                FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
+                LOGGER.info("[echo to client(" + uuid + ")]" + title.url);
             }
             LOGGER.info("[FileChannel->Server]" + title.url);
         }
@@ -108,28 +102,23 @@ public class ChatImagePacket {
     }
 
     public static void serverFileInfoChannelReceived(#ServerPlayer# player, String url) {
-        if (SERVER_BLOCK_CACHE.containsKey(url) && FILE_COUNT_MAP.containsKey(url)) {
-            HashMap<Integer, String> list = SERVER_BLOCK_CACHE.get(url);
-            Integer total = FILE_COUNT_MAP.get(url);
-            if (total == list.size()) {
-                // 服务器存在缓存图片,直接发送给客户端
-                for (Map.Entry<Integer, String> entry : list.entrySet()) {
-                    LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
-                    DownloadFileChannel.sendToPlayer(new DownloadFileChannelPacket(entry.getValue()), player);
-                }
-                LOGGER.info("[GetFileChannel->Client]{}", url);
-                return;
+        HashMap<Integer, String> list = SERVER_BLOCK_CACHE.getBlock(url);
+        if (list != null) {
+            // 服务器存在缓存图片,直接发送给客户端
+            for (Map.Entry<Integer, String> entry : list.entrySet()) {
+                LOGGER.debug("[GetFileChannel->Client:{}/{}]{}", entry.getKey(), list.size() - 1, url);
+                DownloadFileChannel.sendToPlayer(new DownloadFileChannelPacket(entry.getValue()), player);
             }
+            LOGGER.info("[GetFileChannel->Client]{}", url);
+            return;
         }
         //通知客户端无文件
         FileBackChannel.sendToPlayer(new FileInfoChannelPacket("null->" + url), player);
         LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送
-        List<String> names = USER_CACHE_MAP.containsKey(url) ? USER_CACHE_MAP.get(url) : Lists.newArrayList();
         if (player != null) {
-            names.add(player.getStringUUID());
+            SERVER_BLOCK_CACHE.tryAddUser(url, player.getStringUUID());
         }
-        USER_CACHE_MAP.put(url, names);
         LOGGER.info("[GetFileChannel]记录uuid:{}", player.getStringUUID());
         LOGGER.info("[not found in server]{}", url);
     }

@@ -11,14 +11,7 @@ repositories {
         url "https://maven.kituin.fun/releases"
     }
 }
-def getVersionFromFile() {
-    def versionFile = file('../../version.txt')
-    if (versionFile.exists()) {
-        return versionFile.text.trim()
-    } else {
-        throw new Exception("Version file not found: ${versionFile.absolutePath}") as Throwable
-    }
-}
+
 ext.includeMod = { String localOverrideKey, Object dep ->
     File file = file("../.${localOverrideKey}-local");
     if (file.exists()) {
@@ -28,7 +21,17 @@ ext.includeMod = { String localOverrideKey, Object dep ->
     }
     dependencies.include(dep)
 }
-def mod_version = getVersionFromFile()
+def getVersionFromFile(String f) {
+    def versionFile = file(f)
+    if (versionFile.exists()) {
+        return versionFile.text.trim()
+    } else {
+        throw new Exception("Version file not found: ${versionFile.absolutePath}") as Throwable
+    }
+}
+
+def code_version = getVersionFromFile('../../code_version.txt')
+def mod_version = getVersionFromFile('../../version.txt')
 version = mod_version + "+" + project.minecraft_version + "+fabric"
 group = project.maven_group
 
@@ -48,7 +51,7 @@ dependencies {
     includeMod "fabric-api", fabricApi.module(project.command_api, project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
 
-    include modImplementation("io.github.kituin:ChatImageCode:${project.code_version}")
+    include modImplementation("io.github.kituin:ChatImageCode:${code_version}")
     include modImplementation("io.github.kituin:ActionLib:${project.action_version}-fabric")
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }
