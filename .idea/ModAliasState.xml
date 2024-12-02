@@ -376,7 +376,7 @@
           <value>
             <map>
               <entry key="&lt; fabric-1.19.4" value="drawCenteredText" />
-              <entry key="fabric-1.19.4" value="drawCenteredTextWithShadow" />
+              <entry key="&gt;= fabric-1.19.4" value="drawCenteredTextWithShadow" />
             </map>
           </value>
         </entry>
