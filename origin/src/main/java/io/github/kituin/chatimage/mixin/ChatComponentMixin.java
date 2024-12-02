@@ -41,7 +41,7 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >= fabric-1.16.5
 //    private MinecraftClient client;
 // ELSE IF >= forge-1.16.5
-//     private MinecraftClient client;
+//    private Minecraft minecraft;
 // END IF
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",
@@ -75,7 +75,7 @@ public class #kituin$ChatComponentMixinClass# {
 // ELSE IF < fabric-1.19
 //        return text.asString();
 // ELSE
-//        return text.getContents()
+//        return text.getContents();
 // END IF
     }
 
