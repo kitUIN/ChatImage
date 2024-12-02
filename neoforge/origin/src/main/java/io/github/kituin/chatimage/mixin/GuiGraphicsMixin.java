@@ -93,18 +93,18 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         this.pose.pushPose();
                         int finalL = left;
                         int finalM = top;
-                        // IF >= neoforge-1.21.2
+// IF >= neoforge-1.21.2
 //                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400,null);
-                        // ELSE
-// this.drawManaged(() -> {
-//     TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
-// });
-                        // END IF
+// ELSE
+//                         this.drawManaged(() -> {
+//                             TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
+//                         });
+// END IF
                         this.pose.translate(0.0F, 0.0F, 400.0F);
 
                         blit(
 // IF >= neoforge-1.21.2
-//                                (texture) -> RenderType.gui(),
+//                                RenderType::guiTextured,
 // END IF
                                 (ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         pose.popPose();
