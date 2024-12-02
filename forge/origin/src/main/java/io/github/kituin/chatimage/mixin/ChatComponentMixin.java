@@ -80,8 +80,7 @@ public class #kituin$ChatComponentMixinClass#  {
                 }else{
                     #MutableComponent# contents = (#MutableComponent#) args[1];
                     if (chatImage$getContents(contents) instanceof #PlainTextContents#) {
-                        #PlainTextContents# lc = (#PlainTextContents#) chatImage$getContents(contents);
-                        checkedText = chatImage$getText(lc);
+                        checkedText = chatImage$getText((#PlainTextContents#) chatImage$getContents(contents));
                     } else {
                         checkedText = chatImage$getContents(contents).toString();
                     }

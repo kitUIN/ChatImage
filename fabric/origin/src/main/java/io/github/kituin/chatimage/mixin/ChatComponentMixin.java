@@ -5,9 +5,6 @@ import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
 import io.github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.MinecraftClient;
-// IF < fabric-1.20
-//import net.minecraft.client.gui.DrawableHelper;
-// END IF
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,26 +26,37 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
  * @author kitUIN
  */
 @Mixin(ChatHud.class)
-// IF >= fabric-1.20
-//public class ChatHudMixin {
-// ELSE
-//public class ChatHudMixin extends DrawableHelper {
-// END IF
+public class #kituin$ChatComponentMixinClass# {
     @ModifyVariable(at = @At("HEAD"),
-// IF > fabric-1.18.2
-//            method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V",
-// ELSE
-//            method = "addMessage(Lnet/minecraft/text/Text;IIZ)V",
-// END IF
+            method = "#kituin$addMessageMixin#",
             argsOnly = true)
     public Text addMessage(Text message) {
         return replaceMessage(message);
     }
+// IF >= fabric-1.19
+//    @Unique
+//    private #Component#Content chatImage$getContents(#Component# text){
+//        return text.getContent();
+//    }
+// ELSE
+//    @Unique
+//    private #Component# chatImage$getContents(#Component# text){
+//        return text;
+//    }
+// END IF
 
+    @Unique
+    private String chatImage$getText(#PlainTextContents# text){
+// IF >= fabric-1.19
+//    return text.string();
+// ELSE
+//        return text.asString();
+// END IF
+    }
 
     @SuppressWarnings("t")
     @Unique
-    private static Text replaceCode(Text text) {
+    private Text replaceCode(Text text) {
         String checkedText;
         String key = "";
         MutableText player = null;
@@ -57,50 +65,30 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
         t.getSiblings().clear();
         Style style = text.getStyle();
         t = t.setStyle(style);
-// IF >= fabric-1.19
-//        if (text.getContent() instanceof #PlainTextContent#) {
-//            checkedText = ((#PlainTextContent#) text.getContent()).string();
-//        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
-//            key = ttc.getKey();
-//            Object[] args = ttc.getArgs();
-//            if (ChatImageCodeTool.checkKey(key)) {
-//                player = (MutableText) args[0];
-//                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
-//                if(args[1] instanceof String){
-//                    checkedText = (String) args[1];
-//                }else{
-//                    MutableText contents = (MutableText) args[1];
-//                    if (contents.getContent() instanceof #PlainTextContent#) {
-//                        checkedText = ((#PlainTextContent#) contents.getContent()).string();
-//                    } else {
-//                        checkedText = contents.getContent().toString();
-//                    }
-//                }
-//            } else {
-//                return t;
-//            }
-//        } else {
-//            checkedText = text.getContent().toString();
-//        }
-// ELSE
-//        if (text instanceof TranslatableText ttc) {
-//            key = ttc.getKey();
-//            Object[] args = ttc.getArgs();
-//            if (ChatImageCodeTool.checkKey(key)) {
-//                player = (LiteralText) args[0];
-//                isSelf = player.asString().equals(MinecraftClient.getInstance().player.getName().asString());
-//            }
-//            if (args[1] instanceof String content) {
-//                checkedText = content;
-//            } else {
-//                MutableText contents = (MutableText) args[1];
-//                checkedText = contents.asString();
-//            }
-//        } else {
-//            checkedText = text.asString();
-//        }
-// END IF
-
+        if (chatImage$getContents(text) instanceof #PlainTextContents#) {
+            checkedText = chatImage$getText((#PlainTextContents#)chatImage$getContents(text));
+        } else if (chatImage$getContents(text) instanceof #TranslatableContents# ttc) {
+            key = ttc.getKey();
+            Object[] args = ttc.getArgs();
+            if (ChatImageCodeTool.checkKey(key)) {
+                player = (MutableText) args[0];
+                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(MinecraftClient.getInstance().player.getName()).toString());
+                if(args[1] instanceof String){
+                    checkedText = (String) args[1];
+                }else{
+                    MutableText contents = (MutableText) args[1];
+                    if (chatImage$getContents(contents) instanceof #PlainTextContents#) {
+                        checkedText = chatImage$getText((#PlainTextContents#) chatImage$getContents(contents));
+                    } else {
+                        checkedText = chatImage$getContents(contents).toString();
+                    }
+                }
+            } else {
+                return t;
+            }
+        } else {
+            checkedText = chatImage$getContents(text).toString();
+        }
 
         // 尝试解析CQ码
         if (CONFIG.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
@@ -127,7 +115,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
     }
 
     @Unique
-    private static Text replaceMessage(Text message) {
+    private Text replaceMessage(Text message) {
         try {
             MutableText res = (MutableText) replaceCode(message);
             for (Text t : message.getSiblings()) {
