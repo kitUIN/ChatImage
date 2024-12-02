@@ -179,6 +179,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.HoverEvent" />
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.HoverEvent" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.event.HoverEvent" />
             </map>
           </value>
@@ -228,6 +229,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.MutableComponent" />
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.MutableText" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.IFormattableTextComponent" />
             </map>
           </value>
@@ -269,7 +271,7 @@
             <map>
               <entry key="&lt; fabric-1.19" value="net.minecraft.text.LiteralText" />
               <entry key="&gt; fabric-1.20" value="net.minecraft.text.PlainTextContent" />
-              <entry key="&gt;= fabric-1.19 &amp;&amp; &lt; fabric-1.20" value="net.minecraft.text.LiteralTextContent" />
+              <entry key="&gt;= fabric-1.19 &amp;&amp; &lt;= fabric-1.20" value="net.minecraft.text.LiteralTextContent" />
               <entry key="&gt;= forge-1.19 &amp;&amp; &lt; forge-1.20.3" value="net.minecraft.network.chat.contents.LiteralContents" />
               <entry key="&gt;= forge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents" />
               <entry key="&gt;= neoforge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents.LiteralContents" />
@@ -349,6 +351,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Style" />
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.Style" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.Style" />
             </map>
           </value>
