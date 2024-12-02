@@ -8,10 +8,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.tooltip.TooltipRenderUtil;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
+import #Component#;
+import #HoverEvent#;
+import #MutableComponent#;
+import #Style#;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +24,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
 
+// IF >= neoforge-1.21.2
+//import java.util.function.Function;
+//import net.minecraft.client.renderer.RenderType;
+// END IF
 import static io.github.kituin.chatimage.ChatImage.CONFIG;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 
@@ -41,14 +45,18 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
     @Final
     private Minecraft minecraft;
 
-
-    @Shadow
-    public abstract void drawManaged(Runnable p_286277_);
-
+// IF < neoforge-1.21.2
+//     @Shadow
+//     public abstract void drawManaged(Runnable p_286277_);
+// END IF
     @Shadow
     public abstract void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
     @Shadow
-    public abstract void blit(ResourceLocation p_283272_, int p_283605_, int p_281879_, float p_282809_, float p_282942_, int p_281922_, int p_282385_, int p_282596_, int p_281699_);
+    public abstract void blit(
+// IF >= neoforge-1.21.2
+//            Function<ResourceLocation, RenderType> p_363559_,
+// END IF
+            ResourceLocation p_283272_, int p_283605_, int p_281879_, float p_282809_, float p_282942_, int p_281922_, int p_282385_, int p_282596_, int p_281699_);
     @Shadow
     public abstract int guiWidth() ;
     @Shadow
@@ -85,12 +93,20 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         this.pose.pushPose();
                         int finalL = left;
                         int finalM = top;
-                        this.drawManaged(() -> {
-                            TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
-                        });
+                        // IF >= neoforge-1.21.2
+//                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400,null);
+                        // ELSE
+// this.drawManaged(() -> {
+//     TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
+// });
+                        // END IF
                         this.pose.translate(0.0F, 0.0F, 400.0F);
 
-                        blit((ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
+                        blit(
+// IF >= neoforge-1.21.2
+//                                (texture) -> RenderType.gui(),
+// END IF
+                                (ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         pose.popPose();
 
                         frame.gifLoop(CONFIG.gifSpeed);
