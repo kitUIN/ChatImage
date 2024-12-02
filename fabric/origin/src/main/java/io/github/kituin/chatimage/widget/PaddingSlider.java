@@ -9,7 +9,7 @@ import net.minecraft.text.Text;
 
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.SimpleUtil.composeGenericOptionText;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 
 
 public class PaddingSlider extends SettingSliderWidget {
@@ -36,7 +36,7 @@ public class PaddingSlider extends SettingSliderWidget {
 // END IF
     @Override
     protected void updateMessage() {
-        this.setMessage(composeGenericOptionText(title, createLiteralText(String.valueOf(this.position))));
+        this.setMessage(composeGenericOptionText(title, createLiteralComponent(String.valueOf(this.position))));
         switch (paddingType) {
             case TOP:
                 CONFIG.paddingTop = this.position;

@@ -13,7 +13,7 @@ import net.minecraft.util.math.MathHelper;
 // ELSE
 //import net.minecraft.client.gui.tooltip.Tooltip;
 // END IF
-import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 
 
 @Environment(EnvType.CLIENT)
@@ -28,7 +28,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
 //    protected final TooltipSupplier tooltipSupplier;
 //    protected boolean isClick = false;
 //    public SettingSliderWidget(int x, int y, int width, int height, int value, float min, float max, TooltipSupplier tooltipSupplier) {
-//        super(x, y, width, height, createLiteralText(""), 0.0);
+//        super(x, y, width, height, createLiteralComponent(""), 0.0);
 //        this.min = min;
 //        this.max = max;
 //        this.value = ((MathHelper.clamp((float) value, min, max) - min) / (max - min));
@@ -45,7 +45,7 @@ public abstract class SettingSliderWidget extends SliderWidget {
 // ELSE
 //    protected Tooltip tip;
 //    public SettingSliderWidget(int x, int y, int width, int height, int value, float min, float max) {
-//        super(x, y, width, height, createLiteralText(""), 0.0);
+//        super(x, y, width, height, createLiteralComponent(""), 0.0);
 //        this.min = min;
 //        this.max = max;
 //        this.value = ((MathHelper.clamp((float) value, min, max) - min) / (max - min));

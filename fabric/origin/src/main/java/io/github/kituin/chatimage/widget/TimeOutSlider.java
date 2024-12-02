@@ -18,17 +18,17 @@ public class TimeOutSlider extends SettingSliderWidget {
 //public TimeOutSlider() {
 //    super(100, 100, 150, 20, CONFIG.timeout, 3, 60);
 //    this.updateMessage();
-//    this.tip = Tooltip.of(createTranslatableText("timeout.chatimage.tooltip"));
+//    this.tip = Tooltip.of(createTranslatableComponent("timeout.chatimage.tooltip"));
 //    this.setTooltip(this.tip);
 //}
 // END IF
     @Override
     protected void updateMessage() {
         this.setMessage(composeGenericOptionText(
-                createTranslatableText("timeout.chatimage.gui"),
-                createLiteralText(String.valueOf(this.position)))
+                createTranslatableComponent("timeout.chatimage.gui"),
+                createLiteralComponent(String.valueOf(this.position)))
                 .append(" ")
-                .append(createTranslatableText("seconds.chatimage.gui")));
+                .append(createTranslatableComponent("seconds.chatimage.gui")));
         CONFIG.timeout = this.position;
         ChatImageConfig.saveConfig(CONFIG);
     }

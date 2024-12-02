@@ -32,11 +32,11 @@ public class LimitSlider extends SettingSliderWidget {
     protected void updateMessage() {
         switch (limitType) {
             case WIDTH:
-                this.setMessage(composeGenericOptionText(title, CONFIG.limitWidth == 0 ? createTranslatableText("default.chatimage.gui") : createLiteralText(String.valueOf(this.position))));
+                this.setMessage(composeGenericOptionText(title, CONFIG.limitWidth == 0 ? createTranslatableComponent("default.chatimage.gui") : createLiteralComponent(String.valueOf(this.position))));
                 CONFIG.limitWidth = this.position;
                 break;
             case HEIGHT:
-                this.setMessage(composeGenericOptionText(title, CONFIG.limitHeight == 0 ? createTranslatableText("default.chatimage.gui") : createLiteralText(String.valueOf(this.position))));
+                this.setMessage(composeGenericOptionText(title, CONFIG.limitHeight == 0 ? createTranslatableComponent("default.chatimage.gui") : createLiteralComponent(String.valueOf(this.position))));
                 CONFIG.limitHeight = this.position;
                 break;
             default:

@@ -15,7 +15,7 @@ public class GifSlider extends SettingSliderWidget {
 //    public GifSlider() {
 //        super(100, 100, 150, 20, CONFIG.gifSpeed, 1, 20);
 //        this.updateMessage();
-//        this.tip = Tooltip.of(createTranslatableText("gif.chatimage.tooltip"));
+//        this.tip = Tooltip.of(createTranslatableComponent("gif.chatimage.tooltip"));
 //        this.setTooltip(this.tip);
 //    }
 // ELSE
@@ -26,7 +26,7 @@ public class GifSlider extends SettingSliderWidget {
 // END IF
     @Override
     protected void updateMessage() {
-        this.setMessage(composeGenericOptionText(createTranslatableText("gif.chatimage.gui"), createLiteralText(String.valueOf(this.position))));
+        this.setMessage(composeGenericOptionText(createTranslatableComponent("gif.chatimage.gui"), createLiteralComponent(String.valueOf(this.position))));
         ChatImageClient.CONFIG.gifSpeed = this.position;
         ChatImageConfig.saveConfig(ChatImageClient.CONFIG);
     }
