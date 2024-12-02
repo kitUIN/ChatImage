@@ -5,6 +5,7 @@ import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
 import net.minecraft.client.Minecraft;
+import #HoverEvent#;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,8 +16,11 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import java.util.List;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.ChatImage.CONFIG;
+import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
+import static #HoverEvent#.Action.SHOW_TEXT;
 
 
 /**
@@ -65,6 +69,9 @@ public class #kituin$ChatComponentMixinClass#  {
         String key = "";
         #MutableComponent# player = null;
         boolean isSelf = false;
+        #MutableComponent# originText = text.copy();
+        originText.getSiblings().clear();
+        #Style# style = text.getStyle();
         if (chatImage$getContents(text) instanceof #PlainTextContents#) {
             #PlainTextContents# lc = (#PlainTextContents#) chatImage$getContents(text);
             checkedText = chatImage$getText(lc);
@@ -93,7 +100,6 @@ public class #kituin$ChatComponentMixinClass#  {
         // 尝试解析CQ码
         if (CONFIG.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
 
-        #Style# style = text.getStyle();
         ChatImageBoolean allString = new ChatImageBoolean(false);
 
         // 尝试解析CICode
@@ -104,12 +110,26 @@ public class #kituin$ChatComponentMixinClass#  {
         // 无识别则返回原样
         if (allString.isValue()) {
             if (style.getHoverEvent() != null) {
-                ChatImageCode action = style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE);
+                ChatImageCode action = style.getHoverEvent().getValue(SHOW_IMAGE);
                 if (action != null) action.retry();
             }
-            #MutableComponent# res = text.copy();
-            res.getSiblings().clear();
-            return res;
+            try {
+                #Component# showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_TEXT);
+                if (showText != null &&
+                        chatImage$getContents(showText) instanceof #PlainTextContents#) {
+                    originText.setStyle(
+                            style.withHoverEvent(new HoverEvent(
+                                    SHOW_IMAGE,
+                                    createBuilder()
+                                            .fromCode(chatImage$getText(
+                                                    (#PlainTextContents#)chatImage$getContents(showText)))
+                                    .setIsSelf(isSelf)
+                                    .build())));
+                }
+            } catch (Exception e){
+                // LOGGER.error(e.getMessage());
+            }
+            return originText;
         }
         #MutableComponent# res = createLiteralComponent("");
         ChatImageCodeTool.buildMsg(texts,

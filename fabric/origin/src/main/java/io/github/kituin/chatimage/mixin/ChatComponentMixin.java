@@ -15,9 +15,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import java.util.List;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
+import static net.minecraft.text.HoverEvent.Action.SHOW_TEXT;
 
 
 /**
@@ -61,10 +64,9 @@ public class #kituin$ChatComponentMixinClass# {
         String key = "";
         MutableText player = null;
         boolean isSelf = false;
-        MutableText t = text.copy();
-        t.getSiblings().clear();
+        MutableText originText = text.copy();
+        originText.getSiblings().clear();
         Style style = text.getStyle();
-        t = t.setStyle(style);
         if (chatImage$getContents(text) instanceof #PlainTextContents#) {
             checkedText = chatImage$getText((#PlainTextContents#)chatImage$getContents(text));
         } else if (chatImage$getContents(text) instanceof #TranslatableContents# ttc) {
@@ -102,9 +104,25 @@ public class #kituin$ChatComponentMixinClass# {
 
         // 无识别则返回原样
         if (allString.isValue()) {
-            ChatImageCode action = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE);
+            ChatImageCode action = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_IMAGE);
             if (action != null) action.retry();
-            return t;
+            try {
+                Text showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_TEXT);
+                if (showText != null &&
+                        chatImage$getContents(showText) instanceof #PlainTextContents#) {
+                    originText.setStyle(
+                            style.withHoverEvent(new HoverEvent(
+                                    SHOW_IMAGE,
+                                    createBuilder()
+                                            .fromCode(chatImage$getText(
+                                                    (#PlainTextContents#)chatImage$getContents(showText)))
+                                            .setIsSelf(isSelf)
+                                            .build())));
+                }
+            } catch (Exception e){
+                // LOGGER.error(e.getMessage());
+            }
+            return originText;
         }
         MutableText res = createLiteralText("");
         ChatImageCodeTool.buildMsg(texts,

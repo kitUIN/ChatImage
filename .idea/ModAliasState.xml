@@ -200,14 +200,6 @@
             </map>
           </value>
         </entry>
-        <entry key="#LiteralContents#">
-          <value>
-            <map>
-              <entry key="&gt;= neoforge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents.LiteralContents" />
-              <entry key="neoforge-1.20.2" value="net.minecraft.network.chat.contents.LiteralContents" />
-            </map>
-          </value>
-        </entry>
         <entry key="#Matrix4f#">
           <value>
             <map>
@@ -280,8 +272,10 @@
               <entry key="&gt;= fabric-1.19 &amp;&amp; &lt; fabric-1.20" value="net.minecraft.text.LiteralTextContent" />
               <entry key="&gt;= forge-1.19 &amp;&amp; &lt; forge-1.20.3" value="net.minecraft.network.chat.contents.LiteralContents" />
               <entry key="&gt;= forge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents" />
+              <entry key="&gt;= neoforge-1.20.3" value="net.minecraft.network.chat.contents.PlainTextContents.LiteralContents" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.StringTextComponent" />
               <entry key="forge-1.18.2" value="net.minecraft.network.chat.TextComponent" />
+              <entry key="neoforge-1.20.2" value="net.minecraft.network.chat.contents.LiteralContents" />
             </map>
           </value>
         </entry>
@@ -407,10 +401,12 @@
         <entry key="#kituin$addMessageMixin#">
           <value>
             <map>
+              <entry key=" &lt; neoforge-1.20.5" value="addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V" />
               <entry key="&lt; fabric-1.19" value="addMessage(Lnet/minecraft/text/Text;IIZ)V" />
               <entry key="&gt; forge-1.18.2 &amp;&amp; &lt; forge-1.20.5" value="addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V" />
               <entry key="&gt;= fabric-1.19" value="addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V" />
               <entry key="&gt;= forge-1.20.5" value="addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;Lnet/minecraft/client/GuiMessageTag;)V" />
+              <entry key="&gt;= neoforge-1.20.5" value="addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;Lnet/minecraft/client/GuiMessageTag;)V" />
               <entry key="forge-1.16.5" value="addMessage(Lnet/minecraft/util/text/ITextComponent;IIZ)V" />
               <entry key="forge-1.18.2" value="addMessage(Lnet/minecraft/network/chat/Component;IIZ)V" />
             </map>

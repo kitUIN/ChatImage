@@ -7,6 +7,7 @@ import io.github.kituin.ChatImageCode.ChatImageCodeTool;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -20,7 +21,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
 
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.ChatImage.CONFIG;
+import static net.minecraft.network.chat.HoverEvent.Action.SHOW_TEXT;
 
 
 /**
@@ -36,11 +39,7 @@ public class ChatComponentMixin  {
     @Shadow @Final private static Logger LOGGER;
 
     @ModifyVariable(at = @At("HEAD"),
-// IF < neoforge-1.20.5
-//             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;ILnet/minecraft/client/GuiMessageTag;Z)V",
-// ELSE
-//             method = "addMessage(Lnet/minecraft/network/chat/Component;Lnet/minecraft/network/chat/MessageSignature;Lnet/minecraft/client/GuiMessageTag;)V",
-// END IF
+             method = "#kituin$addMessageMixin#",
             argsOnly = true)
     public Component addMessage(Component p_241484_) {
         return chatimage$replaceMessage(p_241484_);
@@ -53,7 +52,10 @@ public class ChatComponentMixin  {
         String key = "";
         MutableComponent player = null;
         boolean isSelf = false;
-        if (text.getContents() instanceof #LiteralContents# lc) {
+        MutableComponent originText = text.copy();
+        originText.getSiblings().clear();
+        Style style = text.getStyle();
+        if (text.getContents() instanceof #PlainTextContents# lc) {
             checkedText = lc.text();
         } else if (text.getContents() instanceof TranslatableContents ttc) {
             key = ttc.getKey();
@@ -65,7 +67,7 @@ public class ChatComponentMixin  {
                     checkedText = (String) args[1];
                 }else {
                     MutableComponent contents = (MutableComponent) args[1];
-                    if (contents.getContents() instanceof #LiteralContents#lc){
+                    if (contents.getContents() instanceof #PlainTextContents# lc){
                         checkedText = lc.text();
                     } else{
                         checkedText = contents.getContents().toString();
@@ -79,7 +81,6 @@ public class ChatComponentMixin  {
         // 尝试解析CQ码
         if (CONFIG.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
 
-        Style style = text.getStyle();
         ChatImageBoolean allString = new ChatImageBoolean(false);
 
         // 尝试解析CICode
@@ -93,9 +94,23 @@ public class ChatComponentMixin  {
                 ChatImageCode action = style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE);
                 if (action != null) action.retry();
             }
-            MutableComponent res = text.copy();
-            res.getSiblings().clear();
-            return res;
+            try {
+                Component showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_TEXT);
+                if (showText != null &&
+                        showText.getContents() instanceof #PlainTextContents#) {
+                    originText.setStyle(
+                            style.withHoverEvent(new HoverEvent(
+                                    ChatImageStyle.SHOW_IMAGE,
+                                    createBuilder()
+                                            .fromCode((
+                                                    (#PlainTextContents#)showText.getContents()).text())
+                                    .setIsSelf(isSelf)
+                                    .build())));
+                }
+            } catch (Exception e){
+                // LOGGER.error(e.getMessage());
+            }
+            return originText;
         }
         MutableComponent res = Component.literal("");
         ChatImageCodeTool.buildMsg(texts,
