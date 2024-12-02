@@ -74,6 +74,7 @@
             <map>
               <entry key="&lt;= forge-1.16.5" value="net.minecraft.client.gui.NewChatGui" />
               <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.components.ChatComponent" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.client.gui.components.ChatComponent" />
               <entry key="&gt;= fabric-1.16.5" value="net.minecraft.client.gui.hud.ChatHud" />
             </map>
           </value>
@@ -114,6 +115,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Component" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.network.chat.Component" />
               <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.Text" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.ITextComponent" />
             </map>
@@ -180,6 +182,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.HoverEvent" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.network.chat.HoverEvent" />
               <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.HoverEvent" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.event.HoverEvent" />
             </map>
@@ -230,6 +233,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.MutableComponent" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.network.chat.MutableComponent" />
               <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.MutableText" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.IFormattableTextComponent" />
             </map>
@@ -352,6 +356,7 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.Style" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.network.chat.Style" />
               <entry key="&gt;= fabric-1.16.5" value="net.minecraft.text.Style" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.Style" />
             </map>
@@ -397,6 +402,7 @@
             <map>
               <entry key="&lt; fabric-1.20" value="ChatComponentMixin extends net.minecraft.client.gui.DrawableHelper" />
               <entry key="&gt; forge-1.16.5" value="ChatComponentMixin" />
+              <entry key="&gt; neoforge-1.20.1" value="ChatComponentMixin" />
               <entry key="&gt;= fabric-1.20" value="ChatComponentMixin" />
               <entry key="forge-1.16.5" value="ChatComponentMixin extends net.minecraft.client.gui.AbstractGui" />
             </map>
