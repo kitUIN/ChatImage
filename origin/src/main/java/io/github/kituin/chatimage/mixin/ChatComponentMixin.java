@@ -40,8 +40,8 @@ public class #kituin$ChatComponentMixinClass# {
     @Final
 // IF >= fabric-1.16.5
 //    private MinecraftClient client;
-// ELSE IF >= forge-1.16.5
-//    private Minecraft minecraft;
+// ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
+//   private Minecraft minecraft;
 // END IF
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",

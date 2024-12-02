@@ -374,6 +374,7 @@
           <value>
             <map>
               <entry key="&lt; fabric-1.19" value="net.minecraft.text.TranslatableText" />
+              <entry key="&gt; neoforge-1.20.1" value="net.minecraft.network.chat.contents.TranslatableContents" />
               <entry key="&gt;= fabric-1.19" value="net.minecraft.text.TranslatableTextContent" />
               <entry key="&gt;= forge-1.19" value="net.minecraft.network.chat.contents.TranslatableContents" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.TranslationTextComponent" />
