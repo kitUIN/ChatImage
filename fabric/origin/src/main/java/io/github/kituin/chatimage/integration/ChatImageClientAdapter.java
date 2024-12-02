@@ -19,7 +19,7 @@ import static io.github.kituin.ChatImageCode.NetworkHelper.createFilePacket;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.client.ChatImageClient.MOD_ID;
 import static io.github.kituin.chatimage.network.ChatImagePacket.*;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 
 public class ChatImageClientAdapter implements IClientAdapter {
     @Override
@@ -67,7 +67,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 
     @Override
     public Text getProcessMessage(int i) {
-        return createTranslatableText("process.chatimage.message", i);
+        return createTranslatableComponent("process.chatimage.message", i);
     }
 
 

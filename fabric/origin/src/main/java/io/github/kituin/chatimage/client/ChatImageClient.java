@@ -66,7 +66,7 @@ public class ChatImageClient implements ClientModInitializer {
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
-                setScreen(client,new ConfigScreen());
+                setScreen(client, new ConfigScreen());
             }
         });
 // IF fabric-1.16.5 || fabric-1.18.2

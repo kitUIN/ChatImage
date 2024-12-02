@@ -74,6 +74,7 @@
             <map>
               <entry key="&lt;= forge-1.16.5" value="net.minecraft.client.gui.NewChatGui" />
               <entry key="&gt; forge-1.16.5" value="net.minecraft.client.gui.components.ChatComponent" />
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.client.gui.hud.ChatHud" />
             </map>
           </value>
         </entry>

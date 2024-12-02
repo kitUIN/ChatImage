@@ -28,7 +28,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 // END IF
 import net.minecraft.text.Text;
 
-import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 import static io.github.kituin.chatimage.tool.SimpleUtil.setScreen;
 import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 
@@ -36,13 +36,13 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
 //public class LimitPaddingScreen extends ConfigRawScreen {
 //    public LimitPaddingScreen(Screen screen) {
-//        super(createTranslatableText("padding.chatimage.gui"), screen);
+//        super(createTranslatableComponent("padding.chatimage.gui"), screen);
 //    }
 // ELSE
 //public class LimitPaddingScreen extends Screen {
 //    private final Screen parent;
 //    public LimitPaddingScreen(Screen screen) {
-//        super(createTranslatableText("padding.chatimage.gui"));
+//        super(createTranslatableComponent("padding.chatimage.gui"));
 //        this.parent = screen;
 //    }
 // END IF
@@ -52,31 +52,31 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
 //        addDrawableWeight(new PaddingSlider(
 //                this.width / 2 - 154, this.height / 4 + 24 + -16, 150, 20,
-//                createTranslatableText("left.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingLeft,
+//                createTranslatableComponent("left.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingLeft,
 //                (float) this.width / 2, LEFT, getSliderTooltip(getPaddingTooltipText(LEFT))));
 //        addDrawableWeight(new PaddingSlider(
 //                this.width / 2 + 4, this.height / 4 + 24 + -16, 150, 20,
-//                createTranslatableText("right.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingRight,
+//                createTranslatableComponent("right.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingRight,
 //                (float) this.width / 2, RIGHT, getSliderTooltip(getPaddingTooltipText(RIGHT))));
 //        addDrawableWeight(new PaddingSlider(
 //                this.width / 2 - 154, this.height / 4 + 48 + -16, 150, 20,
-//                createTranslatableText("top.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingTop,
+//                createTranslatableComponent("top.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingTop,
 //                (float) this.height / 2, TOP, getSliderTooltip(getPaddingTooltipText(TOP))));
 //        addDrawableWeight(new PaddingSlider(
 //                this.width / 2 + 4, this.height / 4 + 48 + -16, 150, 20,
-//                createTranslatableText("bottom.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingBottom,
+//                createTranslatableComponent("bottom.padding.chatimage.gui"), ChatImageClient.CONFIG.paddingBottom,
 //                (float) this.height / 2, BOTTOM, getSliderTooltip(getPaddingTooltipText(BOTTOM))));
 //        addDrawableWeight(new LimitSlider(
 //                this.width / 2 - 154, this.height / 4 + 72 + -16, 150, 20,
-//                createTranslatableText("width.limit.chatimage.gui"), ChatImageClient.CONFIG.limitWidth,
+//                createTranslatableComponent("width.limit.chatimage.gui"), ChatImageClient.CONFIG.limitWidth,
 //                this.width, LimitSlider.LimitType.WIDTH, getSliderTooltip(getLimitTooltipText(LimitSlider.LimitType.WIDTH))));
 //        addDrawableWeight(new LimitSlider(
 //                this.width / 2 + 4, this.height / 4 + 72 + -16, 150, 20,
-//                createTranslatableText("height.limit.chatimage.gui"), ChatImageClient.CONFIG.limitHeight,
+//                createTranslatableComponent("height.limit.chatimage.gui"), ChatImageClient.CONFIG.limitHeight,
 //                this.height, LimitSlider.LimitType.HEIGHT, getSliderTooltip(getLimitTooltipText(LimitSlider.LimitType.HEIGHT))));
 //        addDrawableWeight(new ButtonWidget(
 //                this.width / 2 - 77, this.height / 4 + 96 + -16, 150, 20,
-//                createTranslatableText("gui.back"), (button) -> {
+//                createTranslatableComponent("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
 //            }
@@ -85,19 +85,19 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 //        GridWidget gridWidget = new GridWidget();
 //        gridWidget.getMainPositioner().marginX(5).marginBottom(4).alignHorizontalCenter();
 //        GridWidget.Adder adder = gridWidget.createAdder(2);
-//        adder.add(new PaddingSlider(createTranslatableText("left.padding.chatimage.gui"),
+//        adder.add(new PaddingSlider(createTranslatableComponent("left.padding.chatimage.gui"),
 //                ChatImageClient.CONFIG.paddingLeft, 0F, (float) this.width / 2, PaddingSlider.PaddingType.LEFT));
-//        adder.add(new PaddingSlider(createTranslatableText("right.padding.chatimage.gui"),
+//        adder.add(new PaddingSlider(createTranslatableComponent("right.padding.chatimage.gui"),
 //                ChatImageClient.CONFIG.paddingRight, 0F, (float) this.width / 2, PaddingSlider.PaddingType.RIGHT));
-//        adder.add(new PaddingSlider(createTranslatableText("top.padding.chatimage.gui"),
+//        adder.add(new PaddingSlider(createTranslatableComponent("top.padding.chatimage.gui"),
 //                ChatImageClient.CONFIG.paddingTop, 0F, (float) this.height / 2, PaddingSlider.PaddingType.TOP));
-//        adder.add(new PaddingSlider(createTranslatableText("bottom.padding.chatimage.gui"),
+//        adder.add(new PaddingSlider(createTranslatableComponent("bottom.padding.chatimage.gui"),
 //                ChatImageClient.CONFIG.paddingBottom, 0F, (float) this.height / 2, PaddingSlider.PaddingType.BOTTOM));
-//        adder.add(new LimitSlider(createTranslatableText("width.limit.chatimage.gui"),
+//        adder.add(new LimitSlider(createTranslatableComponent("width.limit.chatimage.gui"),
 //                ChatImageClient.CONFIG.limitWidth, 1F, this.width, LimitSlider.LimitType.WIDTH));
-//        adder.add(new LimitSlider(createTranslatableText("height.limit.chatimage.gui"),
+//        adder.add(new LimitSlider(createTranslatableComponent("height.limit.chatimage.gui"),
 //                ChatImageClient.CONFIG.limitHeight, 1F, this.height, LimitSlider.LimitType.HEIGHT));
-//        adder.add(ButtonWidget.builder(createTranslatableText("gui.back"), (button) -> {
+//        adder.add(ButtonWidget.builder(createTranslatableComponent("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                this.client.setScreen(this.parent);
 //            }
@@ -117,37 +117,37 @@ import static io.github.kituin.chatimage.widget.PaddingSlider.PaddingType.*;
 //IF <= fabric-1.19.4
 //    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // ELSE
 //    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // END IF
 
 // IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
 //    private Text getLimitTooltipText(LimitSlider.LimitType limitType) {
 //        if (limitType == LimitSlider.LimitType.WIDTH) {
-//            return createTranslatableText("width.limit.chatimage.tooltip");
+//            return createTranslatableComponent("width.limit.chatimage.tooltip");
 //        } else {
-//            return createTranslatableText("height.limit.chatimage.tooltip");
+//            return createTranslatableComponent("height.limit.chatimage.tooltip");
 //        }
 //    }
 //    private Text getPaddingTooltipText(PaddingSlider.PaddingType paddingType) {
 //        Text text;
 //        switch (paddingType) {
 //            case TOP:
-//                text = createTranslatableText("top.padding.chatimage.tooltip");
+//                text = createTranslatableComponent("top.padding.chatimage.tooltip");
 //                break;
 //            case BOTTOM:
-//                text = createTranslatableText("bottom.padding.chatimage.tooltip");
+//                text = createTranslatableComponent("bottom.padding.chatimage.tooltip");
 //                break;
 //            case LEFT:
-//                text = createTranslatableText("left.padding.chatimage.tooltip");
+//                text = createTranslatableComponent("left.padding.chatimage.tooltip");
 //                break;
 //            case RIGHT:
-//                text = createTranslatableText("right.padding.chatimage.tooltip");
+//                text = createTranslatableComponent("right.padding.chatimage.tooltip");
 //                break;
 //            default:
 //                return null;

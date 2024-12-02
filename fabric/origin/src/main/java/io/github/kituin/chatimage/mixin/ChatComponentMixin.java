@@ -4,9 +4,7 @@ import io.github.kituin.chatimage.tool.ChatImageStyle;
 import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.hud.ChatHud;
-import net.minecraft.text.*;
+import #HoverEvent#;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,10 +16,17 @@ import java.util.List;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 import static #HoverEvent#.Action.SHOW_TEXT;
+
+// IF >= fabric-1.16.5
+//import net.minecraft.client.MinecraftClient;
+//import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+// ELSE IF >= forge-1.16.5
+//import net.minecraft.client.Minecraft;
+//import static io.github.kituin.chatimage.ChatImage.CONFIG;
+// END IF
 
 
 /**
@@ -29,16 +34,19 @@ import static #HoverEvent#.Action.SHOW_TEXT;
  *
  * @author kitUIN
  */
-@Mixin(ChatHud.class)
+@Mixin(#ChatComponent#.class)
 public class #kituin$ChatComponentMixinClass# {
     @Shadow
     @Final
-    private MinecraftClient client;
-
+// IF >= fabric-1.16.5
+//    private MinecraftClient client;
+// ELSE IF >= forge-1.16.5
+//     private MinecraftClient client;
+// END IF
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",
             argsOnly = true)
-    public Text addMessage(Text message) {
+    public #Component# addMessage(#Component# message) {
         return chatimage$replaceMessage(message);
     }
 // IF >= fabric-1.19
@@ -49,7 +57,7 @@ public class #kituin$ChatComponentMixinClass# {
 // ELSE IF >= forge-1.19
 //    @Unique
 //    private #Component#Contents chatImage$getContents(#Component# text){
-//        return text.getContent();
+//        return text.getContents();
 //    }
 // ELSE
 //    @Unique
@@ -79,12 +87,17 @@ public class #kituin$ChatComponentMixinClass# {
         #Style# style = text.getStyle();
         if (chatImage$getContents(text) instanceof #PlainTextContents#) {
             checkedText = chatImage$getText((#PlainTextContents#)chatImage$getContents(text));
-        } else if (chatImage$getContents(text) instanceof #TranslatableContents# ttc) {
+        } else if (chatImage$getContents(text) instanceof #TranslatableContents#) {
+            #TranslatableContents# ttc = (#TranslatableContents#) chatImage$getContents(text);
             key = ttc.getKey();
             Object[] args = ttc.getArgs();
             if (ChatImageCodeTool.checkKey(key)) {
                 player = (#MutableComponent#) args[0];
-                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(client.player.getName()).toString());
+// IF >= fabric-1.16.5
+//                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(client.player.getName()).toString());
+// ELSE IF >= forge-1.16.5
+//                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(minecraft.player.getName()).toString());
+// END IF
                 if(args[1] instanceof String){
                     checkedText = (String) args[1];
                 }else{
@@ -117,7 +130,7 @@ public class #kituin$ChatComponentMixinClass# {
             ChatImageCode action = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_IMAGE);
             if (action != null) action.retry();
             try {
-                Text showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_TEXT);
+                #Component# showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_TEXT);
                 if (showText != null &&
                         chatImage$getContents(showText) instanceof #PlainTextContents#) {
                     originText.setStyle(
@@ -134,12 +147,12 @@ public class #kituin$ChatComponentMixinClass# {
             }
             return originText;
         }
-        #MutableComponent# res = createLiteralText("");
+        #MutableComponent# res = createLiteralComponent("");
         ChatImageCodeTool.buildMsg(texts,
-                (obj) -> res.append(createLiteralText(obj).setStyle(style)),
+                (obj) -> res.append(createLiteralComponent(obj).setStyle(style)),
                 (obj) -> res.append(ChatImageStyle.messageFromCode(obj))
         );
-        return player == null ? res : createTranslatableText(key, player, res).setStyle(style);
+        return player == null ? res : createTranslatableComponent(key, player, res).setStyle(style);
     }
 
     @Unique

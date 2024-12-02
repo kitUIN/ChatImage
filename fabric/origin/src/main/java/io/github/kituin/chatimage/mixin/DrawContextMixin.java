@@ -25,8 +25,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
+import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 /**
  * 注入修改悬浮显示图片
@@ -86,13 +86,13 @@ public abstract class DrawContextMixin {
                         frame.gifLoop(CONFIG.gifSpeed);
                     } else {
                         MutableText text = (MutableText) frame.getErrorMessage(
-                                (str) -> createLiteralText((String) str),
-                                (str) -> createTranslatableText((String) str),
+                                (str) -> createLiteralComponent((String) str),
+                                (str) -> createTranslatableComponent((String) str),
                                 (obj, s) -> ((MutableText) obj).append((Text) s), code);
                         this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(text, Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
                     }
                 } else {
-                    this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(createTranslatableText("nsfw.chatimage.message"), Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
+                    this.drawOrderedTooltip(textRenderer, textRenderer.wrapLines(createTranslatableComponent("nsfw.chatimage.message"), Math.max(this.getScaledWindowWidth() / 2, 200)), x, y);
                 }
 
             }

@@ -206,13 +206,13 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 //                        frame.gifLoop(CONFIG.gifSpeed);
 //                    } else {
 //                        MutableText text = (MutableText) frame.getErrorMessage(
-//                                (str) -> createLiteralText((String) str),
-//                                (str) -> createTranslatableText((String) str),
+//                                (str) -> createLiteralComponent((String) str),
+//                                (str) -> createTranslatableComponent((String) str),
 //                                (obj, s)-> ((MutableText)obj).append((Text)s) , code);
 //                        this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
 //                    }
 //                } else {
-//                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(createTranslatableText("nsfw.chatimage.message"), Math.max(this.width / 2, 200)), x, y);
+//                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(createTranslatableComponent("nsfw.chatimage.message"), Math.max(this.width / 2, 200)), x, y);
 //                }
 //
 //            }

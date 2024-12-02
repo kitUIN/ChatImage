@@ -14,14 +14,14 @@ public class SimpleUtil {
 //        client.setScreen(screen);
 // END IF
     }
-    public static MutableText createTranslatableText(String text){
+    public static MutableText createTranslatableComponent(String text){
 // IF fabric-1.16.5 || fabric-1.18.2
 //        return new TranslatableText(text);
 // ELSE
 //        return Text.translatable(text);
 // END IF
     }
-    public static MutableText createTranslatableText(String key, Object... args){
+    public static MutableText createTranslatableComponent(String key, Object... args){
 // IF fabric-1.16.5 || fabric-1.18.2
 //        return new TranslatableText(key, args);
 // ELSE
@@ -30,7 +30,7 @@ public class SimpleUtil {
     }
     
 
-    public static MutableText createLiteralText(String text){
+    public static MutableText createLiteralComponent(String text){
 // IF fabric-1.16.5 || fabric-1.18.2
 //        return new LiteralText(text);
 // ELSE

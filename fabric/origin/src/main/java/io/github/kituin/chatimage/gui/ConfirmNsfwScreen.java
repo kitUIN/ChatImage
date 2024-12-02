@@ -32,7 +32,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 public class ConfirmNsfwScreen extends ConfirmScreen {
 
     public ConfirmNsfwScreen(BooleanConsumer callback, String link) {
-        this(callback, createTranslatableText("nsfw.chatimage.open"), createLiteralText(link));
+        this(callback, createTranslatableComponent("nsfw.chatimage.open"), createLiteralComponent(link));
     }
 
     public ConfirmNsfwScreen(BooleanConsumer callback, Text title, Text message) {
@@ -74,12 +74,12 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 //IF <= fabric-1.19.4
 //    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // ELSE
 //    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
 //        super.render(matrices, mouseX, mouseY, delta);
-//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableComponent("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
 // END IF
 // IF fabric-1.16.5
