@@ -1,11 +1,11 @@
-name: 打包
+name: 发布
 
 on:
   workflow_dispatch:
 env:
   JAVA_8_LIST: '["forge-1.16.5"]'
   JAVA_17_LIST: '["fabric-1.16.5","fabric-1.18.2","fabric-1.19.1","fabric-1.19.2","fabric-1.19.3","fabric-1.19.4","fabric-1.20","fabric-1.20.3","forge-1.18.2","forge-1.19","forge-1.20","forge-1.20.2","forge-1.20.3"]'
-  JAVA_21_LIST: '["fabric-1.20.5","fabric-1.21","forge-1.20.5"]'
+  JAVA_21_LIST: '["fabric-1.20.5","fabric-1.21","fabric-1.21.2","neoforge-1.20.2","neoforge-1.20.3","neoforge-1.20.4","neoforge-1.20.5","neoforge-1.21.0","neoforge-1.21.2",]'
 permissions:
   contents: write
 jobs:
@@ -61,10 +61,10 @@ jobs:
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
           ./gradlew clean build
           cd ../..
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ChatImage-${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}.jar
-          path: ChatImage-jar/${{ env.MOD_VERSION }}/ChatImage-${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}.jar
+#      - uses: actions/upload-artifact@v4
+#        with:
+#          name: ChatImage-${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}.jar
+#          path: ChatImage-jar/${{ env.MOD_VERSION }}/ChatImage-${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}.jar
 
       - uses: Kir-Antipov/mc-publish@v3.3
         with:
