@@ -372,6 +372,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#drawCenteredTextWithShadow#">
+          <value>
+            <map>
+              <entry key="&lt; fabric-1.19.4" value="drawCenteredText" />
+              <entry key="fabric-1.19.4" value="drawCenteredTextWithShadow" />
+            </map>
+          </value>
+        </entry>
         <entry key="#isHoveredOrFocused#">
           <value>
             <map>
