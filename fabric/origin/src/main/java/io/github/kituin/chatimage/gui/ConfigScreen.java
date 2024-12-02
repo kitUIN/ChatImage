@@ -5,8 +5,7 @@ import io.github.kituin.chatimage.widget.GifSlider;
 import io.github.kituin.chatimage.widget.TimeOutSlider;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-// IF fabric-1.16.5
-// ELSE
+// IF != fabric-1.16.5
 //import net.minecraft.client.gui.Drawable;
 //import net.minecraft.client.gui.Element;
 //import net.minecraft.client.gui.Selectable;
@@ -14,11 +13,14 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.*;
-
+// IF >= fabric-1.20
+//import net.minecraft.client.gui.DrawContext;
+// ELSE
+//import net.minecraft.client.util.math.MatrixStack;
+// END IF
 // IF fabric-1.16.5
 //import net.minecraft.client.gui.widget.ClickableWidget;
 // ELSE IF >= fabric-1.19.3
-//import net.minecraft.client.gui.DrawContext;
 //import net.minecraft.client.gui.tooltip.Tooltip;
 //import net.minecraft.client.gui.widget.GridWidget;
 //import net.minecraft.client.gui.widget.SimplePositioningWidget;
@@ -27,7 +29,7 @@ import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 @Environment(EnvType.CLIENT)
-// IF fabric-1.16.5 || fabric-1.18.2 || fabric-1.19.1 || fabric-1.19.2
+// IF <= fabric-1.19.2
 //public class ConfigScreen extends ConfigRawScreen {
 //    public ConfigScreen(Screen screen) {
 //        super(createTranslatableText("config.chatimage.category"), screen);
@@ -45,12 +47,18 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
     public ConfigScreen() {
         this(null);
     }
-
-// IF >= fabric-1.19.3
-//    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-//        super.render(context, mouseX, mouseY, delta);
-//        context.drawCenteredTextWithShadow(this.textRenderer, title, this.width / 2, this.height / 3 - 32, 16764108);
+//IF <= fabric-1.19.4
+//    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+//        super.render(matrices, mouseX, mouseY, delta);
+//        #drawCenteredTextWithShadow#(matrices, this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
 //    }
+// ELSE
+//    public void render(DrawContext matrices, int mouseX, int mouseY, float delta) {
+//        super.render(matrices, mouseX, mouseY, delta);
+//        matrices.#drawCenteredTextWithShadow#(this.textRenderer, createTranslatableText("nsfw.chatimage.warning"), this.width / 2, 110, 16764108);
+//    }
+// END IF
+// IF >= fabric-1.19.3
 //    protected void init() {
 //        super.init();
 //        GridWidget gridWidget = new GridWidget();
