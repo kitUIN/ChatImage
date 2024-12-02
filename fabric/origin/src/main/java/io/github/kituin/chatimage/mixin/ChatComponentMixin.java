@@ -1,13 +1,15 @@
 package io.github.kituin.chatimage.mixin;
 
+import io.github.kituin.chatimage.tool.ChatImageStyle;
 import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
-import io.github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.ChatHud;
 import net.minecraft.text.*;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -18,9 +20,8 @@ import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralText;
-import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
-import static net.minecraft.text.HoverEvent.Action.SHOW_TEXT;
+import static io.github.kituin.chatimage.tool.SimpleUtil.*;
+import static #HoverEvent#.Action.SHOW_TEXT;
 
 
 /**
@@ -30,15 +31,24 @@ import static net.minecraft.text.HoverEvent.Action.SHOW_TEXT;
  */
 @Mixin(ChatHud.class)
 public class #kituin$ChatComponentMixinClass# {
+    @Shadow
+    @Final
+    private MinecraftClient client;
+
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",
             argsOnly = true)
     public Text addMessage(Text message) {
-        return replaceMessage(message);
+        return chatimage$replaceMessage(message);
     }
 // IF >= fabric-1.19
 //    @Unique
 //    private #Component#Content chatImage$getContents(#Component# text){
+//        return text.getContent();
+//    }
+// ELSE IF >= forge-1.19
+//    @Unique
+//    private #Component#Contents chatImage$getContents(#Component# text){
 //        return text.getContent();
 //    }
 // ELSE
@@ -59,26 +69,26 @@ public class #kituin$ChatComponentMixinClass# {
 
     @SuppressWarnings("t")
     @Unique
-    private Text replaceCode(Text text) {
+    private #Component# chatimage$replaceCode(#Component# text) {
         String checkedText;
         String key = "";
-        MutableText player = null;
+        #MutableComponent# player = null;
         boolean isSelf = false;
-        MutableText originText = text.copy();
+        #MutableComponent# originText = text.copy();
         originText.getSiblings().clear();
-        Style style = text.getStyle();
+        #Style# style = text.getStyle();
         if (chatImage$getContents(text) instanceof #PlainTextContents#) {
             checkedText = chatImage$getText((#PlainTextContents#)chatImage$getContents(text));
         } else if (chatImage$getContents(text) instanceof #TranslatableContents# ttc) {
             key = ttc.getKey();
             Object[] args = ttc.getArgs();
             if (ChatImageCodeTool.checkKey(key)) {
-                player = (MutableText) args[0];
-                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(MinecraftClient.getInstance().player.getName()).toString());
+                player = (#MutableComponent#) args[0];
+                isSelf = chatImage$getContents(player).toString().equals(chatImage$getContents(client.player.getName()).toString());
                 if(args[1] instanceof String){
                     checkedText = (String) args[1];
                 }else{
-                    MutableText contents = (MutableText) args[1];
+                    #MutableComponent# contents = (#MutableComponent#) args[1];
                     if (chatImage$getContents(contents) instanceof #PlainTextContents#) {
                         checkedText = chatImage$getText((#PlainTextContents#) chatImage$getContents(contents));
                     } else {
@@ -86,7 +96,7 @@ public class #kituin$ChatComponentMixinClass# {
                     }
                 }
             } else {
-                return t;
+                return originText;
             }
         } else {
             checkedText = chatImage$getContents(text).toString();
@@ -124,7 +134,7 @@ public class #kituin$ChatComponentMixinClass# {
             }
             return originText;
         }
-        MutableText res = createLiteralText("");
+        #MutableComponent# res = createLiteralText("");
         ChatImageCodeTool.buildMsg(texts,
                 (obj) -> res.append(createLiteralText(obj).setStyle(style)),
                 (obj) -> res.append(ChatImageStyle.messageFromCode(obj))
@@ -133,15 +143,15 @@ public class #kituin$ChatComponentMixinClass# {
     }
 
     @Unique
-    private Text replaceMessage(Text message) {
+    private #Component# chatimage$replaceMessage(#Component# message) {
         try {
-            MutableText res = (MutableText) replaceCode(message);
-            for (Text t : message.getSiblings()) {
-                res.append(replaceMessage(t));
+            #MutableComponent# res = (#MutableComponent#) chatimage$replaceCode(message);
+            for (#Component# t : message.getSiblings()) {
+                res.append(chatimage$replaceMessage(t));
             }
             return res;
         } catch (Exception e) {
-            LOGGER.error(e.getMessage());
+            LOGGER.error("识别失败:{}", e.getMessage());
             return message;
         }
     }
