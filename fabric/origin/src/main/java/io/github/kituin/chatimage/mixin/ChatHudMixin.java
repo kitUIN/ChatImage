@@ -57,9 +57,9 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
         t.getSiblings().clear();
         Style style = text.getStyle();
         t = t.setStyle(style);
-// IF > fabric-1.20
-//        if (text.getContent() instanceof PlainTextContent) {
-//            checkedText = ((PlainTextContent) text.getContent()).string();
+// IF >= fabric-1.19
+//        if (text.getContent() instanceof #PlainTextContent#) {
+//            checkedText = ((#PlainTextContent#) text.getContent()).string();
 //        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
 //            key = ttc.getKey();
 //            Object[] args = ttc.getArgs();
@@ -70,37 +70,12 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableText;
 //                    checkedText = (String) args[1];
 //                }else{
 //                    MutableText contents = (MutableText) args[1];
-//                    if (contents.getContent() instanceof PlainTextContent) {
-//                        checkedText = ((PlainTextContent) contents.getContent()).string();
+//                    if (contents.getContent() instanceof #PlainTextContent#) {
+//                        checkedText = ((#PlainTextContent#) contents.getContent()).string();
 //                    } else {
 //                        checkedText = contents.getContent().toString();
 //                    }
 //                }
-//            } else {
-//                return t;
-//            }
-//        } else {
-//            checkedText = text.getContent().toString();
-//        }
-// ELSE IF > fabric-1.18.2
-//        if (text.getContent() instanceof LiteralTextContent) {
-//            checkedText = ((LiteralTextContent) text.getContent()).string();
-//        } else if (text.getContent() instanceof TranslatableTextContent ttc) {
-//            key = ttc.getKey();
-//            Object[] args = ttc.getArgs();
-//            if (ChatImageCodeTool.checkKey(key)) {
-//                player = (MutableText) args[0];
-//                isSelf = player.getContent().toString().equals(MinecraftClient.getInstance().player.getName().getContent().toString());
-//                if(args[1] instanceof String){
-//                     checkedText = (String) args[1];
-//                }else{
-//                MutableText contents = (MutableText) args[1];
-//                if (contents.getContent() instanceof LiteralTextContent) {
-//                    checkedText = ((LiteralTextContent) contents.getContent()).string();
-//                } else {
-//                    checkedText = contents.getContent().toString();
-//                }
-//                  }
 //            } else {
 //                return t;
 //            }
