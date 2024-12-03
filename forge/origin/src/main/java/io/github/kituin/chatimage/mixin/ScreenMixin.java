@@ -77,8 +77,8 @@ public abstract class ScreenMixin extends #AbstractContainerEventHandler# implem
 // IF forge-1.16.5
 //                        bufferbuilder.begin(7, #DefaultVertexFormat#.POSITION_COLOR);
 // ELSE IF > forge-1.16.5 && <= forge-1.19
-////                        RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getPositionColorShader);
-////                        bufferbuilder.begin(com.mojang.blaze3d.vertex.VertexFormat.Mode.QUADS, #DefaultVertexFormat#.POSITION_COLOR);
+//                        RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getPositionColorShader);
+//                        bufferbuilder.begin(com.mojang.blaze3d.vertex.VertexFormat.Mode.QUADS, #DefaultVertexFormat#.POSITION_COLOR);
 // END IF
 //                        #Matrix4f# matrix4f = pMatrixStack.last().pose();
 //                        fillGradient(matrix4f, bufferbuilder, l - 3, m - 4, l + i + 3, m - 3, 400, -267386864, -267386864);
@@ -100,9 +100,11 @@ public abstract class ScreenMixin extends #AbstractContainerEventHandler# implem
 //                         bufferbuilder.end();
 //                         net.minecraft.client.renderer.WorldVertexBufferUploader.end(bufferbuilder);
 //                         RenderSystem.shadeModel(7424);
-// ELSE IF > forge-1.16.5 && <= forge-1.19
-////                        bufferbuilder.end();
-////                        com.mojang.blaze3d.vertex.BufferUploader.end(bufferbuilder);
+// ELSE IF forge-1.19
+//                        com.mojang.blaze3d.vertex.BufferUploader.drawWithShader(bufferbuilder.end());
+// ELSE IF > forge-1.16.5
+//                        bufferbuilder.end();
+//                        com.mojang.blaze3d.vertex.BufferUploader.end(bufferbuilder);
 // END IF
 //
 //                        RenderSystem.disableBlend();
@@ -112,10 +114,10 @@ public abstract class ScreenMixin extends #AbstractContainerEventHandler# implem
 //                         RenderSystem.blendColor(1.0F, 1.0F, 1.0F, 1.0F);
 //                         RenderSystem.bindTexture(Objects.requireNonNull(Minecraft.getInstance().getTextureManager().getTexture((#ResourceLocation#) frame.getId())).getId());
 // ELSE IF > forge-1.16.5 && <= forge-1.19
-////                        pMatrixStack.translate(0.0F, 0.0F, 400.0F);
-////                        //RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getPositionColorShader);
-////                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-////                        RenderSystem.setShaderTexture(0, (#ResourceLocation#) frame.getId());
+//                        pMatrixStack.translate(0.0F, 0.0F, 400.0F);
+//                        RenderSystem.setShader(net.minecraft.client.renderer.GameRenderer::getPositionColorShader);
+//                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+//                        RenderSystem.setShaderTexture(0, (#ResourceLocation#) frame.getId());
 // END IF
 //
 //                        #GuiComponent#.blit(pMatrixStack, l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
