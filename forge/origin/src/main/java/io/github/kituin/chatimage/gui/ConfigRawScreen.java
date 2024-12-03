@@ -13,7 +13,6 @@ public abstract class ConfigRawScreen extends #Screen# {
         this.parent = screen;
     }
     public void render(#GuiGraphics# matrixStack, int mouseX, int mouseY, float partialTicks) {
-        super.render(matrixStack, mouseX, mouseY, partialTicks);
 // IF <= forge-1.19
 //        renderBackground(matrixStack);
 //        drawCenteredString(matrixStack, this.font,
@@ -27,7 +26,7 @@ public abstract class ConfigRawScreen extends #Screen# {
 //        matrixStack.drawCenteredString(this.font,
 //                title, this.width / 2, this.height / 4 - 16, 16764108);
 // END IF
-
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
     }
     protected SettingSliderWidget.OnTooltip createSliderTooltip(#Component# text) {
         return new SettingSliderWidget.OnTooltip() {
@@ -47,7 +46,7 @@ public abstract class ConfigRawScreen extends #Screen# {
         };
     }
 // IF <= forge-1.19
-//    protected #Button.OnTooltip# createButtonTooltip(#Component# text) {
+//    protected #Button.OnTooltip# #kituin$createButtonTooltip#(#Component# text) {
 //        return new #Button.OnTooltip#() {
 //            public void onTooltip(#Button# p_93753_, #GuiGraphics# p_93754_, int p_93755_, int p_93756_) {
 //                if (text != null) {
