@@ -28,7 +28,7 @@ def getVersionFromFile(String f) {
 
 def code_version = getVersionFromFile('../../code_version.txt')
 def mod_version = getVersionFromFile('../../version.txt')
-version = mod_version + "+" + project.minecraft_version  + "+forge"
+version = mod_version + "+" + project.minecraft_version_name  + "+forge"
 
 def targetJavaVersion = project.targetJavaVersion.toInteger()
 def javaVersion = JavaVersion.toVersion(targetJavaVersion)
@@ -201,8 +201,8 @@ tasks.withType(ProcessResources).configureEach {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "chatimage",
-                "Implementation-Vendor"   : "kitUIN",
+                "Specification-Title"     : project.mod_name,
+                "Implementation-Vendor"   : project.mod_authors,
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
