@@ -47,5 +47,8 @@ jobs:
       - name: Build
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
-          ./gradle clean build
+          ./gradlew clean build
           cd ../..
+      - name: Show Files
+        run: |
+          ls ChatImage-jar
