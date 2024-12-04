@@ -37,7 +37,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Read version.txt and save to variable
-        shell: pwsh
         run: |
           mod_version=$(cat version.txt)
           echo "Version: $mod_version"
