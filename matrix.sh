@@ -34,7 +34,7 @@ for path in "${paths[@]}"; do
 done
 
 # 创建 JSON 格式的输出
-json=$(printf "[%s]" "$(IFS=,; echo "${allFolderObjects[*]}")")
+json=$(printf "{\"config\":[%s]}" "$(IFS=,; echo "${allFolderObjects[*]}")")
 
 # 输出最终的 JSON 结果
 echo "::set-output name=matrix::$json"
