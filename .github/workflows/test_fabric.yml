@@ -14,7 +14,7 @@ permissions:
 jobs:
 
   generate-matrix:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -23,7 +23,7 @@ jobs:
         id: set-matrix
         shell: pwsh
         run: |
-          .\matrix.ps1 -path "fabric"
+          .\matrix.sh -path "fabric"
 
   test:
     runs-on: windows-latest
@@ -46,7 +46,7 @@ jobs:
       - name: Init Files
         shell: pwsh
         run: |
-          ./init.ps1
+          ./init.sh
       - name: Build
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
