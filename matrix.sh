@@ -28,7 +28,19 @@ for path in "${paths[@]}"; do
       # 提取 mc-version 和 mc-loader 信息
       mcVersion="${folderName//$path-/}"
       mcLoader="$path"
-      allFolderObjects+=("{\"mc-version\": \"$mcVersion\", \"mc-loader\": \"$mcLoader\"}")
+      supportVersionFile="$mcLoader/$mcLoader-$mcVersion/support_version.txt"
+      if [[ -f "$supportVersionFile" ]]; then
+        supportVersion=$(cat "$supportVersionFile")
+      else
+        supportVersion="$mcVersion"
+      fi
+
+      if [ "$mcLoader" == "fabric" ]; then
+        publishLoaders="fabric quilt"
+      else
+        publishLoaders="$mcLoader"
+      fi
+      allFolderObjects+=("{\"mc-version\": \"$mcVersion\", \"mc-loader\": \"$mcLoader\", \"publish-loaders\": \"$publishLoaders\", \"publish-version\": \"$supportVersion\"}")
     fi
   done
 done
