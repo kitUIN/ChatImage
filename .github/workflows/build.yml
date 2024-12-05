@@ -65,11 +65,10 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           curseforge-id: 818089
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-
           name: ChatImage-${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}.jar
-          version: ${{ env.MOD_VERSION }}
-          version-type: "beta"
-          loaders: ${{ matrix.config.mc-loader }}
-          game-versions: ${{ matrix.config.mc-version }}
+          version: ${{ env.MOD_VERSION }}+${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}
+          version-type: alpha
+          loaders: ${{ matrix.config.publish-loaders }}
+          game-versions: ${{ matrix.config.publish-version }}
           game-version-filter: releases
           files: ChatImage-jar/${{ env.MOD_VERSION }}/*.jar
