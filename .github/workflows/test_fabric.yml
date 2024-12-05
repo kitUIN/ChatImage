@@ -51,4 +51,4 @@ jobs:
           cd ../..
       - name: Show Files
         run: |
-          ls ChatImage-jar/${{ $mod_version }}
+          ls ChatImage-jar/${{ mod_version }}
