@@ -14,19 +14,18 @@ permissions:
 jobs:
 
   generate-matrix:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
       - name: Generate Matrix
         id: set-matrix
-        shell: pwsh
         run: |
-          .\matrix.ps1 -path "neoforge"
+          chmod 777 matrix.sh && ./matrix.sh -path "neoforge"
 
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: generate-matrix
     strategy:
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
@@ -38,17 +37,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
       - name: Read version.txt and save to variable
-        shell: pwsh
         run: |
-          $mod_version = Get-Content version.txt
-          Write-Host "Version: $mod_version"
-          echo "MOD_VERSION=$mod_version" | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_ENV
+          mod_version=$(cat version.txt)
+          echo "Version: $mod_version"
+          echo "MOD_VERSION=$mod_version" >> "$GITHUB_ENV"
       - name: Init Files
-        shell: pwsh
         run: |
-          ./init.ps1
+          chmod 777 init.sh && ./init.sh
       - name: Build
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
-          ./gradlew clean build
+          chmod 777 gradlew && ./gradlew clean build
           cd ../..
+      - name: Show Files
+        run: |
+          ls ChatImage-jar/${{ env.MOD_VERSION }}
