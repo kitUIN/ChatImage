@@ -23,8 +23,10 @@ jobs:
         id: set-matrix
         run: |
           chmod 777 matrix.sh
-          ./matrix.sh -path "fabric" >> $GITHUB_OUTPUT
-
+          ./matrix.sh -path "fabric"
+      - name: Show
+        run: | 
+          echo ${{ steps.set-matrix.outputs.matrix }}
   test:
     runs-on: ubuntu-latest
     needs: generate-matrix
