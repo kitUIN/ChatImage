@@ -22,7 +22,8 @@ jobs:
       - name: Generate Matrix
         id: set-matrix
         run: |
-          chmod 777 matrix.sh && ./matrix.sh -path "fabric" 
+          chmod 777 matrix.sh
+          ./matrix.sh -path "fabric" >> $GITHUB_OUTPUT
 
   test:
     runs-on: ubuntu-latest

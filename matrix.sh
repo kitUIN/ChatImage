@@ -37,4 +37,4 @@ done
 json=$(printf "{\"config\":[%s]}" "$(IFS=,; echo "${allFolderObjects[*]}")")
 
 # 输出最终的 JSON 结果
-echo "::set-output name=matrix::$json"
+echo "name=matrix::$json"
