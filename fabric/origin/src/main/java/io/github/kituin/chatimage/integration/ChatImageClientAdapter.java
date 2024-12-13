@@ -26,20 +26,20 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableCompo
 
 public class ChatImageClientAdapter implements IClientAdapter {
 // IF >= fabric-1.21.4
-    private final Map<String, Integer> dynamicIdCounters = Maps.newHashMap();
-    public Identifier registerDynamicTexture(String prefix, NativeImageBackedTexture texture) {
-        Integer integer = (Integer)this.dynamicIdCounters.get(prefix);
-        if (integer == null) {
-            integer = 1;
-        } else {
-            integer = integer + 1;
-        }
-
-        this.dynamicIdCounters.put(prefix, integer);
-        Identifier identifier = Identifier.ofVanilla(String.format(Locale.ROOT, "dynamic/%s_%d", prefix, integer));
-        MinecraftClient.getInstance().getTextureManager().registerTexture(identifier, texture);
-        return identifier;
-    }
+//     private final Map<String, Integer> dynamicIdCounters = Maps.newHashMap();
+//     public Identifier registerDynamicTexture(String prefix, NativeImageBackedTexture texture) {
+//         Integer integer = (Integer)this.dynamicIdCounters.get(prefix);
+//         if (integer == null) {
+//             integer = 1;
+//         } else {
+//             integer = integer + 1;
+//         }
+//
+//         this.dynamicIdCounters.put(prefix, integer);
+//         Identifier identifier = Identifier.ofVanilla(String.format(Locale.ROOT, "dynamic/%s_%d", prefix, integer));
+//         MinecraftClient.getInstance().getTextureManager().registerTexture(identifier, texture);
+//         return identifier;
+//     }
 // END IF
 
     @Override
@@ -52,9 +52,9 @@ public class ChatImageClientAdapter implements IClientAdapter {
         NativeImage nativeImage = NativeImage.read(image);
         return new ChatImageFrame.TextureReader<>(
 // IF >= fabric-1.21.4
-                registerDynamicTexture(
+//                registerDynamicTexture(
 // ELSE
-////                         MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(
+//                         MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(
 // END IF
                         MOD_ID + "/chatimage",
                         new NativeImageBackedTexture(nativeImage)),
