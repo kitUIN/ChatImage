@@ -39,11 +39,13 @@
   <a href="https://modrinth.com/mod/chatimage">⬇️Modrinth</a>
 </p>
 
+> [!WARNING]  
+> Forge versions after 1.20.4 are no longer supported.
+
 <!-- TOC -->
 * [ChatImage](#chatimage)
   * [Quick Start](#quick-start)
   * [Specification](#specification)
-    * [Example:](#example-)
   * [Use Command to send [[CICode]]](#use-command-to-send-cicode)
   * [Config Settings](#config-settings)
   * [Support input method](#support-input-method)
@@ -83,7 +85,7 @@ ps2: `1.1.9`and above could use [CQCode](https://docs.go-cqhttp.org/cqcode/#%E5%
 
 if it is set to `true`, you need to click to view it (or open the nsfw mode in the configuration file to view it directly)
 
-### Example: 
+### Example 
 
 - Web Image `[[CICode,url=<Web Url>,name=Image]]`
     - example: `[CICode,url=https://blog.kituin.fun/img/bg.png,name=Image]]`
