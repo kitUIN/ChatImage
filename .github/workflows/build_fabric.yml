@@ -20,7 +20,7 @@ jobs:
           chmod 777 matrix.sh
           ./matrix.sh -path "fabric"
 
-  test:
+  build:
     runs-on: windows-latest
     needs: generate-matrix
     strategy:
