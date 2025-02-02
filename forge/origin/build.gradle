@@ -226,11 +226,11 @@ publishing {
             artifactId project.name
             groupId group
             version version
-            artifact(remapJar) {
-                builtBy remapJar
-            }
+            from components.java
+            fg.component(it)
+
             artifact(sourcesJar) {
-                builtBy remapSourcesJar
+                builtBy sourcesJar
             }
             pom {
                 name = project.name

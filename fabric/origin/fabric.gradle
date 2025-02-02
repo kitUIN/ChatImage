@@ -108,9 +108,7 @@ publishing {
             artifactId project.name
             groupId group
             version version
-            artifact(remapJar) {
-                builtBy remapJar
-            }
+            from components.java
             artifact(sourcesJar) {
                 builtBy remapSourcesJar
             }
