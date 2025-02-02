@@ -1,5 +1,6 @@
 package io.github.kituin.chatimage.mixin;
 
+import com.google.common.collect.Lists;
 import io.github.kituin.chatimage.tool.ChatImageStyle;
 import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
@@ -113,7 +114,11 @@ public class #kituin$ChatComponentMixinClass# {
                     }
                 }
             } else {
-                return originText;
+                List<#Component#> argTexts = Lists.newArrayList();
+                for(Object arg : args) {
+                    argTexts.add(this.chatimage$replaceMessage((#Component#) arg));
+                }
+                return createTranslatableComponent(key, argTexts.toArray()).setStyle(style);
             }
         } else {
             checkedText = chatImage$getContents(text).toString();
