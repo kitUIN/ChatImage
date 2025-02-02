@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.CLIENT_ADAPTER;
 import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 
 public class WindowsPasteCompat implements IPasteCompat {
@@ -51,6 +52,7 @@ public class WindowsPasteCompat implements IPasteCompat {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, TempFileType, baos);
             byte[] byteArr = baos.toByteArray();
+            CLIENT_ADAPTER.checkCachePath();
             String fileName = CONFIG.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + TempFileType;
             File outputfile = new File(fileName);
             ImageIO.write(image, TempFileType, outputfile);
