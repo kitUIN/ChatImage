@@ -55,12 +55,11 @@ jobs:
       - name: Init Files
         run: |
           chmod 777 init.sh && ./init.sh
-      - name: Build
+      - name: Build And Publish Maven
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
           chmod 777 gradlew && ./gradlew clean build
-      - name: Publish package
-        run: gradle publish
+          ./gradlew publish
         env:
           KITUIN_USERNAME: ${{ secrets.KITUIN_USERNAME }}
           KITUIN_PASSWORD: ${{ secrets.KITUIN_PASSWORD }}
