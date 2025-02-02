@@ -48,6 +48,8 @@
 <!-- TOC -->
 * [ChatImage](#chatimage)
   * [快速开始](#快速开始)
+  * [兼容性](#兼容性)
+  * [额外支持](#额外支持)
   * [规范](#规范)
   * [使用命令发送 [[CICode]]](#使用命令发送-cicode)
   * [配置文件设置](#配置文件设置)
@@ -65,6 +67,26 @@
 ![quick](https://github.com/kitUIN/ChatImage/assets/68675068/e2007819-850f-4a0d-b0e1-6ea2541c8704)
 
 (图片来自画师[甘城なつき](https://www.pixiv.net/users/3036679))
+
+## 兼容性
+
+- ✅[Chat Heads (Mod)](https://modrinth.com/mod/chat-heads)
+- ✅[McBot🔗 (Mod)](https://modrinth.com/mod/mcbot)
+- ✅[ChatBridge - CQCode](https://github.com/TISUnion/ChatBridge)
+- ✅[NoChatReports (Mod)](https://modrinth.com/mod/no-chat-reports)
+- ✅[ChatBridge - CQCode](https://github.com/TISUnion/ChatBridge)
+- ✅[QueQiao](https://github.com/17TheWord/QueQiao)
+- ✅[mc-plugin - Yunzai](https://github.com/CikeyQi/mc-plugin)
+- ⚠️[Styled Chat (Mod)](https://www.curseforge.com/minecraft/mc-mods/styled-chat)
+- ⚠️[fuji (Mod)](https://modrinth.com/mod/fuji)
+
+## 额外支持
+
+- [CQCode](https://docs.go-cqhttp.org/cqcode/#%E8%BD%AC%E4%B9%89)识别
+- 图片Url(后缀为png!thumbnail|bmp|png|jpe?g|gif|ico),同时支持携带params
+- 支持[/tellraw](https://zh.minecraft.wiki/w/%E5%91%BD%E4%BB%A4/tellraw?variant=zh-cn)指令的 Json 格式(由[ActionLib](https://github.com/kitUIN/ActionLib)提供)
+- 支持[成书](https://zh.minecraft.wiki/w/%E6%88%90%E4%B9%A6?variant=zh-cn)内显示(由[ActionLib](https://github.com/kitUIN/ActionLib)提供)
+- 支持[hoverEvent.show_text](https://zh.minecraft.wiki/w/Tutorial:%E6%96%87%E6%9C%AC%E7%BB%84%E4%BB%B6?variant=zh-cn)中的CICode转换
 
 ## 规范
 
@@ -113,6 +135,7 @@
 - [X]  手动输入`CICode`
 - [x]  使用命令发送`CICode`
 - [x]  图片拖拽进聊天栏
+- [ ]  剪切板粘贴
 
 ## 支持格式
 - [X] png

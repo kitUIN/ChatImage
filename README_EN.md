@@ -45,7 +45,10 @@
 <!-- TOC -->
 * [ChatImage](#chatimage)
   * [Quick Start](#quick-start)
+  * [Compatibility](#compatibility)
+  * [MoreSupport](#moresupport)
   * [Specification](#specification)
+    * [Example](#example-)
   * [Use Command to send [[CICode]]](#use-command-to-send-cicode)
   * [Config Settings](#config-settings)
   * [Support input method](#support-input-method)
@@ -64,6 +67,28 @@ support display GIF and local image
 ![quick](https://github.com/kitUIN/ChatImage/assets/68675068/e2007819-850f-4a0d-b0e1-6ea2541c8704)
 
 (image from [甘城なつき](https://www.pixiv.net/users/3036679))
+
+
+## Compatibility
+
+- ✅[Chat Heads (Mod)](https://modrinth.com/mod/chat-heads)
+- ✅[McBot🔗 (Mod)](https://modrinth.com/mod/mcbot)
+- ✅[ChatBridge - CQCode](https://github.com/TISUnion/ChatBridge)
+- ✅[NoChatReports (Mod)](https://modrinth.com/mod/no-chat-reports)
+- ✅[ChatBridge - CQCode](https://github.com/TISUnion/ChatBridge)
+- ✅[QueQiao](https://github.com/17TheWord/QueQiao)
+- ✅[mc-plugin - Yunzai](https://github.com/CikeyQi/mc-plugin)
+- ⚠️[Styled Chat (Mod)](https://www.curseforge.com/minecraft/mc-mods/styled-chat)
+- ⚠️[fuji (Mod)](https://modrinth.com/mod/fuji)
+
+## MoreSupport
+
+- Support [CQCode](https://docs.go-cqhttp.org/cqcode/#%E8%BD%AC%E4%B9%89)
+- Image Url(suffix is png!thumbnail|bmp|png|jpe?g|gif|ico),also support with params
+- support Json by [/tellraw](https://minecraft.wiki/w/Commands/tellraw)(From [ActionLib](https://github.com/kitUIN/ActionLib))
+- support CICode in [Written_Book](https://minecraft.wiki/w/Written_Book)(From [ActionLib](https://github.com/kitUIN/ActionLib))
+- support CICode in [hoverEvent.show_text](https://zh.minecraft.wiki/w/Tutorial:%E6%96%87%E6%9C%AC%E7%BB%84%E4%BB%B6?variant=zh-cn)
+
 
 ## Specification
 
@@ -116,6 +141,7 @@ Send CICode with url (use default display name)
 - [X] Manual Input `CICode`
 - [x] Send `CICode` With Command
 - [x] Drag Image Into Chat Screen
+- [ ] Clipboard Paste
 
 ## Support Image Type
 - [X] png
