@@ -55,7 +55,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 @Environment(EnvType.CLIENT)
 @Mixin(Screen.class)
 public abstract class ScreenMixin extends AbstractParentElement implements Drawable {
-    
+
     @Shadow
     public int width;
 
@@ -66,6 +66,7 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 // IF < fabric-1.20
 //    @Shadow
 //    public int height;
+//
 //    @Shadow
 //    public abstract void renderOrderedTooltip(MatrixStack matrices, List<? extends OrderedText> lines, int x, int y);
 //
@@ -189,13 +190,22 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 //                        RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 //                        bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_COLOR);
 //                        Matrix4f matrix4f = matrices.peek().getPositionMatrix();
-//                        TooltipBackgroundRenderer.render(DrawableHelper::fillGradient, matrix4f, bufferBuilder, l, m, viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight, viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom, 400);
+//                        TooltipBackgroundRenderer.render(
+//                                DrawableHelper::fillGradient,
+//                                matrix4f,
+//                                bufferBuilder,
+//                                l,
+//                                m,
+//                                viewWidth + CONFIG.paddingLeft + CONFIG.paddingRight,
+//                                viewHeight + CONFIG.paddingTop + CONFIG.paddingBottom,
+//                                400);
 //                        RenderSystem.enableDepthTest();
 //                        RenderSystem.enableBlend();
 //                        RenderSystem.defaultBlendFunc();
-//                        BufferRenderer.draw(bufferBuilder.end());
-//                        RenderSystem.disableBlend();
+//                        BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+//                        VertexConsumerProvider.Immediate immediate = VertexConsumerProvider.immediate(Tessellator.getInstance().getBuffer());
 //                        matrices.translate(0.0F, 0.0F, 400.0F);
+//                        immediate.draw();
 //                        RenderSystem.setShader(GameRenderer::getPositionTexProgram);
 //                        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 //                        RenderSystem.setShaderTexture(0, (Identifier) frame.getId());
@@ -208,19 +218,17 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
 //                        MutableText text = (MutableText) frame.getErrorMessage(
 //                                (str) -> createLiteralComponent((String) str),
 //                                (str) -> createTranslatableComponent((String) str),
-//                                (obj, s)-> ((MutableText)obj).append((Text)s) , code);
+//                                (obj, s) -> ((MutableText) obj).append((Text) s), code);
 //                        this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(text, Math.max(this.width / 2, 200)), x, y);
 //                    }
 //                } else {
 //                    this.renderOrderedTooltip(matrices, this.client.textRenderer.wrapLines(createTranslatableComponent("nsfw.chatimage.message"), Math.max(this.width / 2, 200)), x, y);
 //                }
-//
 //            }
-//
 //        }
-//
 //    }
 // END IF
+
     @Unique
     private String nsfwUrl;
 
