@@ -22,7 +22,7 @@ public class WindowsPasteCompat implements IPasteCompat {
     public String doPaste() {
         try {
             Transferable trans = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
-            if (trans == null) return "";
+            if (trans == null) return null;
             if (trans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
                 StringBuilder sb = new StringBuilder();
                 Object object = trans.getTransferData(DataFlavor.javaFileListFlavor);
@@ -39,8 +39,9 @@ public class WindowsPasteCompat implements IPasteCompat {
         } catch (IOException | UnsupportedFlavorException | IllegalStateException e) {
             ChatImage.LOGGER.warn(e.getMessage());
         }
-        return "";
+        return null;
     }
+
     private static final String TempFileType = "png";
 
     private String getImageCICode(Object object) throws IOException {
@@ -57,6 +58,8 @@ public class WindowsPasteCompat implements IPasteCompat {
             File outputfile = new File(fileName);
             ImageIO.write(image, TempFileType, outputfile);
             sb.append("[[CICode,url=file:///").append(outputfile.getAbsolutePath()).append("]]");
+        } else {
+            return null;
         }
         return sb.toString();
     }

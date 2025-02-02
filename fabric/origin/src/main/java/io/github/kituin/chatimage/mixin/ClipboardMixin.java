@@ -28,6 +28,8 @@ public class ClipboardMixin {
     @Inject(at = @At("RETURN"), method = "getClipboard", cancellable = true)
     public void getClipboard(CallbackInfoReturnable<String> cir) {
         if (!(this.client.currentScreen instanceof ChatScreen)) return;
-        cir.setReturnValue(PasteToolkit.getPasteCompat().doPaste());
+        String pasteImage = PasteToolkit.getPasteCompat().doPaste();
+        if (pasteImage == null) return;
+        cir.setReturnValue(pasteImage);
     }
 }
