@@ -55,6 +55,7 @@ dependencies {
     includeMod "fabric-api", fabricApi.module(project.command_api, project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
     include modImplementation("io.github.kituin:ChatImageCode:${code_version}")
+    include modImplementation( "ca.weblite:java-objc-bridge:1.0.0")
     include modImplementation("io.github.kituin:ActionLib:${project.action_version}-fabric")
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }

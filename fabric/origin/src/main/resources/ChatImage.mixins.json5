@@ -12,8 +12,10 @@
   "mixins": [
   ],
   "client": [
+    "AWTHackMixin",
     "BookScreenMixin",
     "ChatComponentMixin",
+    "ClipboardMixin",
     "FileDragMixin",
 // IF >= fabric-1.20
 //    "DrawContextMixin",

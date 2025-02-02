@@ -53,13 +53,13 @@
 //    "minecraft": ["1.19","1.19.1"]
 // ELSE IF fabric-1.19.2
 //    "fabric-command-api-v2": "*",
-//    "minecraft": "1.19.2"
+//    "minecraft": "~1.19.2"
 // ELSE IF fabric-1.19.3
 //    "fabric-command-api-v2": "*",
-//    "minecraft": "1.19.3"
+//    "minecraft": "~1.19.3"
 // ELSE IF fabric-1.19.4
 //    "fabric-command-api-v2": "*",
-//    "minecraft": "1.19.4"
+//    "minecraft": "~1.19.4"
 // ELSE IF fabric-1.20
 //    "fabric-command-api-v2": "*",
 //    "minecraft": ["1.20","1.20.1","1.20.2"]
