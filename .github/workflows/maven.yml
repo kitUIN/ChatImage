@@ -63,3 +63,4 @@ jobs:
         env:
           KITUIN_USERNAME: ${{ secrets.KITUIN_USERNAME }}
           KITUIN_PASSWORD: ${{ secrets.KITUIN_PASSWORD }}
+        continue-on-error: true
