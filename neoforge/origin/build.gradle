@@ -187,12 +187,12 @@ tasks.withType(ProcessResources).configureEach {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifactId project.name
+            artifactId project.mod_name
             groupId maven_group
             version version
             from components.java
             pom {
-                name = project.name
+                name = project.mod_name
                 description = 'A Minecraft Mod Which Could Show Image In Chat Line'
                 url = 'https://github.com/kitUIN/ChatImage'
                 licenses {
@@ -218,7 +218,7 @@ publishing {
     }
     repositories {
         maven {
-            name = project.name
+            name = project.mod_name
             if (project.version.toString().endsWith("-SNAPSHOT")) {
                 url = "https://maven.kituin.fun/snapshots"
             } else {
