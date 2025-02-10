@@ -1,3 +1,5 @@
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+
 plugins {
     id 'java-library'
     id 'eclipse'
@@ -46,10 +48,22 @@ repositories {
 base {
     archivesName = mod_name
 }
-
+javadoc {
+    options.addStringOption("tag", "date:a:Date:")
+    options.addStringOption("charset", "UTF-8")
+    options.addStringOption("encoding", "UTF-8")
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
-java.toolchain.languageVersion = JavaLanguageVersion.of(project.targetJavaVersion)
-java.withSourcesJar()
+java {
+    toolchain{
+        languageVersion = JavaLanguageVersion.of(project.targetJavaVersion)
+    }
+    withSourcesJar()
+//    withJavadocJar()
+}
 
 jarJar.enable()
 tasks.named('jarJar') {
@@ -190,7 +204,9 @@ publishing {
             artifactId project.mod_name
             groupId maven_group
             version version
-            from components.java
+//            from components.java
+            artifact jar
+            artifact sourcesJar
             pom {
                 name = project.mod_name
                 description = 'A Minecraft Mod Which Could Show Image In Chat Line'
