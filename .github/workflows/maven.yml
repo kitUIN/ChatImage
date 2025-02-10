@@ -58,9 +58,9 @@ jobs:
       - name: Build And Publish Maven
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
-          chmod 777 gradlew && ./gradlew clean build
+          chmod 777 gradlew
           ./gradlew publish
         env:
           KITUIN_USERNAME: ${{ secrets.KITUIN_USERNAME }}
           KITUIN_PASSWORD: ${{ secrets.KITUIN_PASSWORD }}
-        continue-on-error: true
+
