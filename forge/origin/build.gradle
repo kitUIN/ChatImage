@@ -229,9 +229,6 @@ publishing {
             from components.java
             fg.component(it)
 
-            artifact(sourcesJar) {
-                builtBy sourcesJar
-            }
             pom {
                 name = project.name
                 description = 'A Minecraft Mod Which Could Show Image In Chat Line'
