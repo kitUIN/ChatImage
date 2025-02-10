@@ -30,6 +30,8 @@
   "uri.chatimage.gui": "识别网络图片链接",
   "drag.chatimage.gui": "拖入使用CICode",
   "drag.chatimage.tooltip": "开启时使用CICode,关闭时使用FileUrl",
+  "image.drag.chatimage.gui": "拖入文件检测",
+  "image.drag.chatimage.tooltip": "开启时拖入文件将被识别",
   "channel.chatimage.gui": "频道",
   "online.chatimage.gui": "在线",
   "offline.chatimage.gui": "离线",

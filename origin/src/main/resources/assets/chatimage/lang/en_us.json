@@ -31,6 +31,8 @@
   "uri.chatimage.gui": "Recognize Image Uri",
   "drag.chatimage.gui":"Drag in With CICode",
   "drag.chatimage.tooltip": "On: CICode, Off: FileUrl",
+  "image.drag.chatimage.gui": "Drag File Detection",
+  "image.drag.chatimage.tooltip": "Drag files will be recognized when turned on",
   "channel.chatimage.gui": "Channel",
   "online.chatimage.gui": "Online",
   "offline.chatimage.gui": "Offline",
