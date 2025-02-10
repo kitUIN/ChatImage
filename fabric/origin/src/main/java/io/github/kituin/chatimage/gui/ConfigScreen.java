@@ -164,7 +164,7 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
     private MutableText getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
     }
-    private MutableText getDrag(boolean enable) {
+    private MutableText getDragImage(boolean enable) {
         return getEnable("image.drag.chatimage.gui", enable);
     }
 
