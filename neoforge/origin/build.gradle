@@ -191,9 +191,6 @@ publishing {
             groupId group
             version version
             from components.java
-            artifact(sourcesJar) {
-                builtBy sourcesJar
-            }
             pom {
                 name = project.name
                 description = 'A Minecraft Mod Which Could Show Image In Chat Line'
