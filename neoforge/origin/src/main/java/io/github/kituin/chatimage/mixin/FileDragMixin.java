@@ -27,7 +27,10 @@ public class FileDragMixin {
                                 int p_350707_,
 // END IF
                                 CallbackInfo ci) {
-        if (this.minecraft.screen != null && this.minecraft.player != null) {
+        if (this.minecraft.screen != null &&
+                this.minecraft.screen instanceof ChatScreen &&
+                ChatImage.CONFIG.dragImage &&
+                this.minecraft.player != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
                 if (ChatImage.CONFIG.dragUseCicode) {

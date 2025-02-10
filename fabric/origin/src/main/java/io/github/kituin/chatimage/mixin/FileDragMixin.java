@@ -34,7 +34,9 @@ public class FileDragMixin {
 //                                int invalidFilesCount,
 // END IF
                                 CallbackInfo ci) {
-        if (this.client.currentScreen != null && this.client.world != null) {
+        if (this.client.currentScreen != null &&
+                this.client.currentScreen instanceof ChatScreen &&
+                this.client.world != null && ChatImageClient.CONFIG.dragImage) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
                 if (ChatImageClient.CONFIG.dragUseCicode) {

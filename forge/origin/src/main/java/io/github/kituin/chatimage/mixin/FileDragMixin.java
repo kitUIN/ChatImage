@@ -21,7 +21,10 @@ public class FileDragMixin {
 
     @Inject(at = @At("RETURN"), method = "onDrop")
     private void onFilesDropped(long window, List<Path> paths, CallbackInfo ci) {
-        if (this.minecraft.screen != null && this.minecraft.player != null) {
+        if (this.minecraft.screen != null &&
+                this.minecraft.screen instanceof #ChatScreen# &&
+                ChatImage.CONFIG.dragImage &&
+                this.minecraft.player != null) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
                 if (ChatImage.CONFIG.dragUseCicode) {
