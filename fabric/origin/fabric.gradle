@@ -106,7 +106,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId project.name
-            groupId group
+            groupId maven_group
             version version
             from components.java
             pom {
