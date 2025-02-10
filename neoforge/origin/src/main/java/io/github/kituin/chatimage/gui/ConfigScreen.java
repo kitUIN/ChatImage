@@ -6,8 +6,8 @@ import io.github.kituin.ChatImageCode.ChatImageConfig;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
+import #Component#;
+import #MutableComponent#;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -44,19 +44,24 @@ public class ConfigScreen extends ConfigRawScreen {
                     ChatImageConfig.saveConfig(CONFIG);
                 }).bounds(this.width / 2 - 154, this.height / 4 + 72 - 16, 150, 20)
                 .tooltip(Tooltip.create(Component.translatable("cq.chatimage.tooltip"))).build());
-        this.addRenderableWidget(Button.builder(getDrag(CONFIG.dragUseCicode), (button) -> {
-                    CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
-                    button.setMessage(getDrag(CONFIG.dragUseCicode));
-                    ChatImageConfig.saveConfig(CONFIG);
-                }).bounds(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20)
-                .tooltip(Tooltip.create(Component.translatable("drag.chatimage.tooltip"))).build());
         this.addRenderableWidget(Button.builder(getUri(CONFIG.checkImageUri), (button) -> {
                     CONFIG.checkImageUri = !CONFIG.checkImageUri;
                     button.setMessage(getUri(CONFIG.checkImageUri));
                     ChatImageConfig.saveConfig(CONFIG);
-                }).bounds(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20)
+                }).bounds(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20)
                 .build());
-
+        this.addRenderableWidget(Button.builder(getDragImage(CONFIG.dragImage), (button) -> {
+                    CONFIG.dragImage = !CONFIG.dragImage;
+                    button.setMessage(getDragImage(CONFIG.dragImage));
+                    ChatImageConfig.saveConfig(CONFIG);
+                }).bounds(this.width / 2 + 4, this.height / 4 + 96 - 16, 150, 20)
+                .tooltip(Tooltip.create(Component.translatable("image.drag.chatimage.tooltip"))).build());
+        this.addRenderableWidget(Button.builder(getDrag(CONFIG.dragUseCicode), (button) -> {
+                    CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+                    button.setMessage(getDrag(CONFIG.dragUseCicode));
+                    ChatImageConfig.saveConfig(CONFIG);
+                }).bounds(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20)
+                .tooltip(Tooltip.create(Component.translatable("drag.chatimage.tooltip"))).build());
         this.addRenderableWidget(Button.builder(Component.translatable("gui.back"),
                         (button) -> {
                             if (this.minecraft != null) {
@@ -74,6 +79,9 @@ public class ConfigScreen extends ConfigRawScreen {
     }
     private MutableComponent getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
+    }
+    private MutableComponent getDragImage(boolean enable) {
+        return getEnable("image.drag.chatimage.gui", enable);
     }
     private MutableComponent getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);

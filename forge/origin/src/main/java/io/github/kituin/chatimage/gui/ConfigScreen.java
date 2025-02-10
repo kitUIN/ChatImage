@@ -38,16 +38,24 @@ public class ConfigScreen extends ConfigRawScreen {
             button.setMessage(getCq(CONFIG.cqCode));
             ChatImageConfig.saveConfig(CONFIG);
         }, #kituin$createButtonTooltip#(createTranslatableComponent("cq.chatimage.tooltip"))));
-        this.#kituin$addRenderableWidget#(createButton(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20,getDrag(CONFIG.dragUseCicode), (button) -> {
-                    CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
-                    button.setMessage(getDrag(CONFIG.dragUseCicode));
-                    ChatImageConfig.saveConfig(CONFIG);
-                },#kituin$createButtonTooltip#(createTranslatableComponent("drag.chatimage.tooltip"))));
-        this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20,getUri(CONFIG.checkImageUri), (button) -> {
+        this.#kituin$addRenderableWidget#(createButton(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20,
+                getUri(CONFIG.checkImageUri), (button) -> {
                     CONFIG.checkImageUri = !CONFIG.checkImageUri;
                     button.setMessage(getUri(CONFIG.checkImageUri));
                     ChatImageConfig.saveConfig(CONFIG);
                 }));
+        this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20,
+                getDrag(CONFIG.dragUseCicode), (button) -> {
+            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+            button.setMessage(getDrag(CONFIG.dragUseCicode));
+            ChatImageConfig.saveConfig(CONFIG);
+        },#kituin$createButtonTooltip#(createTranslatableComponent("drag.chatimage.tooltip"))));
+        this.#kituin$addRenderableWidget#(createButton(this.width / 2 + 4, this.height / 4 + 96 - 16, 150, 20,
+                getDragImage(CONFIG.dragImage), (button) -> {
+                    CONFIG.dragImage = !CONFIG.dragImage;
+                    button.setMessage(getDragImage(CONFIG.dragImage));
+                    ChatImageConfig.saveConfig(CONFIG);
+                },#kituin$createButtonTooltip#(createTranslatableComponent("image.drag.chatimage.tooltip"))));
         this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 77, this.height / 4 + 120 - 16, 150, 20,
                 createTranslatableComponent("gui.back"),
                 (button) -> {
@@ -58,13 +66,16 @@ public class ConfigScreen extends ConfigRawScreen {
     }
 
     private #MutableComponent# getCq(boolean enable) {
-        return getEnable( "cq.chatimage.gui", enable);
+        return getEnable("cq.chatimage.gui", enable);
     }
     private #MutableComponent# getNsfw(boolean enable) {
-        return getEnable( "nsfw.chatimage.gui", !enable);
+        return getEnable("nsfw.chatimage.gui", !enable);
     }
     private #MutableComponent# getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
+    }
+    private #MutableComponent# getDragImage(boolean enable) {
+        return getEnable("image.drag.chatimage.gui", enable);
     }
     private #MutableComponent# getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);

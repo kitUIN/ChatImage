@@ -81,16 +81,21 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //            button.setMessage(getCq(CONFIG.cqCode));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }).tooltip(Tooltip.of(Text.translatable("cq.chatimage.tooltip"))).build());
-//        adder.add(ButtonWidget.builder(getDrag(CONFIG.dragUseCicode), (button) -> {
-//            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
-//            button.setMessage(getDrag(CONFIG.dragUseCicode));
-//            ChatImageConfig.saveConfig(CONFIG);
-//        }).tooltip(Tooltip.of(Text.translatable("drag.chatimage.tooltip"))).build());
 //        adder.add(ButtonWidget.builder(getUri(CONFIG.checkImageUri), (button) -> {
 //            CONFIG.checkImageUri = !CONFIG.checkImageUri;
 //            button.setMessage(getUri(CONFIG.checkImageUri));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }).build());
+//        adder.add(ButtonWidget.builder(getDrag(CONFIG.dragUseCicode), (button) -> {
+//            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+//            button.setMessage(getDrag(CONFIG.dragUseCicode));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }).tooltip(Tooltip.of(Text.translatable("drag.chatimage.tooltip"))).build());
+//        adder.add(ButtonWidget.builder(getDragImage(CONFIG.dragImage), (button) -> {
+//            CONFIG.dragImage = !CONFIG.dragImage;
+//            button.setMessage(getDragImage(CONFIG.dragImage));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }).tooltip(Tooltip.of(Text.translatable("image.drag.chatimage.tooltip"))).build());
 //        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
@@ -125,16 +130,21 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //            button.setMessage(getCq(CONFIG.cqCode));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }, getButtonTooltip(createTranslatableComponent("cq.chatimage.tooltip"))));
-//        addDrawableWeight(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
-//            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
-//            button.setMessage(getDrag(CONFIG.dragUseCicode));
-//            ChatImageConfig.saveConfig(CONFIG);
-//        }, getButtonTooltip(createTranslatableComponent("drag.chatimage.tooltip"))));
-//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 72 - 16, 150, 20, getUri(CONFIG.checkImageUri), (button) -> {
 //            CONFIG.checkImageUri = !CONFIG.checkImageUri;
 //            button.setMessage(getUri(CONFIG.checkImageUri));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }));
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20, getDrag(CONFIG.dragUseCicode), (button) -> {
+//            CONFIG.dragUseCicode = !CONFIG.dragUseCicode;
+//            button.setMessage(getDrag(CONFIG.dragUseCicode));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableComponent("drag.chatimage.tooltip"))));
+//        addDrawableWeight(new ButtonWidget(this.width / 2 + 4, this.height / 4 + 96 - 16, 150, 20, getDragImage(CONFIG.dragImage), (button) -> {
+//            CONFIG.dragImage = !CONFIG.dragImage;
+//            button.setMessage(getDragImage(CONFIG.dragImage));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableComponent("image.drag.chatimage.tooltip"))));
 //        addDrawableWeight(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableComponent("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
@@ -153,6 +163,9 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
     private MutableText getDrag(boolean enable) {
         return getEnable("drag.chatimage.gui", enable);
+    }
+    private MutableText getDrag(boolean enable) {
+        return getEnable("image.drag.chatimage.gui", enable);
     }
 
     private MutableText getUri(boolean enable) {
