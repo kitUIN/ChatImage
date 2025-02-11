@@ -5,7 +5,7 @@ import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.network.chat.Component;
+import #Component#;
 import net.minecraft.resources.ResourceLocation;
 
 import java.io.File;
@@ -28,9 +28,16 @@ public class ChatImageClientAdapter implements IClientAdapter {
     @Override
     public ChatImageFrame.TextureReader<ResourceLocation> loadTexture(InputStream image) throws IOException {
         NativeImage nativeImage = NativeImage.read(image);
+// IF >= neoforge-1.21.4
+//        ResourceLocation id = #ResourceLocationfromNamespaceAndPath#(MOD_ID , "chatimage");
+//        Minecraft.getInstance().getTextureManager().register( id, new DynamicTexture(nativeImage));
+// ELSE
+//        ResourceLocation id = Minecraft.getInstance().getTextureManager().register(
+//                MOD_ID + "/chatimage",
+//                new DynamicTexture(nativeImage));
+// END IF
         return new ChatImageFrame.TextureReader<>(
-                Minecraft.getInstance().getTextureManager().register(MOD_ID + "/chatimage",
-                        new DynamicTexture(nativeImage)),
+                id,
                 nativeImage.getWidth(),
                 nativeImage.getHeight()
         );
