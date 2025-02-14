@@ -1,8 +1,8 @@
 name: Maven
 on:
-  push:
-    tags:
-      - "*.*"
+#  push:
+#    tags:
+#      - "*.*"
   workflow_dispatch:
 env:
   JAVA_8_LIST: '["forge-1.16.5"]'
