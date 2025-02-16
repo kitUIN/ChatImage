@@ -88,7 +88,7 @@ public class ChatImage {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("[ChatImage]Client start");
-// IF >= forge-1.16 || < forge-1.19
+// IF >= forge-1.16 && < forge-1.19
 //           KeyBindings.init();
 //           LOGGER.info("KeyBindings Register");
 // END IF
