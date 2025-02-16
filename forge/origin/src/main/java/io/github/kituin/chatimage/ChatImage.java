@@ -77,7 +77,7 @@ public class ChatImage {
             CONFIG = ChatImageConfig.loadConfig();
             ChatImageCodeInstance.CLIENT_ADAPTER = new ChatImageClientAdapter();
         }
-// IF > forge-1.18.2
+// IF >= forge-1.19
 //    @SubscribeEvent
 //    public static void onKeyBindRegister(RegisterKeyMappingsEvent event) {
 //        KeyBindings.init(event);
@@ -88,9 +88,11 @@ public class ChatImage {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("[ChatImage]Client start");
+// IF >= forge-1.16 || < forge-1.19
+//           KeyBindings.init();
+//           LOGGER.info("KeyBindings Register");
+// END IF
 // IF forge-1.16.5
-//            KeyBindings.init();
-//            LOGGER.info("KeyBindings Register");
 //            ModLoadingContext.get().registerExtensionPoint(ExtensionPoint.CONFIGGUIFACTORY,
 //                    () -> (mc, screen) -> new ConfigScreen(screen));
 // ELSE
@@ -135,12 +137,6 @@ public class ChatImage {
         }
 
         public static void onClientStaring(RegisterCommandsEvent event) {
-
         }
-
     }
-
-
-
-
 }
