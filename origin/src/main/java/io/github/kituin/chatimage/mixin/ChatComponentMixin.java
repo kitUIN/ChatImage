@@ -48,7 +48,7 @@ public class #kituin$ChatComponentMixinClass# {
     public #Component# addMessage(#Component# message) {
         if (CONFIG.experimentalTextComponentCompatibility) {
             StringBuilder sb = new StringBuilder();
-            #Component# temp = flattenTree(message, sb);
+            #Component# temp = chatImage$flattenTree(message, sb);
             ChatImageBoolean allString = new ChatImageBoolean(true);
             ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
             if (!allString.isValue()) message = temp;
@@ -172,14 +172,14 @@ public class #kituin$ChatComponentMixinClass# {
 
     @SuppressWarnings("t")
     @Unique
-    private #Component# flattenTree(#Component# node, StringBuilder mergedText) {
+    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText) {
         #Style# tempStyle = node.getStyle();
         if (chatImage$getContents(node) instanceof #TranslatableContents#) {
             #TranslatableContents# ttc = (#TranslatableContents#) chatImage$getContents(node);
             Object[] args = ttc.getArgs();
             List<Object> argsNew = Lists.newArrayList();
             for (Object arg : args) {
-                argsNew.add(flattenTree((#Component#) arg, mergedText));
+                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText));
             }
             return createTranslatableComponent(ttc.getKey(), argsNew.toArray()).setStyle(tempStyle);
         } else if (chatImage$getContents(node) instanceof #PlainTextContents#) {
@@ -193,7 +193,7 @@ public class #kituin$ChatComponentMixinClass# {
 
             StringBuilder childSb = new StringBuilder(t);
             for (int i = 0; i < node.getSiblings().size(); i++) {
-                #Component# child = flattenTree(node.getSiblings().get(i), mergedText);
+                #Component# child = chatImage$flattenTree(node.getSiblings().get(i), mergedText);
                 #Style# childStyle = child.getStyle();
                 if (tempStyle == null) tempStyle = childStyle;
                 boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
@@ -203,16 +203,16 @@ public class #kituin$ChatComponentMixinClass# {
                 if (check) {
                     childSb.append(chatImage$getText((#PlainTextContents#) chatImage$getContents(child)));
                 }
+                // 检查成功并且没有子且不是最后一个直接跳过
                 if (check && child.getSiblings().isEmpty() && i != node.getSiblings().size() - 1) continue;
-
                 // 如果父级没创建就先创建父级
                 if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
-                else {
-                    // 有父级则加在子里
-                    children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
-                    // 有父级 但是不是Literal
-                    if (!isLiteral) children.add(child);
-                }
+                // 有父级则加在子里
+                else children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
+                // 不是Literal直接添加
+                if (!isLiteral) children.add(child);
+                // 最后一个并且未检查成功的直接添加
+                if (!check &&  i == node.getSiblings().size() - 1) children.add(child);
                 for (#Component# child__ : child.getSiblings()) {
                     children.add(child__);
                 }

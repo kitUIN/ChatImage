@@ -15,9 +15,6 @@
 // IF >= forge-1.20
 //    "GuiGraphicsMixin",
 // END IF
-// IF forge-1.16.5
-//    "ForgeHooksMixin",
-// END IF
     "ScreenMixin"
   ],
   "injectors": {
