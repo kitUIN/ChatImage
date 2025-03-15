@@ -39,6 +39,8 @@
   "config.chatimage.category": "聊天栏图片显示",
   "config.chatimage.key": "打开配置文件设置",
   "gif.chatimage.gui": "GIF速率",
+  "experimental.component.chatimage.gui": "文本组件兼容",
+  "experimental.component.chatimage.tooltip": "（实验性）用于兼容特殊情况下的文本组件\n如果出现文本格式错误,请尝试关闭该功能",
   "timeout.chatimage.gui": "图片加载超时",
   "seconds.chatimage.gui": "秒",
   "left.padding.chatimage.gui": "左边距",

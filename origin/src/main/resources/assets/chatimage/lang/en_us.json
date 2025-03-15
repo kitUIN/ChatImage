@@ -39,6 +39,8 @@
   "config.chatimage.category": "Chat Image",
   "config.chatimage.key": "Open Configuration File Settings",
   "gif.chatimage.gui": "GIF rate",
+  "experimental.component.chatimage.gui": "Compatible TextComponent",
+  "experimental.component.chatimage.tooltip": "(Experimental) Used for compatibility with text components in certain special cases.\nIf text formatting errors occur, please try disabling this feature.",
   "timeout.chatimage.gui": "Loading timed out",
   "seconds.chatimage.gui": "seconds",
   "left.padding.chatimage.gui": "Left padding",

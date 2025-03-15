@@ -56,7 +56,14 @@ public class ConfigScreen extends ConfigRawScreen {
                     button.setMessage(getDragImage(CONFIG.dragImage));
                     ChatImageConfig.saveConfig(CONFIG);
                 },#kituin$createButtonTooltip#(createTranslatableComponent("image.drag.chatimage.tooltip"))));
-        this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 77, this.height / 4 + 120 - 16, 150, 20,
+
+        this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 154, this.height / 4 + 120 - 16, 150, 20,
+                getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility), (button) -> {
+                    CONFIG.experimentalTextComponentCompatibility = !CONFIG.experimentalTextComponentCompatibility;
+                    button.setMessage(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility));
+                    ChatImageConfig.saveConfig(CONFIG);
+                },#kituin$createButtonTooltip#(createTranslatableComponent("experimental.component.chatimage.tooltip"))));
+        this.#kituin$addRenderableWidget#(createButton(this.width / 2 - 77, this.height / 4 + 144 - 16, 150, 20,
                 createTranslatableComponent("gui.back"),
                 (button) -> {
                     if (this.minecraft != null) {
@@ -79,6 +86,9 @@ public class ConfigScreen extends ConfigRawScreen {
     }
     private #MutableComponent# getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);
+    }
+    private #MutableComponent# getExperimentalTextComponentCompatibility(boolean enable) {
+        return getEnable("experimental.component.chatimage.gui", enable);
     }
     public static #MutableComponent# getEnable(String key, boolean enable)
     {

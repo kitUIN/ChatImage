@@ -62,12 +62,18 @@ public class ConfigScreen extends ConfigRawScreen {
                     ChatImageConfig.saveConfig(CONFIG);
                 }).bounds(this.width / 2 - 154, this.height / 4 + 96 - 16, 150, 20)
                 .tooltip(Tooltip.create(Component.translatable("drag.chatimage.tooltip"))).build());
+        this.addRenderableWidget(Button.builder(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility), (button) -> {
+                    CONFIG.experimentalTextComponentCompatibility = !CONFIG.experimentalTextComponentCompatibility;
+                    button.setMessage(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility));
+                    ChatImageConfig.saveConfig(CONFIG);
+                }).bounds(this.width / 2 - 154, this.height / 4 + 120 - 16, 150, 20)
+                .tooltip(Tooltip.create(Component.translatable("experimental.component.chatimage.tooltip"))).build());
         this.addRenderableWidget(Button.builder(Component.translatable("gui.back"),
                         (button) -> {
                             if (this.minecraft != null) {
                                 this.minecraft.setScreen(this.parent);
                             }
-                        }).bounds(this.width / 2 - 77, this.height / 4 + 120 - 16, 150, 20)
+                        }).bounds(this.width / 2 - 77, this.height / 4 + 144 - 16, 150, 20)
                 .build());
     }
 
@@ -85,6 +91,9 @@ public class ConfigScreen extends ConfigRawScreen {
     }
     private MutableComponent getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);
+    }
+    private MutableComponent getExperimentalTextComponentCompatibility(boolean enable) {
+        return getEnable("experimental.component.chatimage.gui", enable);
     }
     public static MutableComponent getEnable(String key,boolean enable)
     {

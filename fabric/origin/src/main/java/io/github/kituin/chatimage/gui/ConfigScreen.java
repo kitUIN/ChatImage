@@ -96,6 +96,11 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //            button.setMessage(getDragImage(CONFIG.dragImage));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }).tooltip(Tooltip.of(Text.translatable("image.drag.chatimage.tooltip"))).build());
+//        adder.add(ButtonWidget.builder(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility), (button) -> {
+//            CONFIG.experimentalTextComponentCompatibility = !CONFIG.experimentalTextComponentCompatibility;
+//            button.setMessage(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }).tooltip(Tooltip.of(Text.translatable("experimental.component.chatimage.tooltip"))).build());
 //        adder.add(ButtonWidget.builder(Text.translatable("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
@@ -145,7 +150,12 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 //            button.setMessage(getDragImage(CONFIG.dragImage));
 //            ChatImageConfig.saveConfig(CONFIG);
 //        }, getButtonTooltip(createTranslatableComponent("image.drag.chatimage.tooltip"))));
-//        addDrawableWeight(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 120 + -16, 150, 20, createTranslatableComponent("gui.back"), (button) -> {
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 154, this.height / 4 + 120 - 16, 150, 20, getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility), (button) -> {
+//            CONFIG.experimentalTextComponentCompatibility = !CONFIG.experimentalTextComponentCompatibility;
+//            button.setMessage(getExperimentalTextComponentCompatibility(CONFIG.experimentalTextComponentCompatibility));
+//            ChatImageConfig.saveConfig(CONFIG);
+//        }, getButtonTooltip(createTranslatableComponent("experimental.component.chatimage.tooltip"))));
+//        addDrawableWeight(new ButtonWidget(this.width / 2 - 77, this.height / 4 + 144 + -16, 150, 20, createTranslatableComponent("gui.back"), (button) -> {
 //            if (this.client != null) {
 //                setScreen(this.client, this.parent);
 //            }
@@ -167,7 +177,9 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
     private MutableText getDragImage(boolean enable) {
         return getEnable("image.drag.chatimage.gui", enable);
     }
-
+    private MutableText getExperimentalTextComponentCompatibility(boolean enable) {
+        return getEnable("experimental.component.chatimage.gui", enable);
+    }
     private MutableText getUri(boolean enable) {
         return getEnable("uri.chatimage.gui", enable);
     }
