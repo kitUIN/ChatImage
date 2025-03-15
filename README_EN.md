@@ -78,8 +78,8 @@ support display GIF and local image
 - ✅[ChatBridge - CQCode](https://github.com/TISUnion/ChatBridge)
 - ✅[QueQiao](https://github.com/17TheWord/QueQiao)
 - ✅[mc-plugin - Yunzai](https://github.com/CikeyQi/mc-plugin)
-- ⚠️[Styled Chat (Mod)](https://www.curseforge.com/minecraft/mc-mods/styled-chat)
-- ⚠️[fuji (Mod)](https://modrinth.com/mod/fuji)
+- ✅[Styled Chat (Mod)](https://www.curseforge.com/minecraft/mc-mods/styled-chat)
+- ✅[fuji (Mod)](https://modrinth.com/mod/fuji)
 
 ## MoreSupport
 
