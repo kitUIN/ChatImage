@@ -98,7 +98,8 @@
         <entry key="#ClickEvent#">
           <value>
             <map>
-              <entry key="&gt; forge-1.16.5" value="net.minecraft.network.chat.ClickEvent" />
+              <entry key="&gt; forge-1.16.5 || &gt;neoforge-1.20.1" value="net.minecraft.network.chat.ClickEvent" />
+              <entry key="&gt;=fabric-1.16.5" value="net.minecraft.text.ClickEvent" />
               <entry key="forge-1.16.5" value="net.minecraft.util.text.event.ClickEvent" />
             </map>
           </value>
