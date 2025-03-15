@@ -42,13 +42,14 @@ public class #kituin$ChatComponentMixinClass# {
 // ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
 //   private Minecraft minecraft;
 // END IF
+
     @ModifyVariable(at = @At("HEAD"),
             method = "#kituin$addMessageMixin#",
             argsOnly = true)
     public #Component# addMessage(#Component# message) {
         if (CONFIG.experimentalTextComponentCompatibility) {
             StringBuilder sb = new StringBuilder();
-            #Component# temp = chatImage$flattenTree(message, sb);
+            #Component# temp = chatImage$flattenTree(message, sb,false);
             ChatImageBoolean allString = new ChatImageBoolean(true);
             ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
             if (!allString.isValue()) message = temp;
@@ -73,16 +74,26 @@ public class #kituin$ChatComponentMixinClass# {
 // END IF
 
     @Unique
-    private String chatImage$getText(#PlainTextContents# text) {
+    private String chatImage$getText(
 // IF >= fabric-1.19
-//        return text.string();
+//          #Component#Content text
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
-//        return text.text();
-// ELSE IF < fabric-1.19
-//        return text.asString();
+//          #Component#Contents text
 // ELSE
-//        return text.getContents();
+//             #Component# text
 // END IF
+    ) {
+        if (text instanceof #PlainTextContents#)
+// IF >= fabric-1.19
+//            return ((#PlainTextContents#) text).string();
+// ELSE IF >= forge-1.19 || > neoforge-1.20.1
+//            return ((#PlainTextContents#) text).text();
+// ELSE IF < fabric-1.19
+//            return text.asString();
+// ELSE
+//            return ((#PlainTextContents#) text).getContents();
+// END IF
+        return "";
     }
 
     @SuppressWarnings("t")
@@ -172,18 +183,18 @@ public class #kituin$ChatComponentMixinClass# {
 
     @SuppressWarnings("t")
     @Unique
-    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText) {
+    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText,boolean openUrlStyle) {
         #Style# tempStyle = node.getStyle();
         if (chatImage$getContents(node) instanceof #TranslatableContents#) {
             #TranslatableContents# ttc = (#TranslatableContents#) chatImage$getContents(node);
             Object[] args = ttc.getArgs();
             List<Object> argsNew = Lists.newArrayList();
             for (Object arg : args) {
-                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText));
+                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText,false));
             }
             return createTranslatableComponent(ttc.getKey(), argsNew.toArray()).setStyle(tempStyle);
-        } else if (chatImage$getContents(node) instanceof #PlainTextContents#) {
-            String t = chatImage$getText((#PlainTextContents#) chatImage$getContents(node));
+        } else {
+            String t = chatImage$getText(chatImage$getContents(node));
             mergedText.append(t);
             // 没有子就返回本身
             if (node.getSiblings().isEmpty()) return node;
@@ -193,15 +204,18 @@ public class #kituin$ChatComponentMixinClass# {
 
             StringBuilder childSb = new StringBuilder(t);
             for (int i = 0; i < node.getSiblings().size(); i++) {
-                #Component# child = chatImage$flattenTree(node.getSiblings().get(i), mergedText);
+                #Component# child_ = node.getSiblings().get(i);
+                #Component# child = chatImage$flattenTree(child_, mergedText,(child_.getStyle().getClickEvent() != null &&
+                        child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+                if(child == null) continue;
                 #Style# childStyle = child.getStyle();
                 if (tempStyle == null) tempStyle = childStyle;
                 boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
                 boolean check = isLiteral &&
-                        (childStyle == tempStyle || (childStyle.getClickEvent() != null &&
+                        (childStyle == tempStyle || openUrlStyle || (childStyle.getClickEvent() != null &&
                                 childStyle.getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
                 if (check) {
-                    childSb.append(chatImage$getText((#PlainTextContents#) chatImage$getContents(child)));
+                    childSb.append(chatImage$getText(chatImage$getContents(child)));
                 }
                 // 检查成功并且没有子且不是最后一个直接跳过
                 if (check && child.getSiblings().isEmpty() && i != node.getSiblings().size() - 1) continue;
@@ -209,10 +223,8 @@ public class #kituin$ChatComponentMixinClass# {
                 if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
                 // 有父级则加在子里
                 else children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
-                // 不是Literal直接添加
-                if (!isLiteral) children.add(child);
-                // 最后一个并且未检查成功的直接添加
-                if (!check &&  i == node.getSiblings().size() - 1) children.add(child);
+                // 没识别到直接添加
+                if (!check) children.add(child);
                 for (#Component# child__ : child.getSiblings()) {
                     children.add(child__);
                 }
@@ -224,9 +236,6 @@ public class #kituin$ChatComponentMixinClass# {
             }
             return res;
         }
-
-
-        return node;
     }
 
     @Unique
