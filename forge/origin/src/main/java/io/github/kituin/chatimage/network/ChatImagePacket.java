@@ -26,6 +26,7 @@ public class ChatImagePacket {
     /**
      * 发送给服务器一连串网络包(异步)
      * 文件频道
+     *
      * @param bufs 网络包数据列表
      */
     public static void sendFilePackets(List<String> bufs) {
@@ -62,6 +63,7 @@ public class ChatImagePacket {
         LOGGER.info("[FileChannel->Server:" + title.index + "/" + title.total + "]" + title.url);
         if (title.total == blocks.size()) {
             List<String> names = SERVER_BLOCK_CACHE.getUsers(title.url);
+            if (names == null) return;
             // 通知之前请求但是没图片的客户端
             for (String uuid : names) {
                 FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), player.server.getPlayerList().getPlayer(UUID.fromString(uuid)));
@@ -70,6 +72,7 @@ public class ChatImagePacket {
             LOGGER.info("[FileChannel->Server]" + title.url);
         }
     }
+
     /**
      * 客户端接收 下载文件分块 处理
      *
@@ -80,16 +83,15 @@ public class ChatImagePacket {
         HashMap<Integer, ChatImageIndex> blocks = CLIENT_CACHE_MAP.containsKey(title.url) ? CLIENT_CACHE_MAP.get(title.url) : new HashMap<>();
         blocks.put(title.index, title);
         CLIENT_CACHE_MAP.put(title.url, blocks);
-        LOGGER.info("[DownloadFile(" +title.index+ "/"+ title.total +")]" + title.url);
+        LOGGER.info("[DownloadFile(" + title.index + "/" + title.total + ")]" + title.url);
         if (blocks.size() == title.total) {
-            mergeFileBlocks(title.url,blocks);
+            mergeFileBlocks(title.url, blocks);
             LOGGER.info("[DownloadFileChannel-Merge]" + title.url);
         }
     }
 
 
-
-    public static void clientFileInfoChannelReceived(String data){
+    public static void clientFileInfoChannelReceived(String data) {
         String url = data.substring(6);
         LOGGER.info(url);
         if (data.startsWith("null")) {
@@ -112,7 +114,7 @@ public class ChatImagePacket {
             LOGGER.info("[GetFileChannel->Client]{}", url);
             return;
         }
-        //通知客户端无文件
+        // 通知客户端无文件
         FileBackChannel.sendToPlayer(new FileInfoChannelPacket("null->" + url), player);
         LOGGER.error("[GetFileChannel]not found in server:{}", url);
         // 记录uuid,后续有文件了推送

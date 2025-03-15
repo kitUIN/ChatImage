@@ -187,14 +187,18 @@ public class #kituin$ChatComponentMixinClass# {
 
     @SuppressWarnings("t")
     @Unique
-    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText, boolean openUrlStyle) {
+    private #Component# chatImage$flattenTree(Object originNode, StringBuilder mergedText, boolean openUrlStyle) {
+        if (originNode instanceof String) {
+            return createLiteralComponent((String) originNode);
+        }
+        #Component# node = (#Component#) originNode;
         #Style# tempStyle = node.getStyle();
         if (chatImage$getContents(node) instanceof #TranslatableContents#) {
             #TranslatableContents# ttc = (#TranslatableContents#) chatImage$getContents(node);
             Object[] args = ttc.getArgs();
             List<Object> argsNew = Lists.newArrayList();
             for (Object arg : args) {
-                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText, false));
+                argsNew.add(chatImage$flattenTree(arg, mergedText, false));
             }
             return createTranslatableComponent(ttc.getKey(), argsNew.toArray()).setStyle(tempStyle);
         } else {
@@ -205,7 +209,6 @@ public class #kituin$ChatComponentMixinClass# {
             // 有子则构建
             #MutableComponent# res = null;
             List<#Component#> children = Lists.newArrayList();
-
             StringBuilder childSb = new StringBuilder(t);
             for (int i = 0; i < node.getSiblings().size(); i++) {
                 #Component# child_ = node.getSiblings().get(i);
