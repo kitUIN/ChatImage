@@ -55,6 +55,15 @@ jobs:
       - name: Init Files
         run: |
           chmod 777 init.sh && ./init.sh
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ matrix.config.mc-version }}+${{ matrix.config.mc-loader }}-gradle-
       - name: Build And Publish Maven
         run: |
           cd ${{ matrix.config.mc-loader }}/${{ matrix.config.mc-loader }}-${{ matrix.config.mc-version }}
