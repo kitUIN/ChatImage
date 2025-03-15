@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
+import java.util.Objects;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
@@ -21,10 +22,12 @@ import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 // IF >= fabric-1.16.5
 // import net.minecraft.client.MinecraftClient;
+//
 // import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
 // ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
-// import net.minecraft.client.Minecraft;
-// import static io.github.kituin.chatimage.ChatImage.CONFIG;
+//import net.minecraft.client.Minecraft;
+//
+//import static io.github.kituin.chatimage.ChatImage.CONFIG;
 // END IF
 
 
@@ -40,7 +43,7 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >= fabric-1.16.5
 //    private MinecraftClient client;
 // ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
-//   private Minecraft minecraft;
+//    private Minecraft minecraft;
 // END IF
 
     @ModifyVariable(at = @At("HEAD"),
@@ -49,13 +52,14 @@ public class #kituin$ChatComponentMixinClass# {
     public #Component# addMessage(#Component# message) {
         if (CONFIG.experimentalTextComponentCompatibility) {
             StringBuilder sb = new StringBuilder();
-            #Component# temp = chatImage$flattenTree(message, sb,false);
+            #Component# temp = chatImage$flattenTree(message, sb, false);
             ChatImageBoolean allString = new ChatImageBoolean(true);
             ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
             if (!allString.isValue()) message = temp;
         }
         return chatimage$replaceMessage(message);
     }
+
 // IF >= fabric-1.19
 //    @Unique
 //    private #Component#Content chatImage$getContents(#Component# text){
@@ -80,7 +84,7 @@ public class #kituin$ChatComponentMixinClass# {
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
 //          #Component#Contents text
 // ELSE
-//             #Component# text
+//            #Component# text
 // END IF
     ) {
         if (text instanceof #PlainTextContents#)
@@ -183,14 +187,14 @@ public class #kituin$ChatComponentMixinClass# {
 
     @SuppressWarnings("t")
     @Unique
-    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText,boolean openUrlStyle) {
+    private #Component# chatImage$flattenTree(#Component# node, StringBuilder mergedText, boolean openUrlStyle) {
         #Style# tempStyle = node.getStyle();
         if (chatImage$getContents(node) instanceof #TranslatableContents#) {
             #TranslatableContents# ttc = (#TranslatableContents#) chatImage$getContents(node);
             Object[] args = ttc.getArgs();
             List<Object> argsNew = Lists.newArrayList();
             for (Object arg : args) {
-                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText,false));
+                argsNew.add(chatImage$flattenTree((#Component#) arg, mergedText, false));
             }
             return createTranslatableComponent(ttc.getKey(), argsNew.toArray()).setStyle(tempStyle);
         } else {
@@ -205,20 +209,20 @@ public class #kituin$ChatComponentMixinClass# {
             StringBuilder childSb = new StringBuilder(t);
             for (int i = 0; i < node.getSiblings().size(); i++) {
                 #Component# child_ = node.getSiblings().get(i);
-                #Component# child = chatImage$flattenTree(child_, mergedText,(child_.getStyle().getClickEvent() != null &&
+                #Component# child = chatImage$flattenTree(child_, mergedText, (child_.getStyle().getClickEvent() != null &&
                         child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
-                if(child == null) continue;
+                if (child == null) continue;
                 #Style# childStyle = child.getStyle();
                 if (tempStyle == null) tempStyle = childStyle;
                 boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
                 boolean check = isLiteral &&
-                        (childStyle == tempStyle || openUrlStyle || (childStyle.getClickEvent() != null &&
+                        (chatImage$isSame(childStyle , tempStyle) || openUrlStyle || (childStyle.getClickEvent() != null &&
                                 childStyle.getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
                 if (check) {
                     childSb.append(chatImage$getText(chatImage$getContents(child)));
+                    // 检查成功并且没有子且不是最后一个直接跳过
+                    if (child.getSiblings().isEmpty() && i != node.getSiblings().size() - 1) continue;
                 }
-                // 检查成功并且没有子且不是最后一个直接跳过
-                if (check && child.getSiblings().isEmpty() && i != node.getSiblings().size() - 1) continue;
                 // 如果父级没创建就先创建父级
                 if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
                 // 有父级则加在子里
@@ -236,6 +240,21 @@ public class #kituin$ChatComponentMixinClass# {
             }
             return res;
         }
+    }
+
+    @Unique
+    private boolean chatImage$isSame(#Style# childStyle, #Style# tempStyle) {
+        if (childStyle == null || tempStyle == null) return false;
+        return childStyle.isBold() == tempStyle.isBold() &&
+                Objects.equals(childStyle.getColor(), tempStyle.getColor()) &&
+                childStyle.isItalic() == tempStyle.isItalic() &&
+                childStyle.isObfuscated() == tempStyle.isObfuscated() &&
+                childStyle.isStrikethrough() == tempStyle.isStrikethrough() &&
+                childStyle.isUnderlined() == tempStyle.isUnderlined() &&
+                Objects.equals(childStyle.getClickEvent(), tempStyle.getClickEvent()) &&
+                Objects.equals(childStyle.getHoverEvent(), tempStyle.getHoverEvent()) &&
+                Objects.equals(childStyle.getInsertion(), tempStyle.getInsertion()) &&
+                Objects.equals(childStyle.getFont(), tempStyle.getFont());
     }
 
     @Unique
