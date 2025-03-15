@@ -8,6 +8,9 @@ buildscript {
     dependencies {
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
         classpath 'org.parchmentmc:librarian:1.+'
+// IF forge-1.16.5
+//        classpath "com.gradleup.shadow:shadow-gradle-plugin:8.3.6"
+// END IF
     }
 }
 
@@ -15,14 +18,14 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '6.+'
 // IF forge-1.16.5
-//id 'com.github.johnrengelman.shadow' version '7.1.2'
+//    id 'com.gradleup.shadow' version '8.3.6'
 // END IF
 }
 
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 // IF forge-1.16.5
-//apply plugin: 'com.github.johnrengelman.shadow'
+//apply plugin: 'com.gradleup.shadow'
 // END IF
 def getVersionFromFile(String f) {
     def versionFile = file(f)
@@ -255,7 +258,11 @@ publishing {
             artifactId project.mod_name
             groupId maven_group
             version version
-            from components.java
+// IF forge-1.16.5
+//            from components["shadow"]
+// ELSE
+//            from components.java
+// END IF
             fg.component(it)
 
             pom {
