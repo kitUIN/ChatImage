@@ -14,10 +14,16 @@ buildscript {
 plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '6.+'
+// IF forge-1.16.5
+//id 'com.github.johnrengelman.shadow' version '7.1.2'
+// END IF
 }
 
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
+// IF forge-1.16.5
+//apply plugin: 'com.github.johnrengelman.shadow'
+// END IF
 def getVersionFromFile(String f) {
     def versionFile = file(f)
     if (versionFile.exists()) {
@@ -43,12 +49,14 @@ java {
     withSourcesJar()
 }
 
-jarJar.enable()
-tasks.named ('jarJar') {
-    archiveClassifier.set('')
-    destinationDirectory = file("../../ChatImage-jar/${mod_version}")
-}
 
+// IF > forge-1.16.5
+// jarJar.enable()
+// tasks.named ('jarJar') {
+//    archiveClassifier.set('')
+//    destinationDirectory = file("../../ChatImage-jar/${mod_version}")
+// }
+// END IF
 
 minecraft {
     mappings channel: "${mapping_channel}", version: "${mapping_version}"
@@ -167,14 +175,18 @@ dependencies {
     // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
     // implementation fg.deobf("com.tterrag.registrate:Registrate:MC${mc_version}-${registrate_version}") // Adds registrate as a dependency
 
-
-    implementation "io.github.kituin:ChatImageCode:${code_version}"
-    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${code_version}"){
-        jarJar.ranged(it, '[0.9.2,1.0)')
-    }
-    jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
-        jarJar.ranged(it, '[0.9,1.0)')
-    }
+    
+// IF forge-1.16.5
+//    shadow(implementation "io.github.kituin:ChatImageCode:${code_version}")
+// ELSE
+//    implementation "io.github.kituin:ChatImageCode:${code_version}"
+//    jarJar(group: 'io.github.kituin', name: 'ChatImageCode', version: "${code_version}"){
+//        jarJar.ranged(it, '[0.9.2,1.0)')
+//    }
+//    jarJar(group: 'io.github.kituin', name: 'ActionLib', version: "${project.action_version}-forge"){
+//        jarJar.ranged(it, '[0.9,1.0)')
+//    }
+// END IF
     implementation "io.github.kituin:ActionLib:${project.action_version}-forge"
     annotationProcessor('org.spongepowered:mixin:0.8.5:processor')
 }
@@ -215,10 +227,27 @@ jar {
     }
 }
 
+// IF forge-1.16.5
+//shadowJar {
+//    configurations = [project.configurations.shadow]
+//    archiveClassifier.set('')
+//    dependencies {
+//        include(dependency("io.github.kituin:ChatImageCode:${code_version}"))
+//    }
+//    destinationDirectory=file("../../ChatImage-jar/${mod_version}")
+//}
+//
+//reobf {
+//    shadowJar {}
+//}
+//
+//tasks.build.dependsOn shadowJar
+//tasks.build.dependsOn reobfShadowJar
+// ELSE
+// tasks.jarJar.finalizedBy('reobfJarJar')
+// END IF
+
 jar.finalizedBy('reobfJar')
-tasks.jarJar.finalizedBy('reobfJarJar')
-
-
 
 publishing {
     publications {
