@@ -104,6 +104,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#ClientRegistry#">
+          <value>
+            <map>
+              <entry key="forge-1.16.5" value="net.minecraftforge.fml.client.registry.ClientRegistry" />
+              <entry key="forge-1.18.2" value="net.minecraftforge.client.ClientRegistry" />
+            </map>
+          </value>
+        </entry>
         <entry key="#CommandSourceStack#">
           <value>
             <map>
@@ -197,12 +205,28 @@
             </map>
           </value>
         </entry>
+        <entry key="#InputConstants#">
+          <value>
+            <map>
+              <entry key="&gt; forge-1.16.5" value="com.mojang.blaze3d.platform.InputConstants" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.util.InputMappings" />
+            </map>
+          </value>
+        </entry>
         <entry key="#InputEvent.Key#">
           <value>
             <map>
               <entry key="&lt;= forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
               <entry key="&gt; forge-1.18.2" value="net.minecraftforge.client.event.InputEvent.Key" />
               <entry key="forge-1.16.5" value="net.minecraftforge.client.event.InputEvent.KeyInputEvent" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#KeyMapping#">
+          <value>
+            <map>
+              <entry key="&gt;forge-1.16.5" value="net.minecraft.client.KeyMapping" />
+              <entry key="forge-1.16.5" value="net.minecraft.client.settings.KeyBinding" />
             </map>
           </value>
         </entry>
