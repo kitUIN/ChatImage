@@ -98,8 +98,8 @@
         <entry key="#ChatScreen#">
           <value>
             <map>
-              <entry key="&lt; forge-1.18.2 || &gt;= fabric-1.16.5 || &gt; neoforge-1.20.1" value="net.minecraft.client.gui.screen.ChatScreen" />
-              <entry key="&gt;= forge-1.18.2" value="net.minecraft.client.gui.screens.ChatScreen" />
+              <entry key="&lt; forge-1.18.2 || &gt;= fabric-1.16.5" value="net.minecraft.client.gui.screen.ChatScreen" />
+              <entry key="&gt;= forge-1.18.2 || &gt; neoforge-1.20.1" value="net.minecraft.client.gui.screens.ChatScreen" />
             </map>
           </value>
         </entry>
