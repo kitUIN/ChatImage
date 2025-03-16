@@ -2,7 +2,6 @@ package io.github.kituin.chatimage.paste;
 
 import io.github.kituin.chatimage.ChatImage;
 import org.apache.commons.codec.digest.DigestUtils;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
@@ -25,8 +24,8 @@ public class WindowsPasteCompat implements IPasteCompat {
             if (trans.isDataFlavorSupported(DataFlavor.javaFileListFlavor)) {
                 StringBuilder sb = new StringBuilder();
                 Object object = trans.getTransferData(DataFlavor.javaFileListFlavor);
-                if (object instanceof List<?> obj) {
-                    for (Object o : obj) {
+                if (object instanceof List<?>) {
+                    for (Object o : (List<?>) object) {
                         sb.append(getImageCICode(o));
                     }
                     return sb.toString();
