@@ -87,14 +87,6 @@
             </map>
           </value>
         </entry>
-        <entry key="#ChatImageConfig#">
-          <value>
-            <map>
-              <entry key="&gt;= fabric-1.16.5" value="io.github.kituin.chatimage.client.ChatImageClient.CONFIG" />
-              <entry key="&gt;= forge-1.16.5 || &gt; neoforge-1.20.1" value="io.github.kituin.chatimage.ChatImage.CONFIG" />
-            </map>
-          </value>
-        </entry>
         <entry key="#ChatScreen#">
           <value>
             <map>
@@ -455,6 +447,14 @@
               <entry key="&gt; neoforge-1.20.1" value="ChatComponentMixin" />
               <entry key="&gt;= fabric-1.20" value="ChatComponentMixin" />
               <entry key="forge-1.16.5" value="ChatComponentMixin extends net.minecraft.client.gui.AbstractGui" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#kituin$ChatImageConfig#">
+          <value>
+            <map>
+              <entry key="&gt;= fabric-1.16.5" value="io.github.kituin.chatimage.client.ChatImageClient.CONFIG" />
+              <entry key="&gt;= forge-1.16.5 || &gt; neoforge-1.20.1" value="io.github.kituin.chatimage.ChatImage.CONFIG" />
             </map>
           </value>
         </entry>

@@ -19,7 +19,9 @@ import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
-
+// IF >= fabric-1.16.5
+// ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
+// END IF
 
 /**
  * 注入修改文本显示,自动将CICode转换为可鼠标悬浮格式文字
@@ -36,7 +38,7 @@ public class #kituin$ChatComponentMixinClass# {
             method = "#kituin$addMessageMixin#",
             argsOnly = true)
     public #Component# addMessage(#Component# message) {
-        if (#ChatImageConfig#.experimentalTextComponentCompatibility) {
+        if (#kituin$ChatImageConfig#.experimentalTextComponentCompatibility) {
             StringBuilder sb = new StringBuilder();
             #Component# temp = chatImage$flattenTree(message, sb, false);
             ChatImageBoolean allString = new ChatImageBoolean(true);
@@ -131,7 +133,7 @@ public class #kituin$ChatComponentMixinClass# {
         }
 
         // 尝试解析CQ码
-        if (#ChatImageConfig#.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
+        if (#kituin$ChatImageConfig#.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
 
         // 是否全是文本
         ChatImageBoolean allString = new ChatImageBoolean(true);
@@ -139,7 +141,7 @@ public class #kituin$ChatComponentMixinClass# {
         // 尝试解析CICode
         List<Object> texts = ChatImageCodeTool.sliceMsg(checkedText, isSelf, allString, (e) -> LOGGER.error(e.getMessage()));
         // 尝试解析URL
-        if (#ChatImageConfig#.checkImageUri) ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
+        if (#kituin$ChatImageConfig#.checkImageUri) ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
 
         // 无识别则返回原样
         if (allString.isValue()) {
