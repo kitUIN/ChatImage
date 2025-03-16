@@ -53,7 +53,7 @@ public class WindowsPasteCompat implements IPasteCompat {
             ImageIO.write(image, TempFileType, baos);
             byte[] byteArr = baos.toByteArray();
             CLIENT_ADAPTER.checkCachePath();
-            String fileName = #ChatImageConfig#.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + TempFileType;
+            String fileName = #kituin$ChatImageConfig#.cachePath + "/" + DigestUtils.md5Hex(byteArr) + "." + TempFileType;
             File outputfile = new File(fileName);
             ImageIO.write(image, TempFileType, outputfile);
             sb.append("[[CICode,url=file:///").append(outputfile.getAbsolutePath()).append("]]");

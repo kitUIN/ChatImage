@@ -19,9 +19,6 @@ import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
-// IF >= fabric-1.16.5
-// ELSE IF >= forge-1.16.5 || > neoforge-1.20.1
-// END IF
 
 /**
  * 注入修改文本显示,自动将CICode转换为可鼠标悬浮格式文字
