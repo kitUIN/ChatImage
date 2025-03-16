@@ -12,6 +12,7 @@
     "BookViewScreenMixin",
     "ChatComponentMixin",
     "FileDragMixin",
+    "ClipboardMixin",
 // IF >= forge-1.20
 //    "GuiGraphicsMixin",
 // END IF

@@ -87,10 +87,18 @@
             </map>
           </value>
         </entry>
+        <entry key="#ChatImageConfig#">
+          <value>
+            <map>
+              <entry key="&gt;= fabric-1.16.5" value="io.github.kituin.chatimage.client.ChatImageClient.CONFIG" />
+              <entry key="&gt;= forge-1.16.5 || &gt; neoforge-1.20.1" value="io.github.kituin.chatimage.ChatImage.CONFIG" />
+            </map>
+          </value>
+        </entry>
         <entry key="#ChatScreen#">
           <value>
             <map>
-              <entry key="&lt; forge-1.18.2" value="net.minecraft.client.gui.screen.ChatScreen" />
+              <entry key="&lt; forge-1.18.2 || &gt;= fabric-1.16.5 || &gt; neoforge-1.20.1" value="net.minecraft.client.gui.screen.ChatScreen" />
               <entry key="&gt;= forge-1.18.2" value="net.minecraft.client.gui.screens.ChatScreen" />
             </map>
           </value>
@@ -230,11 +238,27 @@
             </map>
           </value>
         </entry>
+        <entry key="#Keyboard#">
+          <value>
+            <map>
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.client.Keyboard" />
+              <entry key="&gt;=forge-1.16.5 || &gt; neoforge-1.20.1" value="net.minecraft.client.KeyboardHandler" />
+            </map>
+          </value>
+        </entry>
         <entry key="#Matrix4f#">
           <value>
             <map>
               <entry key="&lt; forge-1.18.2" value="net.minecraft.util.math.vector.Matrix4f" />
               <entry key="&gt;= forge-1.18.2" value="com.mojang.math.Matrix4f" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#MinecraftClient#">
+          <value>
+            <map>
+              <entry key="&gt;= fabric-1.16.5" value="net.minecraft.client.MinecraftClient client" />
+              <entry key="&gt;= forge-1.16.5 || &gt; neoforge-1.20.1" value="net.minecraft.client.Minecraft minecraft" />
             </map>
           </value>
         </entry>
@@ -453,6 +477,14 @@
             <map>
               <entry key="&gt; forge-1.16.5" value="addRenderableWidget" />
               <entry key="forge-1.16.5" value="addButton" />
+            </map>
+          </value>
+        </entry>
+        <entry key="#kituin$clientCurrentScreen#">
+          <value>
+            <map>
+              <entry key="&gt;= fabric-1.16.5" value="client.currentScreen" />
+              <entry key="&gt;=forge-1.16.5 || &gt; neoforge-1.20.1" value="minecraft.screen" />
             </map>
           </value>
         </entry>

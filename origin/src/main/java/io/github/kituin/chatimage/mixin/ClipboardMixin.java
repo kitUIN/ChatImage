@@ -2,9 +2,6 @@ package io.github.kituin.chatimage.mixin;
 
 
 import io.github.kituin.chatimage.paste.PasteToolkit;
-import net.minecraft.client.Keyboard;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -18,16 +15,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  *
  * @author kitUIN
  */
-@Mixin(Keyboard.class)
+@Mixin(#Keyboard#.class)
 public class ClipboardMixin {
 
     @Shadow
     @Final
-    private MinecraftClient client;
+    private #MinecraftClient#;
 
     @Inject(at = @At("RETURN"), method = "getClipboard", cancellable = true)
     public void getClipboard(CallbackInfoReturnable<String> cir) {
-        if (!(this.client.currentScreen instanceof ChatScreen)) return;
+        if (!(this.#kituin$clientCurrentScreen# instanceof #ChatScreen#)) return;
         String pasteImage = PasteToolkit.getPasteCompat().doPaste();
         if (pasteImage == null) return;
         cir.setReturnValue(pasteImage);

@@ -13,6 +13,7 @@
     "ChatComponentMixin",
     "FileDragMixin",
     "GuiGraphicsMixin",
+    "ClipboardMixin",
     "ScreenMixin"
   ],
   "injectors": {
