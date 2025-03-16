@@ -230,13 +230,13 @@ public class #kituin$ChatComponentMixinClass# {
                 if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
                 // 有父级则加在子里
                 else children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
-                // 没识别到直接添加
-                if (!check) children.add(child);
-                for (#Component# child__ : child.getSiblings()) {
-                    children.add(child__);
-                }
                 childSb = new StringBuilder();
                 tempStyle = null;
+                // 没识别到直接添加
+                if (!check) children.add(child);
+                // for (#Component# child__ : child.getSiblings()) {
+                //     children.add(child__);
+                // }
             }
             for (#Component# child : children) {
                 res.append(child);
