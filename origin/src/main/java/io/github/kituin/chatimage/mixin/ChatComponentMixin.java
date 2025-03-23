@@ -36,23 +36,27 @@ public class #kituin$ChatComponentMixinClass# {
             argsOnly = true)
     public #Component# addMessage(#Component# message) {
         if (#kituin$ChatImageConfig#.experimentalTextComponentCompatibility) {
-            StringBuilder sb = new StringBuilder();
-            #Component# temp = chatImage$flattenTree(message, sb, false);
-            ChatImageBoolean allString = new ChatImageBoolean(true);
-            ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
-            if (!allString.isValue()) message = temp;
+            try {
+                StringBuilder sb = new StringBuilder();
+                #Component# temp = chatImage$flattenTree(message, sb, false);
+                ChatImageBoolean allString = new ChatImageBoolean(true);
+                ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
+                if (!allString.isValue()) message = temp;
+            } catch (Exception e) {
+                LOGGER.warn("experimentalTextComponentCompatibility 转换失败:{}", e.getMessage());
+            }
         }
         return chatimage$replaceMessage(message);
     }
 
-// IF >= fabric-1.19
+    // IF >= fabric-1.19
 //    @Unique
 //    private #Component#Content chatImage$getContents(#Component# text){
 //        return text.getContent();
 //    }
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
 //    @Unique
-//    private #Component#Contents chatImage$getContents(#Component# text){
+//    private #Component#Contents chatImage$getContents(#Component# text) {
 //        return text.getContents();
 //    }
 // ELSE
@@ -67,7 +71,7 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >= fabric-1.19
 //          #Component#Content text
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
-//          #Component#Contents text
+//            #Component#Contents text
 // ELSE
 //            #Component# text
 // END IF
@@ -130,7 +134,8 @@ public class #kituin$ChatComponentMixinClass# {
         }
 
         // 尝试解析CQ码
-        if (#kituin$ChatImageConfig#.cqCode) checkedText = ChatImageCodeTool.checkCQCode(checkedText);
+        if (#kituin$ChatImageConfig#.cqCode)
+            checkedText = ChatImageCodeTool.checkCQCode(checkedText);
 
         // 是否全是文本
         ChatImageBoolean allString = new ChatImageBoolean(true);
@@ -138,7 +143,8 @@ public class #kituin$ChatComponentMixinClass# {
         // 尝试解析CICode
         List<Object> texts = ChatImageCodeTool.sliceMsg(checkedText, isSelf, allString, (e) -> LOGGER.error(e.getMessage()));
         // 尝试解析URL
-        if (#kituin$ChatImageConfig#.checkImageUri) ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
+        if (#kituin$ChatImageConfig#.checkImageUri)
+            ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
 
         // 无识别则返回原样
         if (allString.isValue()) {
@@ -158,7 +164,7 @@ public class #kituin$ChatComponentMixinClass# {
                                             .build())));
                 }
             } catch (Exception e) {
-                // LOGGER.error(e.getMessage());
+                LOGGER.error(e.getMessage());
             }
             return originText;
         }
@@ -175,6 +181,8 @@ public class #kituin$ChatComponentMixinClass# {
     private #Component# chatImage$flattenTree(Object originNode, StringBuilder mergedText, boolean openUrlStyle) {
         if (originNode instanceof String) {
             return createLiteralComponent((String) originNode);
+        } else if (originNode instanceof Integer) {
+            return createLiteralComponent(originNode.toString());
         }
         #Component# node = (#Component#) originNode;
         #Style# tempStyle = node.getStyle();
@@ -204,7 +212,7 @@ public class #kituin$ChatComponentMixinClass# {
                 if (tempStyle == null) tempStyle = childStyle;
                 boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
                 boolean check = isLiteral &&
-                        (chatImage$isSame(childStyle , tempStyle) || openUrlStyle || (childStyle.getClickEvent() != null &&
+                        (chatImage$isSame(childStyle, tempStyle) || openUrlStyle || (childStyle.getClickEvent() != null &&
                                 childStyle.getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
                 if (check) {
                     childSb.append(chatImage$getText(chatImage$getContents(child)));
