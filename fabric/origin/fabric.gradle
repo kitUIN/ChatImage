@@ -47,7 +47,7 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    // modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     includeMod "fabric-api", fabricApi.module("fabric-resource-loader-v0", project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-api-base", project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-key-binding-api-v1", project.fabric_version)
@@ -55,7 +55,9 @@ dependencies {
     includeMod "fabric-api", fabricApi.module(project.command_api, project.fabric_version)
     includeMod "fabric-api", fabricApi.module("fabric-lifecycle-events-v1", project.fabric_version)
     include modImplementation("io.github.kituin:ChatImageCode:${code_version}")
-    include modImplementation("io.github.kituin:ActionLib:${project.action_version}-fabric")
+// IF < fabric-1.21.5
+//    include modImplementation("io.github.kituin:ActionLib:${project.action_version}-fabric")
+// END IF
     modApi("com.terraformersmc:modmenu:${project.modmenu_version}") { transitive false }
 }
 
