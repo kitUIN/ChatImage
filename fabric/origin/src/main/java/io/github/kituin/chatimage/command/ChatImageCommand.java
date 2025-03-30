@@ -15,7 +15,7 @@ import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static #kituin$ChatImageConfig#;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
 
 public class ChatImageCommand {
@@ -69,7 +69,13 @@ public class ChatImageCommand {
 // ELSE
 //        MutableText info = Text.translatable(usage);
 // END IF
-        return text.setStyle(Style.EMPTY.withColor(Formatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help))).append(info).append(Text.of("\n"));
+        return text.setStyle(Style.EMPTY.withColor(Formatting.GOLD).withClickEvent(
+// IF >= fabric-1.21.5
+//                new ClickEvent.SuggestCommand(help)
+// ELSE
+//                 new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, help)
+// END IF
+        )).append(info).append(Text.of("\n"));
     }
 
 }

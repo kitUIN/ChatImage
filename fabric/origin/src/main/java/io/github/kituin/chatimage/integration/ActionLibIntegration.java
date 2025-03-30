@@ -1,7 +1,8 @@
+// ONLY < fabric-1.21.5
 package io.github.kituin.chatimage.integration;
 
 import io.github.kituin.actionlib.IActionRegisterApi;
-import net.minecraft.text.HoverEvent;
+import #HoverEvent#;
 
 import java.util.List;
 

@@ -19,7 +19,7 @@ import java.util.Map;
 //import io.github.kituin.chatimage.network.FileChannelPacket;
 // END IF
 import static io.github.kituin.ChatImageCode.NetworkHelper.createFilePacket;
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static #kituin$ChatImageConfig#;
 import static io.github.kituin.chatimage.client.ChatImageClient.MOD_ID;
 import static io.github.kituin.chatimage.network.ChatImagePacket.*;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
@@ -57,7 +57,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 //                         MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(
 // END IF
                         MOD_ID + "/chatimage",
-                        new NativeImageBackedTexture(nativeImage)),
+                        new NativeImageBackedTexture(() -> "textureName",nativeImage)),
                 nativeImage.getWidth(),
                 nativeImage.getHeight()
         );
