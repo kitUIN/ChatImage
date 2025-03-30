@@ -57,7 +57,11 @@ public class ChatImageClientAdapter implements IClientAdapter {
 //                         MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(
 // END IF
                         MOD_ID + "/chatimage",
-                        new NativeImageBackedTexture(() -> "textureName",nativeImage)),
+                        new NativeImageBackedTexture(
+// IF >= fabric-1.21.5
+//                                 () -> "textureName",
+// END IF
+                                nativeImage)),
                 nativeImage.getWidth(),
                 nativeImage.getHeight()
         );
