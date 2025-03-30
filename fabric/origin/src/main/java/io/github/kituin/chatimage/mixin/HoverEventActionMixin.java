@@ -16,10 +16,10 @@ import java.util.Arrays;
 @Unique
 public abstract class HoverEventActionMixin {
 
-    @Shadow
-    @Final
-    @Mutable
-    private static HoverEvent.Action[] $VALUES;
+    // @Shadow
+    // @Final
+    // @Mutable
+    // private static HoverEvent.Action[] $VALUES;
 
     private static final HoverEvent.Action SHOW_IMAGE = chatimage$addVariant("SHOW_IMAGE", "show_chatimage", true, ChatImageStyle.ShowImage.CODEC);
 
