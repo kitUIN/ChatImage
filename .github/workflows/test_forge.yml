@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Get JDK Version
-        run: ./jdk_rules.sh "${{ matrix.config.mc-loader }}" "${{ matrix.config.mc-version }}" "${{ env.JAVA_21_RULE }}" "${{ env.JAVA_17_RULE }}" "${{ env.JAVA_8_RULE }}"
+        run: chmod 777 jdk_rules.sh && ./jdk_rules.sh "${{ matrix.config.mc-loader }}" "${{ matrix.config.mc-version }}" "${{ env.JAVA_21_RULE }}" "${{ env.JAVA_17_RULE }}" "${{ env.JAVA_8_RULE }}"
 
       - name: Chose JDK
         uses: actions/setup-java@v4
