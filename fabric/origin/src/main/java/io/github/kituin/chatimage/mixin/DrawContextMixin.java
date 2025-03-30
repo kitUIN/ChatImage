@@ -28,10 +28,14 @@ import java.util.List;
 import java.util.function.Function;
 import net.minecraft.client.render.RenderLayer;
 // END IF
-import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+// IF >=fabric-1.21.5
+//import static io.github.kituin.chatimage.tool.ChatImageStyle.ShowImage;
+// ELSE
+// import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+// END IF
 import static io.github.kituin.chatimage.tool.SimpleUtil.createLiteralComponent;
 import static io.github.kituin.chatimage.tool.SimpleUtil.createTranslatableComponent;
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
+import static #kituin$ChatImageConfig#;
 /**
  * 注入修改悬浮显示图片
  *
@@ -67,7 +71,11 @@ public abstract class DrawContextMixin {
     public void drawHoverEvent(TextRenderer textRenderer, Style style, int x, int y, CallbackInfo ci) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+// IF >=fabric-1.21.5
+//            if (!(hoverEvent instanceof ShowImage(ChatImageCode code)))return;
+// ELSE
+//             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+// END IF
             if (code != null) {
                 if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
                     ChatImageFrame frame = code.getFrame();

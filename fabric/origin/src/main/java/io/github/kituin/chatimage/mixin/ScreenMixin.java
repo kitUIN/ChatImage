@@ -42,8 +42,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 //import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 // END IF
 
-import static io.github.kituin.chatimage.client.ChatImageClient.CONFIG;
-import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static #kituin$ChatImageConfig#;
+// IF >=fabric-1.21.5
+//import static io.github.kituin.chatimage.tool.ChatImageStyle.ShowImage;
+// ELSE
+// import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+// END IF
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 
@@ -246,7 +250,11 @@ public abstract class ScreenMixin extends AbstractParentElement implements Drawa
     private void handleTextClick(Style style, CallbackInfoReturnable<Boolean> cir) {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
-            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+// IF >=fabric-1.21.5
+//            if (!(hoverEvent instanceof ShowImage(ChatImageCode code)))return;
+// ELSE
+//             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+// END IF
             if (code != null && code.isNsfw() && !ClientStorage.ContainNsfw(code.getUrl()) && !CONFIG.nsfw) {
                 this.nsfwUrl = code.getUrl();
                 setScreen(this.client, new ConfirmNsfwScreen(this::confirmNsfw, nsfwUrl));
