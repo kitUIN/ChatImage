@@ -8,6 +8,7 @@ import net.minecraft.util.Formatting;
 //import com.mojang.serialization.Codec;
 //import com.mojang.serialization.MapCodec;
 //import com.mojang.serialization.codecs.RecordCodecBuilder;
+//import com.mojang.serialization.DataResult;
 // ELSE
 // import io.github.kituin.ChatImageCode.ChatImageCodeInstance;
 // END IF
