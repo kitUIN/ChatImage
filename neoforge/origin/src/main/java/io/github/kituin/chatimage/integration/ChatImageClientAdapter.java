@@ -1,6 +1,6 @@
 package io.github.kituin.chatimage.integration;
 
-import #NativeImage#;
+import com.mojang.blaze3d.platform.NativeImage;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.Minecraft;
