@@ -179,15 +179,17 @@ dependencies {
             prefer code_version // The version actually used in your dev workspace
         }
     }
-    jarJar(implementation("io.github.kituin:ActionLib")) {
-        version {
-            // The version range your mod is actually compatible with.
-            // Note that you may receive a *lower* version than your preferred if another
-            // Mod is only compatible up to 1.7.24, for example, your mod might get 1.7.24 at runtime.
-            strictly "[${action_version}, 2.0.0-neoforge)"
-            prefer action_version // The version actually used in your dev workspace
-        }
-    }
+// IF < neoforge-1.21.5
+//    jarJar(implementation("io.github.kituin:ActionLib")) {
+//        version {
+//            // The version range your mod is actually compatible with.
+//            // Note that you may receive a *lower* version than your preferred if another
+//            // Mod is only compatible up to 1.7.24, for example, your mod might get 1.7.24 at runtime.
+//            strictly "[${action_version}, 2.0.0-neoforge)"
+//            prefer action_version // The version actually used in your dev workspace
+//        }
+//    }
+// END IF
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
 
