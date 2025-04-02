@@ -1,6 +1,7 @@
 package io.github.kituin.chatimage.tool;
 
 import io.github.kituin.ChatImageCode.ChatImageCode;
+import io.github.kituin.ChatImageCode.exception.InvalidChatImageCodeException;
 import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 // IF >= fabric-1.20.3
