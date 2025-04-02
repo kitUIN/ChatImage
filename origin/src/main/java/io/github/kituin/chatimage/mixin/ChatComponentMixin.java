@@ -156,7 +156,7 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >=fabric-1.21.5
 //            if (style.getHoverEvent() instanceof ShowImage(ChatImageCode action)) action.retry();
 // ELSE
-//              if (style.getHoverEvent() != null && style.getHoverEvent().getValue(SHOW_IMAGE) !=null) action.retry();
+//              if (style.getHoverEvent() != null && style.getHoverEvent().getValue(SHOW_IMAGE) !=null) style.getHoverEvent().getValue(SHOW_IMAGE).retry();
 // END IF
             try {
 // IF >=fabric-1.21.5
