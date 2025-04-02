@@ -64,7 +64,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 
     @Override
     public int getMaxFileSize() {
-        return CONFIG.MaxFileSize;
+        return #kituin$ChatImageConfig#.MaxFileSize;
     }
 
     @Override
