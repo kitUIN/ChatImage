@@ -21,7 +21,7 @@ import #Style#;
  * @author kitUIN
  */
 public class ChatImageStyle {
-    // IF neoforge-1.20.2
+// IF neoforge-1.20.2
 //     public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE =
 //             new HoverEvent.Action<>("show_chatimage", true,
 //                     ChatImageCode::fromJson,
@@ -55,7 +55,7 @@ public class ChatImageStyle {
 //    ).apply(obj, (url, nsfw) -> new ChatImageCode.Builder().setNsfw(nsfw).setUrlForce(url).build()));
 //    public static final Codec<ChatImageCode> CODEC = MAP_CODEC.codec();
 // END IF
-// IF >= neoforge-1.20.3 && < neforge-1.21.5
+// IF >= neoforge-1.20.3 && < neoforge-1.21.5
 //     public static final HoverEvent.Action<ChatImageCode> SHOW_IMAGE = new HoverEvent.Action<ChatImageCode>(
 //             "show_chatimage",
 //             true,
