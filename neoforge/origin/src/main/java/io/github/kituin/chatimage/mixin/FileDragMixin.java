@@ -3,7 +3,7 @@ package io.github.kituin.chatimage.mixin;
 import io.github.kituin.chatimage.ChatImage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.MouseHandler;
-import net.minecraft.client.gui.screens.ChatScreen;
+import #ChatScreen#;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,8 +27,8 @@ public class FileDragMixin {
                                 int p_350707_,
 // END IF
                                 CallbackInfo ci) {
-        if (this.minecraft.screen != null &&
-                this.minecraft.screen instanceof ChatScreen &&
+        if (this.#kituin$clientCurrentScreen# != null &&
+                this.#kituin$clientCurrentScreen# instanceof ChatScreen &&
                 ChatImage.CONFIG.dragImage &&
                 this.minecraft.player != null) {
             StringBuilder sb = new StringBuilder();

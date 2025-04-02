@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ClientStorage;
+import io.github.kituin.chatimage.tool.ChatImageStyle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -26,10 +27,10 @@ import java.util.List;
 
 // IF >= neoforge-1.21.2
 //import java.util.function.Function;
+//
 //import net.minecraft.client.renderer.RenderType;
 // END IF
-import static io.github.kituin.chatimage.ChatImage.CONFIG;
-import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+import static #kituin$ChatImageConfig#;
 
 
 /**
@@ -45,22 +46,26 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
     @Final
     private Minecraft minecraft;
 
-// IF < neoforge-1.21.2
+    // IF < neoforge-1.21.2
 //     @Shadow
 //     public abstract void drawManaged(Runnable p_286277_);
 // END IF
     @Shadow
     public abstract void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
+
     @Shadow
     public abstract void blit(
 // IF >= neoforge-1.21.2
 //            Function<ResourceLocation, RenderType> p_363559_,
 // END IF
             ResourceLocation p_283272_, int p_283605_, int p_281879_, float p_282809_, float p_282942_, int p_281922_, int p_282385_, int p_282596_, int p_281699_);
+
     @Shadow
-    public abstract int guiWidth() ;
+    public abstract int guiWidth();
+
     @Shadow
     public abstract int guiHeight();
+
     @Shadow
     @Final
     private PoseStack pose;
@@ -71,7 +76,11 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
     protected void renderComponentHoverEffect(Font p_282584_, @Nullable Style p_282156_, int p_283623_, int p_282114_, CallbackInfo ci) {
         if (p_282156_ != null && p_282156_.getHoverEvent() != null) {
             HoverEvent hoverEvent = p_282156_.getHoverEvent();
-            ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
+// IF >= neoforge-1.21.5
+//            if (!(hoverEvent instanceof ChatImageStyle.ShowImage(ChatImageCode code))) return;
+// ELSE
+//             ChatImageCode code = hoverEvent.getValue(ChatImageStyle.SHOW_IMAGE);
+// END IF
             if (code != null) {
                 if (CONFIG.nsfw || !code.isNsfw() || ClientStorage.ContainNsfw(code.getUrl())) {
                     ChatImageFrame frame = code.getFrame();
@@ -94,7 +103,7 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         int finalL = left;
                         int finalM = top;
 // IF >= neoforge-1.21.2
-//                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400,null);
+//                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics) (Object) this), finalL, finalM, i, j, 400, null);
 // ELSE
 //                         this.drawManaged(() -> {
 //                             TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);

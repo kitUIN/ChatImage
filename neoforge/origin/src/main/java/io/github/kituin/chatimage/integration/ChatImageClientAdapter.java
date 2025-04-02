@@ -1,10 +1,12 @@
 package io.github.kituin.chatimage.integration;
 
-import com.mojang.blaze3d.platform.NativeImage;
+import #NativeImage#;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.DynamicTexture;
+// IF < neoforge-1.21.5
+// import net.minecraft.client.renderer.texture.DynamicTexture;
+// END IF
 import #Component#;
 import net.minecraft.resources.ResourceLocation;
 
@@ -13,7 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import static io.github.kituin.chatimage.ChatImage.CONFIG;
+import static #kituin$ChatImageConfig#;
 import static io.github.kituin.chatimage.ChatImage.MOD_ID;
 import static io.github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 import static io.github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;

@@ -18,11 +18,7 @@ import java.util.Objects;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
-// IF >= fabric-1.21.5
-//import static io.github.kituin.chatimage.tool.ChatImageStyle.ShowImage;
-// ELSE
-// import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
-// END IF
+
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 /**
@@ -153,13 +149,13 @@ public class #kituin$ChatComponentMixinClass# {
 
         // 无识别则返回原样
         if (allString.isValue()) {
-// IF >=fabric-1.21.5
-//            if (style.getHoverEvent() instanceof ShowImage(ChatImageCode action)) action.retry();
+// IF >= fabric-1.21.5 || >= neoforge-1.21.5
+//            if (style.getHoverEvent() instanceof ChatImageStyle.ShowImage(ChatImageCode action)) action.retry();
 // ELSE
-//              if (style.getHoverEvent() != null && style.getHoverEvent().getValue(SHOW_IMAGE) !=null) style.getHoverEvent().getValue(SHOW_IMAGE).retry();
+//              if (style.getHoverEvent() != null && style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE) !=null) style.getHoverEvent().getValue(ChatImageStyle.SHOW_IMAGE).retry();
 // END IF
             try {
-// IF >=fabric-1.21.5
+// IF >= fabric-1.21.5 || >= neoforge-1.21.5
 //                if (style.getHoverEvent() != null &&
 //                        style.getHoverEvent() instanceof HoverEvent.ShowText(#Component# showText) &&
 //                     chatImage$getContents(showText) instanceof #PlainTextContents#) {
@@ -172,11 +168,11 @@ public class #kituin$ChatComponentMixinClass# {
 
                     originText.setStyle(
                             style.withHoverEvent(
-// IF >=fabric-1.21.5
-//                                    new ShowImage(
+// IF >= fabric-1.21.5 || >= neoforge-1.21.5
+//                                    new ChatImageStyle.ShowImage(
 // ELSE
 //              new #HoverEvent#(
-//                                     SHOW_IMAGE,
+//                                     ChatImageStyle.SHOW_IMAGE,
 //
 // END IF
                                             createBuilder()
@@ -228,14 +224,22 @@ public class #kituin$ChatComponentMixinClass# {
             for (int i = 0; i < node.getSiblings().size(); i++) {
                 #Component# child_ = node.getSiblings().get(i);
                 #Component# child = chatImage$flattenTree(child_, mergedText, (child_.getStyle().getClickEvent() != null &&
-                        child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+// IF >= neoforge-1.21.5
+//                        child_.getStyle().getClickEvent().action() == #ClickEvent#.Action.OPEN_URL));
+// ELSE
+//                         child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+// END IF
                 if (child == null) continue;
                 #Style# childStyle = child.getStyle();
                 if (tempStyle == null) tempStyle = childStyle;
                 boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
                 boolean check = isLiteral &&
                         (chatImage$isSame(childStyle, tempStyle) || openUrlStyle || (childStyle.getClickEvent() != null &&
-                                childStyle.getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+// IF >= neoforge-1.21.5
+//                childStyle.getClickEvent().action() == #ClickEvent#.Action.OPEN_URL));
+// ELSE
+//                                childStyle.getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+// END IF
                 if (check) {
                     childSb.append(chatImage$getText(chatImage$getContents(child)));
                     // 检查成功并且没有子且不是最后一个直接跳过
