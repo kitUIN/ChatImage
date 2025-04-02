@@ -5,6 +5,7 @@ import io.github.kituin.chatimage.tool.ChatImageStyle;
 import io.github.kituin.ChatImageCode.ChatImageBoolean;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageCodeTool;
+import #HoverEvent#;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -17,7 +18,11 @@ import java.util.Objects;
 
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
-import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+// IF >= fabric-1.21.5
+//import static io.github.kituin.chatimage.tool.ChatImageStyle.ShowImage;
+// ELSE
+// import static io.github.kituin.chatimage.tool.ChatImageStyle.SHOW_IMAGE;
+// END IF
 import static io.github.kituin.chatimage.tool.SimpleUtil.*;
 
 /**
@@ -51,7 +56,7 @@ public class #kituin$ChatComponentMixinClass# {
 
     // IF >= fabric-1.19
 //    @Unique
-//    private #Component#Content chatImage$getContents(#Component# text){
+//    private #Component#Content chatImage$getContents(#Component# text) {
 //        return text.getContent();
 //    }
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
@@ -69,7 +74,7 @@ public class #kituin$ChatComponentMixinClass# {
     @Unique
     private String chatImage$getText(
 // IF >= fabric-1.19
-//          #Component#Content text
+//            #Component#Content text
 // ELSE IF >= forge-1.19 || > neoforge-1.20.1
 //            #Component#Contents text
 // ELSE
@@ -148,20 +153,37 @@ public class #kituin$ChatComponentMixinClass# {
 
         // 无识别则返回原样
         if (allString.isValue()) {
-            ChatImageCode action = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(SHOW_IMAGE);
-            if (action != null) action.retry();
+// IF >=fabric-1.21.5
+//            if (style.getHoverEvent() instanceof ShowImage(ChatImageCode action)) action.retry();
+// ELSE
+//              if (style.getHoverEvent() != null && style.getHoverEvent().getValue(SHOW_IMAGE) !=null) action.retry();
+// END IF
             try {
-                #Component# showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(#HoverEvent#.Action.SHOW_TEXT);
-                if (showText != null &&
-                        chatImage$getContents(showText) instanceof #PlainTextContents#) {
+// IF >=fabric-1.21.5
+//                if (style.getHoverEvent() != null &&
+//                        style.getHoverEvent() instanceof HoverEvent.ShowText(#Component# showText) &&
+//                     chatImage$getContents(showText) instanceof #PlainTextContents#) {
+// ELSE
+//              #Component# showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(#HoverEvent#.Action.SHOW_TEXT);
+//              if (showText != null &&
+//                      chatImage$getContents(showText) instanceof #PlainTextContents#) {
+// END IF
+
+
                     originText.setStyle(
-                            style.withHoverEvent(new #HoverEvent#(
-                                    SHOW_IMAGE,
-                                    createBuilder()
-                                            .fromCode(chatImage$getText(
-                                                    (#PlainTextContents#) chatImage$getContents(showText)))
-                                            .setIsSelf(isSelf)
-                                            .build())));
+                            style.withHoverEvent(
+// IF >=fabric-1.21.5
+//                                    new ShowImage(
+// ELSE
+//              new #HoverEvent#(
+//                                     SHOW_IMAGE,
+//
+// END IF
+                                            createBuilder()
+                                                    .fromCode(chatImage$getText(
+                                                            (#PlainTextContents#) chatImage$getContents(showText)))
+                                                    .setIsSelf(isSelf)
+                                                    .build())));
                 }
             } catch (Exception e) {
                 LOGGER.error(e.getMessage());
@@ -221,7 +243,7 @@ public class #kituin$ChatComponentMixinClass# {
                 }
                 // 如果父级没创建就先创建父级
                 if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
-                // 有父级则加在子里
+                    // 有父级则加在子里
                 else children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
                 childSb = new StringBuilder();
                 tempStyle = null;
