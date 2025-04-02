@@ -5,7 +5,9 @@ import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.IClientAdapter;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.NativeImage;
-import net.minecraft.client.texture.NativeImageBackedTexture;
+// IF < fabric-1.21.5
+// import net.minecraft.client.texture.NativeImageBackedTexture;
+// END IF
 import #Component#;
 import net.minecraft.util.Identifier;
 
@@ -57,11 +59,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 //                         MinecraftClient.getInstance().getTextureManager().registerDynamicTexture(
 // END IF
                         MOD_ID + "/chatimage",
-                        new NativeImageBackedTexture(
-// IF >= fabric-1.21.5
-//                                 () -> "textureName",
-// END IF
-                                nativeImage)),
+                        new NativeImageBackedTexture(nativeImage)),
                 nativeImage.getWidth(),
                 nativeImage.getHeight()
         );
