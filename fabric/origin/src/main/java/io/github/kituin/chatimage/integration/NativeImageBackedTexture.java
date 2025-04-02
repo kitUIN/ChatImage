@@ -10,6 +10,7 @@ import java.nio.file.Path;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.texture.AbstractTexture;
 import net.minecraft.client.texture.DynamicTexture;
 import net.minecraft.client.texture.NativeImage;
@@ -26,10 +27,14 @@ public class NativeImageBackedTexture extends AbstractTexture implements Dynamic
     public NativeImageBackedTexture(NativeImage image) {
         this.image = image;
         if (!RenderSystem.isOnRenderThread()) {
-            RenderSystem.queueFencedTask(() -> {
-                this.glTexture = RenderSystem.getDevice().createTexture((String) null, TextureFormat.RGBA8, this.image.getWidth(), this.image.getHeight(), 1);
-                this.upload();
-            });
+            try{
+                MinecraftClient.getInstance().execute(() -> {
+                    this.glTexture = RenderSystem.getDevice().createTexture((String) null, TextureFormat.RGBA8, this.image.getWidth(), this.image.getHeight(), 1);
+                    this.upload();
+                });
+            } catch (Exception e) {
+                LOGGER.error("Failed to upload texture", e);
+            }
         } else {
             this.glTexture = RenderSystem.getDevice().createTexture((String) null, TextureFormat.RGBA8, this.image.getWidth(), this.image.getHeight(), 1);
             this.upload();
