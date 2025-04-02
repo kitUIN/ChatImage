@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import static #kituin$ChatImageConfig#;
 import static io.github.kituin.chatimage.ChatImage.MOD_ID;
 import static io.github.kituin.chatimage.network.ChatImagePacket.loadFromServer;
 import static io.github.kituin.chatimage.network.ChatImagePacket.sendFilePackets;
@@ -24,7 +23,7 @@ import static io.github.kituin.ChatImageCode.NetworkHelper.createFilePacket;
 public class ChatImageClientAdapter implements IClientAdapter {
     @Override
     public int getTimeOut() {
-        return CONFIG.timeout;
+        return #kituin$ChatImageConfig#.timeout;
     }
 
     @Override
@@ -57,7 +56,7 @@ public class ChatImageClientAdapter implements IClientAdapter {
 
     @Override
     public void checkCachePath() {
-        File folder = new File(CONFIG.cachePath);
+        File folder = new File(#kituin$ChatImageConfig#.cachePath);
         if (!folder.exists()) {
             folder.mkdirs();
         }
