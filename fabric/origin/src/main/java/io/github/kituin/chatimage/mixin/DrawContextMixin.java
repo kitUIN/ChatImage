@@ -72,7 +72,7 @@ public abstract class DrawContextMixin {
         if (style != null && style.getHoverEvent() != null) {
             HoverEvent hoverEvent = style.getHoverEvent();
 // IF >=fabric-1.21.5
-//            if (!(hoverEvent instanceof ShowImage(ChatImageCode code)))return;
+//            if (!(hoverEvent instanceof ShowImage(ChatImageCode code))) return;
 // ELSE
 //             ChatImageCode code = hoverEvent.getValue(SHOW_IMAGE);
 // END IF
