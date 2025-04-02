@@ -293,8 +293,6 @@
           <value>
             <map>
               <entry key="&gt; forge-1.16.5" value="com.mojang.blaze3d.platform.NativeImage" />
-              <entry key="&gt;= fabric-1.21.5" value="net.minecraft.client.texture.NativeImage" />
-              <entry key="&gt;=neoforge-1.21.5" value="com.mojang.blaze3d.platform.NativeImage" />
               <entry key="forge-1.16.5" value="net.minecraft.client.renderer.texture.NativeImage" />
             </map>
           </value>
