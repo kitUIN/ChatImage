@@ -43,7 +43,7 @@ public class #kituin$ChatComponentMixinClass# {
                 StringBuilder sb = new StringBuilder();
                 #Component# temp = chatImage$flattenTree(message, sb, false);
                 ChatImageBoolean allString = new ChatImageBoolean(true);
-                ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error("slice msg error: {}",e));
+                ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error("slice msg error: {}", e));
                 if (!allString.isValue()) message = temp;
             } catch (Exception e) {
                 LOGGER.warn("experimentalTextComponentCompatibility 转换失败:{}", e.getMessage());
@@ -170,20 +170,20 @@ public class #kituin$ChatComponentMixinClass# {
                     String originalCode = chatImage$getText((#PlainTextContents#) chatImage$getContents(showText));
                     Matcher matcher = pattern.matcher(originalCode);
                     if (matcher.find()) {
-                    originText.setStyle(
-                            style.withHoverEvent(
+                        originText.setStyle(
+                                style.withHoverEvent(
 // IF >= fabric-1.21.5 || >= neoforge-1.21.5
-//                                    new ChatImageStyle.ShowImage(
+//                                        new ChatImageStyle.ShowImage(
 // ELSE
 //              new #HoverEvent#(
 //                                     ChatImageStyle.SHOW_IMAGE,
 //
 // END IF
-                                            createBuilder()
-                                                    .fromCode(originalCode)
-                                                    .setIsSelf(isSelf)
-                                                    .build())));
-                }
+                                                createBuilder()
+                                                        .fromCode(originalCode)
+                                                        .setIsSelf(isSelf)
+                                                        .build())));
+                    }
                 }
             } catch (Exception e) {
                 LOGGER.error("返回原样失败:{}", e);
@@ -236,7 +236,7 @@ public class #kituin$ChatComponentMixinClass# {
                 if (child == null) continue;
                 #Style# childStyle = child.getStyle();
                 if (tempStyle == null) tempStyle = childStyle;
-                boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents#;
+                boolean isLiteral = chatImage$getContents(child) instanceof #PlainTextContents# && !Objects.equals(chatImage$getText(chatImage$getContents(child)), "");
                 boolean check = isLiteral &&
                         (chatImage$isSame(childStyle, tempStyle) || openUrlStyle || (childStyle.getClickEvent() != null &&
 // IF >= neoforge-1.21.5
@@ -249,17 +249,15 @@ public class #kituin$ChatComponentMixinClass# {
                     // 检查成功并且没有子且不是最后一个直接跳过
                     if (child.getSiblings().isEmpty() && i != node.getSiblings().size() - 1) continue;
                 }
+                #MutableComponent# tempText = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
                 // 如果父级没创建就先创建父级
-                if (res == null) res = createLiteralComponent(childSb.toString()).setStyle(tempStyle);
+                if (res == null) res = tempText;
                     // 有父级则加在子里
-                else children.add(createLiteralComponent(childSb.toString()).setStyle(tempStyle));
+                else children.add(tempText);
                 childSb = new StringBuilder();
                 tempStyle = null;
                 // 没识别到直接添加
                 if (!check) children.add(child);
-                // for (#Component# child__ : child.getSiblings()) {
-                //     children.add(child__);
-                // }
             }
             for (#Component# child : children) {
                 res.append(child);
