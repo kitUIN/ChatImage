@@ -15,7 +15,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
 
+import static io.github.kituin.ChatImageCode.ChatImageCode.pattern;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.LOGGER;
 import static io.github.kituin.ChatImageCode.ChatImageCodeInstance.createBuilder;
 
@@ -41,7 +43,7 @@ public class #kituin$ChatComponentMixinClass# {
                 StringBuilder sb = new StringBuilder();
                 #Component# temp = chatImage$flattenTree(message, sb, false);
                 ChatImageBoolean allString = new ChatImageBoolean(true);
-                ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error(e.getMessage()));
+                ChatImageCodeTool.sliceMsg(sb.toString(), true, allString, (e) -> LOGGER.error("slice msg error: {}",e));
                 if (!allString.isValue()) message = temp;
             } catch (Exception e) {
                 LOGGER.warn("experimentalTextComponentCompatibility 转换失败:{}", e.getMessage());
@@ -142,7 +144,7 @@ public class #kituin$ChatComponentMixinClass# {
         ChatImageBoolean allString = new ChatImageBoolean(true);
 
         // 尝试解析CICode
-        List<Object> texts = ChatImageCodeTool.sliceMsg(checkedText, isSelf, allString, (e) -> LOGGER.error(e.getMessage()));
+        List<Object> texts = ChatImageCodeTool.sliceMsg(checkedText, isSelf, allString, (e) -> LOGGER.error("slice msg error: {}", e));
         // 尝试解析URL
         if (#kituin$ChatImageConfig#.checkImageUri)
             ChatImageCodeTool.checkImageUri(texts, isSelf, allString);
@@ -158,14 +160,16 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >= fabric-1.21.5 || >= neoforge-1.21.5
 //                if (style.getHoverEvent() != null &&
 //                        style.getHoverEvent() instanceof HoverEvent.ShowText(#Component# showText) &&
-//                     chatImage$getContents(showText) instanceof #PlainTextContents#) {
+//                        chatImage$getContents(showText) instanceof #PlainTextContents#) {
 // ELSE
 //              #Component# showText = style.getHoverEvent() == null ? null : style.getHoverEvent().getValue(#HoverEvent#.Action.SHOW_TEXT);
 //              if (showText != null &&
 //                      chatImage$getContents(showText) instanceof #PlainTextContents#) {
 // END IF
 
-
+                    String originalCode = chatImage$getText((#PlainTextContents#) chatImage$getContents(showText));
+                    Matcher matcher = pattern.matcher(originalCode);
+                    if (matcher.find()) {
                     originText.setStyle(
                             style.withHoverEvent(
 // IF >= fabric-1.21.5 || >= neoforge-1.21.5
@@ -176,13 +180,13 @@ public class #kituin$ChatComponentMixinClass# {
 //
 // END IF
                                             createBuilder()
-                                                    .fromCode(chatImage$getText(
-                                                            (#PlainTextContents#) chatImage$getContents(showText)))
+                                                    .fromCode(originalCode)
                                                     .setIsSelf(isSelf)
                                                     .build())));
                 }
+                }
             } catch (Exception e) {
-                LOGGER.error(e.getMessage());
+                LOGGER.error("返回原样失败:{}", e);
             }
             return originText;
         }
@@ -227,7 +231,7 @@ public class #kituin$ChatComponentMixinClass# {
 // IF >= neoforge-1.21.5
 //                        child_.getStyle().getClickEvent().action() == #ClickEvent#.Action.OPEN_URL));
 // ELSE
-//                         child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
+//                        child_.getStyle().getClickEvent().getAction() == #ClickEvent#.Action.OPEN_URL));
 // END IF
                 if (child == null) continue;
                 #Style# childStyle = child.getStyle();
