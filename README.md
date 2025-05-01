@@ -79,6 +79,7 @@
 - ✅[mc-plugin - Yunzai](https://github.com/CikeyQi/mc-plugin)
 - ✅️[Styled Chat (Mod)](https://www.curseforge.com/minecraft/mc-mods/styled-chat)
 - ✅[fuji (Mod)](https://modrinth.com/mod/fuji)
+- ✅[Leaves (Server)](https://github.com/LeavesMC/Leaves)
 
 ## 额外支持
 
