@@ -55,13 +55,17 @@ public abstract class DrawContextMixin {
     public abstract int getScaledWindowHeight();
     @Shadow
     public abstract void drawOrderedTooltip(TextRenderer textRenderer, List<? extends OrderedText> text, int x, int y);
-
-    @Shadow
-    public abstract void drawTexture(
-// IF >= fabric-1.21.2
-//            Function<Identifier, RenderLayer> renderLayers,
+// IF >= fabric-1.21.6
+//    @Shadow
+//    public abstract void drawTexturedQuad(Identifier sprite, int x1, int y1, int x2, int y2, float u1, float u2, float v1, float v2);
+// ELSE
+//     @Shadow
+//     public abstract void drawTexture(
+     // IF >= fabric-1.21.2
+//Function<Identifier, RenderLayer> renderLayers,
+     // END IF
+//             Identifier texture, int x, int y,  float u, float v, int width, int height, int textureWidth, int textureHeight);
 // END IF
-            Identifier texture, int x, int y,  float u, float v, int width, int height, int textureWidth, int textureHeight);
 // IF < fabric-1.21.2
 //     @Shadow
 //     public abstract void draw(Runnable drawCallback);
@@ -91,7 +95,11 @@ public abstract class DrawContextMixin {
                         // 背景
                         this.matrices.push();
 // IF >= fabric-1.21.2
-//                        TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400,null);
+//                        TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth, allHeight,
+    // IF <= fabric-1.21.5
+//                          400,
+    // END IF
+//                                null);
 // ELSE
 //                         this.draw(() -> {
 //                             TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400);
@@ -100,11 +108,17 @@ public abstract class DrawContextMixin {
                         this.matrices.translate(0.0F, 0.0F, 400.0F);
 
                         // 图片
-                        this.drawTexture(
-// IF >= fabric-1.21.2
-//                                RenderLayer::getGuiTextured,
+// IF >= fabric-1.21.6
+//                        this.drawTexturedQuad(
+//
+// ELSE
+//                         this.drawTexture(
 // END IF
-                                (Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
+// IF >= fabric-1.21.2 && <= fabric-1.21.5
+//                          RenderLayer::getGuiTextured,
+// END IF
+                                (Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight
+                        );
 
                         this.matrices.pop();
                         frame.gifLoop(CONFIG.gifSpeed);

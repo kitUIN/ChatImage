@@ -186,7 +186,7 @@ public class ChatImagePacket {
      */
 // IF >= fabric-1.20.5
 //    public static void serverFileChannelReceived(FileChannelPacket packet, ServerPlayNetworking.Context content) {
-//        MinecraftServer server = content.player().server;
+//        MinecraftServer server = content.player().getServer();
 //        String res = packet.message();
 // ELSE
 //    public static void serverFileChannelReceived(MinecraftServer server, PacketByteBuf buf) {

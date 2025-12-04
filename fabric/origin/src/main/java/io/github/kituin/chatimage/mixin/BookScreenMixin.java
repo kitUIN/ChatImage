@@ -1,3 +1,4 @@
+// ONLY <= fabric-1.21.5
 package io.github.kituin.chatimage.mixin;
 
 import io.github.kituin.chatimage.gui.ConfirmNsfwScreen;

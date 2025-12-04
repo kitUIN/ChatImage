@@ -11,7 +11,7 @@ import java.nio.file.Path;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.AbstractTexture;
+import #AbstractTexture#;
 import net.minecraft.client.texture.DynamicTexture;
 import net.minecraft.client.texture.NativeImage;
 import net.minecraft.util.Identifier;
@@ -29,14 +29,38 @@ public class NativeImageBackedTexture extends AbstractTexture implements Dynamic
         if (!RenderSystem.isOnRenderThread()) {
             try{
                 MinecraftClient.getInstance().execute(() -> {
-                    this.glTexture = RenderSystem.getDevice().createTexture((String) null, TextureFormat.RGBA8, this.image.getWidth(), this.image.getHeight(), 1);
+                    this.glTexture = RenderSystem.getDevice().createTexture(
+                            (String) null,
+// IF >= fabric-1.21.6
+//                            4,
+// END IF
+                            TextureFormat.RGBA8,
+                            this.image.getWidth(),
+                            this.image.getHeight(),
+// IF >= fabric-1.21.6
+//                            1,
+// END IF
+                            1
+                    );
                     this.upload();
                 });
             } catch (Exception e) {
                 LOGGER.error("Failed to upload texture", e);
             }
         } else {
-            this.glTexture = RenderSystem.getDevice().createTexture((String) null, TextureFormat.RGBA8, this.image.getWidth(), this.image.getHeight(), 1);
+            this.glTexture = RenderSystem.getDevice().createTexture(
+                    (String) null,
+// IF >= fabric-1.21.6
+//                    4,
+// END IF
+                    TextureFormat.RGBA8,
+                    this.image.getWidth(),
+                    this.image.getHeight(),
+// IF >= fabric-1.21.6
+//                    1,
+// END IF
+                    1
+            );
             this.upload();
         }
 
