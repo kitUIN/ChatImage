@@ -255,6 +255,14 @@
             </map>
           </value>
         </entry>
+        <entry key="#MatrixStack#">
+          <value>
+            <map>
+              <entry key="&lt; fabric-1.21.6" value="net.minecraft.client.util.math.MatrixStack" />
+              <entry key="&gt;= fabric-1.21.6" value="org.joml.Matrix3x2fStack" />
+            </map>
+          </value>
+        </entry>
         <entry key="#MinecraftClient#">
           <value>
             <map>

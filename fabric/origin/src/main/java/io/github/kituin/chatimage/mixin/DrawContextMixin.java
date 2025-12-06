@@ -10,7 +10,6 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.tooltip.HoveredTooltipPositioner;
 import net.minecraft.client.gui.tooltip.TooltipBackgroundRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.*;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
@@ -46,25 +45,28 @@ public abstract class DrawContextMixin {
     @Shadow
     @Nullable
     private MinecraftClient client;
+
     @Shadow
     @Final
-    private MatrixStack matrices;
+    private #MatrixStack# matrices;
+
     @Shadow
     public abstract  int getScaledWindowWidth();
+
     @Shadow
     public abstract int getScaledWindowHeight();
+
     @Shadow
     public abstract void drawOrderedTooltip(TextRenderer textRenderer, List<? extends OrderedText> text, int x, int y);
+
+    @Shadow
+    public abstract void drawTexture(
 // IF >= fabric-1.21.6
-//    @Shadow
-//    public abstract void drawTexturedQuad(Identifier sprite, int x1, int y1, int x2, int y2, float u1, float u2, float v1, float v2);
-// ELSE
-//     @Shadow
-//     public abstract void drawTexture(
-     // IF >= fabric-1.21.2
-//Function<Identifier, RenderLayer> renderLayers,
-     // END IF
-//             Identifier texture, int x, int y,  float u, float v, int width, int height, int textureWidth, int textureHeight);
+//            com.mojang.blaze3d.pipeline.RenderPipeline pipeline,
+// ELSE IF >= fabric-1.21.2
+//          Function<Identifier, RenderLayer> renderLayers,
+// END IF
+            Identifier texture, int x, int y,  float u, float v, int width, int height, int textureWidth, int textureHeight);
 // END IF
 // IF < fabric-1.21.2
 //     @Shadow
@@ -93,7 +95,12 @@ public abstract class DrawContextMixin {
                         int l = vector2ic.x();
                         int m = vector2ic.y();
                         // 背景
-                        this.matrices.push();
+// IF >= fabric-1.21.6
+//                        this.matrices.pushMatrix();
+//
+// ELSE
+//                         this.matrices.push();
+// END IF
 // IF >= fabric-1.21.2
 //                        TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth, allHeight,
     // IF <= fabric-1.21.5
@@ -105,13 +112,18 @@ public abstract class DrawContextMixin {
 //                             TooltipBackgroundRenderer.render((DrawContext) (Object)this, l, m, allWidth,allHeight, 400);
 //                         });
 // END IF
-                        this.matrices.translate(0.0F, 0.0F, 400.0F);
+
+
+
 
                         // 图片
 // IF >= fabric-1.21.6
-//                        this.drawTexturedQuad(
+//                        this.matrices.translate(0.0F, 0.0F);
+//                        this.drawTexture(
+//                                net.minecraft.client.gl.RenderPipelines.GUI_TEXTURED,
 //
 // ELSE
+//                         this.matrices.translate(0.0F, 0.0F, 400.0F);
 //                         this.drawTexture(
 // END IF
 // IF >= fabric-1.21.2 && <= fabric-1.21.5
@@ -119,8 +131,11 @@ public abstract class DrawContextMixin {
 // END IF
                                 (Identifier) frame.getId(), l + CONFIG.paddingLeft, m + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight
                         );
-
-                        this.matrices.pop();
+// IF >= fabric-1.21.6
+//                        this.matrices.popMatrix();
+// ELSE
+//                         this.matrices.pop();
+// END IF
                         frame.gifLoop(CONFIG.gifSpeed);
                     } else {
                         MutableText text = (MutableText) frame.getErrorMessage(

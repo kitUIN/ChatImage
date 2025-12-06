@@ -21,18 +21,19 @@ import org.slf4j.Logger;
 @Environment(EnvType.CLIENT)
 public class NativeImageBackedTexture extends AbstractTexture implements DynamicTexture {
     private static final Logger LOGGER = LogUtils.getLogger();
+
     @Nullable
     private NativeImage image;
 
     public NativeImageBackedTexture(NativeImage image) {
         this.image = image;
         if (!RenderSystem.isOnRenderThread()) {
-            try{
+            try {
                 MinecraftClient.getInstance().execute(() -> {
                     this.glTexture = RenderSystem.getDevice().createTexture(
                             (String) null,
 // IF >= fabric-1.21.6
-//                            4,
+//                            1,
 // END IF
                             TextureFormat.RGBA8,
                             this.image.getWidth(),
@@ -43,6 +44,9 @@ public class NativeImageBackedTexture extends AbstractTexture implements Dynamic
                             1
                     );
                     this.upload();
+// IF >= fabric-1.21.6
+//                    this.glTextureView = RenderSystem.getDevice().createTextureView(this.glTexture);
+// END IF
                 });
             } catch (Exception e) {
                 LOGGER.error("Failed to upload texture", e);
@@ -51,7 +55,7 @@ public class NativeImageBackedTexture extends AbstractTexture implements Dynamic
             this.glTexture = RenderSystem.getDevice().createTexture(
                     (String) null,
 // IF >= fabric-1.21.6
-//                    4,
+//                    1,
 // END IF
                     TextureFormat.RGBA8,
                     this.image.getWidth(),
@@ -62,6 +66,9 @@ public class NativeImageBackedTexture extends AbstractTexture implements Dynamic
                     1
             );
             this.upload();
+// IF >= fabric-1.21.6
+//            this.glTextureView = RenderSystem.getDevice().createTextureView(this.glTexture);
+// END IF
         }
 
     }
