@@ -10,7 +10,6 @@
   ],
   "client": [
     "AWTHackMixin",
-    "BookViewScreenMixin",
     "ChatComponentMixin",
     "FileDragMixin",
     "GuiGraphicsMixin",
