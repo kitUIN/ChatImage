@@ -121,8 +121,10 @@ public class ChatImage {
         LOGGER.info("[ChatImage]Server starting");
 
     }
-// IF >= neoforge-1.20.5
-//    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+// IF >= neoforge-1.21.6
+//    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
+// ELSE IF >= neoforge-1.20.5
+//     @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 // ELSE
 //    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 // END IF

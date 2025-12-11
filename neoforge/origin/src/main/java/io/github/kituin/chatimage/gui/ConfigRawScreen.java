@@ -3,7 +3,7 @@ package io.github.kituin.chatimage.gui;
 import io.github.kituin.chatimage.widget.SettingSliderWidget;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
+import #Component#;
 
 import java.util.function.Consumer;
 
@@ -25,7 +25,11 @@ public abstract class ConfigRawScreen extends Screen {
         return new SettingSliderWidget.OnTooltip() {
             public void onTooltip(SettingSliderWidget p_93753_, GuiGraphics p_283427_, int p_281447_, int p_282852_) {
                 if (text != null) {
-                    p_283427_.renderTooltip(ConfigRawScreen.this.font, ConfigRawScreen.this.font.split(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_281447_, p_282852_);
+// IF >= neoforge-1.21.6
+//                    p_283427_.setTooltipForNextFrame(ConfigRawScreen.this.font, ConfigRawScreen.this.font.split(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_281447_, p_282852_);
+// ELSE
+//                     p_283427_.renderTooltip(ConfigRawScreen.this.font, ConfigRawScreen.this.font.split(text, Math.max(ConfigRawScreen.this.width / 2 - 43, 170)), p_281447_, p_282852_);
+// END IF
                 }
             }
 

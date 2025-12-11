@@ -82,7 +82,7 @@ public class ChatImagePacket {
             if (names != null) {
                 // 通知之前请求但是没图片的客户端
                 for (String uuid : names) {
-                    ServerPlayer serverPlayer = player.server.getPlayerList().getPlayer(UUID.fromString(uuid));
+                    ServerPlayer serverPlayer = player.getServer().getPlayerList().getPlayer(UUID.fromString(uuid));
 // IF <= neoforge-1.20.3
 //             FileBackChannel.sendToPlayer(new FileInfoChannelPacket("true->" + title.url), serverPlayer);
 // ELSE IF < neoforge-1.20.5

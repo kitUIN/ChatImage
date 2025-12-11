@@ -26,7 +26,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 // IF >= neoforge-1.21.2
-//import java.util.function.Function;
 //
 //import net.minecraft.client.renderer.RenderType;
 // END IF
@@ -46,17 +45,27 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
     @Final
     private Minecraft minecraft;
 
-    // IF < neoforge-1.21.2
+// IF < neoforge-1.21.2
 //     @Shadow
 //     public abstract void drawManaged(Runnable p_286277_);
 // END IF
-    @Shadow
-    public abstract void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
-
+// IF >= neoforge-1.21.6
+//    @Shadow
+//    public abstract void setTooltipForNextFrame(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
+//    private void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_){
+//        this.setTooltipForNextFrame(p_282192_, p_282297_, p_281680_, p_283325_);
+//    }
+//
+// ELSE
+//     @Shadow
+//     public abstract void renderTooltip(Font p_282192_, List<? extends FormattedCharSequence> p_282297_, int p_281680_, int p_283325_);
+// END IF
     @Shadow
     public abstract void blit(
-// IF >= neoforge-1.21.2
-//            Function<ResourceLocation, RenderType> p_363559_,
+// IF >= neoforge-1.21.6
+//            com.mojang.blaze3d.pipeline.RenderPipeline p_416301_,
+// ELSE IF >= neoforge-1.21.2
+//             Function<ResourceLocation, RenderType> p_363559_,
 // END IF
             ResourceLocation p_283272_, int p_283605_, int p_281879_, float p_282809_, float p_282942_, int p_281922_, int p_282385_, int p_282596_, int p_281699_);
 
@@ -103,7 +112,11 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         int finalL = left;
                         int finalM = top;
 // IF >= neoforge-1.21.2
-//                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics) (Object) this), finalL, finalM, i, j, 400, null);
+//                        TooltipRenderUtil.renderTooltipBackground(((GuiGraphics) (Object) this), finalL, finalM, i, j,
+// IF < neoforge-1.21.6
+//                                 400,
+// END IF
+//                                null);
 // ELSE
 //                         this.drawManaged(() -> {
 //                             TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
@@ -112,8 +125,10 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         this.pose.translate(0.0F, 0.0F, 400.0F);
 
                         blit(
-// IF >= neoforge-1.21.2
-//                                RenderType::guiTextured,
+// IF >= neoforge-1.21.6
+//                                net.minecraft.client.renderer.RenderPipelines.GUI_TEXTURED,
+// ELSE IF >= neoforge-1.21.2
+//                                 RenderType::guiTextured,
 // END IF
                                 (ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
                         pose.popPose();
