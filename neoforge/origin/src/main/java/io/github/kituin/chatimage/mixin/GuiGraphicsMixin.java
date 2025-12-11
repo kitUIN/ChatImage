@@ -65,7 +65,7 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
 // IF >= neoforge-1.21.6
 //            com.mojang.blaze3d.pipeline.RenderPipeline p_416301_,
 // ELSE IF >= neoforge-1.21.2
-//             Function<ResourceLocation, RenderType> p_363559_,
+//             java.util.function.Function<ResourceLocation, RenderType> p_363559_,
 // END IF
             ResourceLocation p_283272_, int p_283605_, int p_281879_, float p_282809_, float p_282942_, int p_281922_, int p_282385_, int p_282596_, int p_281699_);
 
