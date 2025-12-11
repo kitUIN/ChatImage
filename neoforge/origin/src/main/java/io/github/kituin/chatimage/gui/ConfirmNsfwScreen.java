@@ -17,26 +17,8 @@ public class ConfirmNsfwScreen extends ConfirmScreen {
 
     public ConfirmNsfwScreen(BooleanConsumer callback, Component title, Component message) {
         super(callback, title, message);
-// IF >= neoforge-1.21.6
-//        this.yesButtonComponent = CommonComponents.GUI_YES;
-//        this.noButtonComponent = CommonComponents.GUI_NO;
-// ELSE
-//         this.yesButton = CommonComponents.GUI_YES;
-//         this.noButton = CommonComponents.GUI_NO;
-// END IF
     }
-    // IF < neoforge-1.21.6
-// @Override
-// protected void addButtons(int y) {
-//     this.addRenderableWidget(Button.builder(
-//             this.yesButton,(button) -> this.callback.accept(true)
-//     ).bounds(this.width / 2 - 50 - 52, y, 100, 20).build());
-//
-//     this.addRenderableWidget(Button.builder(
-//             this.noButton,(button) -> this.callback.accept(false)
-//     ).bounds(this.width / 2 - 50 + 52, y, 100, 20).build());
-// }
-// END IF
+
     @Override
     public void render(GuiGraphics p_281549_, int p_281550_, int p_282878_, float p_282465_) {
         super.render(p_281549_,p_281550_,p_282878_,p_282465_);
