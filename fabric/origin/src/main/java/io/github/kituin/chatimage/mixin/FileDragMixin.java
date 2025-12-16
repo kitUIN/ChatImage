@@ -5,7 +5,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
-import net.minecraft.client.gui.screen.ChatScreen;
+import #ChatScreen#;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,8 +34,8 @@ public class FileDragMixin {
 //                                int invalidFilesCount,
 // END IF
                                 CallbackInfo ci) {
-        if (this.client.currentScreen != null &&
-                this.client.currentScreen instanceof ChatScreen &&
+        if (this.#kituin$clientCurrentScreen# != null &&
+                this.#kituin$clientCurrentScreen# instanceof ChatScreen &&
                 this.client.world != null && ChatImageClient.CONFIG.dragImage) {
             StringBuilder sb = new StringBuilder();
             for (Path o : paths) {
@@ -45,10 +45,12 @@ public class FileDragMixin {
                     sb.append("file:///").append(o);
                 }
             }
-// IF fabric-1.16.5
+// IF >= fabric-1.21.9
+//            this.client.setScreen(new ChatScreen(sb.toString(), true));
+// ELSE IF fabric-1.16.5
 //            this.client.openScreen(new ChatScreen(sb.toString()));
 // ELSE
-//            this.client.setScreen(new ChatScreen(sb.toString()));
+//             this.client.setScreen(new ChatScreen(sb.toString()));
 // END IF
         }
     }

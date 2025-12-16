@@ -7,8 +7,8 @@ import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.util.math.MathHelper;
 // IF < fabric-1.19.3
 //import net.minecraft.client.MinecraftClient;
-//import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.text.Text;
+//import #MatrixStack#;
+//import #Component#;
 //import java.util.function.Consumer;
 // ELSE
 //import net.minecraft.client.gui.tooltip.Tooltip;
@@ -73,23 +73,38 @@ public abstract class SettingSliderWidget extends SliderWidget {
 //        }
 //    }
 // END IF
-    @Override
-    public void onClick(double mouseX, double mouseY) {
-        super.onClick(mouseX, mouseY);
+
+
+// IF >= fabric-1.21.9
+//    @Override
+//    public void onClick(net.minecraft.client.gui.Click click, boolean doubled) {
+//        super.onClick(click, doubled);
+//        this.setTooltip(null);
+//    }
+//    @Override
+//    public void onRelease(net.minecraft.client.gui.Click click) {
+//        super.onRelease(click);
+//        this.setTooltip(tip);
+//    }
+// ELSE
+//     @Override
+//     public void onClick(double mouseX, double mouseY) {
+//         super.onClick(mouseX, mouseY);
 // IF < fabric-1.19.3
 //        this.isClick = false;
 // ELSE
 //        this.setTooltip(null);
 // END IF
-    }
-
-    @Override
-    public void onRelease(double mouseX, double mouseY) {
-        super.onRelease(mouseX, mouseY);
+//     }
+//
+//     @Override
+//     public void onRelease(double mouseX, double mouseY) {
+//         super.onRelease(mouseX, mouseY);
 // IF < fabric-1.19.3
 //        this.isClick = true;
 // ELSE
-//        this.setTooltip(tip);
+//         this.setTooltip(tip);
 // END IF
-    }
+//     }
+// END IF
 }

@@ -62,7 +62,11 @@ public class ChatImageClient implements ClientModInitializer {
                 "config.chatimage.key",
                 InputUtil.Type.KEYSYM,
                 GLFW.GLFW_KEY_END,
-                "config.chatimage.category"
+// IF >= fabric-1.21.9
+//                KeyBinding.Category.create(net.minecraft.util.Identifier.ofVanilla("config.chatimage.category"))
+// ELSE
+//                 "config.chatimage.category"
+// END IF
         ));
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (configKeyBinding.wasPressed()) {
