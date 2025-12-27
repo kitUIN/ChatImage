@@ -1,6 +1,5 @@
 package io.github.kituin.chatimage.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import io.github.kituin.ChatImageCode.ChatImageCode;
 import io.github.kituin.ChatImageCode.ChatImageFrame;
 import io.github.kituin.ChatImageCode.ClientStorage;
@@ -77,7 +76,7 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
 
     @Shadow
     @Final
-    private PoseStack pose;
+    private #MatrixStack# pose;
 
 
     @Inject(at = @At("RETURN"),
@@ -108,7 +107,11 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
                         if (top + j + 6 > height) { // 若超出窗口
                             top = height - j - 6;
                         }
-                        this.pose.pushPose();
+// IF < neoforge-1.21.6
+//                        this.pose.pushPose();
+// ELSE
+//                        this.pose.pushMatrix();
+// END IF
                         int finalL = left;
                         int finalM = top;
 // IF >= neoforge-1.21.2
@@ -122,8 +125,11 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
 //                             TooltipRenderUtil.renderTooltipBackground(((GuiGraphics)(Object)this), finalL, finalM , i, j, 400);
 //                         });
 // END IF
-                        this.pose.translate(0.0F, 0.0F, 400.0F);
-
+                        this.pose.translate(0.0F, 0.0F
+// IF < neoforge-1.21.6
+//                                 , 400.0F
+// END IF
+                        );
                         blit(
 // IF >= neoforge-1.21.6
 //                                net.minecraft.client.renderer.RenderPipelines.GUI_TEXTURED,
@@ -131,8 +137,12 @@ public abstract class GuiGraphicsMixin implements net.neoforged.neoforge.client.
 //                                 RenderType::guiTextured,
 // END IF
                                 (ResourceLocation) frame.getId(), left + CONFIG.paddingLeft, top + CONFIG.paddingTop, 0, 0, viewWidth, viewHeight, viewWidth, viewHeight);
-                        pose.popPose();
 
+// IF < neoforge-1.21.6
+//                        pose.popPose();
+// ELSE
+//                        this.pose.popMatrix();
+// END IF
                         frame.gifLoop(CONFIG.gifSpeed);
                     } else {
                         MutableComponent text = (MutableComponent) frame.getErrorMessage(
