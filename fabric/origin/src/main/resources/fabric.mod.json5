@@ -37,7 +37,11 @@
   ],
   "depends": {
     "fabric-api-base": "*",
-    "fabric-resource-loader-v0": "*",
+// IF >= fabric-1.21.9
+//    "fabric-resource-loader-v1": "*",
+// ELSE
+//    "fabric-resource-loader-v0": "*",
+// END IF
     "fabric-key-binding-api-v1": "*",
     "fabric-lifecycle-events-v1": "*",
     "fabric-networking-api-v1": "*",
@@ -86,7 +90,7 @@
 //    "minecraft": ["1.21.6","1.21.7","1.21.8"]
 // ELSE IF fabric-1.21.9
 //    "fabric-command-api-v2": "*",
-//    "minecraft": ">=1.21.9"
+//    "minecraft": ["1.21.9","1.21.10"]
 // END IF
   }
 }
